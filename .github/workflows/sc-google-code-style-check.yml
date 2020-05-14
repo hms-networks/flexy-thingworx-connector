@@ -1,0 +1,16 @@
+# Java Google Code Style Check
+name: Verify Java (Google) Code Style
+
+on: pull_request
+
+jobs:
+  formatting:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2 # v2 minimum required
+      - uses: actions/setup-java@v1
+        with:
+          java-version: 11
+      - uses: axel-op/googlejavaformat-action@v2.0.0
+        with:
+          args: "--dry-run --skip-sorting-imports --set-exit-if-changed"
