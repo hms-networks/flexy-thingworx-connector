@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="lib/sc-config-file-lib/src"/>
+	<classpathentry kind="src" path="lib/sc-datapoint-lib/src"/>
+	<classpathentry kind="src" path="lib/sc-file-util-lib/src"/>
+	<classpathentry kind="src" path="lib/sc-historical-data-queue-lib/src"/>
+	<classpathentry kind="src" path="lib/sc-json-lib/src"/>
+	<classpathentry kind="src" path="lib/sc-logger-lib/src"/>
+	<classpathentry kind="src" path="lib/sc-mqtt-lib/src"/>
+	<classpathentry kind="src" path="lib/sc-string-lib/src"/>
+	<classpathentry kind="src" path="lib/sc-tag-info-lib/src"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
