@@ -1,0 +1,64 @@
+<project default="startdeploy">
+
+  <!-- ########  Type your Application/Flexy Parameters ######## -->
+
+  <!-- The project name -->
+  <property name="ProjectName" value="flexy-thingworx-connector"/>
+
+  <!-- The main class to run (where the main function is) -->
+  <property name="MainClass" value="com.hms_networks.americas.sc.thingworx.TWConnectorMain"/>
+
+  <!-- The JAVA heapsize -->
+  <property name="HeapSize" value="20M"/>
+
+  <!-- The Flexy Admin login -->
+  <property name="FlexyLogin" value="adm"/>
+
+  <!-- The Flexy Admin password -->
+  <property name="FlexyPassword" value="adm"/>
+ 
+  <!-- The Flexy IP address -->
+  <property name="FlexyIP" value="192.168.0.1"/>
+
+  <!-- Enable Debug mode -> Type 'true' if online debugging is used -->
+  <property name="Debug" value="false"/>
+
+  <!-- ####################################################### -->
+
+  <property name="ftp.dir" value="/usr"/>
+  <property name="src.dir" value="src"/>
+  <property name="projectHome" location="." />
+
+  <target name="buildjar">
+    <jar destfile="${projectHome}/build/${ProjectName}.jar" basedir="${projectHome}/bin" />
+  </target>
+
+  <target name="deploy_ftp" depends="buildjar">
+    <ftp server="${FlexyIP}" remotedir="${ftp.dir}" userid="${FlexyLogin}" password="${FlexyPassword}" action="mkdir"
+        verbose="true"/>
+    <ftp server="${FlexyIP}" remotedir="${ftp.dir}" userid="${FlexyLogin}" password="${FlexyPassword}" verbose="true"
+        passive="yes">
+      <fileset dir="build/"/>
+    </ftp>
+  </target>
+
+  <target name="stop" depends="deploy_ftp">
+    <get username="${FlexyLogin}" password="${FlexyPassword}" dest="stop.log" verbose="true"
+        src="http://${FlexyIP}/rcgi.bin/jvmCmd?cmd=stop"/>
+
+  </target>
+  <target name="startdeploy_debug" depends="stop" if="${Debug}">
+    <get username="${FlexyLogin}" password="${FlexyPassword}" dest="startdebug.log" verbose="true"
+        src="http://${FlexyIP}/rcgi.bin/jvmCmd?cmd=start&amp;runCmd=%20-heapsize%20${HeapSize}%20-classpath%20${ftp.dir}/${ProjectName}.jar%20-emain%20${MainClass}%20-debugger%20-port%202800" />
+
+    <echo>Debug Mode started</echo>
+  </target>
+
+  <target name="startdeploy" depends="startdeploy_debug" unless="${Debug}">
+    <get username="${FlexyLogin}" password="${FlexyPassword}" dest="start.log" verbose="true"
+        src="http://${FlexyIP}/rcgi.bin/jvmCmd?cmd=start&amp;runCmd=%20-heapsize%20${HeapSize}%20-classpath%20${ftp.dir}/${ProjectName}.jar%20-emain%20${MainClass}" />
+
+    <echo>Application uploaded and started</echo>
+  </target>
+
+</project>
