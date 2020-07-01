@@ -1,5 +1,6 @@
 package com.hms_networks.americas.sc.thingworx;
 
+import com.ewon.ewonitf.ScheduledActionManager;
 import com.ewon.ewonitf.SysControlBlock;
 import com.ewon.ewonitf.TagControl;
 import com.hms_networks.americas.sc.config.exceptions.ConfigFileException;
@@ -13,6 +14,7 @@ import com.hms_networks.americas.sc.taginfo.TagInfoManager;
 
 import com.hms_networks.americas.sc.taginfo.TagType;
 import com.hms_networks.americas.sc.thingworx.config.TWConnectorConfig;
+import com.hms_networks.americas.sc.thingworx.utils.StringUtils;
 import com.hms_networks.americas.sc.thingworx.utils.TWPropertyType;
 import com.hms_networks.americas.sc.thingworx.utils.TWTimeOffsetCalculator;
 import java.io.IOException;
@@ -318,9 +320,38 @@ public class TWConnectorMain {
     TagControl connectorControlTag = null;
     try {
       connectorControlTag = new TagControl(TWConnectorConsts.CONNECTOR_CONTROL_TAG_NAME);
-    } catch (Exception e) {
-      Logger.LOG_SERIOUS("Unable to create tag object to track connector control tag!");
-      Logger.LOG_EXCEPTION(e);
+    } catch (Exception e1) {
+      Logger.LOG_INFO(
+          "Unable to create tag object to track connector control tag! Attempting to create `"
+              + TWConnectorConsts.CONNECTOR_CONTROL_TAG_NAME
+              + "` tag.");
+      Logger.LOG_EXCEPTION(e1);
+      try {
+        String ftpAddControlTagVarLstBody =
+            StringUtils.replaceAll(
+                TWConnectorConsts.VAR_LST_ADD_TAG_TEMPLATE,
+                TWConnectorConsts.VAR_LST_ADD_TAG_NAME_REPLACE,
+                TWConnectorConsts.CONNECTOR_CONTROL_TAG_NAME);
+        String ftpAddControlTagVarLstBody2 =
+            StringUtils.replaceAll(
+                ftpAddControlTagVarLstBody,
+                TWConnectorConsts.VAR_LST_ADD_TAG_TYPE_REPLACE,
+                TWConnectorConsts.VAR_LST_BOOLEAN_TAG_TYPE_VALUE);
+        String ftpUserCredentialsAndServer =
+            TWConnectorConsts.FTP_USERNAME + ":" + TWConnectorConsts.FTP_PASSWORD + "@127.0.0.1";
+        ScheduledActionManager.PutFtp(
+            TWConnectorConsts.VAR_LST_FILE_PATH,
+            ftpAddControlTagVarLstBody2,
+            ftpUserCredentialsAndServer);
+      } catch (Exception e2) {
+        Logger.LOG_WARN(
+            "Unable to create tag `"
+                + TWConnectorConsts.CONNECTOR_CONTROL_TAG_NAME
+                + "`! To control this connector, create a boolean tag with the name `"
+                + TWConnectorConsts.CONNECTOR_CONTROL_TAG_NAME
+                + "`.");
+        Logger.LOG_EXCEPTION(e2);
+      }
     }
 
     // Run the application until stopped via application control tag
