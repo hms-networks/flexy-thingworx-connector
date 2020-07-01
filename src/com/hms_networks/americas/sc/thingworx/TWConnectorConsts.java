@@ -30,9 +30,9 @@ public class TWConnectorConsts {
    * The size (in mins) of each data queue poll. Changing this will modify the amount of data
    * checked during each poll interval.
    */
-  public static final long QUEUE_DATA_POLL_SIZE_MINS = 3;
+  public static final long QUEUE_DATA_POLL_SIZE_MINS = 1;
   /** The interval (in milliseconds) to poll the historical data queue. */
-  public static final long QUEUE_DATA_POLL_INTERVAL_MILLIS = 10000;
+  public static final long QUEUE_DATA_POLL_INTERVAL_MILLIS = 30000;
   /** The minimum memory (in bytes) required to perform a poll of the data queue. */
   public static final int QUEUE_DATA_POLL_MIN_MEMORY_BYTES = 5000000;
   /** The time (in milliseconds) that the data queue must be behind by before warning the user. */
@@ -42,7 +42,7 @@ public class TWConnectorConsts {
    * history requires an additional EBD call in the underlying queue library, and may take extra
    * processing time, especially in installations with large string tag counts.
    */
-  public static final boolean QUEUE_DATA_STRING_HISTORY_ENABLED = true;
+  public static final boolean QUEUE_DATA_STRING_HISTORY_ENABLED = false;
 
   // Main Loop Configuration
   /**
