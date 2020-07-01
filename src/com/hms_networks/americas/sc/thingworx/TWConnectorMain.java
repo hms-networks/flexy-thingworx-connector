@@ -22,7 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Ewon Flexy Azure Connector main class.
+ * Ewon Flexy Thingworx Connector main class.
  *
  * @author HMS Networks, MU Americas Solution Center
  * @since 1.0
