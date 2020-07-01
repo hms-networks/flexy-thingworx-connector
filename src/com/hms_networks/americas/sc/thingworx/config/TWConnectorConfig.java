@@ -31,7 +31,14 @@ public class TWConnectorConfig extends ConfigFile {
    * @throws JSONException if unable to get Thingworx IP address from configuration
    */
   public String getThingworxIPAddress() throws JSONException {
-    return configurationObject.getString(TWConnectorConsts.CONNECTOR_CONFIG_TW_IP_KEY);
+    String twIP = configurationObject.getString(TWConnectorConsts.CONNECTOR_CONFIG_TW_IP_KEY);
+    if (twIP.equals(TWConnectorConsts.CONNECTOR_CONFIG_DEFAULT_TW_IP_KEY)) {
+      Logger.LOG_WARN(
+          "The configured Thingworx IP address is the default value. "
+              + "Please change this value to the IP address (and port, if not "
+              + "port 80) of your Thingworx Foundation instance. Example: `12.34.56.78:8080`");
+    }
+    return twIP;
   }
 
   /**
@@ -41,7 +48,13 @@ public class TWConnectorConfig extends ConfigFile {
    * @throws JSONException if unable to get Thingworx app key from configuration
    */
   public String getThingworxAppKey() throws JSONException {
-    return configurationObject.getString(TWConnectorConsts.CONNECTOR_CONFIG_APP_KEY_KEY);
+    String twAppKey = configurationObject.getString(TWConnectorConsts.CONNECTOR_CONFIG_APP_KEY_KEY);
+    if (twAppKey.equals(TWConnectorConsts.CONNECTOR_CONFIG_DEFAULT_APP_KEY)) {
+      Logger.LOG_WARN(
+          "The Thingworx app key has not been configured. Please modify the configuration"
+              + "to include a Thingworx app key with all run time permissions enabled.");
+    }
+    return twAppKey;
   }
 
   /**
