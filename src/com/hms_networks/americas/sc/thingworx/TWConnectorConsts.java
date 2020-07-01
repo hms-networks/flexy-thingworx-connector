@@ -104,6 +104,23 @@ public class TWConnectorConsts {
   /** The string value used to identify HTTP PUT requests. */
   public static final String HTTP_PUT_STRING = "PUT";
 
+  // Var Lst Constants
+  /** String to replace in {@link #VAR_LST_ADD_TAG_TEMPLATE} with the tag name. */
+  public static final String VAR_LST_ADD_TAG_NAME_REPLACE = "%NAME%";
+  /** String to replace in {@link #VAR_LST_ADD_TAG_TEMPLATE} with the tag type. */
+  public static final String VAR_LST_ADD_TAG_TYPE_REPLACE = "%TYPE%";
+  /** Template for the body of a var_lst.txt file that adds one tag to the Ewon. */
+  public static final String VAR_LST_ADD_TAG_TEMPLATE =
+      "Name;ServerName;Type\r\n"
+          + VAR_LST_ADD_TAG_NAME_REPLACE
+          + ";MEM;"
+          + VAR_LST_ADD_TAG_TYPE_REPLACE
+          + "\r\n";
+  /** The value of `type` for boolean tags in the Ewon var_lst.txt file. */
+  public static final String VAR_LST_BOOLEAN_TAG_TYPE_VALUE = "0";
+  /** The path of the var_lst.txt file on the Ewon file system. */
+  public static final String VAR_LST_FILE_PATH = "/var_lst.txt";
+
   // FTP Constants
   /**
    * Username for accessing Ewon Flexy via FTP. This user must be configured on the Ewon Flexy, and
