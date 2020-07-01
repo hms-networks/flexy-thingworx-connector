@@ -19,16 +19,22 @@ import java.util.Date;
  *
  * @author HMS Networks, MU Americas Solution Center
  * @since 1.0
+ * @version 1.0
  */
 public class TWTimeOffsetCalculator {
 
-  /** Time offset in milliseconds between local time and UTC. */
+  /**
+   * Time offset in milliseconds between local time and UTC.
+   *
+   * @since 1.0
+   */
   private static long timeOffsetMilliseconds = 0;
 
   /**
    * Gets the currently stored time offset in milliseconds.
    *
    * @return time offset in milliseconds
+   * @since 1.0
    */
   public static synchronized long getTimeOffsetMilliseconds() {
     return timeOffsetMilliseconds;
@@ -36,6 +42,8 @@ public class TWTimeOffsetCalculator {
 
   /**
    * Calculate the local time offset in milliseconds and store in {@link #timeOffsetMilliseconds}.
+   *
+   * @since 1.0
    */
   public static synchronized void calculateTimeOffsetMilliseconds() {
     writeLocalTimeHTMLFile();
@@ -46,6 +54,8 @@ public class TWTimeOffsetCalculator {
   /**
    * Create an HTML file that can be used to read local time via {@link
    * com.ewon.ewonitf.ScheduledActionManager#GetHttp(String, String, String)}.
+   *
+   * @since 1.0
    */
   private static void writeLocalTimeHTMLFile() {
     File file = new File(TWConnectorConsts.TIME_OFFSET_HTML_FILE_NAME);
@@ -84,6 +94,8 @@ public class TWTimeOffsetCalculator {
    * Generates a local time offset file using an HTTP connection to the HTML file generated in
    * {@link #writeLocalTimeHTMLFile()}. The HTTP connection is authenticated using the configured
    * FTP username and password from {@link TWConnectorConsts}.
+   *
+   * @since 1.0
    */
   private static void generateLocalTimeFile() {
     String httpUserCredentialsAndServer =
@@ -104,6 +116,7 @@ public class TWTimeOffsetCalculator {
    * Parses and returns the generated local time offset file from {@link #generateLocalTimeFile()}.
    *
    * @return local time offset
+   * @since 1.0
    */
   private static long parseOffsetFromLocalTime() {
     String line = "";
