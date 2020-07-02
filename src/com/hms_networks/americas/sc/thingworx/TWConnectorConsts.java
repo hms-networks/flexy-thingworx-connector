@@ -3,6 +3,7 @@ package com.hms_networks.americas.sc.thingworx;
 import com.ewon.ewonitf.EWException;
 import com.ewon.ewonitf.SysControlBlock;
 import com.hms_networks.americas.sc.logging.Logger;
+import java.text.SimpleDateFormat;
 
 /**
  * Class of constants for the Ewon Thingworx Connector.
@@ -121,6 +122,10 @@ public class TWConnectorConsts {
   /** The path of the var_lst.txt file on the Ewon file system. */
   public static final String VAR_LST_FILE_PATH = "/var_lst.txt";
 
+  // Time Constants
+  /** The number of milliseconds in one second. */
+  public static final int NUM_MILLISECONDS_PER_SECOND = 1000;
+
   // FTP Constants
   /**
    * Username for accessing Ewon Flexy via FTP. This user must be configured on the Ewon Flexy, and
@@ -142,23 +147,15 @@ public class TWConnectorConsts {
       TIME_OFFSET_FOLDER + "/localTimeResponse.txt";
 
   // Thingworx API Constants
-  /** REST API endpoint for creating a device entry. */
-  public static final String CREATE_THING_ENDPOINT =
-      "/Thingworx/Resources/EntityServices/Services/CreateThing";
-  /** REST API folder containing endpoints for Thingworx things. */
-  public static final String THINGS_ENDPOINT_DIR = "/Thingworx/Things/";
-  /** REST API endpoint for enabling a thing. */
-  public static final String ENABLE_THING_ENDPOINT = "/Services/EnableThing";
-  /** REST API endpoint for restarting a thing. */
-  public static final String RESTART_THING_ENDPOINT = "/Services/RestartThing";
-  /** REST API endpoint for adding a property definition. */
-  public static final String ADD_PROPERTY_ENDPOINT = "/Services/AddPropertyDefinition";
-  /** REST API folder containing endpoints for Thingworx thing properties. */
-  public static final String PROPERTIES_ENDPOINT_DIRECTORY = "/Properties/";
-  /** Template to use when registering a device entry to Thingworx. */
-  public static final String THING_TEMPLATE = "GenericThing";
-  /** Suffix to append to the property containing the timestamp of the corresponding property. */
-  public static final String PROPERTY_NAME_TIMESTAMP_SUFFIX = "_Timestamp";
+  /** Date format for time stamps sent to the Thingworx API. */
+  public static final SimpleDateFormat THINGWORX_API_DATE_FORMAT =
+      new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
+  /**
+   * The path to the Thingworx REST API endpoint that is configured to accept data from this
+   * connector.
+   */
+  public static final String THINGWORX_API_TAKE_INFO_ENDPOINT =
+      "/Thingworx/Things/RestfulHost/Services/TakeInfo";
 
   // SysControlBlock Constants
   /** SysControlBlock serial number key. */
