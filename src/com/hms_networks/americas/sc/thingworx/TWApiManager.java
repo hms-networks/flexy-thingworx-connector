@@ -1,303 +1,248 @@
 package com.hms_networks.americas.sc.thingworx;
 
 import com.ewon.ewonitf.EWException;
+import com.ewon.ewonitf.ScheduledActionManager;
 import com.hms_networks.americas.sc.datapoint.DataPoint;
-import com.hms_networks.americas.sc.json.JSONException;
+import com.hms_networks.americas.sc.fileutils.FileAccessManager;
 import com.hms_networks.americas.sc.logging.Logger;
-import com.hms_networks.americas.sc.thingworx.utils.TWHttpUtil;
-import com.hms_networks.americas.sc.thingworx.utils.TWPropertyType;
+import com.hms_networks.americas.sc.thingworx.utils.TWTimeOffsetCalculator;
+import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 
 /**
  * Class for managing HTTP API calls to the Thingworx API.
  *
  * @since 1.0
+ * @version 1.1
  * @author HMS Networks, MU Americas Solution Center
  */
 public class TWApiManager {
 
   /**
+   * Array list of data points that are waiting to be sent to Thingworx.
+   *
+   * @since 1.1
+   */
+  private static ArrayList pendingDataPoints = new ArrayList();
+
+  /**
    * Gets the name of the Ewon Flexy as it appears/should appear in Thingworx.
    *
    * @return Thingworx device name
+   * @since 1.0
    */
   public static String getApiDeviceName() {
     return "FLEXY-" + TWConnectorConsts.EWON_SERIAL_NUMBER;
   }
 
   /**
-   * Creates a device entry for the current Ewon device in the Thingworx server configured in the
-   * application.
+   * Adds the specified data point to the list of data points to be sent to Thingworx.
    *
-   * @return true if device entry created
-   * @throws JSONException if unable to get configuration information
-   * @throws IOException if unable to HTTP connect to Thingworx
-   * @throws EWException if unable to HTTP connect to Thingworx
+   * @param dataPoint data point to send to Thingworx
+   * @since 1.1
    */
-  public static boolean createDeviceEntry() throws JSONException, IOException, EWException {
-    // Build full POST request URL
-    final String createThingEndpointFullUrl =
-        TWConnectorMain.getConnectorConfig().getThingworxIPAddress()
-            + TWConnectorConsts.CREATE_THING_ENDPOINT;
-    final String createThingRequestHeader =
-        "Content-Type=application/json&appKey="
-            + TWConnectorMain.getConnectorConfig().getThingworxAppKey();
-
-    // Build POST request body
-    final String createThingRequestBody =
-        "{\"name\": \""
-            + getApiDeviceName()
-            + "\",\"thingTemplateName\": \""
-            + TWConnectorConsts.THING_TEMPLATE
-            + "\"}";
-
-    // Perform POST request
-    String response =
-        TWHttpUtil.httpPost(
-            createThingEndpointFullUrl, createThingRequestHeader, createThingRequestBody);
-
-    // Verify response is empty (success)
-    boolean successFlag = false;
-    if (response.length() == 0) {
-      successFlag = true;
-    } else if (response.equals("Thing [" + getApiDeviceName() + "] already exists")) {
-      Logger.LOG_INFO("A device entry already exists in Thingworx.");
-    } else {
-      Logger.LOG_WARN(
-          "An unhandled response was received while creating this thing ["
-              + getApiDeviceName()
-              + "]: "
-              + response
-              + ".");
-    }
-    return successFlag;
+  public static synchronized void addDataPointToPending(DataPoint dataPoint) {
+    pendingDataPoints.add(dataPoint);
   }
 
   /**
-   * Enables the device entry for the current Ewon device.
+   * Sends the specified JSON string to the Thingworx Flexy TakeInfo endpoint as an HTTP POST
+   * request
    *
-   * @return true if value changed to enabled
-   * @throws JSONException if unable to get configuration information
-   * @throws IOException if unable to HTTP connect to Thingworx
-   * @throws EWException if unable to HTTP connect to Thingworx
+   * @param json JSON body
+   * @since 1.1
    */
-  public static boolean enableThing() throws JSONException, IOException, EWException {
+  private static synchronized void sendJsonToThingworx(String json) {
+    // Send to Thingworx
     // Build full POST request URL
-    final String enableThingEndpointFullUrl =
-        TWConnectorMain.getConnectorConfig().getThingworxIPAddress()
-            + TWConnectorConsts.THINGS_ENDPOINT_DIR
-            + getApiDeviceName()
-            + TWConnectorConsts.ENABLE_THING_ENDPOINT;
-    final String enableThingRequestHeader =
-        "Content-Type=application/json&appKey="
-            + TWConnectorMain.getConnectorConfig().getThingworxAppKey();
-
-    // Build POST request body
-    final String enableThingRequestBody = "";
-
-    // Perform POST request
-    String response =
-        TWHttpUtil.httpPost(
-            enableThingEndpointFullUrl, enableThingRequestHeader, enableThingRequestBody);
-
-    // Verify response is empty (success)
-    boolean successFlag = false;
-    if (response.length() == 0) {
-      successFlag = true;
-    } else {
-      Logger.LOG_WARN(
-          "An unhandled response was received while enabling this thing ["
-              + getApiDeviceName()
-              + "]: "
-              + response);
+    String addInfoEndpointFullUrl = "";
+    String addInfoRequestHeader = "";
+    try {
+      addInfoEndpointFullUrl =
+          TWConnectorMain.getConnectorConfig().getThingworxIPAddress()
+              + TWConnectorConsts.THINGWORX_API_TAKE_INFO_ENDPOINT;
+      addInfoRequestHeader =
+          "Content-Type=application/json&appKey="
+              + TWConnectorMain.getConnectorConfig().getThingworxAppKey();
+    } catch (Exception e) {
+      Logger.LOG_CRITICAL(
+          "Unable to get configuration information for sending data to Thingworx. Data"
+              + " may be lost!");
+      Logger.LOG_EXCEPTION(e);
     }
-    return successFlag;
+
+    String response = null;
+    try {
+      response = httpPost(addInfoEndpointFullUrl, addInfoRequestHeader, json);
+    } catch (Exception e) {
+      Logger.LOG_CRITICAL(
+          "An error occurred while performing an HTTP POST to Thingworx. Data may have"
+              + " been lost!");
+      Logger.LOG_EXCEPTION(e);
+    }
+    Logger.LOG_DEBUG("Thingworx HTTP POST response: " + response);
   }
 
   /**
-   * Restarts device entry for the current Ewon device.
+   * Builds the JSON array of data points and appends it to the specified string buffer.
    *
-   * @return true if restarted
-   * @throws JSONException if unable to get configuration information
-   * @throws IOException if unable to HTTP connect to Thingworx
-   * @throws EWException if unable to HTTP connect to Thingworx
+   * @since 1.1
+   * @param stringBuffer JSON string buffer
    */
-  public static boolean restartThing() throws JSONException, IOException, EWException {
-    // Build full POST request URL
-    final String restartThingEndpointFullUrl =
-        TWConnectorMain.getConnectorConfig().getThingworxIPAddress()
-            + TWConnectorConsts.THINGS_ENDPOINT_DIR
-            + getApiDeviceName()
-            + TWConnectorConsts.RESTART_THING_ENDPOINT;
-    final String restartThingRequestHeader =
-        "Content-Type=application/json&appKey="
-            + TWConnectorMain.getConnectorConfig().getThingworxAppKey();
+  private static synchronized void buildDataPointsJson(StringBuffer stringBuffer) {
+    // Add opening for data points object
+    stringBuffer.append("\"datapoints\": [");
 
-    // Build POST request body
-    final String restartThingRequestBody = "";
+    // Append each pending data point
+    Iterator pendingDataPointsIterator = pendingDataPoints.iterator();
+    while (pendingDataPointsIterator.hasNext()) {
+      // Get current data point
+      DataPoint currentDataPoint = (DataPoint) pendingDataPointsIterator.next();
+      pendingDataPointsIterator.remove();
 
-    // Perform POST request
-    String response =
-        TWHttpUtil.httpPost(
-            restartThingEndpointFullUrl, restartThingRequestHeader, restartThingRequestBody);
+      // Get time stamp in proper format
+      long timestampLong =
+          Long.valueOf(currentDataPoint.getTimeStamp()).longValue()
+              * TWConnectorConsts.NUM_MILLISECONDS_PER_SECOND;
+      String currentDataPointFormattedTimestamp =
+          TWConnectorConsts.THINGWORX_API_DATE_FORMAT.format(new Date(timestampLong));
 
-    // Verify response is empty (success)
-    boolean successFlag = false;
-    if (response.length() == 0) {
-      successFlag = true;
-    } else {
-      Logger.LOG_WARN(
-          "An unhandled response was received while restarting this thing ["
-              + getApiDeviceName()
-              + "]: "
-              + response);
+      // Append data point to data points list
+      stringBuffer.append("{");
+      stringBuffer.append("\"name\": \"").append(currentDataPoint.getTagName()).append("\",");
+      stringBuffer.append("\"value\": ").append(currentDataPoint.getValueString()).append(",");
+      stringBuffer
+          .append("\"timestamp\": \"")
+          .append(currentDataPointFormattedTimestamp)
+          .append("\"");
+      stringBuffer.append("}");
+
+      // Append comma if there are more data points to be added
+      if (pendingDataPointsIterator.hasNext()) {
+        stringBuffer.append(",");
+      }
     }
-    return successFlag;
+
+    // Add closing for data points object
+    stringBuffer.append("], ");
   }
 
   /**
-   * Adds a property to the current Ewon device in Thingworx with the supplied property information.
+   * Builds a payload containing the data points that are pending and sends them to Thingworx. This
+   * task is performed on a thread that is spawned to avoid an overload of the main thread.
    *
-   * @param name property name
-   * @param type property type
-   * @throws JSONException if unable to get configuration information
-   * @throws IOException if unable to HTTP connect to Thingworx
-   * @throws EWException if unable to HTTP connect to Thingworx
+   * @since 1.1
    */
-  public static void addPropertyToThing(String name, TWPropertyType type)
-      throws JSONException, IOException, EWException {
-    // Build full POST request URL
-    final String addPropertyEndpointFullUrl =
-        TWConnectorMain.getConnectorConfig().getThingworxIPAddress()
-            + TWConnectorConsts.THINGS_ENDPOINT_DIR
-            + getApiDeviceName()
-            + TWConnectorConsts.ADD_PROPERTY_ENDPOINT;
-    final String addPropertyRequestHeader =
-        "Content-Type=application/json&appKey="
-            + TWConnectorMain.getConnectorConfig().getThingworxAppKey();
+  public static synchronized void sendPendingToThingworx() {
+    // Build runnable to send pending data points to Thingworx
+    Runnable sendPendingRunnable =
+        new Runnable() {
+          public void run() {
 
-    // Build POST request body for tag
-    final String addPropertyRequestBody =
-        "{"
-            + "\"name\" : "
-            + "\""
-            + name
-            + "\","
-            + "\"type\" : "
-            + "\""
-            + type.getTypeString()
-            + "\""
-            + "}";
+            final int pendingDataPointsCount = pendingDataPoints.size();
+            if (pendingDataPointsCount > 0) {
 
-    // Build POST request body for tag timestamp
-    final String addPropertyTimestampRequestBody =
-        "{"
-            + "\"name\" : "
-            + "\""
-            + name
-            + TWConnectorConsts.PROPERTY_NAME_TIMESTAMP_SUFFIX
-            + "\","
-            + "\"type\" : "
-            + "\""
-            + TWPropertyType.DATETIME.getTypeString()
-            + "\""
-            + "}";
+              // Create string buffer for building payload
+              StringBuffer payloadBuffer = new StringBuffer();
 
-    // Perform POST request for tag
-    String response =
-        TWHttpUtil.httpPost(
-            addPropertyEndpointFullUrl, addPropertyRequestHeader, addPropertyRequestBody);
-    if (response.equalsIgnoreCase("Property [" + name + "] already exists")) {
-      Logger.LOG_INFO("Property [" + name + "] already exists on Thingworx.");
-    } else if (response.length() == 0) {
-      Logger.LOG_INFO("Property [" + name + "] was created on Thingworx.");
-    } else {
-      Logger.LOG_WARN(
-          "An unhandled response was received while creating the property ["
-              + name
-              + "]: "
-              + response);
-    }
+              // Add opening JSON bracket
+              payloadBuffer.append("{\"Tags\":{");
 
-    // Perform POST request for tag timestamp
-    String timestampResponse =
-        TWHttpUtil.httpPost(
-            addPropertyEndpointFullUrl, addPropertyRequestHeader, addPropertyTimestampRequestBody);
-    if (timestampResponse.equalsIgnoreCase(
-        "Property ["
-            + name
-            + TWConnectorConsts.PROPERTY_NAME_TIMESTAMP_SUFFIX
-            + "] already exists")) {
-      Logger.LOG_INFO(
-          "Property ["
-              + name
-              + TWConnectorConsts.PROPERTY_NAME_TIMESTAMP_SUFFIX
-              + "] timestamp already exists on Thingworx.");
-    } else if (timestampResponse.length() == 0) {
-      Logger.LOG_INFO(
-          "Property ["
-              + name
-              + TWConnectorConsts.PROPERTY_NAME_TIMESTAMP_SUFFIX
-              + "] timestamp was created on Thingworx.");
-    } else {
-      Logger.LOG_WARN(
-          "An unhandled response was received while creating the property ["
-              + name
-              + TWConnectorConsts.PROPERTY_NAME_TIMESTAMP_SUFFIX
-              + "]: "
-              + timestampResponse);
-    }
+              // Add data points array
+              buildDataPointsJson(payloadBuffer);
+
+              // Add opening for info object
+              payloadBuffer.append("\"info\": {");
+
+              // Append Ewon name in info object
+              payloadBuffer.append("\"ewon-name\": \"").append(getApiDeviceName()).append("\",");
+
+              // Append Ewon time offset from UTC in milliseconds
+              payloadBuffer
+                  .append("\"ewon-utc-offset-millis\": \"")
+                  .append(TWTimeOffsetCalculator.getTimeOffsetMilliseconds())
+                  .append("\"");
+
+              // Add closing for info object
+              payloadBuffer.append("}");
+
+              // Add closing JSON bracket
+              payloadBuffer.append("}}");
+
+              // Send to Thingworx
+              Logger.LOG_DEBUG(
+                  "Sending HTTP POST request to Thingworx with "
+                      + pendingDataPointsCount
+                      + " data points.");
+              sendJsonToThingworx(payloadBuffer.toString());
+            }
+          }
+        };
+
+    // Create new thread and run created runnable
+    Thread sendPendingThread = new Thread(sendPendingRunnable);
+    sendPendingThread.start();
+    Logger.LOG_DEBUG("A send pending data points thread has been created and started.");
   }
 
   /**
-   * Pushes the specified data point to the corresponding property (must exist) on the current Ewon
-   * device's Thingworx device entry.
+   * Performs an HTTP POST requests to the specified URL using the specified request header and
+   * body.
    *
-   * @param dataPoint data point to add to Thingworx
-   * @throws JSONException if unable to get configuration information
-   * @throws IOException if unable to HTTP connect to Thingworx
-   * @throws EWException if unable to HTTP connect to Thingworx
+   * @param url URL to make request
+   * @param header request header
+   * @param body request body
+   * @throws EWException if unable to make POST request
+   * @since 1.1
    */
-  public static void pushDataPointToThingworx(DataPoint dataPoint)
-      throws JSONException, IOException, EWException {
-    // Build full PUT request URL
-    final String pushDataPointEndpointFullUrl =
-        TWConnectorMain.getConnectorConfig().getThingworxIPAddress()
-            + TWConnectorConsts.THINGS_ENDPOINT_DIR
-            + getApiDeviceName()
-            + TWConnectorConsts.PROPERTIES_ENDPOINT_DIRECTORY
-            + dataPoint.getTagName();
-    final String pushDataPointRequestHeader =
-        "Content-Type=application/json&appKey="
-            + TWConnectorMain.getConnectorConfig().getThingworxAppKey();
+  public static String httpPost(String url, String header, String body)
+      throws EWException, IOException {
+    // Create file for storing response
+    final File responseFile = new File("/usr/http/response.post");
+    responseFile.getParentFile().mkdirs();
+    responseFile.delete();
 
-    // Build PUT request body for tag
-    final String pushDataPointRequestBody =
-        "{" + "\"" + dataPoint.getTagName() + "\" : " + dataPoint.getValueString() + "}";
+    // Perform POST request to specified URL
+    int httpStatus =
+        ScheduledActionManager.RequestHttpX(
+            url,
+            TWConnectorConsts.HTTP_POST_STRING,
+            header,
+            body,
+            "",
+            responseFile.getAbsolutePath());
 
-    // Build PUT request body for tag timestamp
-    final String pushDataPointTimeStampRequestBody =
-        "{"
-            + "\""
-            + dataPoint.getTagName()
-            + TWConnectorConsts.PROPERTY_NAME_TIMESTAMP_SUFFIX
-            + "\" : "
-            + new Date(Long.parseLong(dataPoint.getTimeStamp())).toString()
-            + "}";
-
-    // Perform PUT request for tag
-    String response =
-        TWHttpUtil.httpPut(
-            pushDataPointEndpointFullUrl, pushDataPointRequestHeader, pushDataPointRequestBody);
-    Logger.LOG_CRITICAL("RESPONSE: " + response);
-
-    // Perform PUT request for tag timestamp
-    String timestampResponse =
-        TWHttpUtil.httpPut(
-            pushDataPointEndpointFullUrl,
-            pushDataPointRequestHeader,
-            pushDataPointTimeStampRequestBody);
-    Logger.LOG_CRITICAL("RESPONSE/TS: " + timestampResponse);
+    // Read response contents and return
+    String responseFileString = "";
+    if (httpStatus == TWConnectorConsts.HTTPX_CODE_NO_ERROR) {
+      responseFileString = FileAccessManager.readFileToString(responseFile.getAbsolutePath());
+    } else if (httpStatus == TWConnectorConsts.HTTPX_CODE_EWON_ERROR) {
+      Logger.LOG_SERIOUS(
+          "An Ewon error was encountered while performing an HTTP POST request to "
+              + url
+              + "! Data loss may result.");
+    } else if (httpStatus == TWConnectorConsts.HTTPX_CODE_AUTH_ERROR) {
+      Logger.LOG_SERIOUS(
+          "An authentication error was encountered while performing an HTTP POST request to "
+              + url
+              + "! Data loss may result.");
+    } else if (httpStatus == TWConnectorConsts.HTTPX_CODE_CONNECTION_ERROR) {
+      Logger.LOG_SERIOUS(
+          "A connection error was encountered while performing an HTTP POST request to "
+              + url
+              + "! Data loss may result.");
+    } else {
+      Logger.LOG_SERIOUS(
+          "An unknown error ("
+              + httpStatus
+              + ") was encountered while performing an HTTP POST request to "
+              + url
+              + "! Data loss may result.");
+      responseFileString = String.valueOf(httpStatus);
+    }
+    return responseFileString;
   }
 }
