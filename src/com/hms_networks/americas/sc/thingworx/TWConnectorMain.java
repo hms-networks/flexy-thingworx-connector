@@ -9,17 +9,13 @@ import com.hms_networks.americas.sc.datapoint.DataPoint;
 import com.hms_networks.americas.sc.historicaldata.HistoricalDataQueueManager;
 import com.hms_networks.americas.sc.json.JSONException;
 import com.hms_networks.americas.sc.logging.Logger;
-import com.hms_networks.americas.sc.taginfo.TagInfo;
 import com.hms_networks.americas.sc.taginfo.TagInfoManager;
 
-import com.hms_networks.americas.sc.taginfo.TagType;
 import com.hms_networks.americas.sc.thingworx.config.TWConnectorConfig;
 import com.hms_networks.americas.sc.thingworx.utils.StringUtils;
-import com.hms_networks.americas.sc.thingworx.utils.TWPropertyType;
 import com.hms_networks.americas.sc.thingworx.utils.TWTimeOffsetCalculator;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Ewon Flexy Thingworx Connector main class.
@@ -95,8 +91,9 @@ public class TWConnectorMain {
 
         // Send data points to Thingworx
         for (int x = 0; x < datapontsReadFromQueue.size(); x++) {
-          TWApiManager.pushDataPointToThingworx((DataPoint) datapontsReadFromQueue.get(x));
+          TWApiManager.addDataPointToPending((DataPoint) datapontsReadFromQueue.get(x));
         }
+        TWApiManager.sendPendingToThingworx();
 
         // Check if queue is behind
         try {
@@ -162,69 +159,6 @@ public class TWConnectorMain {
       loglevel = TWConnectorConsts.CONNECTOR_CONFIG_DEFAULT_LOG_LEVEL;
     }
     Logger.SET_LOG_LEVEL(loglevel);
-  }
-
-  /** Prepares Thingworx for connection with the Ewon Flexy. */
-  private static void prepareThingworxConnection() {
-    // Create device entry in Thingworx
-    try {
-      Logger.LOG_INFO("Creating device entry in Thingworx.");
-      boolean createdDeviceEntry = TWApiManager.createDeviceEntry();
-      if (!createdDeviceEntry) {
-        Logger.LOG_CRITICAL("A device entry was not created in Thingworx.");
-      }
-    } catch (Exception e) {
-      Logger.LOG_CRITICAL("An error occurred while creating the device entry in Thingworx.");
-      Logger.LOG_EXCEPTION(e);
-    }
-
-    // Enable device in Thingworx
-    try {
-      Logger.LOG_INFO("Enabling this device in Thingworx.");
-      boolean enabledThing = TWApiManager.enableThing();
-      if (!enabledThing) {
-        Logger.LOG_CRITICAL("This device was not enabled in Thingworx.");
-      }
-    } catch (Exception e) {
-      Logger.LOG_CRITICAL("An error occurred while enabling this device in Thingworx.");
-      Logger.LOG_EXCEPTION(e);
-    }
-
-    // Restart device in Thingworx
-    try {
-      Logger.LOG_INFO("Restarting this device in Thingworx.");
-      boolean restartedThing = TWApiManager.restartThing();
-      if (!restartedThing) {
-        Logger.LOG_CRITICAL("This device was not restarted in Thingworx.");
-      }
-    } catch (Exception e) {
-      Logger.LOG_CRITICAL("An error occurred while restarting this device in Thingworx.");
-      Logger.LOG_EXCEPTION(e);
-    }
-
-    // Register tags in Thingworx
-    List tagInfoList = TagInfoManager.getTagInfoList();
-    for (int x = 0; x < tagInfoList.size(); x++) {
-      TagInfo currentTagInfo = (TagInfo) tagInfoList.get(x);
-      TWPropertyType currentTagPropertyType;
-      if (currentTagInfo.getType() == TagType.STRING) {
-        currentTagPropertyType = TWPropertyType.STRING;
-      } else if (currentTagInfo.getType() == TagType.BOOLEAN) {
-        currentTagPropertyType = TWPropertyType.BOOLEAN;
-      } else if (currentTagInfo.getType() == TagType.INTEGER) {
-        currentTagPropertyType = TWPropertyType.INTEGER;
-      } else {
-        currentTagPropertyType = TWPropertyType.NUMBER;
-      }
-      try {
-        TWApiManager.addPropertyToThing(currentTagInfo.getName(), currentTagPropertyType);
-      } catch (Exception e) {
-        Logger.LOG_CRITICAL(
-            "Unable to add the property \""
-                + currentTagInfo.getName()
-                + "\" to this device in Thingworx.");
-      }
-    }
   }
 
   /**
@@ -299,9 +233,6 @@ public class TWConnectorMain {
       Logger.LOG_CRITICAL("Unable to populate array of tag information!");
       Logger.LOG_EXCEPTION(e);
     }
-
-    // Prepare for connection to Thingworx
-    prepareThingworxConnection();
 
     // Set historical log poll size
     HistoricalDataQueueManager.setQueueFifoTimeSpanMins(
