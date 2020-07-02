@@ -100,10 +100,6 @@ public class TWConnectorConsts {
   // HTTP Connection Method Constants
   /** The string value used to identify HTTP POST requests. */
   public static final String HTTP_POST_STRING = "POST";
-  /** The string value used to identify HTTP GET requests. */
-  public static final String HTTP_GET_STRING = "GET";
-  /** The string value used to identify HTTP PUT requests. */
-  public static final String HTTP_PUT_STRING = "PUT";
 
   // Var Lst Constants
   /** String to replace in {@link #VAR_LST_ADD_TAG_TEMPLATE} with the tag name. */
