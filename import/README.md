@@ -59,8 +59,8 @@ Fill in the following credentials:
 
 Change "daysToKeep" to be the number of days before data will be purged from Thingworx.
 
-If scriptTimeout was modified in the platform-settings.json file of Thingworx, then update the scriptTimeout property here.
-If no change was made, then the scriptTimeout property already holds the default timeout for Thingworx (30 seconds).
+If scriptTimeout was modified in the platform-settings.json file of Thingworx, then update the scriptTimeoutSeconds property here.
+If no change was made, then the scriptTimeoutSeconds property already holds the default timeout for Thingworx (30 seconds).
 
 ![img of properites](/import/img/propertiesScreen.PNG)
 
@@ -208,7 +208,7 @@ ewonPassword: The password used to login to the Ewon.
 
 <b>generalDataTableName</b>: Part of the name of the generalDataTable that will be created for tags that do not have hyphens in their name or for when useHyphensDataTables is off.
 
-<b>scriptTimeout</b>: This should match the scriptTimeout as set in the platform-settings.json file of Thingworx. If this is not an accurate value then MainExecution will incorrectly estimate how much time MainExecution can run for leading to inefficiencies or outright errors. If the value is not changed in platform-settings.json then the default value is 30 seconds.
+<b>scriptTimeoutSeconds</b>: This should match the scriptTimeout as set in the platform-settings.json file of Thingworx. If this is not an accurate value, MainExecution will incorrectly estimate how much time MainExecution can run for, which may lead to inefficiencies or outright errors. If the value is not changed in platform-settings.json then the default value is 30 seconds.
 
 <b>streamToCopy</b>: The stream that InsertStreamItem will copy when creating a new stream.
 
