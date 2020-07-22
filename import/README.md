@@ -125,6 +125,7 @@ Purges all tags that are older than 'daysToKeep' (found under [Properties](#Prop
 ### TakeInfo
 This service is an alternate way of providing data to Thingworx without using DataMailbox.
 Calling this service through Thingworx's REST API will input all information as if it was retrieved by Talk2MSyncData or Talk2MGetData.
+TakeInfo calls PurgeDataStreams.
 
 Parameters:
 String Tags: a single JSON object, passed as a string, because Thingworx 8.5 currently has a bug where JSON objects passed as parameters to services can be mutated if the JSON contains an array.
