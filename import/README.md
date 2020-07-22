@@ -53,7 +53,7 @@ Go to "ConnectorHost">"Properties and Alerts".
 
 Fill in the following credentials:
 * talk2MAccount: Account name for login to Talk2M
-* talk2MDeviceID: Device ID associated with Talk2M account.
+* talk2MDeveloperID: Developer ID associated with Talk2M account.
 * talk2MPassword: Password for login to Talk2M account.
 * talk2MUsername: Username for login to Talk2M account.
 
@@ -213,7 +213,7 @@ ewonPassword: The password used to login to the Ewon.
 <b>streamToCopy</b>: The stream that InsertStreamItem will copy when creating a new stream.
 
 <b>talk2MAccount</b>: Account name for login to Talk2M
-<b>talk2MDeviceID</b>: Device ID associated with Talk2M account.
+<b>talk2MDeveloperID</b>: Developer ID associated with Talk2M account.
 <b>talk2MPassword</b>: Password for login to Talk2M account.
 <b>talk2MUsername</b>: Username for login to Talk2M account.
 
