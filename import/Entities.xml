@@ -1,25 +1,29 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><Entities build="b110" majorVersion="8" minorVersion="5" modelPersistenceProviderPackage="PostgresPersistenceProviderPackage" revision="6" schemaVersion="1054" universal="password"><StyleDefinitions/><Networks/><PersistenceProviderPackages/><Mashups/><ScriptFunctionLibraries/><Projects><Project artifactId="" dependsOn="{&quot;extensions&quot;:&quot;&quot;,&quot;projects&quot;:&quot;&quot;}" description="" documentationContent="" groupId="" homeMashup="" lastModifiedDate="2020-07-02T16:40:39.664-04:00" minPlatformVersion="" name="FlexyConnector" packageVersion="1.0.0" projectName="FlexyConnector" publishResult="" state="DRAFT" tags=""><Owner name="Administrator" type="User"/><avatar/><DesignTimePermissions><Create/><Read/><Update/><Delete/><Metadata/></DesignTimePermissions><RunTimePermissions/><VisibilityPermissions><Visibility/></VisibilityPermissions><ConfigurationTableDefinitions/><ConfigurationTables/><ConfigurationChanges><ConfigurationChange changeAction="CREATE" changeReason="header : name : updated&#10;" timestamp="2020-07-02T16:40:10.979-04:00" user="Administrator"/></ConfigurationChanges></Project></Projects><Users/><DirectoryServices/><Widgets/><MediaEntities/><Groups/><PersistenceProviders/><ModelTags/><LocalizationTables/><Dashboards/><StyleThemes/><DataShapes><DataShape baseDataShape="" description="" documentationContent="" homeMashup="" lastModifiedDate="2020-07-02T16:40:39.760-04:00" name="LoggedInformation" projectName="FlexyConnector" tags=""><Owner name="Administrator" type="User"/><avatar/><DesignTimePermissions><Create/><Read/><Update/><Delete/><Metadata/></DesignTimePermissions><RunTimePermissions/><VisibilityPermissions><Visibility/></VisibilityPermissions><ConfigurationTableDefinitions/><ConfigurationTables/><FieldDefinitions><FieldDefinition aspect.isPrimaryKey="false" baseType="STRING" description="" name="Name" ordinal="7"/><FieldDefinition aspect.isPrimaryKey="false" baseType="NUMBER" description="" name="Value" ordinal="8"/></FieldDefinitions><ConfigurationChanges><ConfigurationChange changeAction="CREATE" changeReason="header : name : updated, projectName : updated&#10;" timestamp="2020-06-17T10:40:48.953-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="SetProjectName : [FlexyConnector]" timestamp="2020-07-02T16:40:39.761-04:00" user="Administrator"/></ConfigurationChanges></DataShape><DataShape baseDataShape="" description="" documentationContent="" homeMashup="" lastModifiedDate="2020-07-02T16:40:39.752-04:00" name="StaticInformation" projectName="FlexyConnector" tags=""><Owner name="Administrator" type="User"/><avatar/><DesignTimePermissions><Create/><Read/><Update/><Delete/><Metadata/></DesignTimePermissions><RunTimePermissions/><VisibilityPermissions><Visibility/></VisibilityPermissions><ConfigurationTableDefinitions/><ConfigurationTables/><FieldDefinitions><FieldDefinition aspect.isPrimaryKey="true" baseType="STRING" description="" name="Name" ordinal="1"/><FieldDefinition aspect.isPrimaryKey="false" baseType="STRING" description="" name="Value" ordinal="2"/></FieldDefinitions><ConfigurationChanges><ConfigurationChange changeAction="CREATE" changeReason="header : name : updated&#10;fields : name : added, Value : added, Name : updated&#10;" timestamp="2020-06-17T08:26:04.706-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="header : projectName : updated&#10;" timestamp="2020-06-17T08:26:57.730-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="SetProjectName : [FlexyConnector]" timestamp="2020-07-02T16:40:39.755-04:00" user="Administrator"/></ConfigurationChanges></DataShape></DataShapes><Things><Thing description="" documentationContent="" effectiveThingPackage="StreamThing" enabled="true" homeMashup="StreamMashup" identifier="" lastModifiedDate="2020-07-02T16:40:59.212-04:00" name="StreamTemplate" projectName="FlexyConnector" published="false" tags="" thingTemplate="Stream" valueStream=""><Owner name="Administrator" type="User"/><avatar/><DesignTimePermissions><Create/><Read/><Update/><Delete/><Metadata/></DesignTimePermissions><RunTimePermissions/><VisibilityPermissions><Visibility/></VisibilityPermissions><ConfigurationTableDefinitions/><ConfigurationTables><ConfigurationTable description="Data Thing Configuration" isMultiRow="false" name="DataThingSettings" ordinal="0"><DataShape><FieldDefinitions><FieldDefinition baseType="STRING" description="Persistence Provider Name" name="persistenceProvider" ordinal="0"/></FieldDefinitions></DataShape><Rows><Row><persistenceProvider><![CDATA[ThingworxPersistenceProvider]]></persistenceProvider></Row></Rows></ConfigurationTable><ConfigurationTable description="Data Shape Configuration" isMultiRow="false" name="Settings" ordinal="0"><DataShape><FieldDefinitions><FieldDefinition aspect.friendlyName="Data Shape" baseType="DATASHAPENAME" description="Data shape" name="dataShape" ordinal="0"/></FieldDefinitions></DataShape><Rows><Row><accumulatedDataShape><json><![CDATA[{"fieldDefinitions":{"Value":{"name":"Value","aspects":{"isPrimaryKey":false},"description":"","baseType":"NUMBER","ordinal":1},"Name":{"name":"Name","aspects":{"isPrimaryKey":false},"description":"","baseType":"STRING","ordinal":0}}}]]></json></accumulatedDataShape><dataShape><![CDATA[LoggedInformation]]></dataShape></Row></Rows></ConfigurationTable><ConfigurationTable description="Configurable options to tune Stream performance" isMultiRow="false" name="PersistenceProviderCustomSettings" ordinal="2"><DataShape><FieldDefinitions><FieldDefinition aspect.friendlyName="Persistence Provider Custom Settings Table" baseType="INFOTABLE" description="Persistence Provider Custom Config Table" name="customConfigTable" ordinal="0"/></FieldDefinitions></DataShape><Rows><Row><customConfigTable><infoTable><DataShape><FieldDefinitions/></DataShape><Rows/></infoTable></customConfigTable></Row></Rows></ConfigurationTable></ConfigurationTables><ThingShape><PropertyDefinitions/><ServiceDefinitions/><EventDefinitions/><ServiceMappings/><ServiceImplementations/><Subscriptions/></ThingShape><PropertyBindings/><RemotePropertyBindings/><RemoteServiceBindings/><RemoteEventBindings/><AlertConfigurations/><ImplementedShapes/><ThingProperties/><ConfigurationChanges><ConfigurationChange changeAction="CREATE" changeReason="header : name : updated&#10;" timestamp="2020-07-02T16:40:59.212-04:00" user="Administrator"/></ConfigurationChanges></Thing><Thing description="" documentationContent="" effectiveThingPackage="DataTableThing" enabled="true" homeMashup="DataTableEditor" identifier="" lastModifiedDate="2020-07-27T12:14:01.009-04:00" name="InfoDataTableTemplate" projectName="FlexyConnector" published="false" tags="" thingTemplate="DataTable" valueStream=""><Owner name="Administrator" type="User"/><avatar/><DesignTimePermissions><Create/><Read/><Update/><Delete/><Metadata/></DesignTimePermissions><RunTimePermissions/><VisibilityPermissions><Visibility/></VisibilityPermissions><ConfigurationTableDefinitions/><ConfigurationTables><ConfigurationTable description="Data Thing Configuration" isMultiRow="false" name="DataThingSettings" ordinal="0"><DataShape><FieldDefinitions><FieldDefinition baseType="STRING" description="Persistence Provider Name" name="persistenceProvider" ordinal="0"/></FieldDefinitions></DataShape><Rows><Row><persistenceProvider><![CDATA[ThingworxPersistenceProvider]]></persistenceProvider></Row></Rows></ConfigurationTable><ConfigurationTable description="Data Shape Configuration" isMultiRow="false" name="Settings" ordinal="0"><DataShape><FieldDefinitions><FieldDefinition aspect.friendlyName="Data Shape" baseType="DATASHAPENAME" description="Data shape" name="dataShape" ordinal="0"/></FieldDefinitions></DataShape><Rows><Row><accumulatedDataShape><json><![CDATA[{"fieldDefinitions":{"Value":{"name":"Value","aspects":{"isPrimaryKey":false},"description":"","baseType":"STRING","ordinal":1},"Name":{"name":"Name","aspects":{"isPrimaryKey":true},"description":"","baseType":"STRING","ordinal":0}}}]]></json></accumulatedDataShape><dataShape><![CDATA[StaticInformation]]></dataShape></Row></Rows></ConfigurationTable><ConfigurationTable description="Index Settings" isMultiRow="true" name="Indexes" ordinal="1"><DataShape><FieldDefinitions><FieldDefinition aspect.friendlyName="Index Field Names" baseType="STRING" description="Index fields" name="fieldNames" ordinal="1"/><FieldDefinition aspect.friendlyName="Index Name" baseType="STRING" description="Index name" name="name" ordinal="0"/></FieldDefinitions></DataShape><Rows/></ConfigurationTable><ConfigurationTable description="Configurable options to tune Data Table performance" isMultiRow="false" name="PersistenceProviderCustomSettings" ordinal="2"><DataShape><FieldDefinitions><FieldDefinition aspect.friendlyName="Persistence Provider Custom Settings Table" baseType="INFOTABLE" description="Persistence Provider Custom Config Table" name="customConfigTable" ordinal="0"/></FieldDefinitions></DataShape><Rows><Row><customConfigTable><infoTable><DataShape><FieldDefinitions/></DataShape><Rows/></infoTable></customConfigTable></Row></Rows></ConfigurationTable></ConfigurationTables><ThingShape><PropertyDefinitions/><ServiceDefinitions/><EventDefinitions/><ServiceMappings/><ServiceImplementations/><Subscriptions/></ThingShape><PropertyBindings/><RemotePropertyBindings/><RemoteServiceBindings/><RemoteEventBindings/><AlertConfigurations/><ImplementedShapes/><ThingProperties/><ConfigurationChanges><ConfigurationChange changeAction="CREATE" changeReason="header : name : updated&#10;" timestamp="2020-06-18T10:00:12.858-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="SetProjectName : [FlexyConnector]" timestamp="2020-07-02T16:40:39.772-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2020-07-27T12:14:00.993-04:00" user="Administrator"/></ConfigurationChanges></Thing><Thing description="Hosts all services for this connector." documentationContent="" effectiveThingPackage="TimerThing" enabled="true" homeMashup="" identifier="" lastModifiedDate="2020-07-27T12:13:16.891-04:00" name="ConnectorHost" projectName="FlexyConnector" published="false" tags="" thingTemplate="Timer" valueStream=""><Owner name="Administrator" type="User"/><avatar/><DesignTimePermissions><Create/><Read/><Update/><Delete/><Metadata/></DesignTimePermissions><RunTimePermissions/><VisibilityPermissions><Visibility/></VisibilityPermissions><ConfigurationTableDefinitions/><ConfigurationTables><ConfigurationTable description="General Settings" isHidden="true" isMultiRow="false" name="Settings" ordinal="0"><DataShape><FieldDefinitions><FieldDefinition aspect.defaultValue="true" baseType="BOOLEAN" description="Automatically enable timer on startup" name="enabled" ordinal="0"/><FieldDefinition baseType="USERNAME" description="User context in which to run event handlers" name="runAsUser" ordinal="0"/><FieldDefinition aspect.defaultValue="60000.0" baseType="NUMBER" description="Update rate" name="updateRate" ordinal="0"/></FieldDefinitions></DataShape><Rows><Row><enabled>true</enabled><runAsUser><![CDATA[Administrator]]></runAsUser><updateRate>40000.0</updateRate></Row></Rows></ConfigurationTable></ConfigurationTables><ThingShape><PropertyDefinitions><PropertyDefinition aspect.cacheTime="0.0" aspect.dataChangeType="VALUE" aspect.defaultValue="InfoDataTableTemplate" aspect.isPersistent="true" baseType="STRING" category="" description="The name of the data table that the getData service will attempt to copy" isLocalOnly="false" name="dataTableToCopy" ordinal="16"/><PropertyDefinition aspect.cacheTime="0.0" aspect.dataChangeType="VALUE" aspect.defaultValue="14" aspect.isPersistent="true" aspect.units="Days" baseType="INTEGER" category="" description="Any tags older than this amount of days will be removed by the purgeDataStreams service" isLocalOnly="false" name="daysToKeep" ordinal="15"/><PropertyDefinition aspect.cacheTime="0.0" aspect.dataChangeType="VALUE" aspect.defaultValue="InfoDataTable" aspect.isPersistent="true" baseType="STRING" category="" description="Data that is not historically logged and lacks a hyphen for organisation will be put in here. NOTE: these still will be seperated by ewon. EX: my_Ewon-GeneralDataTable" isLocalOnly="false" name="generalDataTableName" ordinal="14"/><PropertyDefinition aspect.cacheTime="0.0" aspect.dataChangeType="VALUE" aspect.defaultValue="30" aspect.isPersistent="true" aspect.units="seconds" baseType="INTEGER" category="" description="" isLocalOnly="false" name="scriptTimeoutSeconds" ordinal="12"/><PropertyDefinition aspect.cacheTime="0.0" aspect.dataChangeType="VALUE" aspect.defaultValue="StreamTemplate" aspect.isPersistent="true" baseType="STRING" category="" description="The name of the stream that the getData service will attempt to copy" isLocalOnly="false" name="streamToCopy" ordinal="12"/><PropertyDefinition aspect.cacheTime="0.0" aspect.dataChangeType="VALUE" aspect.isPersistent="true" baseType="STRING" category="" description="" isLocalOnly="false" name="talk2MAccount" ordinal="13"/><PropertyDefinition aspect.cacheTime="0.0" aspect.dataChangeType="VALUE" aspect.isPersistent="true" baseType="STRING" category="" description="" isLocalOnly="false" name="talk2MDeveloperID" ordinal="12"/><PropertyDefinition aspect.cacheTime="0.0" aspect.dataChangeType="VALUE" aspect.isPersistent="true" baseType="STRING" category="" description="" isLocalOnly="false" name="talk2MPassword" ordinal="13"/><PropertyDefinition aspect.cacheTime="0.0" aspect.dataChangeType="VALUE" aspect.isPersistent="true" baseType="STRING" category="" description="" isLocalOnly="false" name="talk2MUsername" ordinal="14"/><PropertyDefinition aspect.cacheTime="0.0" aspect.dataChangeType="VALUE" aspect.defaultValue="false" aspect.isPersistent="true" baseType="BOOLEAN" category="" description="true indicates that stream data items will be organised into various streams depending on how the data item's name is formatted with regards to a hyphen." isLocalOnly="false" name="useHyphensDataTables" ordinal="12"/></PropertyDefinitions><ServiceDefinitions><ServiceDefinition aspect.isAsync="true" category="" description="" isAllowOverride="false" isLocalOnly="false" isOpen="false" isPrivate="false" name="CleanAllData"><ResultType baseType="NOTHING" description="" name="result" ordinal="0"/><ParameterDefinitions/></ServiceDefinition><ServiceDefinition aspect.isAsync="false" category="" description="" isAllowOverride="false" isLocalOnly="false" isOpen="false" isPrivate="false" name="InsertDataTableItem"><ResultType baseType="NOTHING" description="" name="result" ordinal="0"/><ParameterDefinitions><FieldDefinition baseType="STRING" description="" name="ewonName" ordinal="2"/><FieldDefinition aspect.isRequired="true" baseType="STRING" description="" name="tagName" ordinal="1"/><FieldDefinition baseType="STRING" description="" name="tagValue" ordinal="3"/></ParameterDefinitions></ServiceDefinition><ServiceDefinition aspect.isAsync="false" category="" description="" isAllowOverride="false" isLocalOnly="false" isOpen="false" isPrivate="false" name="InsertStreamItem"><ResultType baseType="NOTHING" description="" name="result" ordinal="0"/><ParameterDefinitions><FieldDefinition aspect.isRequired="true" baseType="STRING" description="" name="ewonName" ordinal="2"/><FieldDefinition aspect.isRequired="true" baseType="STRING" description="" name="tagName" ordinal="1"/><FieldDefinition aspect.isRequired="true" baseType="STRING" description="" name="tagValue" ordinal="3"/><FieldDefinition aspect.isRequired="true" baseType="STRING" description="" name="timestamp" ordinal="4"/></ParameterDefinitions></ServiceDefinition><ServiceDefinition aspect.isAsync="true" category="" description="" isAllowOverride="false" isLocalOnly="false" isOpen="false" isPrivate="false" name="MainExecution"><ResultType baseType="NOTHING" description="" name="result" ordinal="0"/><ParameterDefinitions/></ServiceDefinition><ServiceDefinition aspect.isAsync="false" category="" description="" isAllowOverride="false" isLocalOnly="false" isOpen="false" isPrivate="false" name="PurgeDataStreams"><ResultType baseType="NOTHING" description="" name="result" ordinal="0"/><ParameterDefinitions/></ServiceDefinition><ServiceDefinition aspect.isAsync="true" category="" description="Landing function that an ewon can connect to" isAllowOverride="false" isLocalOnly="false" isOpen="false" isPrivate="false" name="TakeInfo"><ResultType baseType="NOTHING" description="" name="result" ordinal="0"/><ParameterDefinitions><FieldDefinition aspect.isRequired="true" baseType="STRING" description="" name="Tags" ordinal="1"/></ParameterDefinitions></ServiceDefinition><ServiceDefinition aspect.isAsync="true" category="" description="" isAllowOverride="false" isLocalOnly="false" isOpen="false" isPrivate="false" name="Talk2MDelete"><ResultType baseType="NOTHING" description="" name="result" ordinal="0"/><ParameterDefinitions><FieldDefinition aspect.isRequired="true" baseType="STRING" description="" name="transactionId" ordinal="1"/></ParameterDefinitions></ServiceDefinition><ServiceDefinition aspect.isAsync="false" category="" description="" isAllowOverride="false" isLocalOnly="false" isOpen="false" isPrivate="false" name="Talk2MGetData"><ResultType baseType="NOTHING" description="" name="result" ordinal="0"/><ParameterDefinitions/></ServiceDefinition><ServiceDefinition aspect.isAsync="false" category="" description="Grabs all historical data from the DataMailbox then cleans all of the recieved data from data mailbox" isAllowOverride="false" isLocalOnly="false" isOpen="false" isPrivate="false" name="Talk2MSyncData"><ResultType baseType="JSON" description="returns usedTransactionId which is the most recent TransactionId actually processed and ready for deletion and nextTransactionId, the next transaction id to be called." name="result" ordinal="0"/><ParameterDefinitions><FieldDefinition aspect.defaultValue="-1" baseType="INTEGER" description="" name="initialTransactionId" ordinal="1"/></ParameterDefinitions></ServiceDefinition><ServiceDefinition aspect.isAsync="true" category="" description="Sets a Ewon to offline or online depended on if it was online or offline to begin with" isAllowOverride="false" isLocalOnly="false" isOpen="false" isPrivate="false" name="Talk2MTurnOnOrOff"><ResultType baseType="NOTHING" description="" name="result" ordinal="0"/><ParameterDefinitions><FieldDefinition aspect.isRequired="true" baseType="STRING" description="" name="name" ordinal="1"/></ParameterDefinitions></ServiceDefinition><ServiceDefinition aspect.isAsync="true" category="" description="" isAllowOverride="false" isLocalOnly="false" isOpen="false" isPrivate="false" name="Talk2MUpdateTagForm"><ResultType baseType="NOTHING" description="" name="result" ordinal="0"/><ParameterDefinitions><FieldDefinition baseType="STRING" description="" name="ewonName" ordinal="2"/><FieldDefinition baseType="STRING" description="" name="ewonPassword" ordinal="5"/><FieldDefinition baseType="STRING" description="" name="ewonUsername" ordinal="4"/><FieldDefinition aspect.isRequired="true" baseType="STRING" description="" name="tagName" ordinal="1"/><FieldDefinition baseType="STRING" description="" name="tagValue" ordinal="3"/></ParameterDefinitions></ServiceDefinition></ServiceDefinitions><EventDefinitions/><ServiceMappings/><ServiceImplementations><ServiceImplementation description="" handlerName="Script" name="CleanAllData"><ConfigurationTables><ConfigurationTable description="" isMultiRow="false" name="Script" ordinal="0"><DataShape><FieldDefinitions><FieldDefinition baseType="STRING" description="code" name="code" ordinal="0"/></FieldDefinitions></DataShape><Rows><Row><code><![CDATA[/*
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><Entities build="b110" majorVersion="8" minorVersion="5" modelPersistenceProviderPackage="PostgresPersistenceProviderPackage" revision="6" schemaVersion="1054" universal="password"><StyleDefinitions/><Networks/><PersistenceProviderPackages/><Mashups/><ScriptFunctionLibraries/><Projects><Project artifactId="" dependsOn="{&quot;extensions&quot;:&quot;&quot;,&quot;projects&quot;:&quot;&quot;}" description="" documentationContent="" groupId="" homeMashup="" lastModifiedDate="2020-07-02T16:40:39.664-04:00" minPlatformVersion="" name="FlexyConnector" packageVersion="1.0.0" projectName="FlexyConnector" publishResult="" state="DRAFT" tags=""><Owner name="Administrator" type="User"/><avatar/><DesignTimePermissions><Create/><Read/><Update/><Delete/><Metadata/></DesignTimePermissions><RunTimePermissions/><VisibilityPermissions><Visibility/></VisibilityPermissions><ConfigurationTableDefinitions/><ConfigurationTables/><ConfigurationChanges><ConfigurationChange changeAction="CREATE" changeReason="header : name : updated&#10;" timestamp="2020-07-02T16:40:10.979-04:00" user="Administrator"/></ConfigurationChanges></Project></Projects><Users/><DirectoryServices/><Widgets/><MediaEntities/><Groups/><PersistenceProviders/><ModelTags/><LocalizationTables/><Dashboards/><StyleThemes/><DataShapes><DataShape baseDataShape="" description="" documentationContent="" homeMashup="" lastModifiedDate="2020-07-02T16:40:39.760-04:00" name="LoggedInformation" projectName="FlexyConnector" tags=""><Owner name="Administrator" type="User"/><avatar/><DesignTimePermissions><Create/><Read/><Update/><Delete/><Metadata/></DesignTimePermissions><RunTimePermissions/><VisibilityPermissions><Visibility/></VisibilityPermissions><ConfigurationTableDefinitions/><ConfigurationTables/><FieldDefinitions><FieldDefinition aspect.isPrimaryKey="false" baseType="STRING" description="" name="Name" ordinal="7"/><FieldDefinition aspect.isPrimaryKey="false" baseType="NUMBER" description="" name="Value" ordinal="8"/></FieldDefinitions><ConfigurationChanges><ConfigurationChange changeAction="CREATE" changeReason="header : name : updated, projectName : updated&#10;" timestamp="2020-06-17T10:40:48.953-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="SetProjectName : [FlexyConnector]" timestamp="2020-07-02T16:40:39.761-04:00" user="Administrator"/></ConfigurationChanges></DataShape><DataShape baseDataShape="" description="" documentationContent="" homeMashup="" lastModifiedDate="2020-07-02T16:40:39.752-04:00" name="StaticInformation" projectName="FlexyConnector" tags=""><Owner name="Administrator" type="User"/><avatar/><DesignTimePermissions><Create/><Read/><Update/><Delete/><Metadata/></DesignTimePermissions><RunTimePermissions/><VisibilityPermissions><Visibility/></VisibilityPermissions><ConfigurationTableDefinitions/><ConfigurationTables/><FieldDefinitions><FieldDefinition aspect.isPrimaryKey="true" baseType="STRING" description="" name="Name" ordinal="1"/><FieldDefinition aspect.isPrimaryKey="false" baseType="STRING" description="" name="Value" ordinal="2"/></FieldDefinitions><ConfigurationChanges><ConfigurationChange changeAction="CREATE" changeReason="header : name : updated&#10;fields : name : added, Value : added, Name : updated&#10;" timestamp="2020-06-17T08:26:04.706-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="header : projectName : updated&#10;" timestamp="2020-06-17T08:26:57.730-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="SetProjectName : [FlexyConnector]" timestamp="2020-07-02T16:40:39.755-04:00" user="Administrator"/></ConfigurationChanges></DataShape></DataShapes><Things><Thing description="" documentationContent="" effectiveThingPackage="StreamThing" enabled="true" homeMashup="StreamMashup" identifier="" lastModifiedDate="2020-07-02T16:40:59.212-04:00" name="StreamTemplate" projectName="FlexyConnector" published="false" tags="" thingTemplate="Stream" valueStream=""><Owner name="Administrator" type="User"/><avatar/><DesignTimePermissions><Create/><Read/><Update/><Delete/><Metadata/></DesignTimePermissions><RunTimePermissions/><VisibilityPermissions><Visibility/></VisibilityPermissions><ConfigurationTableDefinitions/><ConfigurationTables><ConfigurationTable description="Data Thing Configuration" isMultiRow="false" name="DataThingSettings" ordinal="0"><DataShape><FieldDefinitions><FieldDefinition baseType="STRING" description="Persistence Provider Name" name="persistenceProvider" ordinal="0"/></FieldDefinitions></DataShape><Rows><Row><persistenceProvider><![CDATA[ThingworxPersistenceProvider]]></persistenceProvider></Row></Rows></ConfigurationTable><ConfigurationTable description="Data Shape Configuration" isMultiRow="false" name="Settings" ordinal="0"><DataShape><FieldDefinitions><FieldDefinition aspect.friendlyName="Data Shape" baseType="DATASHAPENAME" description="Data shape" name="dataShape" ordinal="0"/></FieldDefinitions></DataShape><Rows><Row><accumulatedDataShape><json><![CDATA[{"fieldDefinitions":{"Value":{"name":"Value","aspects":{"isPrimaryKey":false},"description":"","baseType":"NUMBER","ordinal":1},"Name":{"name":"Name","aspects":{"isPrimaryKey":false},"description":"","baseType":"STRING","ordinal":0}}}]]></json></accumulatedDataShape><dataShape><![CDATA[LoggedInformation]]></dataShape></Row></Rows></ConfigurationTable><ConfigurationTable description="Configurable options to tune Stream performance" isMultiRow="false" name="PersistenceProviderCustomSettings" ordinal="2"><DataShape><FieldDefinitions><FieldDefinition aspect.friendlyName="Persistence Provider Custom Settings Table" baseType="INFOTABLE" description="Persistence Provider Custom Config Table" name="customConfigTable" ordinal="0"/></FieldDefinitions></DataShape><Rows><Row><customConfigTable><infoTable><DataShape><FieldDefinitions/></DataShape><Rows/></infoTable></customConfigTable></Row></Rows></ConfigurationTable></ConfigurationTables><ThingShape><PropertyDefinitions/><ServiceDefinitions/><EventDefinitions/><ServiceMappings/><ServiceImplementations/><Subscriptions/></ThingShape><PropertyBindings/><RemotePropertyBindings/><RemoteServiceBindings/><RemoteEventBindings/><AlertConfigurations/><ImplementedShapes/><ThingProperties/><ConfigurationChanges><ConfigurationChange changeAction="CREATE" changeReason="header : name : updated&#10;" timestamp="2020-07-02T16:40:59.212-04:00" user="Administrator"/></ConfigurationChanges></Thing><Thing description="" documentationContent="" effectiveThingPackage="DataTableThing" enabled="true" homeMashup="DataTableEditor" identifier="" lastModifiedDate="2020-07-27T12:14:01.009-04:00" name="InfoDataTableTemplate" projectName="FlexyConnector" published="false" tags="" thingTemplate="DataTable" valueStream=""><Owner name="Administrator" type="User"/><avatar/><DesignTimePermissions><Create/><Read/><Update/><Delete/><Metadata/></DesignTimePermissions><RunTimePermissions/><VisibilityPermissions><Visibility/></VisibilityPermissions><ConfigurationTableDefinitions/><ConfigurationTables><ConfigurationTable description="Data Thing Configuration" isMultiRow="false" name="DataThingSettings" ordinal="0"><DataShape><FieldDefinitions><FieldDefinition baseType="STRING" description="Persistence Provider Name" name="persistenceProvider" ordinal="0"/></FieldDefinitions></DataShape><Rows><Row><persistenceProvider><![CDATA[ThingworxPersistenceProvider]]></persistenceProvider></Row></Rows></ConfigurationTable><ConfigurationTable description="Data Shape Configuration" isMultiRow="false" name="Settings" ordinal="0"><DataShape><FieldDefinitions><FieldDefinition aspect.friendlyName="Data Shape" baseType="DATASHAPENAME" description="Data shape" name="dataShape" ordinal="0"/></FieldDefinitions></DataShape><Rows><Row><accumulatedDataShape><json><![CDATA[{"fieldDefinitions":{"Value":{"name":"Value","aspects":{"isPrimaryKey":false},"description":"","baseType":"STRING","ordinal":1},"Name":{"name":"Name","aspects":{"isPrimaryKey":true},"description":"","baseType":"STRING","ordinal":0}}}]]></json></accumulatedDataShape><dataShape><![CDATA[StaticInformation]]></dataShape></Row></Rows></ConfigurationTable><ConfigurationTable description="Index Settings" isMultiRow="true" name="Indexes" ordinal="1"><DataShape><FieldDefinitions><FieldDefinition aspect.friendlyName="Index Field Names" baseType="STRING" description="Index fields" name="fieldNames" ordinal="1"/><FieldDefinition aspect.friendlyName="Index Name" baseType="STRING" description="Index name" name="name" ordinal="0"/></FieldDefinitions></DataShape><Rows/></ConfigurationTable><ConfigurationTable description="Configurable options to tune Data Table performance" isMultiRow="false" name="PersistenceProviderCustomSettings" ordinal="2"><DataShape><FieldDefinitions><FieldDefinition aspect.friendlyName="Persistence Provider Custom Settings Table" baseType="INFOTABLE" description="Persistence Provider Custom Config Table" name="customConfigTable" ordinal="0"/></FieldDefinitions></DataShape><Rows><Row><customConfigTable><infoTable><DataShape><FieldDefinitions/></DataShape><Rows/></infoTable></customConfigTable></Row></Rows></ConfigurationTable></ConfigurationTables><ThingShape><PropertyDefinitions/><ServiceDefinitions/><EventDefinitions/><ServiceMappings/><ServiceImplementations/><Subscriptions/></ThingShape><PropertyBindings/><RemotePropertyBindings/><RemoteServiceBindings/><RemoteEventBindings/><AlertConfigurations/><ImplementedShapes/><ThingProperties/><ConfigurationChanges><ConfigurationChange changeAction="CREATE" changeReason="header : name : updated&#10;" timestamp="2020-06-18T10:00:12.858-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="SetProjectName : [FlexyConnector]" timestamp="2020-07-02T16:40:39.772-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2020-07-27T12:14:00.993-04:00" user="Administrator"/></ConfigurationChanges></Thing><Thing description="Hosts all services for this connector." documentationContent="" effectiveThingPackage="TimerThing" enabled="true" homeMashup="" identifier="" lastModifiedDate="2020-07-27T15:59:50.872-04:00" name="ConnectorHost" projectName="FlexyConnector" published="false" tags="" thingTemplate="Timer" valueStream=""><Owner name="Administrator" type="User"/><avatar/><DesignTimePermissions><Create/><Read/><Update/><Delete/><Metadata/></DesignTimePermissions><RunTimePermissions/><VisibilityPermissions><Visibility/></VisibilityPermissions><ConfigurationTableDefinitions/><ConfigurationTables><ConfigurationTable description="General Settings" isHidden="true" isMultiRow="false" name="Settings" ordinal="0"><DataShape><FieldDefinitions><FieldDefinition aspect.defaultValue="true" baseType="BOOLEAN" description="Automatically enable timer on startup" name="enabled" ordinal="0"/><FieldDefinition baseType="USERNAME" description="User context in which to run event handlers" name="runAsUser" ordinal="0"/><FieldDefinition aspect.defaultValue="60000.0" baseType="NUMBER" description="Update rate" name="updateRate" ordinal="0"/></FieldDefinitions></DataShape><Rows><Row><enabled>true</enabled><runAsUser><![CDATA[Administrator]]></runAsUser><updateRate>40000.0</updateRate></Row></Rows></ConfigurationTable></ConfigurationTables><ThingShape><PropertyDefinitions><PropertyDefinition aspect.cacheTime="0.0" aspect.dataChangeType="VALUE" aspect.defaultValue="InfoDataTableTemplate" aspect.isPersistent="true" baseType="STRING" category="" description="The name of the data table that the getData service will attempt to copy" isLocalOnly="false" name="dataTableToCopy" ordinal="16"/><PropertyDefinition aspect.cacheTime="0.0" aspect.dataChangeType="VALUE" aspect.defaultValue="14" aspect.isPersistent="true" aspect.units="Days" baseType="INTEGER" category="" description="Any tags older than this amount of days will be removed by the purgeDataStreams service" isLocalOnly="false" name="daysToKeep" ordinal="15"/><PropertyDefinition aspect.cacheTime="0.0" aspect.dataChangeType="VALUE" aspect.defaultValue="InfoDataTable" aspect.isPersistent="true" baseType="STRING" category="" description="Data that is not historically logged and lacks a hyphen for organisation will be put in here. NOTE: these still will be seperated by ewon. EX: my_Ewon-GeneralDataTable" isLocalOnly="false" name="generalDataTableName" ordinal="14"/><PropertyDefinition aspect.cacheTime="0.0" aspect.dataChangeType="VALUE" aspect.defaultValue="30" aspect.isPersistent="true" aspect.units="seconds" baseType="INTEGER" category="" description="" isLocalOnly="false" name="scriptTimeoutSeconds" ordinal="12"/><PropertyDefinition aspect.cacheTime="0.0" aspect.dataChangeType="VALUE" aspect.defaultValue="StreamTemplate" aspect.isPersistent="true" baseType="STRING" category="" description="The name of the stream that the getData service will attempt to copy" isLocalOnly="false" name="streamToCopy" ordinal="12"/><PropertyDefinition aspect.cacheTime="0.0" aspect.dataChangeType="VALUE" aspect.isPersistent="true" baseType="STRING" category="" description="" isLocalOnly="false" name="talk2MAccount" ordinal="13"/><PropertyDefinition aspect.cacheTime="0.0" aspect.dataChangeType="VALUE" aspect.isPersistent="true" baseType="STRING" category="" description="" isLocalOnly="false" name="talk2MDeveloperID" ordinal="12"/><PropertyDefinition aspect.cacheTime="0.0" aspect.dataChangeType="VALUE" aspect.isPersistent="true" baseType="STRING" category="" description="" isLocalOnly="false" name="talk2MPassword" ordinal="13"/><PropertyDefinition aspect.cacheTime="0.0" aspect.dataChangeType="VALUE" aspect.isPersistent="true" baseType="STRING" category="" description="" isLocalOnly="false" name="talk2MUsername" ordinal="14"/><PropertyDefinition aspect.cacheTime="0.0" aspect.dataChangeType="VALUE" aspect.defaultValue="false" aspect.isPersistent="true" baseType="BOOLEAN" category="" description="true indicates that stream data items will be organised into various streams depending on how the data item's name is formatted with regards to a hyphen." isLocalOnly="false" name="useHyphensDataTables" ordinal="12"/></PropertyDefinitions><ServiceDefinitions><ServiceDefinition aspect.isAsync="true" category="" description="" isAllowOverride="false" isLocalOnly="false" isOpen="false" isPrivate="false" name="CleanAllData"><ResultType baseType="NOTHING" description="" name="result" ordinal="0"/><ParameterDefinitions/></ServiceDefinition><ServiceDefinition aspect.isAsync="false" category="" description="" isAllowOverride="false" isLocalOnly="false" isOpen="false" isPrivate="false" name="InsertDataTableItem"><ResultType baseType="NOTHING" description="" name="result" ordinal="0"/><ParameterDefinitions><FieldDefinition baseType="STRING" description="" name="ewonName" ordinal="2"/><FieldDefinition aspect.isRequired="true" baseType="STRING" description="" name="tagName" ordinal="1"/><FieldDefinition baseType="STRING" description="" name="tagValue" ordinal="3"/></ParameterDefinitions></ServiceDefinition><ServiceDefinition aspect.isAsync="false" category="" description="" isAllowOverride="false" isLocalOnly="false" isOpen="false" isPrivate="false" name="InsertStreamItem"><ResultType baseType="NOTHING" description="" name="result" ordinal="0"/><ParameterDefinitions><FieldDefinition aspect.isRequired="true" baseType="STRING" description="" name="ewonName" ordinal="2"/><FieldDefinition aspect.isRequired="true" baseType="STRING" description="" name="tagName" ordinal="1"/><FieldDefinition aspect.isRequired="true" baseType="STRING" description="" name="tagValue" ordinal="3"/><FieldDefinition aspect.isRequired="true" baseType="STRING" description="" name="timestamp" ordinal="4"/></ParameterDefinitions></ServiceDefinition><ServiceDefinition aspect.isAsync="true" category="" description="" isAllowOverride="false" isLocalOnly="false" isOpen="false" isPrivate="false" name="MainExecution"><ResultType baseType="NOTHING" description="" name="result" ordinal="0"/><ParameterDefinitions/></ServiceDefinition><ServiceDefinition aspect.isAsync="false" category="" description="" isAllowOverride="false" isLocalOnly="false" isOpen="false" isPrivate="false" name="PurgeDataStreams"><ResultType baseType="NOTHING" description="" name="result" ordinal="0"/><ParameterDefinitions/></ServiceDefinition><ServiceDefinition aspect.isAsync="true" category="" description="Landing function that an ewon can connect to" isAllowOverride="false" isLocalOnly="false" isOpen="false" isPrivate="false" name="TakeInfo"><ResultType baseType="NOTHING" description="" name="result" ordinal="0"/><ParameterDefinitions><FieldDefinition aspect.isRequired="true" baseType="STRING" description="" name="Tags" ordinal="1"/></ParameterDefinitions></ServiceDefinition><ServiceDefinition aspect.isAsync="true" category="" description="" isAllowOverride="false" isLocalOnly="false" isOpen="false" isPrivate="false" name="Talk2MDelete"><ResultType baseType="NOTHING" description="" name="result" ordinal="0"/><ParameterDefinitions><FieldDefinition aspect.isRequired="true" baseType="STRING" description="" name="transactionId" ordinal="1"/></ParameterDefinitions></ServiceDefinition><ServiceDefinition aspect.isAsync="false" category="" description="" isAllowOverride="false" isLocalOnly="false" isOpen="false" isPrivate="false" name="Talk2MGetData"><ResultType baseType="NOTHING" description="" name="result" ordinal="0"/><ParameterDefinitions/></ServiceDefinition><ServiceDefinition aspect.isAsync="false" category="" description="Grabs all historical data from the DataMailbox then cleans all of the recieved data from data mailbox" isAllowOverride="false" isLocalOnly="false" isOpen="false" isPrivate="false" name="Talk2MSyncData"><ResultType baseType="JSON" description="returns usedTransactionId which is the most recent TransactionId actually processed and ready for deletion and nextTransactionId, the next transaction id to be called." name="result" ordinal="0"/><ParameterDefinitions><FieldDefinition aspect.defaultValue="-1" baseType="INTEGER" description="" name="initialTransactionId" ordinal="1"/></ParameterDefinitions></ServiceDefinition><ServiceDefinition aspect.isAsync="true" category="" description="Sets a Ewon to offline or online depended on if it was online or offline to begin with" isAllowOverride="false" isLocalOnly="false" isOpen="false" isPrivate="false" name="Talk2MTurnOnOrOff"><ResultType baseType="NOTHING" description="" name="result" ordinal="0"/><ParameterDefinitions><FieldDefinition aspect.isRequired="true" baseType="STRING" description="" name="name" ordinal="1"/></ParameterDefinitions></ServiceDefinition><ServiceDefinition aspect.isAsync="true" category="" description="" isAllowOverride="false" isLocalOnly="false" isOpen="false" isPrivate="false" name="Talk2MUpdateTagForm"><ResultType baseType="NOTHING" description="" name="result" ordinal="0"/><ParameterDefinitions><FieldDefinition baseType="STRING" description="" name="ewonName" ordinal="2"/><FieldDefinition baseType="STRING" description="" name="ewonPassword" ordinal="5"/><FieldDefinition baseType="STRING" description="" name="ewonUsername" ordinal="4"/><FieldDefinition aspect.isRequired="true" baseType="STRING" description="" name="tagName" ordinal="1"/><FieldDefinition baseType="STRING" description="" name="tagValue" ordinal="3"/></ParameterDefinitions></ServiceDefinition></ServiceDefinitions><EventDefinitions/><ServiceMappings/><ServiceImplementations><ServiceImplementation description="" handlerName="Script" name="CleanAllData"><ConfigurationTables><ConfigurationTable description="" isMultiRow="false" name="Script" ordinal="0"><DataShape><FieldDefinitions><FieldDefinition baseType="STRING" description="code" name="code" ordinal="0"/></FieldDefinitions></DataShape><Rows><Row><code><![CDATA[/*
  * Cleans all data storage objects created by this connector.
  *
  * @author HMS Networks, MU Americas Solution Center
  * @version 1.0
  */
 function cleanEntity(entity) {
-    // Checks for -StreamData or -TableData. If that substring exists, then the entity is deleted.
-    if ((entity.name.indexOf("-StreamData") > 0) || (entity.name.indexOf("-TableData") > 0)) {
-        var params = {
-            name: entity.name /* THINGNAME */
-        };
-        Resources["EntityServices"].DeleteThing(params);
-        logger.debug(entity.name + " has been deleted.");
-    }
+  // Checks for -StreamData or -TableData. If that substring exists, then the entity is deleted.
+  if (
+    entity.name.indexOf('-StreamData') > 0 ||
+    entity.name.indexOf('-TableData') > 0
+  ) {
+    var params = {
+      name: entity.name /* THINGNAME */,
+    };
+    Resources['EntityServices'].DeleteThing(params);
+    logger.debug(entity.name + ' has been deleted.');
+  }
 }
 
 // rows contains all Entities of the project in an array
 var rows = Projects[me.GetProjectName()].GetEntities().ToJSON().rows;
 for (var i = 0; i < rows.length; i += 1) {
-    cleanEntity(rows[i]);
-}]]></code></Row></Rows></ConfigurationTable></ConfigurationTables></ServiceImplementation><ServiceImplementation description="" handlerName="Script" name="InsertDataTableItem"><ConfigurationTables><ConfigurationTable description="" isMultiRow="false" name="Script" ordinal="0"><DataShape><FieldDefinitions><FieldDefinition baseType="STRING" description="code" name="code" ordinal="0"/></FieldDefinitions></DataShape><Rows><Row><code><![CDATA[/*
+  cleanEntity(rows[i]);
+}
+]]></code></Row></Rows></ConfigurationTable></ConfigurationTables></ServiceImplementation><ServiceImplementation description="" handlerName="Script" name="InsertDataTableItem"><ConfigurationTables><ConfigurationTable description="" isMultiRow="false" name="Script" ordinal="0"><DataShape><FieldDefinitions><FieldDefinition baseType="STRING" description="code" name="code" ordinal="0"/></FieldDefinitions></DataShape><Rows><Row><code><![CDATA[/*
  * Inserts/updates a tag value in the proper data table.
  *
  * @author HMS Networks, MU Americas Solution Center
@@ -27,54 +31,59 @@ for (var i = 0; i < rows.length; i += 1) {
  */
 // wrapper function to allow for early returns
 function run() {
-    var dataTableName;
-    var suffix = "-TableData";
-    if (tagName.indexOf("-") === -1 || !me.useHyphensDataTables) {
-        // assign the data to the general data table
-        dataTableName = ewonName + "-" + me.generalDataTableName + suffix;
-    } else {
-        var referenceName = tagName.substring(0, tagName.indexOf("-"));
-        dataTableName = ewonName + "-" + referenceName + suffix;
-    }
-    try {
-        var nameTest;
-        /*
-         * Attempting to access a thing in order to check if it exists.
-         * The assignment just makes warnings go away.
-         */
-        nameTest = Things[dataTableName].name;
-    } catch (err) {
-        // a data table needs to be created
-        var params = {
-            name: dataTableName /* STRING */ ,
-            description: undefined /* STRING */ ,
-            sourceThingName: me.dataTableToCopy /* THINGNAME */ ,
-            tags: undefined /* TAGS */
-        };
-        // all of these are needed to create and setup a thing
-        Resources["EntityServices"].CloneThing(params);
-        Things[dataTableName].EnableThing();
-        Things[dataTableName].RestartThing();
-    }
+  var dataTableName;
+  var suffix = '-TableData';
+  if (tagName.indexOf('-') === -1 || !me.useHyphensDataTables) {
+    // assign the data to the general data table
+    dataTableName = ewonName + '-' + me.generalDataTableName + suffix;
+  } else {
+    var referenceName = tagName.substring(0, tagName.indexOf('-'));
+    dataTableName = ewonName + '-' + referenceName + suffix;
+  }
+  try {
+    var nameTest;
+    /*
+     * Attempting to access a thing in order to check if it exists.
+     * The assignment just makes warnings go away.
+     */
+    nameTest = Things[dataTableName].name;
+  } catch (err) {
+    // a data table needs to be created
+    var params = {
+      name: dataTableName /* STRING */,
+      description: undefined /* STRING */,
+      sourceThingName: me.dataTableToCopy /* THINGNAME */,
+      tags: undefined /* TAGS */,
+    };
+    // all of these are needed to create and setup a thing
+    Resources['EntityServices'].CloneThing(params);
+    Things[dataTableName].EnableThing();
+    Things[dataTableName].RestartThing();
+  }
 
-    // returns an empty infotable row to be filled with values
-    var rowValues = Things[dataTableName].CreateValues();
-    rowValues.Name = tagName;
-    rowValues.Value = tagValue;
-    var id = Things[dataTableName].AddOrUpdateDataTableEntry({
-        sourceType: undefined /* STRING */ ,
-        values: rowValues /* INFOTABLE */ ,
-        location: undefined /* LOCATION */ ,
-        source: ewonName /* STRING */ ,
-        tags: undefined
-    });
+  // returns an empty infotable row to be filled with values
+  var rowValues = Things[dataTableName].CreateValues();
+  rowValues.Name = tagName;
+  rowValues.Value = tagValue;
+  var id = Things[dataTableName].AddOrUpdateDataTableEntry({
+    sourceType: undefined /* STRING */,
+    values: rowValues /* INFOTABLE */,
+    location: undefined /* LOCATION */,
+    source: ewonName /* STRING */,
+    tags: undefined,
+  });
 }
 if (tagName && ewonName && tagValue) {
-    run();
+  run();
 } else {
-    logger.error("One or more parameters for InsertDataTableItem were undefined or null.");
-    logger.debug("tagName: " + tagName + " ewonName: " + ewonName + "tagValue: " + tagValue);
-}]]></code></Row></Rows></ConfigurationTable></ConfigurationTables></ServiceImplementation><ServiceImplementation description="" handlerName="Script" name="InsertStreamItem"><ConfigurationTables><ConfigurationTable description="" isMultiRow="false" name="Script" ordinal="0"><DataShape><FieldDefinitions><FieldDefinition baseType="STRING" description="code" name="code" ordinal="0"/></FieldDefinitions></DataShape><Rows><Row><code><![CDATA[/*
+  logger.error(
+    'One or more parameters for InsertDataTableItem were undefined or null.'
+  );
+  logger.debug(
+    'tagName: ' + tagName + ' ewonName: ' + ewonName + 'tagValue: ' + tagValue
+  );
+}
+]]></code></Row></Rows></ConfigurationTable></ConfigurationTables></ServiceImplementation><ServiceImplementation description="" handlerName="Script" name="InsertStreamItem"><ConfigurationTables><ConfigurationTable description="" isMultiRow="false" name="Script" ordinal="0"><DataShape><FieldDefinitions><FieldDefinition baseType="STRING" description="code" name="code" ordinal="0"/></FieldDefinitions></DataShape><Rows><Row><code><![CDATA[/*
  * Inserts/updates a tag value in the proper stream
  *
  * @author HMS Networks, MU Americas Solution Center
@@ -82,53 +91,66 @@ if (tagName && ewonName && tagValue) {
  */
 // wrapper function for early returns
 function run() {
-    var suffix = "-StreamData";
-    var streamName = ewonName + "-" + tagName + suffix;
-    // every stream needs to be unique
-    try {
-        var nameTest;
-        /*
-         * Attempting to access a thing in order to check if it exists.
-         * The assignment just makes warnings go away.
-         */
-        nameTest = Things[streamName].name;
-    } catch (err) {
-        // stream needs to be created
-        var params = {
-            name: streamName /* STRING */ ,
-            description: undefined /* STRING */ ,
-            sourceThingName: me.streamToCopy /* THINGNAME */ ,
-            tags: undefined /* TAGS */
-        };
-        // all 3 below lines are needed to setup a cloned thing for the first time
-        Resources["EntityServices"].CloneThing(params);
-        Things[streamName].EnableThing();
-        Things[streamName].RestartThing();
-    }
-    // returns an empty infotable row to be filled with values
-    var rowValues = Things[streamName].CreateValues();
-    rowValues.Name = tagName;
-    try {
-        rowValues.Value = parseFloat(tagValue);
-    } catch (err) {
-        logger.error("Error parsing float value of \"" + tagValue + "\" in InsertStreamItem.");
-    }
-    Things[streamName].AddStreamEntry({
-        timestamp: new Date(timestamp),
-        sourceType: undefined /* STRING */ ,
-        values: rowValues /* INFOTABLE */ ,
-        location: undefined /* LOCATION */ ,
-        source: ewonName /* STRING */ ,
-        tags: undefined
-    });
+  var suffix = '-StreamData';
+  var streamName = ewonName + '-' + tagName + suffix;
+  // every stream needs to be unique
+  try {
+    var nameTest;
+    /*
+     * Attempting to access a thing in order to check if it exists.
+     * The assignment just makes warnings go away.
+     */
+    nameTest = Things[streamName].name;
+  } catch (err) {
+    // stream needs to be created
+    var params = {
+      name: streamName /* STRING */,
+      description: undefined /* STRING */,
+      sourceThingName: me.streamToCopy /* THINGNAME */,
+      tags: undefined /* TAGS */,
+    };
+    // all 3 below lines are needed to setup a cloned thing for the first time
+    Resources['EntityServices'].CloneThing(params);
+    Things[streamName].EnableThing();
+    Things[streamName].RestartThing();
+  }
+  // returns an empty infotable row to be filled with values
+  var rowValues = Things[streamName].CreateValues();
+  rowValues.Name = tagName;
+  try {
+    rowValues.Value = parseFloat(tagValue);
+  } catch (err) {
+    logger.error(
+      'Error parsing float value of "' + tagValue + '" in InsertStreamItem.'
+    );
+  }
+  Things[streamName].AddStreamEntry({
+    timestamp: new Date(timestamp),
+    sourceType: undefined /* STRING */,
+    values: rowValues /* INFOTABLE */,
+    location: undefined /* LOCATION */,
+    source: ewonName /* STRING */,
+    tags: undefined,
+  });
 }
 if (tagName && ewonName && tagValue && timestamp) {
-    run();
+  run();
 } else {
-    logger.error("One or more parameters for InsertStreamItem were undefined or null.");
-    logger.debug("tagName: " + tagName + " ewonName: " + ewonName + "tagValue: " + tagValue +
-        "timestamp: " + timestamp);
-}]]></code></Row></Rows></ConfigurationTable></ConfigurationTables></ServiceImplementation><ServiceImplementation description="" handlerName="Script" name="MainExecution"><ConfigurationTables><ConfigurationTable description="" isMultiRow="false" name="Script" ordinal="0"><DataShape><FieldDefinitions><FieldDefinition baseType="STRING" description="code" name="code" ordinal="0"/></FieldDefinitions></DataShape><Rows><Row><code><![CDATA[/*
+  logger.error(
+    'One or more parameters for InsertStreamItem were undefined or null.'
+  );
+  logger.debug(
+    'tagName: ' +
+      tagName +
+      ' ewonName: ' +
+      ewonName +
+      'tagValue: ' +
+      tagValue +
+      'timestamp: ' +
+      timestamp
+  );
+}
+]]></code></Row></Rows></ConfigurationTable></ConfigurationTables></ServiceImplementation><ServiceImplementation description="" handlerName="Script" name="MainExecution"><ConfigurationTables><ConfigurationTable description="" isMultiRow="false" name="Script" ordinal="0"><DataShape><FieldDefinitions><FieldDefinition baseType="STRING" description="code" name="code" ordinal="0"/></FieldDefinitions></DataShape><Rows><Row><code><![CDATA[/*
  * Main Execution loop of the Connector, updates all data and deletes used data from DataMailbox.
  *
  * @author HMS Networks, MU Americas Solution Center
@@ -166,46 +188,56 @@ var timeElapsedMillis = Date.now() - startTimeMillis;
  * This should be enough time that even if a Talk2MSyncData execution was started 1 millisecond before maxExecutionTimeMillis,
  * a timeout error would still not occur.
  */
-var maxExecutionTimeMillis = timeoutLengthMillis - (longestSyncDataExecutionMillis + syncDataIncreaseBufferMillis);
+var maxExecutionTimeMillis =
+  timeoutLengthMillis -
+  (longestSyncDataExecutionMillis + syncDataIncreaseBufferMillis);
 /*
  * This loop calls Talk2MSyncData as many times as it can within maxExecutionTimeMillis.
  */
 while (timeElapsedMillis < maxExecutionTimeMillis) {
+  // clocks how long each Talk2MSyncData call takes
+  var syncDataStartExecutionMillis = Date.now();
+  getResult = me.Talk2MSyncData({
+    initialTransactionId: nextTransactionId /* INTEGER */,
+  });
+  var syncDataEndExecutionMillis = Date.now();
 
-    // clocks how long each Talk2MSyncData call takes
-    var syncDataStartExecutionMillis = Date.now();
-    getResult = me.Talk2MSyncData({
-        initialTransactionId: nextTransactionId /* INTEGER */
-    });
-    var syncDataEndExecutionMillis = Date.now();
+  // only updates longestSyncDataExecutionMillis when this is the longest Execution
+  if (
+    syncDataEndExecutionMillis - syncDataStartExecutionMillis >
+    longestSyncDataExecutionMillis
+  ) {
+    longestSyncDataExecutionMillis =
+      syncDataEndExecutionMillis - syncDataStartExecutionMillis;
+  }
 
-    // only updates longestSyncDataExecutionMillis when this is the longest Execution
-    if ( (syncDataEndExecutionMillis - syncDataStartExecutionMillis) > longestSyncDataExecutionMillis) {
-        longestSyncDataExecutionMillis = syncDataEndExecutionMillis - syncDataStartExecutionMillis;
-    }
+  // update transaction ids to recent values
+  nextTransactionId = getResult.nextTransactionId;
+  oldTransactionId = getResult.oldTransactionId;
 
-    // update transaction ids to recent values
-    nextTransactionId = getResult.nextTransactionId;
-    oldTransactionId = getResult.oldTransactionId;
+  if (getResult.done) {
+    // when there is no more data oldTransactionId has to be updated so that Talk2MDelete works
+    oldTransactionId = nextTransactionId;
+    break;
+  }
 
-    if (getResult.done) {
-        // when there is no more data oldTransactionId has to be updated so that Talk2MDelete works
-        oldTransactionId = nextTransactionId;
-        break;
-    }
-
-    // updating timing variables for while loop
-    maxExecutionTimeMillis = timeoutLengthMillis - (longestSyncDataExecutionMillis + syncDataIncreaseBufferMillis);
-    timeElapsedMillis = Date.now() - startTimeMillis;
+  // updating timing variables for while loop
+  maxExecutionTimeMillis =
+    timeoutLengthMillis -
+    (longestSyncDataExecutionMillis + syncDataIncreaseBufferMillis);
+  timeElapsedMillis = Date.now() - startTimeMillis;
 }
 if (!getResult.done) {
-    logger.warn("Syncdata was not able to execute within the set timeout length. To resolve this, " +
-        "increase scriptTimeout in platform-settings.json, or run MainExecution more often.");
+  logger.warn(
+    'Syncdata was not able to execute within the set timeout length. To resolve this, ' +
+      'increase scriptTimeout in platform-settings.json, or run MainExecution more often.'
+  );
 }
 
 me.Talk2MDelete({
-    transactionId: oldTransactionId
-});]]></code></Row></Rows></ConfigurationTable></ConfigurationTables></ServiceImplementation><ServiceImplementation description="" handlerName="Script" name="PurgeDataStreams"><ConfigurationTables><ConfigurationTable description="" isMultiRow="false" name="Script" ordinal="0"><DataShape><FieldDefinitions><FieldDefinition baseType="STRING" description="code" name="code" ordinal="0"/></FieldDefinitions></DataShape><Rows><Row><code><![CDATA[/*
+  transactionId: oldTransactionId,
+});
+]]></code></Row></Rows></ConfigurationTable></ConfigurationTables></ServiceImplementation><ServiceImplementation description="" handlerName="Script" name="PurgeDataStreams"><ConfigurationTables><ConfigurationTable description="" isMultiRow="false" name="Script" ordinal="0"><DataShape><FieldDefinitions><FieldDefinition baseType="STRING" description="code" name="code" ordinal="0"/></FieldDefinitions></DataShape><Rows><Row><code><![CDATA[/*
  * Deletes data older than daysToKeep from streams.
  *
  * @author HMS Networks, MU Americas Solution Center
@@ -215,7 +247,7 @@ me.Talk2MDelete({
 var startDate = '0000-01-01T00:00:00.000-00:00';
 var daysToKeep = me.daysToKeep;
 var NUMBER_MILLISECONDS_IN_DAY = 86400000;
-var endDate = new Date(Date.now() - (daysToKeep * NUMBER_MILLISECONDS_IN_DAY));
+var endDate = new Date(Date.now() - daysToKeep * NUMBER_MILLISECONDS_IN_DAY);
 /*
  * rows is an array of every entity in this project.
  * This includes the project itself.
@@ -223,17 +255,17 @@ var endDate = new Date(Date.now() - (daysToKeep * NUMBER_MILLISECONDS_IN_DAY));
 var rows = Projects[me.GetProjectName()].GetEntities().ToJSON().rows;
 var i;
 var entity;
-var params;
 for (i = 0; i < rows.length; i += 1) {
-    entity = rows[i];
-    // all streams are purged
-    if ((entity.name).includes("-StreamData")) {
-        Things[entity.name].PurgeStreamEntries({
-            endDate: endDate /* DATETIME */ ,
-            startDate: startDate /* DATETIME */
-        });
-    }
-}]]></code></Row></Rows></ConfigurationTable></ConfigurationTables></ServiceImplementation><ServiceImplementation description="" handlerName="Script" name="TakeInfo"><ConfigurationTables><ConfigurationTable description="" isMultiRow="false" name="Script" ordinal="0"><DataShape><FieldDefinitions><FieldDefinition baseType="STRING" description="code" name="code" ordinal="0"/></FieldDefinitions></DataShape><Rows><Row><code><![CDATA[/*
+  entity = rows[i];
+  // all streams are purged
+  if (entity.name.includes('-StreamData')) {
+    Things[entity.name].PurgeStreamEntries({
+      endDate: endDate /* DATETIME */,
+      startDate: startDate /* DATETIME */,
+    });
+  }
+}
+]]></code></Row></Rows></ConfigurationTable></ConfigurationTables></ServiceImplementation><ServiceImplementation description="" handlerName="Script" name="TakeInfo"><ConfigurationTables><ConfigurationTable description="" isMultiRow="false" name="Script" ordinal="0"><DataShape><FieldDefinitions><FieldDefinition baseType="STRING" description="code" name="code" ordinal="0"/></FieldDefinitions></DataShape><Rows><Row><code><![CDATA[/*
  * Alternative method that avoids using DataMailbox to send data to Thingworx.
  * Uses a Ewon Thingworx connector which runs on a Flexy.
  * More information can be found in the README.md file.
@@ -243,33 +275,34 @@ for (i = 0; i < rows.length; i += 1) {
  */
 // wrapper function to enable early returns
 function run() {
-    var parsedTags = JSON.parse(Tags);
-    var ewonName = parsedTags.info["ewon-name"];
-    // tagArray holds the datapoints array which contains all logged data
-    var tagArray = parsedTags.datapoints;
+  var parsedTags = JSON.parse(Tags);
+  var ewonName = parsedTags.info['ewon-name'];
+  // tagArray holds the datapoints array which contains all logged data
+  var tagArray = parsedTags.datapoints;
 
-    var i;
-    for (i = 0; i < tagArray.length; i += 1) {
-        var tag = tagArray[i];
-        me.InsertStreamItem({
-            tagName: tag.name /* STRING */ ,
-            ewonName: ewonName /* STRING */ ,
-            tagValue: tag.value /* STRING */ ,
-            timestamp: tag.timestamp /* STRING */
-        });
-    }
-    // updates all nonlogged data
-    keys = Object.keys(parsedTags.info);
-    for (i = 0; i < keys.length; i += 1) {
-        me.InsertDataTableItem({
-            ewonName: ewonName /* STRING */ ,
-            tagValue: parsedTags.info[keys[i]] /* STRING */ ,
-            tagName: keys[i] /* STRING */
-        });
-    }
+  var i;
+  for (i = 0; i < tagArray.length; i += 1) {
+    var tag = tagArray[i];
+    me.InsertStreamItem({
+      tagName: tag.name /* STRING */,
+      ewonName: ewonName /* STRING */,
+      tagValue: tag.value /* STRING */,
+      timestamp: tag.timestamp /* STRING */,
+    });
+  }
+  // updates all nonlogged data
+  keys = Object.keys(parsedTags.info);
+  for (i = 0; i < keys.length; i += 1) {
+    me.InsertDataTableItem({
+      ewonName: ewonName /* STRING */,
+      tagValue: parsedTags.info[keys[i]] /* STRING */,
+      tagName: keys[i] /* STRING */,
+    });
+  }
 }
 me.PurgeDataStreams();
-run();]]></code></Row></Rows></ConfigurationTable></ConfigurationTables></ServiceImplementation><ServiceImplementation description="" handlerName="Script" name="Talk2MDelete"><ConfigurationTables><ConfigurationTable description="" isMultiRow="false" name="Script" ordinal="0"><DataShape><FieldDefinitions><FieldDefinition baseType="STRING" description="code" name="code" ordinal="0"/></FieldDefinitions></DataShape><Rows><Row><code><![CDATA[/*
+run();
+]]></code></Row></Rows></ConfigurationTable></ConfigurationTables></ServiceImplementation><ServiceImplementation description="" handlerName="Script" name="Talk2MDelete"><ConfigurationTables><ConfigurationTable description="" isMultiRow="false" name="Script" ordinal="0"><DataShape><FieldDefinitions><FieldDefinition baseType="STRING" description="code" name="code" ordinal="0"/></FieldDefinitions></DataShape><Rows><Row><code><![CDATA[/*
  * Deletes all data from transactionId or earlier from DataMailbox.
  *
  * @author HMS Networks, MU Americas Solution Center
@@ -277,23 +310,36 @@ run();]]></code></Row></Rows></ConfigurationTable></ConfigurationTables></Servic
  */
 // wrapper function to enable early returns
 function run() {
-    // url construction
-    var url = "https://data.talk2m.com/delete?t2maccount=" + me.talk2MAccount +
-        "&t2musername=" + me.talk2MUsername +
-        "&t2mpassword=" + me.talk2MPassword +
-        "&t2mdevid=" + me.talk2MDeveloperID +
-        "&transactionId=" + transactionId;
+  // url construction
+  var url =
+    'https://data.talk2m.com/delete?t2maccount=' +
+    me.talk2MAccount +
+    '&t2musername=' +
+    me.talk2MUsername +
+    '&t2mpassword=' +
+    me.talk2MPassword +
+    '&t2mdevid=' +
+    me.talk2MDeveloperID +
+    '&transactionId=' +
+    transactionId;
 
-    var params = {
-        url: encodeURI(url) /* STRING */
-    };
-    // sends the API request to DataMailbox
-    var getResult = Resources["ContentLoaderFunctions"].GetJSON(params);
-    if (!getResult["success"]) {
-        logger.error("Error calling DataMailbox API in Talk2MDelete. Error: " + getResult["message"]);
-        return;
-    }
-    logger.debug("Successfully deleted all tags of transaction id: " + transactionId + " or earlier.");
+  var params = {
+    url: encodeURI(url) /* STRING */,
+  };
+  // sends the API request to DataMailbox
+  var getResult = Resources['ContentLoaderFunctions'].GetJSON(params);
+  if (!getResult['success']) {
+    logger.error(
+      'Error calling DataMailbox API in Talk2MDelete. Error: ' +
+        getResult['message']
+    );
+    return;
+  }
+  logger.debug(
+    'Successfully deleted all tags of transaction id: ' +
+      transactionId +
+      ' or earlier.'
+  );
 }
 /*
  * -1 is the first tranaction ID sent to DataMailbox through SyncData. If the DataMailbox is empty then
@@ -301,117 +347,139 @@ function run() {
  */
 var INVALID_TRANSACTION_ID_VALUE = -1;
 if (transactionId != INVALID_TRANSACTION_ID_VALUE) {
-    run();
-}]]></code></Row></Rows></ConfigurationTable></ConfigurationTables></ServiceImplementation><ServiceImplementation description="" handlerName="Script" name="Talk2MGetData"><ConfigurationTables><ConfigurationTable description="" isMultiRow="false" name="Script" ordinal="0"><DataShape><FieldDefinitions><FieldDefinition baseType="STRING" description="code" name="code" ordinal="0"/></FieldDefinitions></DataShape><Rows><Row><code><![CDATA[/*
+  run();
+}
+]]></code></Row></Rows></ConfigurationTable></ConfigurationTables></ServiceImplementation><ServiceImplementation description="" handlerName="Script" name="Talk2MGetData"><ConfigurationTables><ConfigurationTable description="" isMultiRow="false" name="Script" ordinal="0"><DataShape><FieldDefinitions><FieldDefinition baseType="STRING" description="code" name="code" ordinal="0"/></FieldDefinitions></DataShape><Rows><Row><code><![CDATA[/*
  * Talk2MGetData gets and inserts all non-logged data from DataMailbox.
  *
  * @author HMS Networks, MU Americas Solution Center
  * @version 1.0
  */
 function parseEwon(ewon) {
-    var ewonName = ewon.name.trim();
-    // insert data table item is called on all nonlogged tags
-    ewon.tags.forEach(tag => {
-        if (tag.history == null) {
-            me.InsertDataTableItem({
-                tagName: tag.name,
-                ewonName: ewonName,
-                tagValue: tag.value
-            });
-        }
-    });
+  var ewonName = ewon.name.trim();
+  // insert data table item is called on all nonlogged tags
+  ewon.tags.forEach((tag) => {
+    if (tag.history == null) {
+      me.InsertDataTableItem({
+        tagName: tag.name,
+        ewonName: ewonName,
+        tagValue: tag.value,
+      });
+    }
+  });
 }
 
 // wrapper function to enable early returns
 function run() {
-    var NUMBER_MILISECONDS_IN_DAY = 86400000;
-    var oneDayInTheFuture = new Date(Date.now() + NUMBER_MILISECONDS_IN_DAY);
-    /*
-     * This calculation always assumes the timezone is UTC.
-     * This is acceptable since any date in the future works.
-     */
-    var formattedTime = dateFormat(oneDayInTheFuture, "yyyy-MM-dd HH:mm:ss").replace(" ", "T") + "Z";
-    // the time format that DataMailbox wants MUST be yyyy-MM-ddTHH:mm:ssZ
-    var url = "https://data.talk2m.com/getdata?t2maccount=" + me.talk2MAccount +
-        "&t2musername=" + me.talk2MUsername +
-        "&t2mpassword=" + me.talk2MPassword +
-        "&t2mdevid=" + me.talk2MDeveloperID +
-        "&from=" + formattedTime + "&fullconfig";
-    var params = {
-        url: encodeURI(url) /* STRING */
-    };
+  var NUMBER_MILISECONDS_IN_DAY = 86400000;
+  var oneDayInTheFuture = new Date(Date.now() + NUMBER_MILISECONDS_IN_DAY);
+  /*
+   * This calculation always assumes the timezone is UTC.
+   * This is acceptable since any date in the future works.
+   */
+  var formattedTime =
+    dateFormat(oneDayInTheFuture, 'yyyy-MM-dd HH:mm:ss').replace(' ', 'T') +
+    'Z';
+  // the time format that DataMailbox wants MUST be yyyy-MM-ddTHH:mm:ssZ
+  var url =
+    'https://data.talk2m.com/getdata?t2maccount=' +
+    me.talk2MAccount +
+    '&t2musername=' +
+    me.talk2MUsername +
+    '&t2mpassword=' +
+    me.talk2MPassword +
+    '&t2mdevid=' +
+    me.talk2MDeveloperID +
+    '&from=' +
+    formattedTime +
+    '&fullconfig';
+  var params = {
+    url: encodeURI(url) /* STRING */,
+  };
 
-    // sends API request to DataMailbox
-    var getResult = Resources["ContentLoaderFunctions"].GetJSON(params);
-    if (!getResult["success"]) {
-        logger.error("Error calling DataMailbox API in Talk2MGetData. Error: " + getResult["message"]);
-        return;
-    }
-    // This likely means that the logged data is not properly being filtered out
-    if (getResult.moreDataAvailable) {
-        logger.error("JSON message exceeds maximum limit.");
-    }
-    var ewons = getResult.ewons;
-    ewons.forEach(parseEwon);
+  // sends API request to DataMailbox
+  var getResult = Resources['ContentLoaderFunctions'].GetJSON(params);
+  if (!getResult['success']) {
+    logger.error(
+      'Error calling DataMailbox API in Talk2MGetData. Error: ' +
+        getResult['message']
+    );
+    return;
+  }
+  // This likely means that the logged data is not properly being filtered out
+  if (getResult.moreDataAvailable) {
+    logger.error('JSON message exceeds maximum limit.');
+  }
+  var ewons = getResult.ewons;
+  ewons.forEach(parseEwon);
 }
-run();]]></code></Row></Rows></ConfigurationTable></ConfigurationTables></ServiceImplementation><ServiceImplementation description="" handlerName="Script" name="Talk2MSyncData"><ConfigurationTables><ConfigurationTable description="" isMultiRow="false" name="Script" ordinal="0"><DataShape><FieldDefinitions><FieldDefinition baseType="STRING" description="code" name="code" ordinal="0"/></FieldDefinitions></DataShape><Rows><Row><code><![CDATA[/*
+run();
+]]></code></Row></Rows></ConfigurationTable></ConfigurationTables></ServiceImplementation><ServiceImplementation description="" handlerName="Script" name="Talk2MSyncData"><ConfigurationTables><ConfigurationTable description="" isMultiRow="false" name="Script" ordinal="0"><DataShape><FieldDefinitions><FieldDefinition baseType="STRING" description="code" name="code" ordinal="0"/></FieldDefinitions></DataShape><Rows><Row><code><![CDATA[/*
  * Talk2MSyncData gets and inserts all logged data from DataMailbox.
  *
  * @author HMS Networks, MU Americas Solution Center
  * @version 1.0
  */
 function parseEwon(ewon) {
-    var ewonName = ewon.name.trim();
-    var timestamp = ewon.lastSynchroDate;
-    // calls InsertStreamItem on all historical tags
-    ewon.tags.forEach(tag => {
-        var i;
-        for (i = 0; i < tag.history.length; i += 1) {
-            var historicalTag = tag.history[i];
-            me.InsertStreamItem({
-                tagName: tag.name /* STRING */ ,
-                ewonName: ewonName /* STRING */ ,
-                tagValue: historicalTag.value /* STRING */ ,
-                timestamp: historicalTag.date /* STRING */
-            });
-        }
-    });
+  var ewonName = ewon.name.trim();
+  // calls InsertStreamItem on all historical tags
+  ewon.tags.forEach((tag) => {
+    var i;
+    for (i = 0; i < tag.history.length; i += 1) {
+      var historicalTag = tag.history[i];
+      me.InsertStreamItem({
+        tagName: tag.name /* STRING */,
+        ewonName: ewonName /* STRING */,
+        tagValue: historicalTag.value /* STRING */,
+        timestamp: historicalTag.date /* STRING */,
+      });
+    }
+  });
 }
 // wrapper function to enable early returns
 function run() {
-    var lastTransactionId = initialTransactionId;
-    // url construction
-    var url = "https://data.talk2m.com/syncdata?t2maccount=" + me.talk2MAccount +
-        "&t2musername=" + me.talk2MUsername +
-        "&t2mpassword=" + me.talk2MPassword +
-        "&t2mdevid=" + me.talk2MDeveloperID +
-        "&createTransaction=true" +
-        "&lastTransactionid=" + lastTransactionId;
-    var params = {
-        url: encodeURI(url) /* STRING */
-    };
-
-    // send API request to DataMailBox
-    var getResult = Resources["ContentLoaderFunctions"].GetJSON(params);
-    if (!getResult["success"]) {
-        logger.error("Error calling DataMailbox API in Talk2MSyncData. Error: " + getResult["message"]);
-        return;
-    }
-    var ewons = getResult.ewons;
-    ewons.forEach(parseEwon);
-    // check to see if more data is available, if so, store that value to be returned later
-    var done = false;
-    if (getResult.moreDataAvailable === undefined) {
-        done = true;
-    }
-    return ({
-        oldTransactionId: lastTransactionId,
-        nextTransactionId: getResult.transactionId,
-        done: done
-    });
+  var lastTransactionId = initialTransactionId;
+  // url construction
+  var url =
+    'https://data.talk2m.com/syncdata?t2maccount=' +
+    me.talk2MAccount +
+    '&t2musername=' +
+    me.talk2MUsername +
+    '&t2mpassword=' +
+    me.talk2MPassword +
+    '&t2mdevid=' +
+    me.talk2MDeveloperID +
+    '&createTransaction=true' +
+    '&lastTransactionid=' +
+    lastTransactionId;
+  var params = {
+    url: encodeURI(url) /* STRING */,
+  };
+  // send API request to DataMailBox
+  var getResult = Resources['ContentLoaderFunctions'].GetJSON(params);
+  if (!getResult['success']) {
+    logger.error(
+      'Error calling DataMailbox API in Talk2MSyncData. Error: ' +
+        getResult['message']
+    );
+    return;
+  }
+  var ewons = getResult.ewons;
+  ewons.forEach(parseEwon);
+  // check to see if more data is available, if so, store that value to be returned later
+  var done = false;
+  if (getResult.moreDataAvailable === undefined) {
+    done = true;
+  }
+  return {
+    oldTransactionId: lastTransactionId,
+    nextTransactionId: getResult.transactionId,
+    done: done,
+  };
 }
 // this acts as a return statement
-var result = run();]]></code></Row></Rows></ConfigurationTable></ConfigurationTables></ServiceImplementation><ServiceImplementation description="" handlerName="Script" name="Talk2MTurnOnOrOff"><ConfigurationTables><ConfigurationTable description="" isMultiRow="false" name="Script" ordinal="0"><DataShape><FieldDefinitions><FieldDefinition baseType="STRING" description="code" name="code" ordinal="0"/></FieldDefinitions></DataShape><Rows><Row><code><![CDATA[/*
+var result = run();
+]]></code></Row></Rows></ConfigurationTable></ConfigurationTables></ServiceImplementation><ServiceImplementation description="" handlerName="Script" name="Talk2MTurnOnOrOff"><ConfigurationTables><ConfigurationTable description="" isMultiRow="false" name="Script" ordinal="0"><DataShape><FieldDefinitions><FieldDefinition baseType="STRING" description="code" name="code" ordinal="0"/></FieldDefinitions></DataShape><Rows><Row><code><![CDATA[/*
  * Sets an Ewon to offline or online depending on if it was online or offline to begin with.
  *
  * @author HMS Networks, MU Americas Solution Center
@@ -419,48 +487,62 @@ var result = run();]]></code></Row></Rows></ConfigurationTable></ConfigurationTa
  */
 // simple wrapper function to facilitate early returns
 function run() {
-    var host = "https://m2web.talk2m.com/t2mapi/";
-    var command = "getewon?name=" + name;
-    var credentials = "&t2maccount=" + me.talk2MAccount +
-        "&t2musername=" + me.talk2MUsername +
-        "&t2mpassword=" + me.talk2MPassword +
-        "&t2mdeveloperid=" + me.talk2MDeveloperID;
+  var host = 'https://m2web.talk2m.com/t2mapi/';
+  var command = 'getewon?name=' + name;
+  var credentials =
+    '&t2maccount=' +
+    me.talk2MAccount +
+    '&t2musername=' +
+    me.talk2MUsername +
+    '&t2mpassword=' +
+    me.talk2MPassword +
+    '&t2mdeveloperid=' +
+    me.talk2MDeveloperID;
 
-    var params = {
-        url: encodeURI(host + command + credentials) /* STRING */
-    };
+  var params = {
+    url: encodeURI(host + command + credentials) /* STRING */,
+  };
 
-    // sends API request to DataMailbox
-    var result = Resources["ContentLoaderFunctions"].GetJSON(params);
-    if (!result.success) {
-        logger.error("Error calling DataMailbox API in Talk2MTurnOnOrOff. Error: " + result["message"]);
-        return;
-    }
-    var ewon = result.ewon;
-    var status = ewon.status;
-    // logic that decides whether to send a sendoffline request or a wakeup request
-    if (status === "online") {
-        command = "sendoffline?name=" + name;
-    } else if (status === "offline") {
-        command = "wakeup?name=" + name;
-    } else {
-        logger.error("Talk2MTurnOnOrOff unexpected status: The Ewon Device status was something other than offline/online");
-        return;
-    }
+  // sends API request to DataMailbox
+  var result = Resources['ContentLoaderFunctions'].GetJSON(params);
+  if (!result.success) {
+    logger.error(
+      'Error calling DataMailbox API in Talk2MTurnOnOrOff. Error: ' +
+        result['message']
+    );
+    return;
+  }
+  var ewon = result.ewon;
+  var status = ewon.status;
+  // logic that decides whether to send a sendoffline request or a wakeup request
+  if (status === 'online') {
+    command = 'sendoffline?name=' + name;
+  } else if (status === 'offline') {
+    command = 'wakeup?name=' + name;
+  } else {
+    logger.error(
+      'Talk2MTurnOnOrOff unexpected status: The Ewon Device status was something other than offline/online'
+    );
+    return;
+  }
 
-    params = {
-        url: encodeURI(host + command + credentials) /* STRING */
-    };
+  params = {
+    url: encodeURI(host + command + credentials) /* STRING */,
+  };
 
-    // sends the api request to DataMailBox
-    result = Resources["ContentLoaderFunctions"].GetJSON(params);
-    logger.warn(JSON.stringify(result));
-    if (!result.success) {
-        logger.error("Error calling DataMailbox API in Talk2MTurnOnOrOff. Error: " + result["message"]);
-        return;
-    }
+  // sends the api request to DataMailBox
+  result = Resources['ContentLoaderFunctions'].GetJSON(params);
+  logger.warn(JSON.stringify(result));
+  if (!result.success) {
+    logger.error(
+      'Error calling DataMailbox API in Talk2MTurnOnOrOff. Error: ' +
+        result['message']
+    );
+    return;
+  }
 }
-run();]]></code></Row></Rows></ConfigurationTable></ConfigurationTables></ServiceImplementation><ServiceImplementation description="" handlerName="Script" name="Talk2MUpdateTagForm"><ConfigurationTables><ConfigurationTable description="" isMultiRow="false" name="Script" ordinal="0"><DataShape><FieldDefinitions><FieldDefinition baseType="STRING" description="code" name="code" ordinal="0"/></FieldDefinitions></DataShape><Rows><Row><code><![CDATA[/*
+run();
+]]></code></Row></Rows></ConfigurationTable></ConfigurationTables></ServiceImplementation><ServiceImplementation description="" handlerName="Script" name="Talk2MUpdateTagForm"><ConfigurationTables><ConfigurationTable description="" isMultiRow="false" name="Script" ordinal="0"><DataShape><FieldDefinitions><FieldDefinition baseType="STRING" description="code" name="code" ordinal="0"/></FieldDefinitions></DataShape><Rows><Row><code><![CDATA[/*
  * Updates a particular tag on a particular Ewon to a new value.
  *
  * @author HMS Networks, MU Americas Solution Center
@@ -468,46 +550,55 @@ run();]]></code></Row></Rows></ConfigurationTable></ConfigurationTables></Servic
  */
 // wrapper function for early returns
 function run() {
-    // url construction
-    var host = "https://m2web.talk2m.com/t2mapi/get/" + ewonName + "/rcgi.bin/";
-    var command = "UpdateTagForm";
-    var tagValues = "?TagName1=" + tagName +
-        "&TagValue1=" + tagValue;
-    var ewonCredentials = "&t2mdeviceusername=" + ewonUsername +
-        "&t2mdevicepassword=" + ewonPassword;
-    var credentials = "&t2maccount=" + me.talk2MAccount +
-        "&t2musername=" + me.talk2MUsername +
-        "&t2mpassword=" + me.talk2MPassword +
-        "&t2mdeveloperid=" + me.talk2MDeveloperID;
-    var completeURL = encodeURI(host + command + tagValues + credentials + ewonCredentials);
-    var params = {
-        url: completeURL /* STRING */
-    };
+  // url construction
+  var host = 'https://m2web.talk2m.com/t2mapi/get/' + ewonName + '/rcgi.bin/';
+  var command = 'UpdateTagForm';
+  var tagValues = '?TagName1=' + tagName + '&TagValue1=' + tagValue;
+  var ewonCredentials =
+    '&t2mdeviceusername=' + ewonUsername + '&t2mdevicepassword=' + ewonPassword;
+  var credentials =
+    '&t2maccount=' +
+    me.talk2MAccount +
+    '&t2musername=' +
+    me.talk2MUsername +
+    '&t2mpassword=' +
+    me.talk2MPassword +
+    '&t2mdeveloperid=' +
+    me.talk2MDeveloperID;
+  var completeURL = encodeURI(
+    host + command + tagValues + credentials + ewonCredentials
+  );
+  var params = {
+    url: completeURL /* STRING */,
+  };
 
-    /*
-     * Uses getText instead of getJSON because this API request returns an XML file.
-     * Interestingly, if this command fails then JSON will be returned.
-     */
-    var result = Resources["ContentLoaderFunctions"].GetText(params);
+  /*
+   * Uses getText instead of getJSON because this API request returns an XML file.
+   * Interestingly, if this command fails then JSON will be returned.
+   */
+  var result = Resources['ContentLoaderFunctions'].GetText(params);
 
-    // searches for done to check if a success message was returned
-    if (result.indexOf("Done") === -1) {
-        // The change failed, therefore the function returned JSON
-        result = JSON.parse(result);
-        logger.error("Error calling DataMailbox API in Talk2MUpdateTagForm. Error: " + result["message"]);
-        return;
-    }
-    /*
-     * Now the function reads back the new value to double check.
-     * This command returns all instantaneous tag values.
-     */
-    command = "ParamForm?AST_Param=$dtIV$ftT";
-    completeURL = encodeURI(host + command + credentials + ewonCredentials);
-    params = {
-        url: completeURL /* STRING */
-    };
-    // returns a very long text that looks like this
-    /*
+  // searches for done to check if a success message was returned
+  if (result.indexOf('Done') === -1) {
+    // The change failed, therefore the function returned JSON
+    result = JSON.parse(result);
+    logger.error(
+      'Error calling DataMailbox API in Talk2MUpdateTagForm. Error: ' +
+        result['message']
+    );
+    return;
+  }
+  /*
+   * Now the function reads back the new value to double check.
+   * This command returns all instantaneous tag values.
+   */
+  command = 'ParamForm?AST_Param=$dtIV$ftT';
+  completeURL = encodeURI(host + command + credentials + ewonCredentials);
+  params = {
+    url: completeURL /* STRING */,
+  };
+  // returns a very long text that looks like this
+  /*
     "TagId";"TagName";"Value";"AlStatus";"AlType";"Quality"
     2;"DEMOSTOP";0;0;0;65472
     3;"DEMOSCENARIO";2;0;0;65472
@@ -517,22 +608,27 @@ function run() {
     7;"LiftStation-B01-FLOW";9160;0;0;65472
     8;"LiftStation-B01-PWR";1;0;0;65472
     */
-    result = Resources["ContentLoaderFunctions"].GetText(params);
-    var start = result.indexOf('"' + tagName + '"');
-    /*
-     * start takes us to the index of the tagName occurance.
-     * The offset of 3 accounts for the two " and the one ; before the tag value.
-     * tagName.length takes the pointer to the end of the tagName.
-     * start + 3 + tagName.length() will point to the first character of value.
-     * tagValue.length() will then grab the entire tagValue.
-     */
-    newValue = result.substring(start + 3 + tagName.length, start + 3 + tagName.length + tagValue.length);
-    if (tagValue == newValue) {
-        logger.debug("The value of " + tagName + " changed to " + tagValue + ".");
-    } else {
-        logger.error("Failed to change the value of " + tagName + " to " + tagValue + ".");
-        logger.debug("newValue: " + tagValue + ", onWriteBack: " + newValue);
-    }
-
+  result = Resources['ContentLoaderFunctions'].GetText(params);
+  var start = result.indexOf('"' + tagName + '"');
+  /*
+   * start takes us to the index of the tagName occurance.
+   * The offset of 3 accounts for the two " and the one ; before the tag value.
+   * tagName.length takes the pointer to the end of the tagName.
+   * start + 3 + tagName.length() will point to the first character of value.
+   * tagValue.length() will then grab the entire tagValue.
+   */
+  newValue = result.substring(
+    start + 3 + tagName.length,
+    start + 3 + tagName.length + tagValue.length
+  );
+  if (tagValue == newValue) {
+    logger.debug('The value of ' + tagName + ' changed to ' + tagValue + '.');
+  } else {
+    logger.error(
+      'Failed to change the value of ' + tagName + ' to ' + tagValue + '.'
+    );
+    logger.debug('newValue: ' + tagValue + ', onWriteBack: ' + newValue);
+  }
 }
-run();]]></code></Row></Rows></ConfigurationTable></ConfigurationTables></ServiceImplementation></ServiceImplementations><Subscriptions><Subscription description="" enabled="true" eventName="Timer" name="runConnector" source="" sourceProperty="" sourceType="Thing"><ServiceImplementation description="" handlerName="Script" name="runConnector"><ConfigurationTables><ConfigurationTable description="" isMultiRow="false" name="Script" ordinal="0"><DataShape><FieldDefinitions><FieldDefinition baseType="STRING" description="code" name="code" ordinal="0"/></FieldDefinitions></DataShape><Rows><Row><code><![CDATA[me.MainExecution();]]></code></Row></Rows></ConfigurationTable></ConfigurationTables></ServiceImplementation></Subscription></Subscriptions></ThingShape><PropertyBindings/><RemotePropertyBindings/><RemoteServiceBindings/><RemoteEventBindings/><AlertConfigurations><AlertDefinitions name="dataTableToCopy"/><AlertDefinitions name="daysToKeep"/><AlertDefinitions name="generalDataTableName"/><AlertDefinitions name="scriptTimeoutSeconds"/><AlertDefinitions name="streamToCopy"/><AlertDefinitions name="talk2MAccount"/><AlertDefinitions name="talk2MDeveloperID"/><AlertDefinitions name="talk2MPassword"/><AlertDefinitions name="talk2MUsername"/><AlertDefinitions name="useHyphensDataTables"/></AlertConfigurations><ImplementedShapes/><ThingProperties><dataTableToCopy><Value><![CDATA[InfoDataTableTemplate]]></Value><Timestamp>1969-12-31T19:00:00.000-05:00</Timestamp><Quality>UNKNOWN</Quality></dataTableToCopy><talk2MUsername><Value/><Timestamp>2020-07-27T15:16:07.398-04:00</Timestamp><Quality>GOOD</Quality></talk2MUsername><talk2MAccount><Value/><Timestamp>2020-07-27T15:15:59.026-04:00</Timestamp><Quality>GOOD</Quality></talk2MAccount><daysToKeep><Value>14</Value><Timestamp>1969-12-31T19:00:00.000-05:00</Timestamp><Quality>UNKNOWN</Quality></daysToKeep><talk2MDeveloperID><Value/><Timestamp>2020-07-27T15:16:02.300-04:00</Timestamp><Quality>GOOD</Quality></talk2MDeveloperID><generalDataTableName><Value><![CDATA[InfoDataTable]]></Value><Timestamp>1969-12-31T19:00:00.000-05:00</Timestamp><Quality>UNKNOWN</Quality></generalDataTableName><useHyphensDataTables><Value>false</Value><Timestamp>1969-12-31T19:00:00.000-05:00</Timestamp><Quality>UNKNOWN</Quality></useHyphensDataTables><scriptTimeoutSeconds><Value>30</Value><Timestamp>1969-12-31T19:00:00.000-05:00</Timestamp><Quality>UNKNOWN</Quality></scriptTimeoutSeconds><talk2MPassword><Value/><Timestamp>2020-07-27T15:16:04.807-04:00</Timestamp><Quality>GOOD</Quality></talk2MPassword><streamToCopy><Value><![CDATA[StreamTemplate]]></Value><Timestamp>1969-12-31T19:00:00.000-05:00</Timestamp><Quality>UNKNOWN</Quality></streamToCopy></ThingProperties><ConfigurationChanges><ConfigurationChange changeAction="CREATE" changeReason="header : name : updated&#10;" timestamp="2020-07-14T16:30:19.651-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : CleanAllData : service updated&#10;" timestamp="2020-07-14T20:15:39.736-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : InsertDataTableItem : service updated&#10;" timestamp="2020-07-14T20:16:14.863-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : InsertStreamItem : service updated&#10;" timestamp="2020-07-14T20:43:07.246-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : InsertDataTableItem : service updated&#10;" timestamp="2020-07-14T20:46:28.818-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : CleanAllData : service updated&#10;" timestamp="2020-07-15T08:52:25.546-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : MainExecution : service updated&#10;" timestamp="2020-07-15T08:52:39.127-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : MainExecution : service updated&#10;" timestamp="2020-07-15T08:52:51.568-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : MainExecution : service updated&#10;" timestamp="2020-07-15T08:53:41.933-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : Talk2MDelete : service updated&#10;" timestamp="2020-07-15T12:17:53.346-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : CleanAllData : service updated&#10;" timestamp="2020-07-16T09:42:57.015-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : MainExecution : service updated&#10;" timestamp="2020-07-16T09:44:29.806-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : MainExecution : service updated&#10;" timestamp="2020-07-16T09:45:50.037-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : MainExecution : service updated&#10;" timestamp="2020-07-16T09:49:14.430-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : MainExecution : service updated&#10;" timestamp="2020-07-16T09:49:26.990-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="properties : scriptTimeoutSeconds : added, scriptTimeout : removed&#10;services : MainExecution : service updated&#10;" timestamp="2020-07-16T09:50:27.197-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : MainExecution : service updated&#10;" timestamp="2020-07-16T09:51:10.219-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : MainExecution : service updated&#10;" timestamp="2020-07-16T09:53:48.832-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : MainExecution : service updated&#10;" timestamp="2020-07-16T09:54:14.439-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : MainExecution : service updated&#10;" timestamp="2020-07-16T09:54:39.430-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : MainExecution : service updated&#10;" timestamp="2020-07-16T09:54:58.055-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : MainExecution : service updated&#10;" timestamp="2020-07-16T09:58:47.789-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : MainExecution : service updated&#10;" timestamp="2020-07-16T09:59:16.939-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : TakeInfo : service updated&#10;" timestamp="2020-07-16T09:59:36.294-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : Talk2MDelete : service updated&#10;" timestamp="2020-07-16T10:01:19.639-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : Talk2MDelete : service updated&#10;" timestamp="2020-07-16T10:02:43.475-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : MainExecution : service updated&#10;" timestamp="2020-07-16T10:15:20.349-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : MainExecution : service updated&#10;" timestamp="2020-07-16T10:16:11.660-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : Talk2MGetData : service updated&#10;" timestamp="2020-07-17T12:57:54.662-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="properties : talk2MDeveloperID : added, talk2MDeviceID : removed&#10;services : CleanAllData : service updated&#10;" timestamp="2020-07-22T12:46:49.040-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : Talk2MDelete : service updated&#10;" timestamp="2020-07-22T12:47:00.163-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : Talk2MGetData : service updated&#10;" timestamp="2020-07-22T12:47:16.110-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : Talk2MSyncData : service updated&#10;" timestamp="2020-07-22T12:47:34.252-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : Talk2MTurnOnOrOff : service updated&#10;" timestamp="2020-07-22T12:47:50.954-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : Talk2MUpdateTagForm : service updated&#10;" timestamp="2020-07-22T13:36:08.069-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="subscriptions : runConnector : enabled updated&#10;" timestamp="2020-07-23T11:22:11.511-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="subscriptions : runConnector : enabled updated&#10;" timestamp="2020-07-23T11:34:06.683-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="subscriptions : runConnector : enabled updated&#10;" timestamp="2020-07-23T12:11:14.995-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : InsertDataTableItem : service updated&#10;header : description : updated&#10;" timestamp="2020-07-27T12:13:16.876-04:00" user="Administrator"/></ConfigurationChanges></Thing></Things><Logs/><Authenticators/><ThingPackages/><NotificationDefinitions/><ApplicationKeys/><StateDefinitions/><ThingTemplates/><ExtensionPackages/><Organizations/><Menus/><Resources/><DataTags/><ThingShapes/><Subsystems/><NotificationContents/></Entities>
+run();
+]]></code></Row></Rows></ConfigurationTable></ConfigurationTables></ServiceImplementation></ServiceImplementations><Subscriptions><Subscription description="" enabled="false" eventName="Timer" name="runConnector" source="" sourceProperty="" sourceType="Thing"><ServiceImplementation description="" handlerName="Script" name="runConnector"><ConfigurationTables><ConfigurationTable description="" isMultiRow="false" name="Script" ordinal="0"><DataShape><FieldDefinitions><FieldDefinition baseType="STRING" description="code" name="code" ordinal="0"/></FieldDefinitions></DataShape><Rows><Row><code><![CDATA[me.MainExecution();]]></code></Row></Rows></ConfigurationTable></ConfigurationTables></ServiceImplementation></Subscription></Subscriptions></ThingShape><PropertyBindings/><RemotePropertyBindings/><RemoteServiceBindings/><RemoteEventBindings/><AlertConfigurations><AlertDefinitions name="dataTableToCopy"/><AlertDefinitions name="daysToKeep"/><AlertDefinitions name="generalDataTableName"/><AlertDefinitions name="scriptTimeoutSeconds"/><AlertDefinitions name="streamToCopy"/><AlertDefinitions name="talk2MAccount"/><AlertDefinitions name="talk2MDeveloperID"/><AlertDefinitions name="talk2MPassword"/><AlertDefinitions name="talk2MUsername"/><AlertDefinitions name="useHyphensDataTables"/></AlertConfigurations><ImplementedShapes/><ThingProperties><dataTableToCopy><Value><![CDATA[InfoDataTableTemplate]]></Value><Timestamp>1969-12-31T19:00:00.000-05:00</Timestamp><Quality>UNKNOWN</Quality></dataTableToCopy><talk2MUsername><Value/><Timestamp>2020-07-27T16:00:40.377-04:00</Timestamp><Quality>GOOD</Quality></talk2MUsername><talk2MAccount><Value/><Timestamp>2020-07-27T16:00:32.123-04:00</Timestamp><Quality>GOOD</Quality></talk2MAccount><daysToKeep><Value>14</Value><Timestamp>1969-12-31T19:00:00.000-05:00</Timestamp><Quality>UNKNOWN</Quality></daysToKeep><talk2MDeveloperID><Value/><Timestamp>2020-07-27T16:00:34.911-04:00</Timestamp><Quality>GOOD</Quality></talk2MDeveloperID><generalDataTableName><Value><![CDATA[InfoDataTable]]></Value><Timestamp>1969-12-31T19:00:00.000-05:00</Timestamp><Quality>UNKNOWN</Quality></generalDataTableName><useHyphensDataTables><Value>false</Value><Timestamp>1969-12-31T19:00:00.000-05:00</Timestamp><Quality>UNKNOWN</Quality></useHyphensDataTables><scriptTimeoutSeconds><Value>30</Value><Timestamp>1969-12-31T19:00:00.000-05:00</Timestamp><Quality>UNKNOWN</Quality></scriptTimeoutSeconds><talk2MPassword><Value/><Timestamp>2020-07-27T16:00:37.543-04:00</Timestamp><Quality>GOOD</Quality></talk2MPassword><streamToCopy><Value><![CDATA[StreamTemplate]]></Value><Timestamp>1969-12-31T19:00:00.000-05:00</Timestamp><Quality>UNKNOWN</Quality></streamToCopy></ThingProperties><ConfigurationChanges><ConfigurationChange changeAction="CREATE" changeReason="header : name : updated&#10;" timestamp="2020-07-14T16:30:19.651-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : CleanAllData : service updated&#10;" timestamp="2020-07-14T20:15:39.736-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : InsertDataTableItem : service updated&#10;" timestamp="2020-07-14T20:16:14.863-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : InsertStreamItem : service updated&#10;" timestamp="2020-07-14T20:43:07.246-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : InsertDataTableItem : service updated&#10;" timestamp="2020-07-14T20:46:28.818-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : CleanAllData : service updated&#10;" timestamp="2020-07-15T08:52:25.546-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : MainExecution : service updated&#10;" timestamp="2020-07-15T08:52:39.127-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : MainExecution : service updated&#10;" timestamp="2020-07-15T08:52:51.568-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : MainExecution : service updated&#10;" timestamp="2020-07-15T08:53:41.933-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : Talk2MDelete : service updated&#10;" timestamp="2020-07-15T12:17:53.346-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : CleanAllData : service updated&#10;" timestamp="2020-07-16T09:42:57.015-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : MainExecution : service updated&#10;" timestamp="2020-07-16T09:44:29.806-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : MainExecution : service updated&#10;" timestamp="2020-07-16T09:45:50.037-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : MainExecution : service updated&#10;" timestamp="2020-07-16T09:49:14.430-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : MainExecution : service updated&#10;" timestamp="2020-07-16T09:49:26.990-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="properties : scriptTimeoutSeconds : added, scriptTimeout : removed&#10;services : MainExecution : service updated&#10;" timestamp="2020-07-16T09:50:27.197-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : MainExecution : service updated&#10;" timestamp="2020-07-16T09:51:10.219-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : MainExecution : service updated&#10;" timestamp="2020-07-16T09:53:48.832-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : MainExecution : service updated&#10;" timestamp="2020-07-16T09:54:14.439-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : MainExecution : service updated&#10;" timestamp="2020-07-16T09:54:39.430-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : MainExecution : service updated&#10;" timestamp="2020-07-16T09:54:58.055-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : MainExecution : service updated&#10;" timestamp="2020-07-16T09:58:47.789-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : MainExecution : service updated&#10;" timestamp="2020-07-16T09:59:16.939-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : TakeInfo : service updated&#10;" timestamp="2020-07-16T09:59:36.294-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : Talk2MDelete : service updated&#10;" timestamp="2020-07-16T10:01:19.639-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : Talk2MDelete : service updated&#10;" timestamp="2020-07-16T10:02:43.475-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : MainExecution : service updated&#10;" timestamp="2020-07-16T10:15:20.349-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : MainExecution : service updated&#10;" timestamp="2020-07-16T10:16:11.660-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : Talk2MGetData : service updated&#10;" timestamp="2020-07-17T12:57:54.662-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="properties : talk2MDeveloperID : added, talk2MDeviceID : removed&#10;services : CleanAllData : service updated&#10;" timestamp="2020-07-22T12:46:49.040-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : Talk2MDelete : service updated&#10;" timestamp="2020-07-22T12:47:00.163-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : Talk2MGetData : service updated&#10;" timestamp="2020-07-22T12:47:16.110-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : Talk2MSyncData : service updated&#10;" timestamp="2020-07-22T12:47:34.252-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : Talk2MTurnOnOrOff : service updated&#10;" timestamp="2020-07-22T12:47:50.954-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : Talk2MUpdateTagForm : service updated&#10;" timestamp="2020-07-22T13:36:08.069-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="subscriptions : runConnector : enabled updated&#10;" timestamp="2020-07-23T11:22:11.511-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="subscriptions : runConnector : enabled updated&#10;" timestamp="2020-07-23T11:34:06.683-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="subscriptions : runConnector : enabled updated&#10;" timestamp="2020-07-23T12:11:14.995-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : InsertDataTableItem : service updated&#10;header : description : updated&#10;" timestamp="2020-07-27T12:13:16.876-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : CleanAllData : service updated&#10;" timestamp="2020-07-27T15:20:03.994-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : CleanAllData : service updated&#10;" timestamp="2020-07-27T15:20:58.636-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : CleanAllData : service updated&#10;" timestamp="2020-07-27T15:25:19.551-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : InsertDataTableItem : service updated&#10;" timestamp="2020-07-27T15:26:00.882-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : InsertStreamItem : service updated&#10;" timestamp="2020-07-27T15:26:53.705-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : MainExecution : service updated&#10;" timestamp="2020-07-27T15:27:25.231-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : PurgeDataStreams : service updated&#10;" timestamp="2020-07-27T15:27:38.511-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : PurgeDataStreams : service updated&#10;" timestamp="2020-07-27T15:28:00.833-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : TakeInfo : service updated&#10;" timestamp="2020-07-27T15:28:23.353-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : Talk2MDelete : service updated&#10;" timestamp="2020-07-27T15:28:47.665-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : Talk2MGetData : service updated&#10;" timestamp="2020-07-27T15:29:06.533-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : Talk2MSyncData : service updated&#10;" timestamp="2020-07-27T15:29:35.713-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : Talk2MTurnOnOrOff : service updated&#10;" timestamp="2020-07-27T15:30:28.664-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : Talk2MSyncData : service updated&#10;" timestamp="2020-07-27T15:36:38.987-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : Talk2MSyncData : service updated&#10;" timestamp="2020-07-27T15:37:08.166-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : Talk2MSyncData : service updated&#10;" timestamp="2020-07-27T15:37:27.619-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : Talk2MSyncData : service updated&#10;" timestamp="2020-07-27T15:38:33.870-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : Talk2MSyncData : service updated&#10;" timestamp="2020-07-27T15:40:51.560-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : Talk2MSyncData : service updated&#10;" timestamp="2020-07-27T15:42:03.101-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : Talk2MSyncData : service updated&#10;" timestamp="2020-07-27T15:43:01.074-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="subscriptions : runConnector : enabled updated&#10;" timestamp="2020-07-27T15:43:09.077-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : Talk2MSyncData : service updated&#10;" timestamp="2020-07-27T15:44:16.131-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : Talk2MSyncData : service updated&#10;" timestamp="2020-07-27T15:44:27.476-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : Talk2MSyncData : service updated&#10;" timestamp="2020-07-27T15:45:28.357-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : Talk2MSyncData : service updated&#10;" timestamp="2020-07-27T15:45:56.546-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : Talk2MSyncData : service updated&#10;" timestamp="2020-07-27T15:46:47.113-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : Talk2MSyncData : service updated&#10;" timestamp="2020-07-27T15:47:12.568-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : Talk2MSyncData : service updated&#10;" timestamp="2020-07-27T15:48:15.024-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : Talk2MSyncData : service updated&#10;" timestamp="2020-07-27T15:49:00.169-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : Talk2MSyncData : service updated&#10;" timestamp="2020-07-27T15:49:50.542-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : Talk2MSyncData : service updated&#10;" timestamp="2020-07-27T15:50:15.276-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : Talk2MSyncData : service updated&#10;" timestamp="2020-07-27T15:50:36.388-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : Talk2MSyncData : service updated&#10;" timestamp="2020-07-27T15:51:26.759-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : Talk2MSyncData : service updated&#10;" timestamp="2020-07-27T15:59:41.586-04:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : Talk2MSyncData : service updated&#10;" timestamp="2020-07-27T15:59:50.872-04:00" user="Administrator"/></ConfigurationChanges></Thing></Things><Logs/><Authenticators/><ThingPackages/><NotificationDefinitions/><ApplicationKeys/><StateDefinitions/><ThingTemplates/><ExtensionPackages/><Organizations/><Menus/><Resources/><DataTags/><ThingShapes/><Subsystems/><NotificationContents/></Entities>
