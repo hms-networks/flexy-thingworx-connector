@@ -2,7 +2,7 @@
  * Cleans all data storage objects created by this connector.
  *
  * @author HMS Networks, MU Americas Solution Center
- * @version 1.0
+ * @version 1.1
  */
 function cleanEntity(entity) {
   // Checks for -StreamData or -TableData. If that substring exists, then the entity is deleted.
@@ -27,7 +27,7 @@ for (var i = 0; i < rows.length; i += 1) {
  * Inserts/updates a tag value in the proper data table.
  *
  * @author HMS Networks, MU Americas Solution Center
- * @version 1.0
+ * @version 1.1
  */
 // wrapper function to allow for early returns
 function run() {
@@ -87,7 +87,7 @@ if (tagName && ewonName && tagValue) {
  * Inserts/updates a tag value in the proper stream
  *
  * @author HMS Networks, MU Americas Solution Center
- * @version 1.0
+ * @version 1.1
  */
 // wrapper function for early returns
 function run() {
@@ -154,7 +154,7 @@ if (tagName && ewonName && tagValue && timestamp) {
  * Main Execution loop of the Connector, updates all data and deletes used data from DataMailbox.
  *
  * @author HMS Networks, MU Americas Solution Center
- * @version 1.0
+ * @version 1.1
  */
 var startTimeMillis = Date.now();
 
@@ -241,7 +241,7 @@ me.Talk2MDelete({
  * Deletes data older than daysToKeep from streams.
  *
  * @author HMS Networks, MU Americas Solution Center
- * @version 1.0
+ * @version 1.1
  */
 // This will allow purging from the dawn of time
 var startDate = '0000-01-01T00:00:00.000-00:00';
@@ -271,7 +271,7 @@ for (i = 0; i < rows.length; i += 1) {
  * More information can be found in the README.md file.
  *
  * @author HMS Networks, MU Americas Solution Center
- * @version 1.0
+ * @version 1.1
  */
 // wrapper function to enable early returns
 function run() {
@@ -306,7 +306,7 @@ run();
  * Deletes all data from transactionId or earlier from DataMailbox.
  *
  * @author HMS Networks, MU Americas Solution Center
- * @version 1.0
+ * @version 1.1
  */
 // wrapper function to enable early returns
 function run() {
@@ -353,7 +353,7 @@ if (transactionId != INVALID_TRANSACTION_ID_VALUE) {
  * Talk2MGetData gets and inserts all non-logged data from DataMailbox.
  *
  * @author HMS Networks, MU Americas Solution Center
- * @version 1.0
+ * @version 1.1
  */
 function parseEwon(ewon) {
   var ewonName = ewon.name.trim();
@@ -418,7 +418,7 @@ run();
  * Talk2MSyncData gets and inserts all logged data from DataMailbox.
  *
  * @author HMS Networks, MU Americas Solution Center
- * @version 1.0
+ * @version 1.1
  */
 function parseEwon(ewon) {
   var ewonName = ewon.name.trim();
@@ -483,7 +483,7 @@ var result = run();
  * Sets an Ewon to offline or online depending on if it was online or offline to begin with.
  *
  * @author HMS Networks, MU Americas Solution Center
- * @version 1.0
+ * @version 1.1
  */
 // simple wrapper function to facilitate early returns
 function run() {
@@ -546,7 +546,7 @@ run();
  * Updates a particular tag on a particular Ewon to a new value.
  *
  * @author HMS Networks, MU Americas Solution Center
- * @version 1.0
+ * @version 1.1
  */
 // wrapper function for early returns
 function run() {
