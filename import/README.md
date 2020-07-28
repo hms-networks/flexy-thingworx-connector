@@ -56,6 +56,9 @@ Fill in the following credentials:
 * talk2MDeveloperID: Developer ID associated with Talk2M account.
 * talk2MPassword: Password for login to Talk2M account.
 * talk2MUsername: Username for login to Talk2M account.
+* talk2MToken: Token for access to Ewon data.
+
+For assistance generating an API Token, visit https://developer.ewon.biz/content/dmweb-api.
 
 Change "daysToKeep" to be the number of days before data will be purged from Thingworx.
 
@@ -217,6 +220,7 @@ ewonPassword: The password used to login to the Ewon.
 <b>talk2MDeveloperID</b>: Developer ID associated with Talk2M account.
 <b>talk2MPassword</b>: Password for login to Talk2M account.
 <b>talk2MUsername</b>: Username for login to Talk2M account.
+<b>talk2MToken</b>: Token for access to Ewon data.
 
 
 <b>useHyphensDataTables</b>: Changes how non-logged data is stored in Thingworx. If this is true, instead of dumping all non-logged data points into the same table, tags will be organized according to the placement of a hyphen.
