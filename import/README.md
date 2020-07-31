@@ -9,16 +9,17 @@ This application receives data from a Ewon and stores that data in Thingworx.
 	1. [Subscriptions](#Subscriptions)
 	2. [Services](#Services)
 		1. [CleanAllData](#CleanAllData)
-		2. [InsertDataTableItem](#InsertDataTableItem)
-		3. [InsertStreamItem](#InsertStreamItem)
-		4. [MainExecution](#MainExecution)
-		5. [PurgeDataStreams](#PurgeDataStreams)
-		6. [TakeInfo](#TakeInfo)
-		7. [Talk2MDelete](#Talk2MDelete)
-		8. [Talk2MGetData](#Talk2MGetData)
-		9. [Talk2MSyncData](#Talk2MSyncData)
-		10. [Talk2MTurnOnOrOff](#Talk2MTurnOnOrOff)
-		11. [Talk2MUpdateTagForm](#Talk2MUpdateTagForm)
+		2. [InsertAlarmItem](#InsertAlarmItem)
+		3. [InsertDataTableItem](#InsertDataTableItem)
+		4. [InsertStreamItem](#InsertStreamItem)
+		5. [MainExecution](#MainExecution)
+		6. [PurgeDataStreams](#PurgeDataStreams)
+		7. [TakeInfo](#TakeInfo)
+		8. [Talk2MDelete](#Talk2MDelete)
+		9. [Talk2MGetData](#Talk2MGetData)
+		10. [Talk2MSyncData](#Talk2MSyncData)
+		11. [Talk2MTurnOnOrOff](#Talk2MTurnOnOrOff)
+		12. [Talk2MUpdateTagForm](#Talk2MUpdateTagForm)
 	3. [Properties](#Properties)
 3. [Common Errors](#Common-Errors)
 
@@ -86,6 +87,17 @@ Ex: An update rate of 40000 means that the timer event will be fired once every 
 Running this script will destroy all data created by the connector.
 In particular, CleanAllData deletes all entities that are located in the FlexyConnector project and
 contain "-StreamData" or "-TableData" in the name.
+
+### InsertAlarmItem
+Inserts an Alarm into its proper stream. Each Ewon gets its own stream. If the stream does not exist, then a stream will be created.
+The stream name is always 'ewonName'-StreamAlarm.
+
+Parameters:
+String tagName: The name of the tag that the alarm was thrown on.
+String ewonName: The name of the Ewon that sent the alarm.
+String alarmType: The type of the alarm.
+String alarmStatus: The alarm's current status.
+String timestamp: The timestamp of the tag to be inserted in ISO 8601 format.
 
 ### InsertDataTableItem
 This inserts a tag into a data table based on the name of the tag and the Ewon that the tag came from. If the data table does not exist, then a new data table will be created.
