@@ -145,7 +145,7 @@ TakeInfo calls PurgeDataStreams.
 
 Parameters:
 String Tags: a single JSON object, passed as a string, because Thingworx 8.5 currently has a bug where JSON objects passed as parameters to services can be mutated if the JSON contains an array.
-	ExpectedFormat:
+ExpectedFormat:
 ```javascript
 {
 	"datapoints": [
