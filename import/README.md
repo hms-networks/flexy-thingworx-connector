@@ -13,14 +13,15 @@ This application receives data from a Ewon and stores that data in Thingworx.
 		3. [InsertDataTableItem](#InsertDataTableItem)
 		4. [InsertStreamItem](#InsertStreamItem)
 		5. [MainExecution](#MainExecution)
-		6. [PurgeDataStreams](#PurgeDataStreams)
-		7. [TakeInfo](#TakeInfo)
-		8. [Talk2MDelete](#Talk2MDelete)
-		9. [Talk2MGetData](#Talk2MGetData)
-		10. [Talk2MSyncData](#Talk2MSyncData)
-		11. [Talk2MTurnOnOrOff](#Talk2MTurnOnOrOff)
-		12. [Talk2MUpdateTagForm](#Talk2MUpdateTagForm)
-		13. [GetMostRecentDataEntry](#GetMostRecentDataEntry)
+		6. [ProcessTimeSinceUpdate](#ProcessTimeSinceUpdate)
+		7. [PurgeDataStreams](#PurgeDataStreams)
+		8. [TakeInfo](#TakeInfo)
+		9. [Talk2MDelete](#Talk2MDelete)
+		10. [Talk2MGetData](#Talk2MGetData)
+		11. [Talk2MSyncData](#Talk2MSyncData)
+		12. [Talk2MTurnOnOrOff](#Talk2MTurnOnOrOff)
+		13. [Talk2MUpdateTagForm](#Talk2MUpdateTagForm)
+		14. [GetMostRecentDataEntry](#GetMostRecentDataEntry)
 	3. [Properties](#Properties)
 3. [Common Errors](#Common-Errors)
 
@@ -72,6 +73,8 @@ If no change was made, then the scriptTimeoutSeconds property already holds the 
 Navigate to "ConnectorHost">"Subscriptions".
 
 Select runConnector. Checking the "enable" box will start the connector
+
+<b>For direct data path users: </b> Edit the runConnector subscription so that the first line is commented out and the third line is not. This allows ProcessTimeSinceUpdate to work properly.
 
 # Connector Information
 
@@ -132,8 +135,16 @@ It executes the following tasks in the specified order:
 * Calls PurgeDataStreams
 * Calls Talk2MGetData
 * Calls Talk2MSyncData until no data left or until there is risk of a timeout exception
+* Calls ProcessTimeSinceUpdate
 * Calls Talk2MDelete to delete all data that has already been stored in Thingworx from DataMailbox
 
+### ProcessTimeSinceUpdate
+Keeps track of when the last data update was received. If the time since the last data update exceeds updateTimeoutMinutes, then an error with be created.
+
+NOTE: Direct data path users will need additional configuration to get this running properly. Configuration for direct data path users requires editing the runConnector subscription so that the first line is commented out and the third line is not.
+
+Parameters: 
+Boolean lastUpdate: If lastUpdate is true, then lastUpdateTime will be updated to the current date. If lastUpdate is false, then ProcessTimeSinceUpdate will decide whether or not to throw an error.
 
 ### PurgeDataStreams
 Purges all tags that are older than 'daysToKeep' (found under [Properties](#Properties)) days old from the streams created by this connector in the FlexyConnector project.
@@ -232,6 +243,8 @@ Returns: An infotable with one row, which is the most recent data entry.
 
 <b>generalDataTableName</b>: Part of the name of the generalDataTable that will be created for tags that do not have hyphens in their name or for when useHyphensDataTables is off.
 
+<b>lastUpdateTime</b>: Stores the value of the last time Thingworx has received data. ProcessTimeSinceUpdate uses this as a variable that can persist between service runs, so editing this property may cause improper or undefined behavior.
+
 <b>scriptTimeoutSeconds</b>: This should match the scriptTimeout as set in the platform-settings.json file of Thingworx. If this is not an accurate value, MainExecution will incorrectly estimate how much time MainExecution can run for, which may lead to inefficiencies or outright errors. If the value is not changed in platform-settings.json then the default value is 30 seconds.
 
 <b>streamToCopy</b>: The stream that InsertStreamItem will copy when creating a new stream.
@@ -242,6 +255,7 @@ Returns: An infotable with one row, which is the most recent data entry.
 <b>talk2MUsername</b>: Username for login to Talk2M account.
 <b>talk2MToken</b>: Token for access to Ewon data.
 
+<b>updateTimeoutMinutes</b>: The maximum number of minutes the connector will run since the last data update before a connectivity error will be thrown.
 
 <b>useHyphensDataTables</b>: Changes how non-logged data is stored in Thingworx. If this is true, instead of dumping all non-logged data points into the same table, tags will be organized according to the placement of a hyphen.
 
