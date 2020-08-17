@@ -20,6 +20,7 @@ This application receives data from a Ewon and stores that data in Thingworx.
 		10. [Talk2MSyncData](#Talk2MSyncData)
 		11. [Talk2MTurnOnOrOff](#Talk2MTurnOnOrOff)
 		12. [Talk2MUpdateTagForm](#Talk2MUpdateTagForm)
+		13. [GetMostRecentDataEntry](#GetMostRecentDataEntry)
 	3. [Properties](#Properties)
 3. [Common Errors](#Common-Errors)
 
@@ -213,6 +214,13 @@ ewonName: The Ewon that contains the tag in question.
 tagValue: The new value of the tag.
 ewonUsername: The username used to login to the Ewon.
 ewonPassword: The password used to login to the Ewon.
+
+### GetMostRecentDataEntry
+Gets the most recent data entry from the data stream. 
+
+<b>NOTE:</b> GetMostRecentDataEntry is the only service not located on the ConnectorHost. Instead, it is available on every stream created by the ConnectorHost.
+
+Returns: An infotable with one row, which is the most recent data entry.
 
 
 ## Properties
