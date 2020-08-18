@@ -412,6 +412,7 @@ function run() {
     });
   }
 }
+// Purges old data
 me.PurgeDataStreams();
 run();
 // Registers that an update has been received
