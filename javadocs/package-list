@@ -1,0 +1,13 @@
+com.hms_networks.americas.sc.config
+com.hms_networks.americas.sc.config.exceptions
+com.hms_networks.americas.sc.datapoint
+com.hms_networks.americas.sc.fileutils
+com.hms_networks.americas.sc.historicaldata
+com.hms_networks.americas.sc.json
+com.hms_networks.americas.sc.logging
+com.hms_networks.americas.sc.mqtt
+com.hms_networks.americas.sc.string
+com.hms_networks.americas.sc.taginfo
+com.hms_networks.americas.sc.thingworx
+com.hms_networks.americas.sc.thingworx.config
+com.hms_networks.americas.sc.thingworx.utils
