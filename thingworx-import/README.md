@@ -28,13 +28,13 @@ This application receives data from a Ewon and stores that data in Thingworx.
 # Installation
 To install the Thingworx connector components, navigate to the upper right-hand corner of the screen and click the Import/Export button, then click Import.
 
-![img of import](/import/img/importButton.PNG)
+![img of import](/thingworx-import/img/importButton.PNG)
 
 Configure the import options as follows:
 1. Check "Use default persistence provider".
 2. Select Entities.xml from file system.
 
-![img of import window](/import/img/importingWindow.PNG)
+![img of import window](/thingworx-import/img/importingWindow.PNG)
 
 **NOTE: the connector is imported in an "off" state and won't do anything until it is turned on**
 
@@ -42,7 +42,7 @@ Click the search bar in the upper left-hand corner of the window and search "Con
 
 Select the ConnectorHost Thing.
 
-![img of search](/import/img/findSearchBar.PNG)
+![img of search](/thingworx-import/img/findSearchBar.PNG)
 
 Go to "ConnectorHost">"General Information", this is the default window if ConnectorHost was just selected.
 
@@ -50,7 +50,7 @@ Go to "ConnectorHost">"General Information", this is the default window if Conne
 
 2. Configure "Update Rate" to the interval at which the connector should run (in milliseconds).
 
-![img of general screen](/import/img/generalConfiguration.PNG)
+![img of general screen](/thingworx-import/img/generalConfiguration.PNG)
 
 Go to "ConnectorHost">"Properties and Alerts".
 
@@ -68,7 +68,7 @@ Change "daysToKeep" to be the number of days before data will be purged from Thi
 If scriptTimeout was modified in the platform-settings.json file of Thingworx, then update the scriptTimeoutSeconds property here.
 If no change was made, then the scriptTimeoutSeconds property already holds the default timeout for Thingworx (30 seconds).
 
-![img of properites](/import/img/propertiesScreen.PNG)
+![img of properites](/thingworx-import/img/propertiesScreen.PNG)
 
 Navigate to "ConnectorHost">"Subscriptions".
 
