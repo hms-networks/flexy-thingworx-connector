@@ -10,11 +10,11 @@ This application receives data from a Ewon and stores that data in Thingworx.
 	2. [Services](#Services)
 		1. [CleanAllData](#CleanAllData)
 		2. [InsertAlarmItem](#InsertAlarmItem)
-		3. [InsertDataTableItem](#InsertDataTableItem)
+		3. [InsertNonloggedItem](#InsertNonloggedItem)
 		4. [InsertStreamItem](#InsertStreamItem)
 		5. [MainExecution](#MainExecution)
 		6. [ProcessTimeSinceUpdate](#ProcessTimeSinceUpdate)
-		7. [PurgeDataStreams](#PurgeDataStreams)
+		7. [PurgeValueStreams](#PurgeValueStreams)
 		8. [TakeInfo](#TakeInfo)
 		9. [Talk2MDelete](#Talk2MDelete)
 		10. [Talk2MGetData](#Talk2MGetData)
@@ -103,13 +103,13 @@ String alarmType: The type of the alarm.
 String alarmStatus: The alarm's current status.
 String timestamp: The timestamp of the tag to be inserted in ISO 8601 format.
 
-### InsertDataTableItem
-This inserts a tag into a data table based on the name of the tag and the Ewon that the tag came from. If the data table does not exist, then a new data table will be created.
-If useHyphensDataTables is false, then all tags will be will be sorted by Ewon and put on a respective datatable called  'ewonName'-'GeneralDataTableName'-TableData where ewonName is passed as a parameter
-and GeneralDataTableName is the GeneralDataTableName as configured in Properties and Alerts.
+### InsertNonloggedItem
+This inserts a tag into a Thing based on the name of the tag and the Ewon that the tag came from. If the Thing does not exist, then a Thing will be created.
+If useHyphens is false, then all tags will be will be sorted by Ewon and put on a respective Thing called  'ewonName'-'generalMachineName'-non-loggedProperties where ewonName is passed as a parameter
+and generalMachineName is the generalMachineName as configured in Properties and Alerts.
 
-If useHypenDataTables is true, then all tags will be organized according to hyphen location within the name.
-More information can be found about this under useHypenDataTables.
+If useHyphens is true, then all tags will be organized according to hyphen location within the name.
+More information can be found about this under useHypens.
 
 Parameters:
 String tagName: The name of the tag being inserted.
@@ -117,8 +117,12 @@ String ewonName: The name of the Ewon that provided this tag.
 String tagValue: The value of the tag being inserted.
 
 ### InsertStreamItem
-Inserts a tag with time sensitive data into its proper stream. The proper stream is based on tag name. If the stream does not exist, then a stream will be created.
-The stream name is always 'ewonName'-'tagName'-StreamData. Every tag with historically logged data needs its own stream.
+Inserts a tag with time sensitive data into its proper Thing. The proper Thing is based on tag name and Ewon name. If the Thing does not exist, then a Thing will be created.
+If useHyphens is false, then all tags will be will be sorted by Ewon and put on a respective Thing called  'ewonName'-'generalMachineName'-non-loggedProperties where ewonName is passed as a parameter
+and generalMachineName is the generalMachineName as configured in Properties and Alerts.
+
+If useHyphens is true, then all tags will be organized according to hyphen location within the name.
+More information can be found about this under useHypens.
 
 Parameters:
 String tagName: The name of the tag to be inserted.
@@ -132,7 +136,7 @@ String timestamp: The timestamp of the tag to be inserted in ISO 8601 format.
 This is the main service of the Connector.
 It executes the following tasks in the specified order:
 
-* Calls PurgeDataStreams
+* Calls PurgeValueStreams
 * Calls Talk2MGetData
 * Calls Talk2MSyncData until no data left or until there is risk of a timeout exception
 * Calls ProcessTimeSinceUpdate
@@ -146,13 +150,13 @@ NOTE: Direct data path users will need additional configuration to get this runn
 Parameters: 
 Boolean lastUpdate: If lastUpdate is true, then lastUpdateTime will be updated to the current date. If lastUpdate is false, then ProcessTimeSinceUpdate will decide whether or not to throw an error.
 
-### PurgeDataStreams
+### PurgeValueStreams
 Purges all tags that are older than 'daysToKeep' (found under [Properties](#Properties)) days old from the streams created by this connector in the FlexyConnector project.
 
 ### TakeInfo
 This service is an alternate way of providing data to Thingworx without using DataMailbox.
 Calling this service through Thingworx's REST API will input all information as if it was retrieved by Talk2MSyncData or Talk2MGetData.
-TakeInfo calls PurgeDataStreams.
+TakeInfo calls PurgeValueStreams.
 
 Parameters:
 String Tags: a single JSON object, passed as a string, because Thingworx 8.5 currently has a bug where JSON objects passed as parameters to services can be mutated if the JSON contains an array.
@@ -194,7 +198,7 @@ Parameters:
 String transactionId: The transactionId to delete from.
 
 ### Talk2MGetData
-Retrieves all non-logged data from DataMailbox. All of this data is then sent through InsertDataTableItem.
+Retrieves all non-logged data from DataMailbox. All of this data is then sent through InsertNonloggedItem.
 
 ### Talk2MSyncData
 Sends a SyncData request to DataMailbox which will retrieve only logged data. All logged data is then sent through InsertStreamItem.
@@ -237,17 +241,14 @@ Returns: An infotable with one row, which is the most recent data entry.
 ## Properties
 
 
-<b>dataTableToCopy</b>: The data table that InsertDataTableItem will copy when creating a new datatable.
 
-<b>daysToKeep</b>: The maximum number of days to keep data before PurgeDataStreams will purge it.
+<b>daysToKeep</b>: The maximum number of days to keep data before PurgeValueStreams will purge it.
 
-<b>generalDataTableName</b>: Part of the name of the generalDataTable that will be created for tags that do not have hyphens in their name or for when useHyphensDataTables is off.
+<b>generalMachineName</b>: Part of the name for the Thing that will store tags whose names do not contain hyphens. Will also be used if useHyphens is false.
 
 <b>lastUpdateTime</b>: Stores the value of the last time Thingworx has received data. ProcessTimeSinceUpdate uses this as a variable that can persist between service runs, so editing this property may cause improper or undefined behavior.
 
 <b>scriptTimeoutSeconds</b>: This should match the scriptTimeout as set in the platform-settings.json file of Thingworx. If this is not an accurate value, MainExecution will incorrectly estimate how much time MainExecution can run for, which may lead to inefficiencies or outright errors. If the value is not changed in platform-settings.json then the default value is 30 seconds.
-
-<b>streamToCopy</b>: The stream that InsertStreamItem will copy when creating a new stream.
 
 <b>talk2MAccount</b>: Account name for login to Talk2M
 <b>talk2MDeveloperID</b>: Developer ID associated with Talk2M account.
@@ -257,10 +258,10 @@ Returns: An infotable with one row, which is the most recent data entry.
 
 <b>updateTimeoutMinutes</b>: The maximum number of minutes the connector will run since the last data update before a connectivity error will be thrown.
 
-<b>useHyphensDataTables</b>: Changes how non-logged data is stored in Thingworx. If this is true, instead of dumping all non-logged data points into the same table, tags will be organized according to the placement of a hyphen.
+<b>useHyphens</b>: Changes how data is organized in Thingworx. If this is true, instead of dumping all data points into the Thing, tags will be organized according to the placement of a hyphen.
 
-The string to the left of the first hyphen is used as a referenceName and the dataTableName is created as follows:
-"dataTableName = 'ewonName'-'referenceName'-TableData".
+The string to the left of the first hyphen is used as a referenceName and the ThingName is created as follows:
+"ThingName = 'ewonName'-'referenceName'".
 Example:
 Take the ewonName 'ExampleEwon'
 
@@ -272,11 +273,11 @@ BottleCapperMaxBottles,
 CandyMachine-pwr,
 LowPowerMode
 
-In this case BottleCapperMaxBottles and lowPowerMode would get stored in the generic ExampleEwon-InfoDataTable-TableData because they contain no hyphens.
+In this case BottleCapperMaxBottles and lowPowerMode would get stored in the generic ExampleEwon-GenericMachine-non-loggedProperties because they contain no hyphens.
 
-CandyMachine-pwr, CandyMachine-flavor, CandyMachine-LastMaintenanceDate, and CandyMachine-color are all stored in a data table called ExampleEwon-CandyMachine-TableData.
+CandyMachine-pwr, CandyMachine-flavor, CandyMachine-LastMaintenanceDate, and CandyMachine-color are all stored in a Thing called ExampleEwon-CandyMachine.
 
-NOTE: When the candyMachine tags are stored, the 'CandyMachine' part of their name is not dropped, so CandyMachine-flavor is still stored as a tag called CandyMachine-flavor within ExampleEwon-CandyMachine-TableData.
+NOTE: When the candyMachine tags are stored, the 'CandyMachine' part of their name is not dropped, so CandyMachine-flavor is still stored as a property called CandyMachine-flavor within ExampleEwon-CandyMachine.
 
 
 # Common Errors
