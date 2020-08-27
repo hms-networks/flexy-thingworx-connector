@@ -151,7 +151,7 @@ public class TWConnectorConsts {
    * connector.
    */
   public static final String THINGWORX_API_TAKE_INFO_ENDPOINT =
-      "/Thingworx/Things/RestfulHost/Services/TakeInfo";
+      "/Thingworx/Things/ConnectorHost/Services/TakeInfo";
 
   // SysControlBlock Constants
   /** SysControlBlock serial number key. */
