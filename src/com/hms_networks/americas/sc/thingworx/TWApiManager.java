@@ -115,6 +115,14 @@ public class TWApiManager {
       stringBuffer.append("\"name\": \"").append(currentDataPoint.getTagName()).append("\",");
       stringBuffer.append("\"value\": ").append(currentDataPoint.getValueString()).append(",");
       stringBuffer
+          .append("\"type\": ")
+          .append(currentDataPoint.getType().getRawDataType())
+          .append(",");
+      stringBuffer
+          .append("\"quality\": ")
+          .append(currentDataPoint.getQuality().getRawDataQuality())
+          .append(",");
+      stringBuffer
           .append("\"timestamp\": \"")
           .append(currentDataPointFormattedTimestamp)
           .append("\"");
