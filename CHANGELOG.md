@@ -1,5 +1,17 @@
 # Flexy Thingworx Connector Changelog
 
+## Version 1.1
+### Features
+- Data is added as Thing properties
+- Updated screenshots and documentation to Thingworx 9
+- Tag quality data is included in data from the Talk2M and direct data paths
+### Bug Fixes
+- Fixed a bug that may have caused data to not be assigned to the proper data type
+- Fixed a bug that could have prevented Talk2M/DataMailbox data from being loaded without the 'useHyphens' option enabled
+### Other
+- Separate thingworx-import README has been merged with main README
+- Talk2M data retrieval process now tracks previous transaction ID
+
 ## Version 1.0
 ### Features
 - Initial Connector Release
