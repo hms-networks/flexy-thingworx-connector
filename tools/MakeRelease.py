@@ -62,7 +62,7 @@ def CreateRelease(version):
    zf.write(os.path.abspath(os.path.join(ECLIPSE_PROJECT_PATH,ECLIPSE_PROJECT_FILENAME)), SOURCE_JAVA_APP_PATH + ECLIPSE_PROJECT_FILENAME)
    zf.write(os.path.abspath(os.path.join(ECLIPSE_CLASSPATH_PATH,ECLIPSE_CLASSPATH_FILENAME)), SOURCE_JAVA_APP_PATH + ECLIPSE_CLASSPATH_FILENAME)
 
-   #Add Thignworx import folder to the zip
+   #Add Thingworx import folder to the zip
    for folderName, subfolders, filenames in os.walk(TW_IMPORT_PATH):
       for filename in filenames:
          #create complete filepath of file in directory
