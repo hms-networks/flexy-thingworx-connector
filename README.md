@@ -1,29 +1,193 @@
-# Flexy Thingworx Connector
+# Ewon Thingworx Connector
 
-The Flexy Thingworx Connector provides a connector-based solution development kit for linking the Ewon Flexy to a Thingworx instance.
+The Ewon Thingworx Connector package provides a connector-based solution to Thingworx for linking Ewon devices using the Talk2M cloud and/or Ewon Flexy devices using a direct data path with the Flexy Java application.
 
-There are two components that make up the Flexy Thingworx Connector, a Thingworx service and a Flexy Java application.
+There are two components that make up the Ewon Thingworx Connector, a Thingworx project and an Ewon Flexy Java application.
 
 ## Table of Contents
+
 1. [Data Paths](#data-paths)
-2. [Thingworx Service Component](#thingworx-service-component)
-3. [Flexy Java App Component](#flexy-java-app-component)
+2. [Thingworx Project Component](#thingworx-project-component)
+   1. [Project Installation](#project-installation)
+   2. [Thing Information](#thing-information)
+      1. [ConnectorHost](#connectorhost)
+      2. [GenericEwonDevice](#genericewondevice)
+        1. [GenericEwonDeviceTalk2M](#genericewondevicetalk2m)
+        2. [GenericEwonDeviceDirect](#genericewondevicedirect)
+      3. [GenericEwonDeviceValueStream](#genericewondevicevaluestream)
+3. [Flexy Java Application Component](#flexy-java-application-component)
    1. [Installation](#installation)
    2. [Configuration](#configuration)
    3. [Source Code](#source-code)
       1. [Development Environment](#development-environment)
       
 ## Data Paths
-There are two possible data paths when using the Flexy Thingworx Connector. 
 
-The first uses a direct path from the Flexy to Thingworx using the Flexy Java Application component. The second data path uses Talk2M and does not require the installation of the Flexy Java Application component. 
+The Ewon Thingworx Connector supports two data paths for receiving data from Ewon devices.
 
-To use the first data path \(direct\), follow the Flexy Java application component installation instructions below after completing the Thingworx service component installation. To use the second data path \(Talk2M\), omit the Flexy Java application component setup.
+The first data path uses the Ewon Talk2M cloud and downloads data to Thingworx on a set timer interval.
 
-## Thingworx Service Component
-The Thingworx service component must be installed for both data path configurations (direct and Talk2M).
+The second data path uses a Flexy Java application to send data directly to Thingworx and does not require the use of any cloud platforms for data storage. It can provide the secure transfer of data on a local network.
 
-Information and instructions for the Thingworx service component are available in a separate document, [thingworx-import/README.md](thingworx-import/README.md).
+Both data paths require the installation of the Thingworx Project Component, but the second data path also requires the installation of the Flexy Java Application Component.
+
+## Thingworx Project Component
+
+The Thingworx project component must be installed and configured for both data paths.
+
+### Project Installation
+
+To install the connector components for Thingworx, navigate to the lower left-hand corner of the screen, click the "Import/Export" button, then click "Import".
+
+![Image of Thingworx Import/Export Buttons](thingworx-import/img/importButton.PNG)
+
+Configure following import options:
+1. Check "Use default persistence provider".
+2. Select Entities.xml from file system.
+
+Click the "Import" button to complete the import.
+
+![Image of Thingworx Import Dialog](thingworx-import/img/importingWindow.PNG)
+
+**NOTE: Talk2M functionality has been disabled by default and must be configured prior to use.**
+
+Navigate to the EwonThingworxConnector project by going to the "Browse" menu, then selecting the "Projects" tab.
+
+Click the EwonThingworxConnector project to display its available entities.
+
+![Image of Thingworx Browse Projects Window](thingworx-import/img/browseProjects.PNG)
+
+Open the ConnectorHost timer thing by clicking it under the list of available entities, then selecting "Edit".
+
+![Image of ConnectorHost in Available Entities of EwonThingworxConnector Project](thingworx-import/img/connectorHostThing.PNG)
+
+On the General Information page, perform the following configuration modifications:
+
+1. Configure "Run As User" to be something other than Administrator.
+    
+   1. The selected user must posses the permissions necessary for creating and modifying things, and creating and updating thing properties.
+
+2. Configure "Update Rate" to the interval at which the connector should run (in milliseconds).
+
+   1. This value is the interval at which data is downloaded from Talk2M/DataMailbox. If you are not using Talk2M functionality, this value does not need to be changed.
+
+![Image of ConnectorHost Run As User and Update Rate Options](thingworx-import/img/generalConfiguration.PNG)
+
+Navigate to the "Properties and Alerts" tab in ConnectorHost and populate the following property values:
+
+1. *disableTalk2M*: When set to true, this disables the Talk2M/DataMailbox functionality. For direct data path users, this option may be set to `true`, but for Talk2M/DataMailbox data path users, this option must be set to `false`.
+
+2. *scriptTimeoutSeconds*: This should match the scriptTimeoutSeconds value in the Thingworx platform-settings.json file. If you have not modified it, the default value is 30.
+
+3. *talk2MAccount*: The account name for login to Talk2M.
+
+4. *talk2MDeveloperID*: A valid Talk2M developer ID.
+
+5. *talk2MPassword*: The account password for login to Talk2M.
+
+6. *talk2MToken*: An account API token for access to Talk2M.
+
+7. *talk2MUsername*: The account username for login to Talk2M.
+
+8. *useHyphens*: When set to true, additional organization is performed on thing properties with a prefix in the name (i.e. PREFIX-\[tagname\]).
+
+Additional and more detailed information about the properties of ConnectorHost can be found below in Thing Information > ConnectorHost > Properties.
+
+![Image of ConnectorHost Properties and Alerts Window](thingworx-import/img/propertiesScreen.PNG)
+
+### Thing Information
+
+#### ConnectorHost
+
+ConnectorHost is a timer thing and triggers a check for new Talk2M data on its configured interval. In addition to checking Talk2M data on a set interval, ConnectorHost also provides the service required for direct data path connections.
+
+##### Properties
+
+1. *disableTalk2M*: A boolean property that controls the download and processing of data from the Ewon Talk2M cloud. The default value is `true`, thus this property must be changed to `false` for Talk2M functionality to work.
+
+2. *lastTransactionId*: An integer property that the Talk2M services use to track the data that has been previously received. This property's value should not be manually changed and doing so may result in duplicate data entries or other unexpected behavior.
+
+3. *lastUpdateTime*: A date/time property that the Talk2M and direct data path services use to track the last time data was successfully received. This property's value should not be manually changed and doing so may result in the delay of data without warning or other unexpected behavior. 
+
+4. *scriptTimeoutSeconds*: An integer property that the Talk2M services use as a maximum time for fetching data. After the Talk2M data sync script has run for scriptTimeoutSeconds seconds, that iteration will be stopped. The value of this property should be equal to the configured scriptTimeoutSeconds value in the Thingworx platform-settings.json file. If you have not modified that file, the default is 30.
+
+5. *talk2MAccount*: A string property that the Talk2M services use for Talk2M account authentication. The value of this property should be populated with the account name for your Talk2M account.
+
+6. *talk2MDeveloperID*: A string property that the Talk2M services use for Talk2M developer identification. The value of this property should be populated with a valid Talk2M developer ID. If you do not have a Talk2M developer ID, you can apply for one at https://developer.ewon.biz/content/talk2m-developer-id.
+
+7. *talk2MPassword*: A string property that the Talk2M services use for Talk2M account authentication. The value of this property should be populated with the account password for your Talk2M account.
+
+8. *talk2MToken*: A string property that the Talk2M services use for Talk2M account authentication. The value of this property should be populated with a valid Talk2M account token from your Talk2M account. More information about Talk2M account API tokens can be found at https://onlinehelp.ewon.biz/ecatcher/6.6/pro/en/index.html?token-management.htm.
+
+9. *talk2MUsername*: A string property that the Talk2M services use for Talk2M account authentication. The value of this property should be populated with the account username for your Talk2M account.
+
+10. *updateTimeoutMinutes*: An integer property that the Talk2M and direct data path services use as the maximum number of minutes since last data update before showing a warning in the logs.
+
+11. *useHyphens*: A boolean property that controls the organization of Ewon devices and their tags. When tags use a hyphen prefix (i.e. PREFIX-\[tagname\]), a thing will be created for each prefix (i.e. DEVICE-PREFIX) and each of the properties will be added. The default value is `false`.
+
+##### Services
+
+1. *InsertDataPoint*: Used by the Talk2M and direct data paths to insert a datapoint to the respective thing and thing property.
+
+2. *MainExecution*: Used by the Talk2M data path for calling the Talk2MSyncData service within the script timeout period. This service is invoked by the ConnectorHost timer on its configured interval.
+
+3. *ProcessTimeSinceUpdate*: Used by the Talk2M and direct data path services to track the time since the last received data update. This service is invoked by the MainExecution and TakeInfo services.
+
+4. *TakeInfo*: Used by the direct data path to ingest telemetry messages from the Flexy Java Application component. This service is invoked by the Flexy Java Application component using the Thingworx REST API.
+
+5. *Talk2MSyncData*: Used by the Talk2M data path for downloading a transaction of data points from Talk2M/DataMailbox. It requests only data it has not previously recieved using the stored value of lastTransactionId.
+
+#### GenericEwonDevice
+
+GenericEwonDevice is a thing template that applies to all Ewon device things created by the connector and contains common properties that are used by services in both the GenericEwonDeviceTalk2M and GenericEwonDeviceDirect thing templates.
+
+##### Properties
+
+1. *ewonDevicePassword*: The password of the referenced Ewon device. The default value is 'adm' and should be changed if your Ewon password is different. The value of this property is used by the services in both the GenericEwonDeviceTalk2M and GenericEwonDeviceDirect thing templates.
+
+2. *ewonDeviceUsername*: The username of the referenced Ewon device. The default value is 'adm' and should be changed if your Ewon username is different. The value of this property is used by the services in both the GenericEwonDeviceTalk2M and GenericEwonDeviceDirect thing templates.
+
+##### GenericEwonDeviceTalk2M
+
+###### Services
+
+1. *SendEwonOffline*: Sends the referenced Ewon device offline when using a triggered connection, such as 3G or other cellular network. More information about triggered connections can be found at https://www.ewon.biz/e-learning/library/cosy-131/remote-connection#:~:text=Triggered%20Connection%3A%20wake%20up%20%26%20put,when%20the%20user%20needs%20it.
+
+2. *UpdateEwonTagValue*: Updates the specified tag with the specified tag value on the referenced Ewon using the Talk2M M2Web API.
+
+3. *WakeEwonDevice*: Wakes up the referenced Ewon device when using a triggered connection, such as 3G or other cellular network. More information about triggered connections can be found at https://www.ewon.biz/e-learning/library/cosy-131/remote-connection#:~:text=Triggered%20Connection%3A%20wake%20up%20%26%20put,when%20the%20user%20needs%20it.
+
+##### GenericEwonDeviceDirect
+
+###### Properties
+
+1. *talk2MDeviceName*: A string property that the GenericEwonDeviceDirect services use to identify the referenced Ewon on Talk2M. Devices connected using the direct data path may have a different name in Talk2M than what appears in Thingworx, thus it must be explicitly set for direct data path things.
+
+###### Services
+
+1. *SendEwonOffline*: Sends the referenced Ewon device offline when using a triggered connection, such as 3G or other cellular network. More information about triggered connections can be found at https://www.ewon.biz/e-learning/library/cosy-131/remote-connection#:~:text=Triggered%20Connection%3A%20wake%20up%20%26%20put,when%20the%20user%20needs%20it.
+
+2. *UpdateEwonTagValue*: Updates the specified tag with the specified tag value on the referenced Ewon using the Talk2M M2Web API.
+
+3. *WakeEwonDevice*: Wakes up the referenced Ewon device when using a triggered connection, such as 3G or other cellular network. More information about triggered connections can be found at https://www.ewon.biz/e-learning/library/cosy-131/remote-connection#:~:text=Triggered%20Connection%3A%20wake%20up%20%26%20put,when%20the%20user%20needs%20it.
+
+#### GenericEwonDeviceValueStream
+
+GenericEwonDeviceValueStream is a generic value stream thing that is used for storing the values of its respective logged thing properties.
+
+### Common Errors
+
+#### Error Executing Event Handler 'runConnector' for event Type.Thing:Entity.ConnectorHost:Event.Timer
+
+This error is most commonly caused by invalid permissions for the ConnectorHost thing.
+To test, go to "ConnectorHost">"General Information" and change the value of "Run As User" to Administrator.
+
+If the error resolves, there was an issue with the previous "Run As User" permission configuration.
+
+#### Upon attempting to delete/input data into a thing: "error: Thing X does not Exist"
+
+This is an issue with Thingworx not being properly synced with the database provider.
+Restarting Tomcat should fix the issue. For information on how to do this visit https://stackoverflow.com/questions/12622534/tomcat-restart-webapp-from-command-line
 
 ## Flexy Java Application Component
 The Flexy Java application component must be installed for the direct data path configuration.
