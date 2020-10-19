@@ -89,7 +89,9 @@ Navigate to the "Properties and Alerts" tab in ConnectorHost and populate the fo
 
 7. *talk2MUsername*: The account username for login to Talk2M.
 
-8. *useHyphens*: When set to true, additional organization is performed on thing properties with a prefix in the name (i.e. PREFIX-\[tagname\]).
+8. *useDataChangeTypeAlways*: When set to true, the DataChangeType field of newly created properties will be set to 'Always'. The default value is `false`, which will result in newly created properties using the DataChangeType of 'Value'.
+
+9. *useHyphens*: When set to true, additional organization is performed on thing properties with a prefix in the name (i.e. PREFIX-\[tagname\]).
 
 Additional and more detailed information about the properties of ConnectorHost can be found below in Thing Information > ConnectorHost > Properties.
 
@@ -123,7 +125,9 @@ ConnectorHost is a timer thing and triggers a check for new Talk2M data on its c
 
 10. *updateTimeoutMinutes*: An integer property that the Talk2M and direct data path services use as the maximum number of minutes since last data update before showing a warning in the logs.
 
-11. *useHyphens*: A boolean property that controls the organization of Ewon devices and their tags. When tags use a hyphen prefix (i.e. PREFIX-\[tagname\]), a thing will be created for each prefix (i.e. DEVICE-PREFIX) and each of the properties will be added. The default value is `false`.
+11. *useDataChangeTypeAlways*: A boolean property that the Talk2M and direct data path services use when creating new Thing properties. The default value is `false`. If the value is `true`, the DataChangeType field of newly created properties will be set to 'Always'.
+
+12. *useHyphens*: A boolean property that controls the organization of Ewon devices and their tags. When tags use a hyphen prefix (i.e. PREFIX-\[tagname\]), a thing will be created for each prefix (i.e. DEVICE-PREFIX) and each of the properties will be added. The default value is `false`.
 
 ##### Services
 
