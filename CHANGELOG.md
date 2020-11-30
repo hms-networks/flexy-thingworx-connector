@@ -1,5 +1,13 @@
 # Flexy Thingworx Connector Changelog
 
+## Version 1.1.1
+### Features
+- N/A
+### Bug Fixes
+- Fixed a bug that caused tag data types to be read as undefined when using the Talk2M data path
+### Other
+- Fix a spelling error in README.md
+
 ## Version 1.1
 ### Features
 - Data is added as Thing properties
