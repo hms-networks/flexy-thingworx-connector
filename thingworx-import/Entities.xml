@@ -338,16 +338,16 @@ function parseEwon(ewon) {
 
                 // Get tag data type
                 var tagType;
-                if (datapoint.dataType === "Int") {
+                if (tag.dataType === "Int") {
                     tagType = TW_DATA_TYPE_INTEGER;
-                } else if (datapoint.dataType === "Bool") {
+                } else if (tag.dataType === "Bool") {
                     tagType = TW_DATA_TYPE_BOOLEAN;
-                } else if (datapoint.dataType === "Float") {
+                } else if (tag.dataType === "Float") {
                     tagType = TW_DATA_TYPE_NUMBER;
-                } else if (datapoint.dataType === "UInt") {
+                } else if (tag.dataType === "UInt") {
                     tagType = TW_DATA_TYPE_NUMBER;
                 } else {
-                    logger.warn("Unknown data type (" + datapoint.dataType + ") for tag: " + tag.name);
+                    logger.warn("Unknown data type (" + tag.dataType + ") for tag: " + tag.name);
                     tagType = TW_DATA_TYPE_NUMBER;
                 }
 
