@@ -29,6 +29,21 @@
   <property name="src.dir" value="src"/>
   <property name="projectHome" location="." />
 
+  <property name="flexy-etk-dir" location="C:/javaetk/javaetk-j2se/javaetk_1.4.4/lib" />
+
+    <target name="compile">
+    <mkdir dir="${projectHome}/bin" />
+    <javac srcdir="${projectHome}/"
+           destdir="${projectHome}/bin"
+           classpath="${flexy-etk-dir}/javaetk.jar"
+           listfiles="yes"
+           includeantruntime="no"
+           source="1.4"
+           target="1.4">
+      <compilerarg value="-Xlint:-options"/>
+    </javac>
+  </target>
+
   <target name="buildjar">
     <jar destfile="${projectHome}/build/${ProjectName}.jar" basedir="${projectHome}/bin" />
   </target>
