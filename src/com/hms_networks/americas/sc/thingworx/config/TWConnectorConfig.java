@@ -1,10 +1,10 @@
 package com.hms_networks.americas.sc.thingworx.config;
 
-import com.hms_networks.americas.sc.json.JSONObject;
-import com.hms_networks.americas.sc.thingworx.TWConnectorConsts;
 import com.hms_networks.americas.sc.config.ConfigFile;
 import com.hms_networks.americas.sc.json.JSONException;
+import com.hms_networks.americas.sc.json.JSONObject;
 import com.hms_networks.americas.sc.logging.Logger;
+import com.hms_networks.americas.sc.thingworx.TWConnectorConsts;
 
 /**
  * Configuration class containing configuration fields for the Ewon Thingworx Connector.
@@ -27,18 +27,17 @@ public class TWConnectorConfig extends ConfigFile {
   /**
    * Get the configured Thingworx IP address from the configuration.
    *
-   * @return Thingworx IP address
+   * @return Thingworx URL
    * @throws JSONException if unable to get Thingworx IP address from configuration
    */
   public String getThingworxIPAddress() throws JSONException {
-    String twIP = configurationObject.getString(TWConnectorConsts.CONNECTOR_CONFIG_TW_IP_KEY);
-    if (twIP.equals(TWConnectorConsts.CONNECTOR_CONFIG_DEFAULT_TW_IP_KEY)) {
+    String twUrl = configurationObject.getString(TWConnectorConsts.CONNECTOR_CONFIG_TW_URL_KEY);
+    if (twUrl.equals(TWConnectorConsts.CONNECTOR_CONFIG_DEFAULT_TW_URL)) {
       Logger.LOG_WARN(
-          "The configured Thingworx IP address is the default value. "
-              + "Please change this value to the IP address (and port, if not "
-              + "port 80) of your Thingworx Foundation instance. Example: `12.34.56.78:8080`");
+          "The configured Thingworx Base URL is the default value. "
+              + "Please change this value to the URL of your Thingworx Foundation instance.");
     }
-    return twIP;
+    return twUrl;
   }
 
   /**
@@ -104,8 +103,8 @@ public class TWConnectorConfig extends ConfigFile {
         TWConnectorConsts.CONNECTOR_CONFIG_APP_KEY_KEY,
         TWConnectorConsts.CONNECTOR_CONFIG_DEFAULT_APP_KEY);
     defaultConfigObject.put(
-        TWConnectorConsts.CONNECTOR_CONFIG_TW_IP_KEY,
-        TWConnectorConsts.CONNECTOR_CONFIG_DEFAULT_TW_IP_KEY);
+        TWConnectorConsts.CONNECTOR_CONFIG_TW_URL_KEY,
+        TWConnectorConsts.CONNECTOR_CONFIG_DEFAULT_TW_URL);
     return defaultConfigObject;
   }
 }

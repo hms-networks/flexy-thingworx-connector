@@ -68,20 +68,16 @@ public class TWConnectorConsts {
   public static final int CONNECTOR_CONFIG_JSON_INDENT_FACTOR = 3;
 
   // Config Keys
-  /** The configuration file JSON key for the Thingworx IP address. */
-  public static final String CONNECTOR_CONFIG_TW_IP_KEY = "ThingworxIP";
+  /** The configuration file JSON key for the Thingworx base URL. */
+  public static final String CONNECTOR_CONFIG_TW_URL_KEY = "ThingworxBaseUrl";
   /** The configuration file JSON key for the Thingworx app key. */
   public static final String CONNECTOR_CONFIG_APP_KEY_KEY = "AppKey";
   /** The configuration file JSON key for the log level of the connector. */
   public static final String CONNECTOR_CONFIG_LOG_LEVEL_KEY = "LogLevel";
 
   // Config Defaults
-  /**
-   * The default value for the Thingworx IP address in the configuration file. Note: This default
-   * value is an IP address within a test-net IPv4 address range and should not be present on any
-   * standard network.
-   */
-  public static final String CONNECTOR_CONFIG_DEFAULT_TW_IP_KEY = "203.0.113.1";
+  /** The default value for the Thingworx URL. This is a helpful hint for customers. */
+  public static final String CONNECTOR_CONFIG_DEFAULT_TW_URL = "https://setme.biz";
   /** The default value for the app key in the configuration file. */
   public static final String CONNECTOR_CONFIG_DEFAULT_APP_KEY = "Set-This-Value";
   /** The default value for the log level in the configuration file. */
