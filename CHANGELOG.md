@@ -1,5 +1,10 @@
 # Flexy Thingworx Connector Changelog
 
+## Version 1.2
+## Other
+- Changed config file parameter "ThingworxIP" to ThingworxBaseUrl"
+- Added example config file
+- Added note to README about specifying scheme in URL and how this can enable the use of TLS
 ## Version 1.1.1
 ### Features
 - N/A
