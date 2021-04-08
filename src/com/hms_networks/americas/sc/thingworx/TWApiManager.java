@@ -61,9 +61,7 @@ public class TWApiManager {
     String addInfoEndpointFullUrl = "";
     String addInfoRequestHeader = "";
     try {
-      addInfoEndpointFullUrl =
-          TWConnectorMain.getConnectorConfig().getThingworxIPAddress()
-              + TWConnectorConsts.THINGWORX_API_TAKE_INFO_ENDPOINT;
+      addInfoEndpointFullUrl = TWConnectorMain.getConnectorConfig().getThingworxFullUrl();
       addInfoRequestHeader =
           "Content-Type=application/json&appKey="
               + TWConnectorMain.getConnectorConfig().getThingworxAppKey();
