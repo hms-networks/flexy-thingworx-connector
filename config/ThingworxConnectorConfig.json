@@ -1,5 +1,5 @@
 {
    "LogLevel": 1,
-   "ThingworxBaseUrl": "https://setme.biz",
+   "ThingworxFullUrl": "https://setme.biz/Thingworx/Things/ConnectorHost/Services/TakeInfo",
    "AppKey": "Set-This-Value"
 }
