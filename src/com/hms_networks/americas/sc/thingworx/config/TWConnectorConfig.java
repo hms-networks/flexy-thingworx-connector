@@ -25,12 +25,12 @@ public class TWConnectorConfig extends ConfigFile {
   }
 
   /**
-   * Get the configured Thingworx IP address from the configuration.
+   * Get the full URL of the Thingworx endpoint from the configuration.
    *
-   * @return Thingworx URL
-   * @throws JSONException if unable to get Thingworx IP address from configuration
+   * @return Thingworx full URL
+   * @throws JSONException if unable to get Thingworx URL from configuration
    */
-  public String getThingworxIPAddress() throws JSONException {
+  public String getThingworxFullUrl() throws JSONException {
     String twUrl = configurationObject.getString(TWConnectorConsts.CONNECTOR_CONFIG_TW_URL_KEY);
     if (twUrl.equals(TWConnectorConsts.CONNECTOR_CONFIG_DEFAULT_TW_URL)) {
       Logger.LOG_WARN(
