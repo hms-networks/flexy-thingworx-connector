@@ -69,7 +69,7 @@ public class TWConnectorConsts {
 
   // Config Keys
   /** The configuration file JSON key for the Thingworx base URL. */
-  public static final String CONNECTOR_CONFIG_TW_URL_KEY = "ThingworxBaseUrl";
+  public static final String CONNECTOR_CONFIG_TW_URL_KEY = "ThingworxFullUrl";
   /** The configuration file JSON key for the Thingworx app key. */
   public static final String CONNECTOR_CONFIG_APP_KEY_KEY = "AppKey";
   /** The configuration file JSON key for the log level of the connector. */
@@ -77,7 +77,8 @@ public class TWConnectorConsts {
 
   // Config Defaults
   /** The default value for the Thingworx URL. This is a helpful hint for customers. */
-  public static final String CONNECTOR_CONFIG_DEFAULT_TW_URL = "https://setme.biz";
+  public static final String CONNECTOR_CONFIG_DEFAULT_TW_URL =
+      "https://setme.biz/Thingworx/Things/ConnectorHost/Services/TakeInfo";
   /** The default value for the app key in the configuration file. */
   public static final String CONNECTOR_CONFIG_DEFAULT_APP_KEY = "Set-This-Value";
   /** The default value for the log level in the configuration file. */
@@ -142,12 +143,6 @@ public class TWConnectorConsts {
   /** Date format for time stamps sent to the Thingworx API. */
   public static final SimpleDateFormat THINGWORX_API_DATE_FORMAT =
       new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
-  /**
-   * The path to the Thingworx REST API endpoint that is configured to accept data from this
-   * connector.
-   */
-  public static final String THINGWORX_API_TAKE_INFO_ENDPOINT =
-      "/Thingworx/Things/ConnectorHost/Services/TakeInfo";
 
   // SysControlBlock Constants
   /** SysControlBlock serial number key. */
