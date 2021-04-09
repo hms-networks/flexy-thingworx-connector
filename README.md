@@ -18,7 +18,7 @@ There are two components that make up the Ewon Thingworx Connector, a Thingworx 
 3. [Flexy Java Application Component](#flexy-java-application-component)
    1. [Installation](#installation)
    2. [Configuration](#configuration)
-      1. [Thingworx Base URL](#thingworx-base-url)
+      1. [Thingworx Full URL](#thingworx-full-url)
    3. [Source Code](#source-code)
       1. [Development Environment](#development-environment)
    4. [Javadocs](#javadocs)
@@ -208,9 +208,9 @@ Those files are located in the /built-flexy-java-app/ directory of the release z
 ### Configuration
 At startup of the Flexy Java application component, it checks for a configuration file in the /usr/ directory of the Ewon. If one is not present, the application will automatically create one with default values.
 
-After the Flexy Java application component has been installed and started, the configuration should be modified to contain the proper values for AppKey and Thingworx Base URL for your Thingworx instance.
-### Thingworx Base URL 
-This parameter in the config file should be changed to the base URL for the target Thingworx REST API. Users should pay close attention to the scheme designated in the URL. Specifying the scheme "https" will ensure all traffic to the server is encrypted over TLS. For example, setting the ThingworxBaseUrl parameter to "https://example.com:8443" will create a connection to host "example.com" on port 8443 using TLS/SSL. It's possible to only specify the IP address of the Thingworx instance. This configuration will assume "http" scheme and communication will not be encrypted. 
+After the Flexy Java application component has been installed and started, the configuration should be modified to contain the proper values for AppKey and Thingworx Full URL for your Thingworx instance.
+### Thingworx Full URL 
+This parameter in the config file should be changed to the full URL for the target Thingworx REST API. Users should pay close attention to the scheme designated in the URL. Specifying the scheme "https" will ensure all traffic to the server is encrypted over TLS. For example, setting the ThingworxFullUrl parameter to "https://example.com:8443/Thingworx/Things/ConnectorHost/Services/TakeInfo" will create a connection to host "example.com" on port 8443 using TLS/SSL. It's possible to specify the IP address of the Thingworx instance instead of a domain name. This configuration will assume "http" scheme and communication will not be encrypted. 
 
 ### Source Code
 Source code and an Eclipse project for the Flexy Java app are made available in the [hms-networks/flexy-thingworx-connector](https://github.com/hms-networks/flexy-thingworx-connector) repository on GitHub. It is also included in the /source-flexy-java-app/ folder of Flexy Thingworx Connector release \(.zip\) files.
