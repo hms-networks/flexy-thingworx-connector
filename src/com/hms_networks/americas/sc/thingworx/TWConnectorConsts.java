@@ -28,10 +28,10 @@ public class TWConnectorConsts {
 
   // Historical Data Queue Configuration
   /**
-   * The size (in mins) of each data queue poll. Changing this will modify the amount of data
-   * checked during each poll interval.
+   * The default size (in mins) of each data queue poll. Changing this will modify the amount of
+   * data checked during each poll interval.
    */
-  public static final long QUEUE_DATA_POLL_SIZE_MINS = 1;
+  public static final long QUEUE_DATA_POLL_SIZE_MINS_DEFAULT = 1;
   /** The interval (in milliseconds) to poll the historical data queue. */
   public static final long QUEUE_DATA_POLL_INTERVAL_MILLIS = 30000;
   /** The minimum memory (in bytes) required to perform a poll of the data queue. */
@@ -76,6 +76,9 @@ public class TWConnectorConsts {
   public static final String CONNECTOR_CONFIG_LOG_LEVEL_KEY = "LogLevel";
   /** The configuration file JSON key for the enable queue string history setting. */
   public static final String CONNECTOR_CONFIG_QUEUE_STING_HISTORY_KEY = "QueueEnableStringHistory";
+  /** The configuration file JSON key for the queue data poll size in minutes. */
+  public static final String CONNECTOR_CONFIG_QUEUE_DATA_POLL_SIZE_MINS_KEY =
+      "QueueDataPollSizeMins";
 
   // Config Defaults
   /** The default value for the Thingworx URL. This is a helpful hint for customers. */

@@ -66,6 +66,31 @@ public class TWConnectorConfig extends ConfigFile {
   }
 
   /**
+   * Get the queue data poll size in minutes from the configuration.
+   *
+   * @return queue data poll size in minutes
+   * @throws JSONException if unable to get queue data string enabled setting from configuration
+   */
+  public long getQueueDataPollSizeMinutes() throws JSONException {
+    long queueDataStringEnabled;
+    if (configurationObject.has(TWConnectorConsts.CONNECTOR_CONFIG_QUEUE_DATA_POLL_SIZE_MINS_KEY)) {
+      queueDataStringEnabled =
+          configurationObject.getLong(
+              TWConnectorConsts.CONNECTOR_CONFIG_QUEUE_DATA_POLL_SIZE_MINS_KEY);
+    } else {
+      String defaultPollSizeStr =
+          String.valueOf(TWConnectorConsts.QUEUE_DATA_POLL_SIZE_MINS_DEFAULT);
+      Logger.LOG_WARN(
+          "The queue data poll size setting was not set. Using default value of "
+              + defaultPollSizeStr
+              + " minutes.");
+      queueDataStringEnabled = TWConnectorConsts.QUEUE_DATA_POLL_SIZE_MINS_DEFAULT;
+    }
+
+    return queueDataStringEnabled;
+  }
+
+  /**
    * Get the configured Thingworx app key from the configuration.
    *
    * @return Thingworx app key
