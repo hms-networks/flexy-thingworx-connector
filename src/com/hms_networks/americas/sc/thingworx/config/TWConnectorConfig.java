@@ -41,6 +41,31 @@ public class TWConnectorConfig extends ConfigFile {
   }
 
   /**
+   * Get the queue data string enabled setting from the configuration.
+   *
+   * @return queue data string enabled setting
+   * @throws JSONException if unable to get queue data string enabled setting from configuration
+   */
+  public boolean getQueueDataStringEnabled() throws JSONException {
+    boolean queueDataStringEnabled;
+    if (configurationObject.has(TWConnectorConsts.CONNECTOR_CONFIG_QUEUE_STING_HISTORY_KEY)) {
+      queueDataStringEnabled =
+          configurationObject.getBoolean(
+              TWConnectorConsts.CONNECTOR_CONFIG_QUEUE_STING_HISTORY_KEY);
+    } else {
+      String defaultStringEnabledStr =
+          String.valueOf(TWConnectorConsts.QUEUE_DATA_STRING_HISTORY_ENABLED_DEFAULT);
+      Logger.LOG_WARN(
+          "The queue data string enabled setting was not set. Using default value of "
+              + defaultStringEnabledStr
+              + ".");
+      queueDataStringEnabled = TWConnectorConsts.QUEUE_DATA_STRING_HISTORY_ENABLED_DEFAULT;
+    }
+
+    return queueDataStringEnabled;
+  }
+
+  /**
    * Get the configured Thingworx app key from the configuration.
    *
    * @return Thingworx app key

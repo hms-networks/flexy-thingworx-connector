@@ -39,11 +39,11 @@ public class TWConnectorConsts {
   /** The time (in milliseconds) that the data queue must be behind by before warning the user. */
   public static final long QUEUE_DATA_POLL_BEHIND_MILLIS_WARN = 300000;
   /**
-   * Boolean flag indicating if string history data should be retrieved from the queue. String
-   * history requires an additional EBD call in the underlying queue library, and may take extra
-   * processing time, especially in installations with large string tag counts.
+   * Default value of boolean flag indicating if string history data should be retrieved from the
+   * queue. String history requires an additional EBD call in the underlying queue library, and will
+   * take extra processing time, especially in installations with large string tag counts.
    */
-  public static final boolean QUEUE_DATA_STRING_HISTORY_ENABLED = false;
+  public static final boolean QUEUE_DATA_STRING_HISTORY_ENABLED_DEFAULT = false;
 
   // Main Loop Configuration
   /**
@@ -74,6 +74,8 @@ public class TWConnectorConsts {
   public static final String CONNECTOR_CONFIG_APP_KEY_KEY = "AppKey";
   /** The configuration file JSON key for the log level of the connector. */
   public static final String CONNECTOR_CONFIG_LOG_LEVEL_KEY = "LogLevel";
+  /** The configuration file JSON key for the enable queue string history setting. */
+  public static final String CONNECTOR_CONFIG_QUEUE_STING_HISTORY_KEY = "QueueEnableStringHistory";
 
   // Config Defaults
   /** The default value for the Thingworx URL. This is a helpful hint for customers. */
