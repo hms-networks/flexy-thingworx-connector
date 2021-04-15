@@ -238,12 +238,17 @@ public class TWConnectorMain {
         TWConnectorConsts.QUEUE_DATA_POLL_SIZE_MINS);
 
     // Set string history enabled status
-    HistoricalDataQueueManager.setStringHistoryEnabled(
-        TWConnectorConsts.QUEUE_DATA_STRING_HISTORY_ENABLED);
-    if (TWConnectorConsts.QUEUE_DATA_STRING_HISTORY_ENABLED) {
-      Logger.LOG_DEBUG("String history data is enabled.");
-    } else {
-      Logger.LOG_DEBUG("String history data is disabled.");
+    try {
+      HistoricalDataQueueManager.setStringHistoryEnabled(
+          connectorConfig.getQueueDataStringEnabled());
+      if (connectorConfig.getQueueDataStringEnabled()) {
+        Logger.LOG_DEBUG("String history data is enabled.");
+      } else {
+        Logger.LOG_DEBUG("String history data is disabled.");
+      }
+    } catch (JSONException e) {
+      Logger.LOG_CRITICAL("Unable get queue data string enabled setting!");
+      Logger.LOG_EXCEPTION(e);
     }
 
     // Create tag control object for monitoring application control tag
