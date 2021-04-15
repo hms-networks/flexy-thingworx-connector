@@ -234,8 +234,13 @@ public class TWConnectorMain {
     }
 
     // Set historical log poll size
-    HistoricalDataQueueManager.setQueueFifoTimeSpanMins(
-        TWConnectorConsts.QUEUE_DATA_POLL_SIZE_MINS);
+    try {
+      HistoricalDataQueueManager.setQueueFifoTimeSpanMins(
+          connectorConfig.getQueueDataPollSizeMinutes());
+    } catch (JSONException e) {
+      Logger.LOG_CRITICAL("Unable to get the queue poll size from the configuration file!");
+      Logger.LOG_EXCEPTION(e);
+    }
 
     // Set string history enabled status
     try {
