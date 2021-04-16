@@ -19,6 +19,13 @@ There are two components that make up the Ewon Thingworx Connector, a Thingworx 
    1. [Installation](#installation)
    2. [Configuration](#configuration)
       1. [Thingworx Full URL](#thingworx-full-url)
+      2. [App Key](#app-key)
+      3. [Log Level](#log-level)
+      4. [FTP Username](#ftp-username)
+      5. [FTP Password](#ftp-password)
+      6. [Queue Enable String History](#queue-enable-string-history)
+      7. [Queue Data Poll Size](#queue-data-poll-size)
+      8. [Queue Data Poll Interval](#queue-data-poll-interval)
    3. [Source Code](#source-code)
       1. [Development Environment](#development-environment)
    4. [Javadocs](#javadocs)
@@ -209,8 +216,32 @@ Those files are located in the /built-flexy-java-app/ directory of the release z
 At startup of the Flexy Java application component, it checks for a configuration file in the /usr/ directory of the Ewon. If one is not present, the application will automatically create one with default values.
 
 After the Flexy Java application component has been installed and started, the configuration should be modified to contain the proper values for AppKey and Thingworx Full URL for your Thingworx instance.
-### Thingworx Full URL 
+
+![Configuration Example](https://github.com/hms-networks/flexy-thingworx-connector/blob/local-write-back/images/ExampleConfig.PNG?raw=true)
+
+#### Thingworx Full URL
 This parameter in the config file should be changed to the full URL for the target Thingworx REST API. Users should pay close attention to the scheme designated in the URL. Specifying the scheme "https" will ensure all traffic to the server is encrypted over TLS. For example, setting the ThingworxFullUrl parameter to "https://example.com:8443/Thingworx/Things/ConnectorHost/Services/TakeInfo" will create a connection to host "example.com" on port 8443 using TLS/SSL. It's possible to specify the IP address of the Thingworx instance instead of a domain name. This configuration will assume "http" scheme and communication will not be encrypted. 
+
+#### App Key
+This should match the app key for the Thingworx instance.
+
+#### Log Level
+The Thingworx connector uses the HMS Solution Center logging library for application logging to the Ewon Flexy's realtime logs. See [Log Level](https://github.com/hms-networks/sc-flexy-logger-lib#log-level) for more information.
+
+#### FTP Username
+The username for accessing Ewon Flexy via FTP. This user account must be configured for non UTC time zones to be used on the Flexy.
+
+#### FTP Password
+The password for accessing Ewon Flexy via FTP. This user account must be configured for non UTC time zones to be used on the Flexy.
+
+#### Queue Enable String History
+Optional parameter to override the default boolean flag indicating if string history data should be retrieved from the queue. String history requires an additional EBD call in the underlying queue library, and will take extra processing time, especially in installations with large string tag counts.
+
+#### Queue Data Poll Size
+Optional parameter to override the default data poll size (in minutes) of each data queue poll. Changing this will modify the amount of data checked during each poll interval.
+
+#### Queue Data Poll Interval
+Optional parameter to override the default data poll interval (in milliseconds) to poll the historical data queue.
 
 ### Source Code
 Source code and an Eclipse project for the Flexy Java app are made available in the [hms-networks/flexy-thingworx-connector](https://github.com/hms-networks/flexy-thingworx-connector) repository on GitHub. It is also included in the /source-flexy-java-app/ folder of Flexy Thingworx Connector release \(.zip\) files.
