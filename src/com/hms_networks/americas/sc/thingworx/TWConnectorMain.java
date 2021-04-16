@@ -216,7 +216,14 @@ public class TWConnectorMain {
         "Starting " + TWConnectorConsts.CONNECTOR_NAME + " " + TWConnectorConsts.CONNECTOR_VERSION);
 
     // Calculate local time offset and configure queue
-    TWTimeOffsetCalculator.calculateTimeOffsetMilliseconds();
+    try {
+      TWTimeOffsetCalculator.calculateTimeOffsetMilliseconds(
+          connectorConfig.getFtpUser(), connectorConfig.getFtpPassword());
+    } catch (JSONException e) {
+      Logger.LOG_WARN(
+          "An issue occured retrieving FTP user credentials from the configuration file.");
+      Logger.LOG_EXCEPTION(e);
+    }
     final long calculatedTimeOffsetMilliseconds =
         TWTimeOffsetCalculator.getTimeOffsetMilliseconds();
     HistoricalDataQueueManager.setLocalTimeOffset(calculatedTimeOffsetMilliseconds);
@@ -278,7 +285,7 @@ public class TWConnectorMain {
                 TWConnectorConsts.VAR_LST_ADD_TAG_TYPE_REPLACE,
                 TWConnectorConsts.VAR_LST_BOOLEAN_TAG_TYPE_VALUE);
         String ftpUserCredentialsAndServer =
-            TWConnectorConsts.FTP_USERNAME + ":" + TWConnectorConsts.FTP_PASSWORD + "@127.0.0.1";
+            connectorConfig.getFtpUser() + ":" + connectorConfig.getFtpPassword() + "@127.0.0.1";
         ScheduledActionManager.PutFtp(
             TWConnectorConsts.VAR_LST_FILE_PATH,
             ftpAddControlTagVarLstBody2,

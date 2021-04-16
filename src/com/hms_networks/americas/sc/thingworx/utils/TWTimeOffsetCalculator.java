@@ -45,9 +45,10 @@ public class TWTimeOffsetCalculator {
    *
    * @since 1.0
    */
-  public static synchronized void calculateTimeOffsetMilliseconds() {
+  public static synchronized void calculateTimeOffsetMilliseconds(
+      String ftpUser, String ftpPassword) {
     writeLocalTimeHTMLFile();
-    generateLocalTimeFile();
+    generateLocalTimeFile(ftpUser, ftpPassword);
     timeOffsetMilliseconds = parseOffsetFromLocalTime();
   }
 
@@ -97,9 +98,8 @@ public class TWTimeOffsetCalculator {
    *
    * @since 1.0
    */
-  private static void generateLocalTimeFile() {
-    String httpUserCredentialsAndServer =
-        TWConnectorConsts.FTP_USERNAME + ":" + TWConnectorConsts.FTP_PASSWORD + "@127.0.0.1";
+  private static void generateLocalTimeFile(String ftpUser, String ftpPassword) {
+    String httpUserCredentialsAndServer = ftpUser + ":" + ftpPassword + "@127.0.0.1";
     try {
       ScheduledActionManager.GetHttp(
           httpUserCredentialsAndServer,

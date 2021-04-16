@@ -117,6 +117,47 @@ public class TWConnectorConfig extends ConfigFile {
   }
 
   /**
+   * Get the FTP user from the configuration.
+   *
+   * @return FTP user
+   * @throws JSONException if unable to get the FTP user from the configuration file
+   */
+  public String getFtpUser() throws JSONException {
+    String ftpUser;
+    if (configurationObject.has(TWConnectorConsts.CONNECTOR_CONFIG_FTP_USERNAME_KEY)) {
+      ftpUser = configurationObject.getString(TWConnectorConsts.CONNECTOR_CONFIG_FTP_USERNAME_KEY);
+    } else {
+      Logger.LOG_WARN(
+          "The FTP user was not set. The Ewon must be set to UTC time if no FTP user is"
+              + " configured.");
+      ftpUser = "";
+    }
+
+    return ftpUser;
+  }
+
+  /**
+   * Get the FTP password from the configuration.
+   *
+   * @return FTP password
+   * @throws JSONException if unable to get the FTP password from the configuration file
+   */
+  public String getFtpPassword() throws JSONException {
+    String ftpPassword;
+    if (configurationObject.has(TWConnectorConsts.CONNECTOR_CONFIG_FTP_PASSWORD_KEY)) {
+      ftpPassword =
+          configurationObject.getString(TWConnectorConsts.CONNECTOR_CONFIG_FTP_PASSWORD_KEY);
+    } else {
+      Logger.LOG_WARN(
+          "The FTP password was not set. The Ewon must be set to UTC time if no FTP user is"
+              + " configured.");
+      ftpPassword = "";
+    }
+
+    return ftpPassword;
+  }
+
+  /**
    * Get the configured Thingworx app key from the configuration.
    *
    * @return Thingworx app key
