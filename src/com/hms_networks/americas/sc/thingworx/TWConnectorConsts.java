@@ -82,6 +82,13 @@ public class TWConnectorConsts {
   /** The configuration file JSON key for the queue data poll interval in milliseconds. */
   public static final String CONNECTOR_CONFIG_QUEUE_DATA_POLL_INTERVAL_MILLIS_KEY =
       "QueueDataPollIntervalMillis";
+  /**
+   * Username for accessing Ewon Flexy via FTP. This user must be configured on the Ewon Flexy, and
+   * must allow FTP access.
+   */
+  public static final String CONNECTOR_CONFIG_FTP_USERNAME_KEY = "FtpUsername";
+  /** Password for accessing Ewon Flexy via FTP. */
+  public static final String CONNECTOR_CONFIG_FTP_PASSWORD_KEY = "FtpPassword";
 
   // Config Defaults
   /** The default value for the Thingworx URL. This is a helpful hint for customers. */
@@ -125,15 +132,6 @@ public class TWConnectorConsts {
   // Time Constants
   /** The number of milliseconds in one second. */
   public static final int NUM_MILLISECONDS_PER_SECOND = 1000;
-
-  // FTP Constants
-  /**
-   * Username for accessing Ewon Flexy via FTP. This user must be configured on the Ewon Flexy, and
-   * must allow FTP access.
-   */
-  public static final String FTP_USERNAME = "FtpUser";
-  /** Password for accessing Ewon Flexy via FTP. */
-  public static final String FTP_PASSWORD = "FtpPassword";
 
   // Time Offset Constants
   /** Date format used when parsing a local time offset file. */
