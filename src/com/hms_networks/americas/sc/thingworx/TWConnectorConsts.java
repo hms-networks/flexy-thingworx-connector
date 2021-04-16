@@ -32,8 +32,8 @@ public class TWConnectorConsts {
    * data checked during each poll interval.
    */
   public static final long QUEUE_DATA_POLL_SIZE_MINS_DEFAULT = 1;
-  /** The interval (in milliseconds) to poll the historical data queue. */
-  public static final long QUEUE_DATA_POLL_INTERVAL_MILLIS = 30000;
+  /** The default interval (in milliseconds) to poll the historical data queue. */
+  public static final long QUEUE_DATA_POLL_INTERVAL_MILLIS_DEFAULT = 30000;
   /** The minimum memory (in bytes) required to perform a poll of the data queue. */
   public static final int QUEUE_DATA_POLL_MIN_MEMORY_BYTES = 5000000;
   /** The time (in milliseconds) that the data queue must be behind by before warning the user. */
@@ -49,7 +49,7 @@ public class TWConnectorConsts {
   /**
    * The interval (in milliseconds) at which the main loop checks available memory and polls the
    * historical data queue if necessary. This value should be lesser than {@link
-   * #QUEUE_DATA_POLL_INTERVAL_MILLIS}.
+   * #QUEUE_DATA_POLL_INTERVAL_MILLIS_DEFAULT}.
    */
   public static final long MAIN_LOOP_CYCLE_TIME_MILLIS = 1000;
 
@@ -79,6 +79,9 @@ public class TWConnectorConsts {
   /** The configuration file JSON key for the queue data poll size in minutes. */
   public static final String CONNECTOR_CONFIG_QUEUE_DATA_POLL_SIZE_MINS_KEY =
       "QueueDataPollSizeMins";
+  /** The configuration file JSON key for the queue data poll interval in milliseconds. */
+  public static final String CONNECTOR_CONFIG_QUEUE_DATA_POLL_INTERVAL_MILLIS_KEY =
+      "QueueDataPollIntervalMillis";
 
   // Config Defaults
   /** The default value for the Thingworx URL. This is a helpful hint for customers. */
