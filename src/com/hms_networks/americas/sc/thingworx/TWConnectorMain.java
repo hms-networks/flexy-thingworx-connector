@@ -306,12 +306,19 @@ public class TWConnectorMain {
       availableMemoryBytes = Runtime.getRuntime().freeMemory();
 
       // Refresh data if within time window
-      if ((currentTimestampMillis - lastUpdateTimestampMillis)
-          >= TWConnectorConsts.QUEUE_DATA_POLL_INTERVAL_MILLIS) {
-        runGrabData();
+      try {
+        if ((currentTimestampMillis - lastUpdateTimestampMillis)
+            >= connectorConfig.getQueueDataPollIntervalMillis()) {
+          runGrabData();
 
-        // Update last update time stamp
-        lastUpdateTimestampMillis = currentTimestampMillis;
+          // Update last update time stamp
+          lastUpdateTimestampMillis = currentTimestampMillis;
+        }
+      } catch (JSONException e) {
+        Logger.LOG_WARN(
+            "An issue occured retrieving the queue data poll interval from the configuration"
+                + " file.");
+        Logger.LOG_EXCEPTION(e);
       }
 
       // Sleep for main loop cycle time
