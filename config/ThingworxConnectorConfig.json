@@ -1,5 +1,10 @@
 {
    "LogLevel": 1,
-   "ThingworxBaseUrl": "https://setme.biz",
-   "AppKey": "Set-This-Value"
+   "ThingworxFullUrl": "https://setme.biz/Thingworx/Things/ConnectorHost/Services/TakeInfo",
+   "AppKey": "Set-This-Value",
+   "FtpUsername": "Set-This-Value",
+   "FtpPassword": "Set-This-Value",
+   "QueueEnableStringHistory": false,
+   "QueueDataPollSizeMins": 1,
+   "QueueDataPollIntervalMillis": 3000
 }
