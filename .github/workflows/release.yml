@@ -13,6 +13,7 @@ env:
   BUILD_FOLDER: ./build
   CONFIG_FOLDER: example
   SCRIPTS_FOLDER: scripts
+  TW_IMPORT_XML_NAME: ./thingworx-import/Entities.xml
   README_NAME: README.md
   LICENSE_NAME: LICENSE
   CHANGELOG_NAME: CHANGELOG.md
@@ -71,7 +72,7 @@ jobs:
 
       - name: Build Release
         run: |
-          zip release -r $README_NAME $LICENSE_NAME $CHANGELOG_NAME $BUILD_FILE_NAME $CLASSPATH_NAME $PROJECT_NAME $SRC_FOLDER $TMP_JAVADOC_FOLDER $BUILD_FOLDER $CONFIG_FOLDER $SCRIPTS_FOLDER
+          zip release -r $README_NAME $LICENSE_NAME $CHANGELOG_NAME $BUILD_FILE_NAME $CLASSPATH_NAME $PROJECT_NAME $SRC_FOLDER $TMP_JAVADOC_FOLDER $BUILD_FOLDER $CONFIG_FOLDER $SCRIPTS_FOLDER $TW_IMPORT_XML_NAME
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
