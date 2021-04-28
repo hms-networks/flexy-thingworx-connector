@@ -1,5 +1,8 @@
 # Flexy Thingworx Connector Changelog
 
+## Version 1.2.1
+### Bug Fixes
+- Fixed a bug which prevented the jvmrun file from being executed
 ## Version 1.2
 ## Other
 - Changed config file parameter "ThingworxIP" to ThingworxBaseUrl"
