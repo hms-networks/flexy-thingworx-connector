@@ -28,9 +28,10 @@ There are two components that make up the Ewon Thingworx Connector, a Thingworx 
       6. [Queue Enable String History](#queue-enable-string-history)
       7. [Queue Data Poll Size](#queue-data-poll-size)
       8. [Queue Data Poll Interval](#queue-data-poll-interval)
-   3. [Source Code](#source-code)
+   3. [FTP User Setup](#ftp-user-setup)
+   4. [Source Code](#source-code)
       1. [Development Environment](#development-environment)
-   4. [Javadocs](#javadocs)
+   5. [Javadocs](#javadocs)
 
 ## Data Paths
 
@@ -336,10 +337,10 @@ This should match the app key for the Thingworx instance.
 The Thingworx connector uses the HMS Solution Center logging library for application logging to the Ewon Flexy's realtime logs. See [Log Level](https://github.com/hms-networks/sc-flexy-logger-lib#log-level) for more information.
 
 #### FTP Username
-The username for accessing Ewon Flexy via FTP. This user account must be configured for non-UTC time zones to be used on the Flexy.
+The username for accessing Ewon Flexy via FTP. This user account must be configured for non-UTC time zones to be used on the Flexy. See [FTP User Setup](#ftp-user-setup) for more information.
 
 #### FTP Password
-The password for accessing Ewon Flexy via FTP. This user account must be configured for non-UTC time zones to be used on the Flexy.
+The password for accessing Ewon Flexy via FTP. This user account must be configured for non-UTC time zones to be used on the Flexy. See [FTP User Setup](#ftp-user-setup) for more information.
 
 #### Queue Enable String History
 Optional parameter to override the default boolean flag indicating if string history data should be retrieved from the queue. String history requires an additional EBD call in the underlying queue library, and will take extra processing time, especially in installations with large string tag counts.  If no value is specified in the configuration file, the value will be read from QUEUE_DATA_STRING_HISTORY_ENABLED_DEFAULT from "src/com/hms_networks/americas/sc/thingworx/TWConnectorConsts.java".
@@ -355,6 +356,18 @@ The Flexy Java application component was developed using a standard Ewon Java de
 
 #### Source Code
 Source code and an Eclipse project for the Flexy Java app are made available in the [hms-networks/flexy-thingworx-connector](https://github.com/hms-networks/flexy-thingworx-connector) repository on GitHub. It is also included in the /source-flexy-java-app/ folder of Flexy Thingworx Connector release \(.zip\) files.
+
+### FTP User Setup
+The FTP user account is required when the Flexy's local time is not set to UTC. The connector is able to run without an FTP user account if the local time is set to UTC. To create a FTP user account, follow the below steps:
+1. Navigate to the Ewon Flexy's users page via Setup -> Users
+2. Click "Add" to bring up the create new user window
+3. Fill in any desired first and last name
+4. Fill in a user login to be used in the connector config for FTP user access
+5. Fill in a user password to be used in the connector config for FTP user access
+6. Set "Tag Page Allowed" to "default"
+7. Set "User Directory Allowed" to "/usr/(Default)"
+8. Set the "Global user rights" to enable "FTP server access"
+9. Click "Add User"
 
 ##### Cloning
 
