@@ -1,4 +1,40 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><Entities build="b9557" majorVersion="9" minorVersion="0" modelPersistenceProviderPackage="PostgresPersistenceProviderPackage" revision="0" schemaVersion="1100" universal="password"><StyleDefinitions/><Networks/><PersistenceProviderPackages/><Mashups/><ScriptFunctionLibraries/><Projects><Project artifactId="" dependsOn="{&quot;extensions&quot;:&quot;&quot;,&quot;projects&quot;:&quot;&quot;}" description="This project contains all things and services that are required by the Ewon Thingworx Connector." documentationContent="Version: 1.1.1&#10;&#10;Additional information and updated source code may be found online at https://github.com/hms-networks/flexy-thingworx-connector/" groupId="" homeMashup="" lastModifiedDate="2020-11-30T13:35:25.243Z" minPlatformVersion="" name="EwonThingworxConnector" packageVersion="1.0.0" projectName="EwonThingworxConnector" publishResult="" state="DRAFT" tags=""><Owner name="Administrator" type="User"/><avatar/><DesignTimePermissions><Create/><Read/><Update/><Delete/><Metadata/></DesignTimePermissions><RunTimePermissions/><VisibilityPermissions><Visibility/></VisibilityPermissions><ConfigurationTableDefinitions/><ConfigurationTables/><ConfigurationChanges><ConfigurationChange changeAction="CREATE" changeReason="header : name : updated, description : updated, documentationContent : updated&#10;" timestamp="2020-10-08T15:22:51.334Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="header : documentationContent : updated&#10;" timestamp="2020-10-08T15:38:39.155Z" user="Administrator"/><ConfigurationChange changeAction="CREATE" changeReason="" timestamp="2020-10-08T15:43:29.052Z" user="Administrator"/><ConfigurationChange changeAction="CREATE" changeReason="" timestamp="2020-10-08T15:52:22.846Z" user="Administrator"/><ConfigurationChange changeAction="CREATE" changeReason="" timestamp="2020-11-30T13:22:13.345Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="header : documentationContent : updated&#10;" timestamp="2020-11-30T13:35:25.243Z" user="Administrator"/></ConfigurationChanges></Project></Projects><Users/><DirectoryServices/><Widgets/><MediaEntities/><Groups/><PersistenceProviders/><ModelTags/><LocalizationTables/><Dashboards/><StyleThemes/><DataShapes/><Things><Thing description="This is a generic value stream that can accept and store the datapoints for configured thing properties." documentationContent="" effectiveThingPackage="ValueStreamThing" enabled="true" homeMashup="StreamMashup" identifier="" inheritedValueStream="" lastModifiedDate="2020-11-30T13:22:13.345Z" name="GenericEwonDeviceValueStream" projectName="EwonThingworxConnector" published="false" tags="" thingTemplate="ValueStream" valueStream=""><Owner name="Administrator" type="User"/><avatar/><DesignTimePermissions><Create/><Read/><Update/><Delete/><Metadata/></DesignTimePermissions><RunTimePermissions/><VisibilityPermissions><Visibility/></VisibilityPermissions><ConfigurationTableDefinitions/><ConfigurationTables><ConfigurationTable dataShapeName="" description="Data Thing Configuration" isMultiRow="false" name="DataThingSettings" ordinal="0"><DataShape><FieldDefinitions><FieldDefinition baseType="STRING" description="Persistence Provider Name" name="persistenceProvider" ordinal="0"/></FieldDefinitions></DataShape><Rows><Row><persistenceProvider><![CDATA[ThingworxPersistenceProvider]]></persistenceProvider></Row></Rows></ConfigurationTable><ConfigurationTable dataShapeName="" description="Configurable options to tune Value Stream performance" isMultiRow="false" name="PersistenceProviderCustomSettings" ordinal="2"><DataShape><FieldDefinitions><FieldDefinition aspect.friendlyName="Persistence Provider Custom Settings Table" baseType="INFOTABLE" description="Persistence Provider Custom Config Table" name="customConfigTable" ordinal="0"/></FieldDefinitions></DataShape><Rows><Row><customConfigTable><infoTable><DataShape><FieldDefinitions/></DataShape><Rows/></infoTable></customConfigTable></Row></Rows></ConfigurationTable></ConfigurationTables><ThingShape><PropertyDefinitions/><ServiceDefinitions/><EventDefinitions/><ServiceMappings/><ServiceImplementations/><Subscriptions/></ThingShape><PropertyBindings/><RemotePropertyBindings/><RemoteServiceBindings/><RemoteEventBindings/><AlertConfigurations/><ImplementedShapes/><ThingProperties/><ConfigurationChanges><ConfigurationChange changeAction="CREATE" changeReason="" timestamp="2020-11-30T13:22:13.345Z" user="Administrator"/></ConfigurationChanges></Thing><Thing description="The main service provider of the Ewon Thingworx Connector. This 'thing' provides the services required for receiving and processing data from the Ewon Talk2M cloud and the Ewon Thingworx Connector Java application for Flexy. The Ewon Thingworx Connector configuration can be modified by editing the properties of this 'thing'." documentationContent="" effectiveThingPackage="TimerThing" enabled="true" homeMashup="" identifier="" inheritedValueStream="" lastModifiedDate="2020-11-30T13:32:20.312Z" name="ConnectorHost" projectName="EwonThingworxConnector" published="false" tags="" thingTemplate="Timer" valueStream=""><Owner name="Administrator" type="User"/><avatar/><DesignTimePermissions><Create/><Read/><Update/><Delete/><Metadata/></DesignTimePermissions><RunTimePermissions/><VisibilityPermissions><Visibility/></VisibilityPermissions><ConfigurationTableDefinitions/><ConfigurationTables><ConfigurationTable dataShapeName="" description="General Settings" isHidden="true" isMultiRow="false" name="Settings" ordinal="0"><DataShape><FieldDefinitions><FieldDefinition aspect.defaultValue="true" baseType="BOOLEAN" description="Automatically enable timer on startup" name="enabled" ordinal="0"/><FieldDefinition baseType="USERNAME" description="User context in which to run event handlers" name="runAsUser" ordinal="0"/><FieldDefinition aspect.defaultValue="60000.0" baseType="NUMBER" description="Update rate" name="updateRate" ordinal="0"/></FieldDefinitions></DataShape><Rows><Row><enabled>true</enabled><runAsUser><![CDATA[Administrator]]></runAsUser><updateRate>30000.0</updateRate></Row></Rows></ConfigurationTable></ConfigurationTables><ThingShape><PropertyDefinitions><PropertyDefinition aspect.cacheTime="0.0" aspect.dataChangeType="VALUE" aspect.defaultValue="true" aspect.isPersistent="true" baseType="BOOLEAN" category="" description="" isLocalOnly="false" name="disableTalk2M" ordinal="10"/><PropertyDefinition aspect.cacheTime="0.0" aspect.dataChangeType="VALUE" aspect.defaultValue="-1" aspect.isPersistent="true" baseType="INTEGER" category="" description="" isLocalOnly="false" name="lastTransactionId" ordinal="16"/><PropertyDefinition aspect.cacheTime="0.0" aspect.dataChangeType="VALUE" aspect.isPersistent="true" baseType="DATETIME" category="" description="" isLocalOnly="false" name="lastUpdateTime" ordinal="16"/><PropertyDefinition aspect.cacheTime="0.0" aspect.dataChangeType="VALUE" aspect.defaultValue="30" aspect.isPersistent="true" aspect.units="seconds" baseType="INTEGER" category="" description="" isLocalOnly="false" name="scriptTimeoutSeconds" ordinal="12"/><PropertyDefinition aspect.cacheTime="0.0" aspect.dataChangeType="VALUE" aspect.isPersistent="true" baseType="STRING" category="" description="" isLocalOnly="false" name="talk2MAccount" ordinal="14"/><PropertyDefinition aspect.cacheTime="0.0" aspect.dataChangeType="VALUE" aspect.isPersistent="true" baseType="STRING" category="" description="" isLocalOnly="false" name="talk2MDeveloperID" ordinal="12"/><PropertyDefinition aspect.cacheTime="0.0" aspect.dataChangeType="VALUE" aspect.isPersistent="true" baseType="STRING" category="" description="" isLocalOnly="false" name="talk2MPassword" ordinal="13"/><PropertyDefinition aspect.cacheTime="0.0" aspect.dataChangeType="VALUE" aspect.isPersistent="true" baseType="STRING" category="" description="" isLocalOnly="false" name="talk2MToken" ordinal="9"/><PropertyDefinition aspect.cacheTime="0.0" aspect.dataChangeType="VALUE" aspect.isPersistent="true" baseType="STRING" category="" description="" isLocalOnly="false" name="talk2MUsername" ordinal="12"/><PropertyDefinition aspect.cacheTime="0.0" aspect.dataChangeType="VALUE" aspect.defaultValue="10" aspect.isPersistent="true" aspect.units="" baseType="INTEGER" category="" description="" isLocalOnly="false" name="updateTimeoutMinutes" ordinal="16"/><PropertyDefinition aspect.cacheTime="0.0" aspect.dataChangeType="VALUE" aspect.defaultValue="false" aspect.isPersistent="true" baseType="BOOLEAN" category="" description="When set to true, all newly created properties will use 'Always' for the DataChangeType." isLocalOnly="false" name="useDataChangeTypeAlways" ordinal="13"/><PropertyDefinition aspect.cacheTime="0.0" aspect.dataChangeType="VALUE" aspect.defaultValue="false" aspect.isPersistent="true" baseType="BOOLEAN" category="" description="True indicates that the tag name, up to the first hypen, will be appended to the thing name. This allows for a more refined organization of things and their properties." isLocalOnly="false" name="useHyphens" ordinal="17"/></PropertyDefinitions><ServiceDefinitions><ServiceDefinition aspect.isAsync="false" category="" description="" isAllowOverride="false" isLocalOnly="false" isOpen="false" isPrivate="false" name="InsertDataPoint"><ResultType baseType="NOTHING" description="" name="result" ordinal="0"/><ParameterDefinitions><FieldDefinition aspect.isRequired="true" baseType="STRING" description="" name="ewonName" ordinal="2"/><FieldDefinition aspect.isRequired="true" baseType="BOOLEAN" description="" name="isTalk2MDevice" ordinal="7"/><FieldDefinition aspect.isRequired="true" baseType="STRING" description="" name="tagName" ordinal="1"/><FieldDefinition aspect.isRequired="true" baseType="STRING" description="" name="tagQuality" ordinal="5"/><FieldDefinition aspect.isRequired="true" baseType="STRING" description="" name="tagType" ordinal="6"/><FieldDefinition aspect.isRequired="true" baseType="STRING" description="" name="tagValue" ordinal="3"/><FieldDefinition aspect.isRequired="true" baseType="STRING" description="" name="timestamp" ordinal="4"/></ParameterDefinitions></ServiceDefinition><ServiceDefinition aspect.isAsync="true" category="" description="" isAllowOverride="false" isLocalOnly="false" isOpen="false" isPrivate="false" name="MainExecution"><ResultType baseType="NOTHING" description="" name="result" ordinal="0"/><ParameterDefinitions/></ServiceDefinition><ServiceDefinition aspect.isAsync="true" category="" description="" isAllowOverride="false" isLocalOnly="false" isOpen="false" isPrivate="false" name="ProcessTimeSinceUpdate"><ResultType baseType="NOTHING" description="" name="result" ordinal="0"/><ParameterDefinitions><FieldDefinition aspect.isRequired="true" baseType="BOOLEAN" description="" name="hasUpdated" ordinal="1"/></ParameterDefinitions></ServiceDefinition><ServiceDefinition aspect.isAsync="true" category="" description="Landing function that an ewon can connect to" isAllowOverride="false" isLocalOnly="false" isOpen="false" isPrivate="false" name="TakeInfo"><ResultType baseType="NOTHING" description="" name="result" ordinal="0"/><ParameterDefinitions><FieldDefinition aspect.isRequired="true" baseType="STRING" description="" name="Tags" ordinal="1"/></ParameterDefinitions></ServiceDefinition><ServiceDefinition aspect.isAsync="false" category="" description="Grabs all historical data from the DataMailbox then cleans all of the recieved data from data mailbox" isAllowOverride="false" isLocalOnly="false" isOpen="false" isPrivate="false" name="Talk2MSyncData"><ResultType baseType="JSON" description="returns usedTransactionId which is the most recent TransactionId actually processed and ready for deletion and nextTransactionId, the next transaction id to be called." name="result" ordinal="0"/><ParameterDefinitions><FieldDefinition aspect.defaultValue="-1" baseType="INTEGER" description="" name="initialTransactionId" ordinal="1"/></ParameterDefinitions></ServiceDefinition></ServiceDefinitions><EventDefinitions/><ServiceMappings/><ServiceImplementations><ServiceImplementation description="" handlerName="Script" name="InsertDataPoint"><ConfigurationTables><ConfigurationTable dataShapeName="" description="" isMultiRow="false" name="Script" ordinal="0"><DataShape><FieldDefinitions><FieldDefinition baseType="STRING" description="code" name="code" ordinal="0"/></FieldDefinitions></DataShape><Rows><Row><code><![CDATA[/*
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><Entities build="b10877" majorVersion="9" minorVersion="1" modelPersistenceProviderPackage="H2PersistenceProviderPackage" revision="0" schemaVersion="1110" universal="password"><StyleDefinitions/><Networks/><PersistenceProviderPackages/><Mashups/><ScriptFunctionLibraries/><Projects><Project artifactId="" aspect.projectType="Component" dependsOn="{&quot;extensions&quot;:&quot;&quot;,&quot;projects&quot;:&quot;&quot;}" description="This project contains all things and services that are required by the Ewon Thingworx Connector." documentationContent="Version: 2.0&#10;&#10;Additional information and updated source code may be found online at https://github.com/hms-networks/flexy-thingworx-connector/" groupId="" homeMashup="" lastModifiedDate="2021-05-11T13:48:38.192Z" minPlatformVersion="" name="EwonThingworxConnector" packageVersion="1.0.0" projectName="EwonThingworxConnector" publishResult="" state="DRAFT" tags=""><Owner name="Administrator" type="User"/><avatar/><DesignTimePermissions><Create/><Read/><Update/><Delete/><Metadata/></DesignTimePermissions><RunTimePermissions/><VisibilityPermissions><Visibility/></VisibilityPermissions><ConfigurationTableDefinitions/><ConfigurationTables/><ConfigurationChanges><ConfigurationChange changeAction="CREATE" changeReason="header : name : updated, description : updated, documentationContent : updated&#10;" timestamp="2020-10-08T15:22:51.334Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="header : documentationContent : updated&#10;" timestamp="2020-10-08T15:38:39.155Z" user="Administrator"/><ConfigurationChange changeAction="CREATE" changeReason="" timestamp="2020-10-08T15:43:29.052Z" user="Administrator"/><ConfigurationChange changeAction="CREATE" changeReason="" timestamp="2020-10-08T15:52:22.846Z" user="Administrator"/><ConfigurationChange changeAction="CREATE" changeReason="" timestamp="2020-11-30T13:22:13.345Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="header : documentationContent : updated&#10;" timestamp="2020-11-30T13:35:25.243Z" user="Administrator"/><ConfigurationChange changeAction="CREATE" changeReason="" timestamp="2021-04-06T13:41:54.527Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="header : documentationContent : updated&#10;" timestamp="2021-05-10T17:24:57.104Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="header : documentationContent : updated&#10;" timestamp="2021-05-11T13:48:38.192Z" user="Administrator"/></ConfigurationChanges></Project></Projects><Users/><DirectoryServices/><Widgets/><MediaEntities/><Groups/><PersistenceProviders/><ModelTags/><LocalizationTables/><Dashboards/><StyleThemes/><DataShapes/><Things><Thing description="This is a generic value stream that can accept and store the datapoints for configured thing properties." documentationContent="" effectiveThingPackage="ValueStreamThing" enabled="true" homeMashup="StreamMashup" identifier="" inheritedValueStream="" lastModifiedDate="2021-05-11T12:18:41.198Z" name="GenericEwonDeviceValueStream" projectName="EwonThingworxConnector" published="false" tags="" thingTemplate="ValueStream" valueStream=""><Owner name="Administrator" type="User"/><avatar/><DesignTimePermissions><Create/><Read/><Update/><Delete/><Metadata/></DesignTimePermissions><RunTimePermissions/><VisibilityPermissions><Visibility/></VisibilityPermissions><ConfigurationTableDefinitions/><ConfigurationTables><ConfigurationTable dataShapeName="" description="Data Thing Configuration" isMultiRow="false" name="DataThingSettings" ordinal="0"><DataShape><FieldDefinitions><FieldDefinition baseType="STRING" description="Persistence Provider Name" name="persistenceProvider" ordinal="0"/></FieldDefinitions></DataShape><Rows><Row><persistenceProvider><![CDATA[ThingworxPersistenceProvider]]></persistenceProvider></Row></Rows></ConfigurationTable><ConfigurationTable dataShapeName="" description="Configurable options to tune Value Stream performance" isMultiRow="false" name="PersistenceProviderCustomSettings" ordinal="2"><DataShape><FieldDefinitions><FieldDefinition aspect.friendlyName="Persistence Provider Custom Settings Table" baseType="INFOTABLE" description="Persistence Provider Custom Config Table" name="customConfigTable" ordinal="0"/></FieldDefinitions></DataShape><Rows><Row><customConfigTable><infoTable><DataShape><FieldDefinitions/></DataShape><Rows/></infoTable></customConfigTable></Row></Rows></ConfigurationTable></ConfigurationTables><ThingShape><PropertyDefinitions/><ServiceDefinitions/><EventDefinitions/><ServiceMappings/><ServiceImplementations/><Subscriptions/></ThingShape><PropertyBindings/><RemotePropertyBindings/><RemoteServiceBindings/><RemoteEventBindings/><AlertConfigurations/><ImplementedShapes/><ThingProperties/><ConfigurationChanges><ConfigurationChange changeAction="CREATE" changeReason="" timestamp="2021-04-06T13:41:54.530Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="SetProjectName : [PTCDefaultProject]" timestamp="2021-05-03T14:02:20.972Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="SetProjectName : [EwonThingworxConnector]" timestamp="2021-05-03T14:02:20.999Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2021-05-11T12:18:41.197Z" user="Administrator"/></ConfigurationChanges></Thing><Thing description="The main service provider of the Ewon Thingworx Connector. This 'thing' provides the services required for receiving and processing data from the Ewon Talk2M cloud and the Ewon Thingworx Connector Java application for Flexy. The Ewon Thingworx Connector configuration can be modified by editing the properties of this 'thing'." documentationContent="" effectiveThingPackage="TimerThing" enabled="true" homeMashup="" identifier="" inheritedValueStream="" lastModifiedDate="2021-05-11T12:18:41.208Z" name="ConnectorHost" projectName="EwonThingworxConnector" published="false" tags="" thingTemplate="Timer" valueStream=""><Owner name="Administrator" type="User"/><avatar/><DesignTimePermissions><Create/><Read/><Update/><Delete/><Metadata/></DesignTimePermissions><RunTimePermissions/><VisibilityPermissions><Visibility/></VisibilityPermissions><ConfigurationTableDefinitions/><ConfigurationTables><ConfigurationTable dataShapeName="" description="General Settings" isHidden="true" isMultiRow="false" name="Settings" ordinal="0"><DataShape><FieldDefinitions><FieldDefinition aspect.defaultValue="true" baseType="BOOLEAN" description="Automatically enable timer on startup" name="enabled" ordinal="0"/><FieldDefinition baseType="USERNAME" description="User context in which to run event handlers" name="runAsUser" ordinal="0"/><FieldDefinition aspect.defaultValue="60000.0" baseType="NUMBER" description="Update rate" name="updateRate" ordinal="0"/></FieldDefinitions></DataShape><Rows><Row><enabled>true</enabled><runAsUser><![CDATA[Administrator]]></runAsUser><updateRate>30000.0</updateRate></Row></Rows></ConfigurationTable></ConfigurationTables><ThingShape><PropertyDefinitions><PropertyDefinition aspect.cacheTime="0.0" aspect.dataChangeType="VALUE" aspect.defaultValue="true" aspect.isPersistent="true" baseType="BOOLEAN" category="" description="" isLocalOnly="false" name="disableTalk2M" ordinal="10"/><PropertyDefinition aspect.cacheTime="0.0" aspect.dataChangeType="VALUE" aspect.defaultValue="-1" aspect.isPersistent="true" baseType="INTEGER" category="" description="" isLocalOnly="false" name="lastTransactionId" ordinal="16"/><PropertyDefinition aspect.cacheTime="0.0" aspect.dataChangeType="VALUE" aspect.isPersistent="true" baseType="DATETIME" category="" description="" isLocalOnly="false" name="lastUpdateTime" ordinal="16"/><PropertyDefinition aspect.cacheTime="0.0" aspect.dataChangeType="VALUE" aspect.defaultValue="30" aspect.isPersistent="true" aspect.units="seconds" baseType="INTEGER" category="" description="" isLocalOnly="false" name="scriptTimeoutSeconds" ordinal="12"/><PropertyDefinition aspect.cacheTime="0.0" aspect.dataChangeType="VALUE" aspect.isPersistent="true" baseType="STRING" category="" description="" isLocalOnly="false" name="talk2MAccount" ordinal="14"/><PropertyDefinition aspect.cacheTime="0.0" aspect.dataChangeType="VALUE" aspect.isPersistent="true" baseType="STRING" category="" description="" isLocalOnly="false" name="talk2MDeveloperID" ordinal="12"/><PropertyDefinition aspect.cacheTime="0.0" aspect.dataChangeType="VALUE" aspect.isPersistent="true" baseType="STRING" category="" description="" isLocalOnly="false" name="talk2MPassword" ordinal="13"/><PropertyDefinition aspect.cacheTime="0.0" aspect.dataChangeType="VALUE" aspect.isPersistent="true" baseType="STRING" category="" description="" isLocalOnly="false" name="talk2MToken" ordinal="9"/><PropertyDefinition aspect.cacheTime="0.0" aspect.dataChangeType="VALUE" aspect.isPersistent="true" baseType="STRING" category="" description="" isLocalOnly="false" name="talk2MUsername" ordinal="12"/><PropertyDefinition aspect.cacheTime="0.0" aspect.dataChangeType="VALUE" aspect.defaultValue="10" aspect.isPersistent="true" aspect.units="" baseType="INTEGER" category="" description="" isLocalOnly="false" name="updateTimeoutMinutes" ordinal="16"/><PropertyDefinition aspect.cacheTime="0.0" aspect.dataChangeType="VALUE" aspect.defaultValue="false" aspect.isPersistent="true" baseType="BOOLEAN" category="" description="When set to true, all newly created properties will use 'Always' for the DataChangeType." isLocalOnly="false" name="useDataChangeTypeAlways" ordinal="13"/><PropertyDefinition aspect.cacheTime="0.0" aspect.dataChangeType="VALUE" aspect.defaultValue="false" aspect.isPersistent="true" baseType="BOOLEAN" category="" description="True indicates that the tag name, up to the first hypen, will be appended to the thing name. This allows for a more refined organization of things and their properties." isLocalOnly="false" name="useHyphens" ordinal="17"/></PropertyDefinitions><ServiceDefinitions><ServiceDefinition aspect.isAsync="false" category="" description="Adds a new thing and app key for an Ewon device that will be connected to Thingworx directly, using the Ewon Thingworx Connector." isAllowOverride="false" isLocalOnly="false" isOpen="false" isPrivate="false" name="AddNewDirectStandaloneDevice"><ResultType baseType="JSON" description="Endpoint and application key information for the generated thing." name="result" ordinal="0"/><ParameterDefinitions><FieldDefinition aspect.isRequired="true" baseType="DATETIME" description="The expiration date/time of the generated device application key." name="thingAppKeyExpiration" ordinal="2"/><FieldDefinition aspect.isRequired="true" baseType="USERNAME" description="The user reference for the generated device application key." name="thingAppKeyUser" ordinal="3"/><FieldDefinition aspect.isRequired="true" baseType="STRING" description="The desired name for the new Thing to create." name="thingName" ordinal="1"/></ParameterDefinitions></ServiceDefinition><ServiceDefinition aspect.isAsync="false" category="" description="" isAllowOverride="false" isLocalOnly="false" isOpen="false" isPrivate="false" name="InsertDataPoint"><ResultType baseType="NOTHING" description="" name="result" ordinal="0"/><ParameterDefinitions><FieldDefinition aspect.isRequired="true" baseType="STRING" description="" name="ewonName" ordinal="2"/><FieldDefinition aspect.isRequired="true" baseType="BOOLEAN" description="" name="isTalk2MDevice" ordinal="7"/><FieldDefinition aspect.isRequired="true" baseType="STRING" description="" name="tagName" ordinal="1"/><FieldDefinition aspect.isRequired="true" baseType="STRING" description="" name="tagQuality" ordinal="5"/><FieldDefinition aspect.isRequired="true" baseType="STRING" description="" name="tagType" ordinal="6"/><FieldDefinition aspect.isRequired="true" baseType="STRING" description="" name="tagValue" ordinal="3"/><FieldDefinition aspect.isRequired="true" baseType="STRING" description="" name="timestamp" ordinal="4"/></ParameterDefinitions></ServiceDefinition><ServiceDefinition aspect.isAsync="true" category="" description="" isAllowOverride="false" isLocalOnly="false" isOpen="false" isPrivate="false" name="MainExecution"><ResultType baseType="NOTHING" description="" name="result" ordinal="0"/><ParameterDefinitions/></ServiceDefinition><ServiceDefinition aspect.isAsync="true" category="" description="" isAllowOverride="false" isLocalOnly="false" isOpen="false" isPrivate="false" name="ProcessTimeSinceUpdate"><ResultType baseType="NOTHING" description="" name="result" ordinal="0"/><ParameterDefinitions><FieldDefinition aspect.isRequired="true" baseType="BOOLEAN" description="" name="hasUpdated" ordinal="1"/></ParameterDefinitions></ServiceDefinition><ServiceDefinition aspect.isAsync="true" category="" description="Landing function that an ewon can connect to" isAllowOverride="false" isLocalOnly="false" isOpen="false" isPrivate="false" name="TakeInfo"><ResultType baseType="NOTHING" description="" name="result" ordinal="0"/><ParameterDefinitions><FieldDefinition aspect.isRequired="true" baseType="STRING" description="" name="Tags" ordinal="1"/></ParameterDefinitions></ServiceDefinition><ServiceDefinition aspect.isAsync="false" category="" description="Grabs all historical data from the DataMailbox then cleans all of the recieved data from data mailbox" isAllowOverride="false" isLocalOnly="false" isOpen="false" isPrivate="false" name="Talk2MSyncData"><ResultType baseType="JSON" description="returns usedTransactionId which is the most recent TransactionId actually processed and ready for deletion and nextTransactionId, the next transaction id to be called." name="result" ordinal="0"/><ParameterDefinitions><FieldDefinition aspect.defaultValue="-1" baseType="INTEGER" description="" name="initialTransactionId" ordinal="1"/></ParameterDefinitions></ServiceDefinition></ServiceDefinitions><EventDefinitions/><ServiceMappings/><ServiceImplementations><ServiceImplementation description="" handlerName="Script" name="AddNewDirectStandaloneDevice"><ConfigurationTables><ConfigurationTable dataShapeName="" description="" isMultiRow="false" name="Script" ordinal="0"><DataShape><FieldDefinitions><FieldDefinition baseType="STRING" description="code" name="code" ordinal="0"/></FieldDefinitions></DataShape><Rows><Row><code><![CDATA[// Create new application key for device/thing
+var appKeyName = thingName + "_APPLICATION-KEY";
+let appKeyParams = {
+    clientName: undefined /* STRING */ ,
+    name: appKeyName /* STRING */ ,
+    description: "Unique application key for thing: " + thingName /* STRING */ ,
+    whitelist: undefined /* STRING */ ,
+    projectName: "EwonThingworxConnector" /* PROJECTNAME */ ,
+    user: thingAppKeyUser /* USERNAME */ ,
+    tags: undefined /* TAGS */ ,
+    expirationDate: thingAppKeyExpiration /* DATETIME */
+};
+Resources["EntityServices"].CreateApplicationKey(appKeyParams);
+
+// Create new thing
+let thingParams = {
+    name: thingName /* STRING */ ,
+    description: "Created by EwonThingworxConnector" /* STRING */ ,
+    thingTemplateName: "GenericEwonDeviceDirectStandalone" /* THINGTEMPLATENAME */ ,
+    projectName: "EwonThingworxConnector",
+    tags: undefined /* TAGS */ ,
+};
+Resources["EntityServices"].CreateThing(thingParams);
+
+// Enable and restart thing
+Things[thingName].EnableThing();
+Things[thingName].RestartThing();
+
+// Return JSON with device endpoint URL and application key
+let deviceEndpoint = "http[s]://[ThingworxURL]/Thingworx/Things/" + thingName + "/Services/TakeInfo";
+let appKeyId = ApplicationKeys[appKeyName].GetKeyID();
+let result = {
+    deviceName: thingName /* STRING */,
+    deviceEndpoint: deviceEndpoint /* STRING */ ,
+    deviceAppKeyName: appKeyName /* STRING */,
+    deviceAppKey: appKeyId /* STRING */
+};]]></code></Row></Rows></ConfigurationTable></ConfigurationTables></ServiceImplementation><ServiceImplementation description="" handlerName="Script" name="InsertDataPoint"><ConfigurationTables><ConfigurationTable dataShapeName="" description="" isMultiRow="false" name="Script" ordinal="0"><DataShape><FieldDefinitions><FieldDefinition baseType="STRING" description="code" name="code" ordinal="0"/></FieldDefinitions></DataShape><Rows><Row><code><![CDATA[/*
  * Inserts a datapoint to its respective thing property
  *
  * @author HMS Networks, MU Americas Solution Center
@@ -32,7 +68,7 @@ function run() {
                 name: thingName /* STRING */ ,
                 description: "Created by EwonThingworxConnector" /* STRING */ ,
                 thingTemplateName: "GenericEwonDeviceTalk2M" /* THINGTEMPLATENAME */ ,
-                project: "EwonThingworxConnector",
+                projectName: "EwonThingworxConnector",
                 tags: undefined /* TAGS */ ,
             };
         } else {
@@ -40,7 +76,7 @@ function run() {
                 name: thingName /* STRING */ ,
                 description: "Created by EwonThingworxConnector" /* STRING */ ,
                 thingTemplateName: "GenericEwonDeviceDirect" /* THINGTEMPLATENAME */ ,
-                project: "EwonThingworxConnector",
+                projectName: "EwonThingworxConnector",
                 tags: undefined /* TAGS */ ,
             };
         }
@@ -206,28 +242,28 @@ if (prevTransactionId == me.lastTransactionId) {
  *
  * @author HMS Networks, MU Americas Solution Center
  */
-const MILLISECONDS_IN_MINUTES = 60000;
+const MILLISECONDS_PER_MINUTE = 60000;
 if (hasUpdated) {
   // There was an update, so the last update time is changed to now
   me.lastUpdateTime = Date.now();
 } else {
-  const timeSinceLastUpdate = Date.now() - me.lastUpdateTime;
-  const maximumAllowedTimeSinceLastUpdate =
-    MILLISECONDS_IN_MINUTES * me.updateTimeoutMinutes;
-  if (timeSinceLastUpdate > maximumAllowedTimeSinceLastUpdate) {
+  const timeSinceLastUpdateMillis = Date.now() - me.lastUpdateTime;
+  const maximumAllowedTimeSinceLastUpdateMillis =
+    MILLISECONDS_PER_MINUTE * me.updateTimeoutMinutes;
+  if (timeSinceLastUpdateMillis > maximumAllowedTimeSinceLastUpdateMillis) {
     logger.error(
       'A data update has not been received since ' + me.lastUpdateTime
     );
   }
 }
-]]></code></Row></Rows></ConfigurationTable></ConfigurationTables></ServiceImplementation><ServiceImplementation description="" handlerName="Script" name="TakeInfo"><ConfigurationTables><ConfigurationTable dataShapeName="" description="" isMultiRow="false" name="Script" ordinal="0"><DataShape><FieldDefinitions><FieldDefinition baseType="STRING" description="code" name="code" ordinal="0"/></FieldDefinitions></DataShape><Rows><Row><code><![CDATA[const DATA_QUALITY_BAD = 0;
-const DATA_QUALITY_UNKNOWN = 1;
-const DATA_QUALITY_GOOD = 3;
-const DATA_TYPE_BOOLEAN = 0;
-const DATA_TYPE_FLOAT = 1;
-const DATA_TYPE_INTEGER = 2;
-const DATA_TYPE_DWORD = 3;
-const DATA_TYPE_STRING = 4;
+]]></code></Row></Rows></ConfigurationTable></ConfigurationTables></ServiceImplementation><ServiceImplementation description="" handlerName="Script" name="TakeInfo"><ConfigurationTables><ConfigurationTable dataShapeName="" description="" isMultiRow="false" name="Script" ordinal="0"><DataShape><FieldDefinitions><FieldDefinition baseType="STRING" description="code" name="code" ordinal="0"/></FieldDefinitions></DataShape><Rows><Row><code><![CDATA[const EWON_DATA_QUALITY_BAD = 0;
+const EWON_DATA_QUALITY_UNKNOWN = 1;
+const EWON_DATA_QUALITY_GOOD = 3;
+const EWON_DATA_TYPE_BOOLEAN = 0;
+const EWON_DATA_TYPE_FLOAT = 1;
+const EWON_DATA_TYPE_INTEGER = 2;
+const EWON_DATA_TYPE_DWORD = 3;
+const EWON_DATA_TYPE_STRING = 4;
 
 /*
  * Alternative method that avoids using DataMailbox to send data to Thingworx.
@@ -239,10 +275,10 @@ const DATA_TYPE_STRING = 4;
 // wrapper function to enable early returns
 function run() {
     var parsedTags = JSON.parse(Tags);
-    var ewonName = parsedTags.info['ewon-name'];
+    var ewonName = parsedTags.info["ewon-name"];
 
     // tagArray holds the datapoints array which contains all logged data
-    var tagArray = parsedTags.datapoints;
+    var tagArray = parsedTags["datapoints"];
 
     var i;
     for (i = 0; i < tagArray.length; i += 1) {
@@ -250,9 +286,9 @@ function run() {
         // Get tag data quality
         var tagQuality = "UNKNOWN";
         if ("quality" in tag) {
-            if (tag.quality === DATA_QUALITY_BAD) {
+            if (tag.quality === EWON_DATA_QUALITY_BAD) {
                 tagQuality = "BAD";
-            } else if (tag.quality === DATA_QUALITY_GOOD) {
+            } else if (tag.quality === EWON_DATA_QUALITY_GOOD) {
                 tagQuality = "GOOD";
             }
         } else {
@@ -262,19 +298,19 @@ function run() {
         // Get tag data type
         var tagType;
         if ("type" in tag) {
-            if (tag.type === DATA_TYPE_BOOLEAN) {
+            if (tag.type === EWON_DATA_TYPE_BOOLEAN) {
                 // Ewon Boolean tag converts to Thingworx Boolean
                 tagType = "BOOLEAN";
-            } else if (tag.type === DATA_TYPE_FLOAT) {
+            } else if (tag.type === EWON_DATA_TYPE_FLOAT) {
                 // Ewon Float tag converts to Thingworx Number
                 tagType = "NUMBER";
-            } else if (tag.type === DATA_TYPE_INTEGER) {
+            } else if (tag.type === EWON_DATA_TYPE_INTEGER) {
                 // Ewon Integer tag converts to Thingworx Integer
                 tagType = "INTEGER";
-            } else if (tag.type === DATA_TYPE_DWORD) {
+            } else if (tag.type === EWON_DATA_TYPE_DWORD) {
                 // Ewon DWORD tag converts to Thingworx Number
                 tagType = "NUMBER";
-            } else if (tag.type === DATA_TYPE_STRING) {
+            } else if (tag.type === EWON_DATA_TYPE_STRING) {
                 // Ewon String tag converts to Thingworx String
                 tagType = "STRING";
             } else {
@@ -306,6 +342,7 @@ me.ProcessTimeSinceUpdate({
 });]]></code></Row></Rows></ConfigurationTable></ConfigurationTables></ServiceImplementation><ServiceImplementation description="" handlerName="Script" name="Talk2MSyncData"><ConfigurationTables><ConfigurationTable dataShapeName="" description="" isMultiRow="false" name="Script" ordinal="0"><DataShape><FieldDefinitions><FieldDefinition baseType="STRING" description="code" name="code" ordinal="0"/></FieldDefinitions></DataShape><Rows><Row><code><![CDATA[const TW_DATA_TYPE_BOOLEAN = "BOOLEAN";
 const TW_DATA_TYPE_INTEGER = "INTEGER";
 const TW_DATA_TYPE_NUMBER = "NUMBER";
+const TW_DATA_TYPE_STRING = "STRING";
 const TW_DATA_QUALITY_GOOD = "GOOD";
 const TW_DATA_QUALITY_BAD = "BAD";
 const TW_DATA_QUALITY_UNKNOWN = "UNKNOWN";
@@ -346,6 +383,8 @@ function parseEwon(ewon) {
                     tagType = TW_DATA_TYPE_NUMBER;
                 } else if (tag.dataType === "UInt") {
                     tagType = TW_DATA_TYPE_NUMBER;
+                } else if (tag.dataType === "String") {
+                     tagType = TW_DATA_TYPE_STRING;
                 } else {
                     logger.warn("Unknown data type (" + tag.dataType + ") for tag: " + tag.name);
                     tagType = TW_DATA_TYPE_NUMBER;
@@ -426,65 +465,749 @@ function run() {
 // this acts as a return statement
 var result = run();]]></code></Row></Rows></ConfigurationTable></ConfigurationTables></ServiceImplementation></ServiceImplementations><Subscriptions><Subscription description="" enabled="true" eventName="Timer" name="runConnector" source="" sourceProperty="" sourceType="Thing"><ServiceImplementation description="" handlerName="Script" name="runConnector"><ConfigurationTables><ConfigurationTable dataShapeName="" description="" isMultiRow="false" name="Script" ordinal="0"><DataShape><FieldDefinitions><FieldDefinition baseType="STRING" description="code" name="code" ordinal="0"/></FieldDefinitions></DataShape><Rows><Row><code><![CDATA[if (!me.disableTalk2M) {
     me.MainExecution();
-}]]></code></Row></Rows></ConfigurationTable></ConfigurationTables></ServiceImplementation></Subscription></Subscriptions></ThingShape><PropertyBindings/><RemotePropertyBindings/><RemoteServiceBindings/><RemoteEventBindings/><AlertConfigurations><AlertDefinitions name="disableTalk2M"/><AlertDefinitions name="lastTransactionId"/><AlertDefinitions name="lastUpdateTime"/><AlertDefinitions name="scriptTimeoutSeconds"/><AlertDefinitions name="talk2MAccount"/><AlertDefinitions name="talk2MDeveloperID"/><AlertDefinitions name="talk2MPassword"/><AlertDefinitions name="talk2MToken"/><AlertDefinitions name="talk2MUsername"/><AlertDefinitions name="updateTimeoutMinutes"/><AlertDefinitions name="useDataChangeTypeAlways"/><AlertDefinitions name="useHyphens"/></AlertConfigurations><ImplementedShapes/><ThingProperties><useHyphens><Value>false</Value><Timestamp>2020-10-19T13:35:55.942Z</Timestamp><Quality>GOOD</Quality></useHyphens><talk2MToken><Value/><Timestamp>2020-11-30T13:34:17.195Z</Timestamp><Quality>GOOD</Quality></talk2MToken><talk2MUsername><Value/><Timestamp>2020-11-30T13:34:21.737Z</Timestamp><Quality>GOOD</Quality></talk2MUsername><lastTransactionId><Value>-1</Value><Timestamp>2020-11-30T13:34:30.354Z</Timestamp><Quality>GOOD</Quality></lastTransactionId><talk2MAccount><Value/><Timestamp>2020-11-30T13:34:04.778Z</Timestamp><Quality>GOOD</Quality></talk2MAccount><updateTimeoutMinutes><Value>10</Value><Timestamp>2020-10-02T20:13:26.007Z</Timestamp><Quality>GOOD</Quality></updateTimeoutMinutes><talk2MDeveloperID><Value/><Timestamp>2020-11-30T13:34:08.477Z</Timestamp><Quality>GOOD</Quality></talk2MDeveloperID><useDataChangeTypeAlways><Value>false</Value><Timestamp>2020-10-19T13:35:52.437Z</Timestamp><Quality>GOOD</Quality></useDataChangeTypeAlways><disableTalk2M><Value>true</Value><Timestamp>2020-11-30T13:33:43.299Z</Timestamp><Quality>GOOD</Quality></disableTalk2M><scriptTimeoutSeconds><Value>30</Value><Timestamp>2020-10-08T15:30:06.869Z</Timestamp><Quality>GOOD</Quality></scriptTimeoutSeconds><talk2MPassword><Value/><Timestamp>2020-11-30T13:34:12.143Z</Timestamp><Quality>GOOD</Quality></talk2MPassword><lastUpdateTime><Value>2000-01-01T00:00:00.000Z</Value><Timestamp>2020-11-30T13:34:55.047Z</Timestamp><Quality>GOOD</Quality></lastUpdateTime></ThingProperties><ConfigurationChanges><ConfigurationChange changeAction="CREATE" changeReason="" timestamp="2020-11-30T13:22:13.361Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : Talk2MSyncData : service updated&#10;" timestamp="2020-11-30T13:32:20.312Z" user="Administrator"/></ConfigurationChanges></Thing></Things><Logs/><Authenticators/><ThingPackages/><NotificationDefinitions/><ApplicationKeys/><StateDefinitions/><ThingTemplates><ThingTemplate baseThingTemplate="GenericThing" description="The base thing template which provides common properties for all Ewon devices that use the GenericEwonDeviceTalk2M and GenericEwonDeviceDirect thing templates." documentationContent="" effectiveThingPackage="ConfiguredThing" homeMashup="" inheritedValueStream="" lastModifiedDate="2020-11-30T13:22:13.329Z" name="GenericEwonDevice" projectName="EwonThingworxConnector" tags="" thingPackage="" valueStream="GenericEwonDeviceValueStream"><Owner name="Administrator" type="User"/><avatar><![CDATA[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
-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]]></avatar><DesignTimePermissions><Create/><Read/><Update/><Delete/><Metadata/></DesignTimePermissions><RunTimePermissions/><VisibilityPermissions><Visibility/></VisibilityPermissions><ConfigurationTableDefinitions/><ConfigurationTables/><PropertyBindings><PropertyBinding aspect.source="" aspect.startType="null" aspect.tagAddress="" name="talk2MAccount" sourceName="talk2MAccount" sourceThingName="ConnectorHost"/><PropertyBinding aspect.source="" aspect.startType="null" aspect.tagAddress="" name="talk2MDeveloperID" sourceName="talk2MDeveloperID" sourceThingName="ConnectorHost"/><PropertyBinding aspect.source="" aspect.startType="null" aspect.tagAddress="" name="talk2MPassword" sourceName="talk2MPassword" sourceThingName="ConnectorHost"/><PropertyBinding aspect.source="" aspect.startType="null" aspect.tagAddress="" name="talk2MUsername" sourceName="talk2MUsername" sourceThingName="ConnectorHost"/></PropertyBindings><RemotePropertyBindings/><RemoteServiceBindings/><RemoteEventBindings/><AlertConfigurations><AlertDefinitions name="ewonDevicePassword"/><AlertDefinitions name="ewonDeviceUsername"/><AlertDefinitions name="talk2MAccount"/><AlertDefinitions name="talk2MDeveloperID"/><AlertDefinitions name="talk2MPassword"/><AlertDefinitions name="talk2MUsername"/></AlertConfigurations><ThingShape><PropertyDefinitions><PropertyDefinition aspect.cacheTime="0.0" aspect.dataChangeType="VALUE" aspect.defaultValue="adm" aspect.isPersistent="true" baseType="STRING" category="" description="" isLocalOnly="false" name="ewonDevicePassword" ordinal="6"/><PropertyDefinition aspect.cacheTime="0.0" aspect.dataChangeType="VALUE" aspect.defaultValue="adm" aspect.isPersistent="true" baseType="STRING" category="" description="" isLocalOnly="false" name="ewonDeviceUsername" ordinal="5"/><PropertyDefinition aspect.cacheTime="0.0" aspect.dataChangeType="VALUE" aspect.isPersistent="true" baseType="STRING" category="" description="" isLocalOnly="false" name="talk2MAccount" ordinal="2"/><PropertyDefinition aspect.cacheTime="0.0" aspect.dataChangeType="VALUE" aspect.isPersistent="true" baseType="STRING" category="" description="" isLocalOnly="false" name="talk2MDeveloperID" ordinal="7"/><PropertyDefinition aspect.cacheTime="0.0" aspect.dataChangeType="VALUE" aspect.isPersistent="true" baseType="STRING" category="" description="" isLocalOnly="false" name="talk2MPassword" ordinal="4"/><PropertyDefinition aspect.cacheTime="0.0" aspect.dataChangeType="VALUE" aspect.isPersistent="true" baseType="STRING" category="" description="" isLocalOnly="false" name="talk2MUsername" ordinal="3"/></PropertyDefinitions><ServiceDefinitions/><EventDefinitions/><ServiceMappings/><ServiceImplementations/><Subscriptions/></ThingShape><ImplementedShapes/><SharedConfigurationTables/><InstanceDesignTimePermissions><Create/><Read/><Update/><Delete/><Metadata/></InstanceDesignTimePermissions><InstanceRunTimePermissions/><InstanceVisibilityPermissions><Visibility/></InstanceVisibilityPermissions><ConfigurationChanges><ConfigurationChange changeAction="CREATE" changeReason="header : name : updated, avatar : updated&#10;" timestamp="2020-10-02T19:25:08.754Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="header : description : updated&#10;" timestamp="2020-10-02T19:26:27.956Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="header : projectName : updated&#10;" timestamp="2020-10-02T19:26:59.936Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="properties : talk2MAccount : added&#10;" timestamp="2020-10-05T18:17:58.659Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="properties : talk2MUsername : added, talk2MAccount : updated, talk2MPassword : added&#10;" timestamp="2020-10-05T18:19:14.319Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="properties : ewonDeviceUsername : added, ewonDevicePassword : added&#10;" timestamp="2020-10-05T18:21:27.373Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : UpdateEwonTagValue : service added&#10;" timestamp="2020-10-05T18:29:16.198Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : UpdateEwonTagValue : input parameter tagName added, inputs updated, input parameter tagValue added, inputs updated&#10;" timestamp="2020-10-05T18:33:47.120Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="properties : talk2MDeveloperID : added&#10;" timestamp="2020-10-05T18:37:18.647Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : SendEwonOffline : service added&#10;" timestamp="2020-10-05T18:40:13.217Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : WakeEwonDevice : service added&#10;" timestamp="2020-10-05T18:41:10.938Z" user="Administrator"/><ConfigurationChange changeAction="CREATE" changeReason="" timestamp="2020-10-07T15:11:29.771Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : SendEwonOffline : service deleted&#10;UpdateEwonTagValue : service deleted&#10;WakeEwonDevice : service deleted&#10;" timestamp="2020-10-08T14:35:24.416Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="header : description : updated&#10;" timestamp="2020-10-08T14:44:22.789Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="properties : ewonDeviceUsername : updated, ewonDevicePassword : updated&#10;" timestamp="2020-10-08T14:51:43.315Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="header : description : updated&#10;" timestamp="2020-10-08T15:15:17.287Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="header : description : updated&#10;" timestamp="2020-10-08T15:17:00.119Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="SetProjectName : []" timestamp="2020-10-08T15:23:34.868Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="SetProjectName : [EwonThingworxConnector]" timestamp="2020-10-08T15:24:13.004Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="SetProjectName : []" timestamp="2020-10-08T15:25:11.736Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="SetProjectName : [EwonThingworxConnector]" timestamp="2020-10-08T15:25:11.752Z" user="Administrator"/><ConfigurationChange changeAction="CREATE" changeReason="" timestamp="2020-10-08T15:43:29.037Z" user="Administrator"/><ConfigurationChange changeAction="CREATE" changeReason="" timestamp="2020-10-08T15:52:22.830Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="properties : talk2MAccount : updated, talk2MDeveloperID : updated, talk2MPassword : updated, talk2MUsername : updated&#10;" timestamp="2020-10-12T13:55:04.910Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2020-10-15T14:40:56.102Z" user="Administrator"/><ConfigurationChange changeAction="CREATE" changeReason="" timestamp="2020-11-30T13:22:13.329Z" user="Administrator"/></ConfigurationChanges></ThingTemplate><ThingTemplate baseThingTemplate="GenericEwonDevice" description="The base thing template which provides properties and services for Ewon devices that have been connected to Thingworx using the Ewon Thingworx Connector Talk2M data path." documentationContent="" effectiveThingPackage="ConfiguredThing" homeMashup="" inheritedValueStream="GenericEwonDeviceValueStream" lastModifiedDate="2020-11-30T13:22:13.292Z" name="GenericEwonDeviceTalk2M" projectName="EwonThingworxConnector" tags="" thingPackage="" valueStream=""><Owner name="Administrator" type="User"/><avatar><![CDATA[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
-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]]></avatar><DesignTimePermissions><Create/><Read/><Update/><Delete/><Metadata/></DesignTimePermissions><RunTimePermissions/><VisibilityPermissions><Visibility/></VisibilityPermissions><ConfigurationTableDefinitions/><ConfigurationTables/><PropertyBindings><PropertyBinding aspect.source="" aspect.startType="null" aspect.tagAddress="" name="talk2MAccount" sourceName="talk2MAccount" sourceThingName="ConnectorHost"/><PropertyBinding aspect.source="" aspect.tagAddress="" name="talk2MDeveloperID" sourceName="talk2MDeveloperID" sourceThingName="ConnectorHost"/><PropertyBinding aspect.source="" aspect.tagAddress="" name="talk2MPassword" sourceName="talk2MPassword" sourceThingName="ConnectorHost"/><PropertyBinding aspect.source="" aspect.tagAddress="" name="talk2MUsername" sourceName="talk2MUsername" sourceThingName="ConnectorHost"/></PropertyBindings><RemotePropertyBindings/><RemoteServiceBindings/><RemoteEventBindings/><AlertConfigurations/><ThingShape><PropertyDefinitions/><ServiceDefinitions><ServiceDefinition aspect.isAsync="false" category="Talk2M" description="Sends the current Ewon device to offline mode using Talk2M" isAllowOverride="false" isLocalOnly="false" isOpen="false" isPrivate="false" name="SendEwonOffline"><ResultType baseType="NOTHING" description="" name="result" ordinal="0"/><ParameterDefinitions/></ServiceDefinition><ServiceDefinition aspect.isAsync="false" category="Talk2M" description="This service allows you to set the value of specified tag on the current Ewon device using M2Web." isAllowOverride="false" isLocalOnly="false" isOpen="false" isPrivate="false" name="UpdateEwonTagValue"><ResultType baseType="NOTHING" description="" name="result" ordinal="0"/><ParameterDefinitions><FieldDefinition aspect.isRequired="true" baseType="STRING" description="The name of the tag which is being updated" name="tagName" ordinal="1"/><FieldDefinition aspect.isRequired="true" baseType="STRING" description="The value of the tag which is being updated" name="tagValue" ordinal="2"/></ParameterDefinitions></ServiceDefinition><ServiceDefinition aspect.isAsync="false" category="Talk2M" description="Wakes the current Ewon device via Talk2M." isAllowOverride="false" isLocalOnly="false" isOpen="false" isPrivate="false" name="WakeEwonDevice"><ResultType baseType="NOTHING" description="" name="result" ordinal="0"/><ParameterDefinitions/></ServiceDefinition></ServiceDefinitions><EventDefinitions/><ServiceMappings/><ServiceImplementations><ServiceImplementation description="" handlerName="Script" name="SendEwonOffline"><ConfigurationTables><ConfigurationTable dataShapeName="" description="" isMultiRow="false" name="Script" ordinal="0"><DataShape><FieldDefinitions><FieldDefinition baseType="STRING" description="code" name="code" ordinal="0"/></FieldDefinitions></DataShape><Rows><Row><code><![CDATA[/*
+}]]></code></Row></Rows></ConfigurationTable></ConfigurationTables></ServiceImplementation></Subscription></Subscriptions></ThingShape><PropertyBindings/><RemotePropertyBindings/><RemoteServiceBindings/><RemoteEventBindings/><AlertConfigurations><AlertDefinitions name="disableTalk2M"/><AlertDefinitions name="lastTransactionId"/><AlertDefinitions name="lastUpdateTime"/><AlertDefinitions name="scriptTimeoutSeconds"/><AlertDefinitions name="talk2MAccount"/><AlertDefinitions name="talk2MDeveloperID"/><AlertDefinitions name="talk2MPassword"/><AlertDefinitions name="talk2MToken"/><AlertDefinitions name="talk2MUsername"/><AlertDefinitions name="updateTimeoutMinutes"/><AlertDefinitions name="useDataChangeTypeAlways"/><AlertDefinitions name="useHyphens"/></AlertConfigurations><ImplementedShapes/><ThingProperties><useHyphens><Value>false</Value><Timestamp>2020-10-19T13:35:55.942Z</Timestamp><Quality>GOOD</Quality></useHyphens><talk2MToken><Value/><Timestamp>2021-05-10T17:42:06.583Z</Timestamp><Quality>GOOD</Quality></talk2MToken><talk2MUsername><Value/><Timestamp>2021-05-10T17:42:10.302Z</Timestamp><Quality>GOOD</Quality></talk2MUsername><lastTransactionId><Value>-1</Value><Timestamp>2021-05-10T17:41:36.789Z</Timestamp><Quality>GOOD</Quality></lastTransactionId><talk2MAccount><Value/><Timestamp>2021-05-10T17:41:54.923Z</Timestamp><Quality>GOOD</Quality></talk2MAccount><updateTimeoutMinutes><Value>10</Value><Timestamp>2020-10-02T20:13:26.007Z</Timestamp><Quality>GOOD</Quality></updateTimeoutMinutes><talk2MDeveloperID><Value/><Timestamp>2021-05-10T17:41:58.751Z</Timestamp><Quality>GOOD</Quality></talk2MDeveloperID><useDataChangeTypeAlways><Value>false</Value><Timestamp>2021-05-07T16:05:48.109Z</Timestamp><Quality>GOOD</Quality></useDataChangeTypeAlways><disableTalk2M><Value>true</Value><Timestamp>2021-05-10T17:41:31.963Z</Timestamp><Quality>GOOD</Quality></disableTalk2M><scriptTimeoutSeconds><Value>30</Value><Timestamp>2020-10-08T15:30:06.869Z</Timestamp><Quality>GOOD</Quality></scriptTimeoutSeconds><talk2MPassword><Value/><Timestamp>2021-05-10T17:42:02.378Z</Timestamp><Quality>GOOD</Quality></talk2MPassword><lastUpdateTime><Value>1970-01-01T05:00:00.000Z</Value><Timestamp>2021-05-10T17:41:49.999Z</Timestamp><Quality>GOOD</Quality></lastUpdateTime></ThingProperties><ConfigurationChanges><ConfigurationChange changeAction="CREATE" changeReason="" timestamp="2021-04-06T13:41:54.533Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : AddNewDirectDevice : service added&#10;" timestamp="2021-04-12T13:23:28.626Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : AddNewDirectDevice : input parameter thingName added, inputs updated&#10;" timestamp="2021-04-14T14:25:52.510Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : AddNewDirectDevice : service updated&#10;" timestamp="2021-04-14T14:26:53.267Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : AddNewDirectDevice : service updated&#10;" timestamp="2021-04-14T14:30:59.305Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : AddNewDirectDevice : input parameter thingAppKeyExpiration added, inputs updated, input parameter thingAppKeyUser added, inputs updated, input parameter thingAppKeyUser updated, inputs updated, output updated&#10;" timestamp="2021-04-14T14:37:22.029Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : AddNewDirectDevice : service updated&#10;" timestamp="2021-04-14T14:38:02.972Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : AddNewDirectDevice : service updated&#10;" timestamp="2021-04-14T14:39:44.128Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : AddNewDirectDevice : service updated&#10;" timestamp="2021-04-14T14:58:39.430Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : AddNewDirectDevice : service updated&#10;" timestamp="2021-04-14T15:17:05.052Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : AddNewDirectDevice : service updated&#10;" timestamp="2021-04-20T12:06:34.032Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : AddNewDirectDevice : service updated&#10;" timestamp="2021-04-20T12:17:55.587Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : AddNewDirectDevice : service updated&#10;" timestamp="2021-04-20T12:19:57.493Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : AddNewDirectDevice : service updated&#10;" timestamp="2021-04-20T12:56:17.475Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : AddNewDirectDevice : service updated&#10;" timestamp="2021-04-20T12:58:18.009Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : AddNewDirectDevice : service updated&#10;" timestamp="2021-04-20T13:00:29.145Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : AddNewDirectDevice : service updated&#10;" timestamp="2021-04-20T13:36:28.854Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : AddNewDirectDevice : service updated&#10;" timestamp="2021-04-20T13:37:28.424Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : AddNewDirectDevice : service updated&#10;" timestamp="2021-04-20T13:38:11.028Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : AddNewDirectDevice : service updated&#10;" timestamp="2021-04-20T13:38:49.556Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : AddNewDirectDevice : service updated&#10;" timestamp="2021-04-20T13:39:24.336Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : AddNewDirectDevice : service updated&#10;" timestamp="2021-04-20T13:40:16.622Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : AddNewDirectDevice : service updated&#10;" timestamp="2021-04-20T13:41:01.827Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : AddNewDirectDevice : service updated&#10;" timestamp="2021-04-20T13:44:59.834Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : AddNewDirectDevice : service updated&#10;" timestamp="2021-04-20T13:46:23.714Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : AddNewDirectDevice : service updated&#10;" timestamp="2021-04-20T13:47:02.155Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : AddNewDirectDevice : service updated&#10;" timestamp="2021-04-20T13:53:37.040Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : AddNewDirectDevice : service updated&#10;" timestamp="2021-04-20T13:57:31.729Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : AddNewDirectDevice : service updated&#10;" timestamp="2021-04-20T13:59:25.731Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : AddNewDirectDevice : service updated&#10;" timestamp="2021-04-20T14:00:12.343Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : TestEndpoint : service added&#10;" timestamp="2021-04-21T13:39:41.120Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : TestEndpoint : service updated&#10;" timestamp="2021-04-26T14:38:55.189Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : TestEndpoint : service updated&#10;" timestamp="2021-04-26T14:40:03.246Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : TestEndpoint : service updated&#10;" timestamp="2021-04-26T14:42:06.194Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : TakeInfo : service updated&#10;" timestamp="2021-05-03T13:31:26.770Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : TakeInfo : service updated&#10;" timestamp="2021-05-03T13:32:04.424Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : TakeInfo : service updated&#10;" timestamp="2021-05-03T13:33:03.037Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : TakeInfo : service updated&#10;" timestamp="2021-05-03T13:33:34.911Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : TakeInfo : service updated&#10;" timestamp="2021-05-03T13:35:52.237Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : TakeInfo : service updated&#10;" timestamp="2021-05-03T13:36:27.905Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : TakeInfo : service updated&#10;" timestamp="2021-05-03T13:38:36.071Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : TakeInfo : service updated&#10;" timestamp="2021-05-03T13:42:28.586Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : TakeInfo : service updated&#10;" timestamp="2021-05-03T13:50:02.864Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : TakeInfo : service updated&#10;" timestamp="2021-05-03T13:50:40.068Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : TakeInfo : service updated&#10;" timestamp="2021-05-03T13:54:20.211Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : TakeInfo : service updated&#10;" timestamp="2021-05-03T13:56:04.194Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : TakeInfo : service updated&#10;" timestamp="2021-05-03T13:56:32.119Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : TakeInfo : service updated&#10;" timestamp="2021-05-03T13:59:42.574Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="SetProjectName : [PTCDefaultProject]" timestamp="2021-05-03T14:02:20.973Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="SetProjectName : [EwonThingworxConnector]" timestamp="2021-05-03T14:02:20.988Z" user="Administrator"/><ConfigurationChange changeAction="FORCEEDIT" changeReason="ForceEdit" timestamp="2021-05-03T14:03:46.682Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : TakeInfo : service updated&#10;" timestamp="2021-05-03T16:29:20.149Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : TakeInfo : service updated&#10;" timestamp="2021-05-03T18:00:14.742Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : AddNewDirectStandaloneDevice : service added&#10;" timestamp="2021-05-05T13:28:11.936Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : AddNewDirectStandaloneDevice : service updated&#10;AddNewDirectDevice : service deleted&#10;" timestamp="2021-05-05T13:29:00.482Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : TestEndpoint : service deleted&#10;" timestamp="2021-05-05T14:28:44.759Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : Talk2MSyncData : service updated&#10;" timestamp="2021-05-05T15:43:07.312Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : InsertDataPoint : service updated&#10;" timestamp="2021-05-05T17:04:48.815Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : InsertDataPoint : service updated&#10;" timestamp="2021-05-05T17:08:41.540Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : InsertDataPoint : service updated&#10;" timestamp="2021-05-05T17:15:06.917Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : InsertDataPoint : service updated&#10;" timestamp="2021-05-05T17:25:28.560Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : InsertDataPoint : service updated&#10;" timestamp="2021-05-05T18:29:11.178Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : TakeInfo : service updated&#10;" timestamp="2021-05-05T18:31:49.374Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : TakeInfo : service updated&#10;" timestamp="2021-05-05T18:38:38.554Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : TakeInfo : service updated&#10;" timestamp="2021-05-05T18:42:54.494Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : TakeInfo : service updated&#10;" timestamp="2021-05-05T18:43:16.239Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : Talk2MSyncData : service updated&#10;" timestamp="2021-05-05T18:55:48.770Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : ProcessTimeSinceUpdate : service updated&#10;" timestamp="2021-05-10T17:31:15.756Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : ProcessTimeSinceUpdate : service updated&#10;" timestamp="2021-05-10T17:32:47.697Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : TakeInfo : service updated&#10;" timestamp="2021-05-10T17:37:20.221Z" user="Administrator"/></ConfigurationChanges></Thing></Things><Logs/><Authenticators/><ThingPackages/><NotificationDefinitions/><ApplicationKeys/><StateDefinitions/><ThingTemplates><ThingTemplate baseThingTemplate="GenericEwonDeviceDirect" description="The base thing template which provides properties and services for Ewon devices that have been connected to Thingworx using the Ewon Thingworx Connector direct data path, using a standalone endpoint for each device to submit data to Thingworx." documentationContent="" effectiveThingPackage="ConfiguredThing" homeMashup="" inheritedValueStream="GenericEwonDeviceValueStream" lastModifiedDate="2021-05-11T12:18:41.133Z" name="GenericEwonDeviceDirectStandalone" projectName="EwonThingworxConnector" tags="" thingPackage="" valueStream="GenericEwonDeviceValueStream"><Owner name="Administrator" type="User"/><avatar/><DesignTimePermissions><Create/><Read/><Update/><Delete/><Metadata/></DesignTimePermissions><RunTimePermissions/><VisibilityPermissions><Visibility/></VisibilityPermissions><ConfigurationTableDefinitions/><ConfigurationTables/><PropertyBindings/><RemotePropertyBindings/><RemoteServiceBindings/><RemoteEventBindings/><AlertConfigurations><AlertDefinitions name="lastUpdateTime"/></AlertConfigurations><ThingShape><PropertyDefinitions><PropertyDefinition aspect.cacheTime="0.0" aspect.dataChangeType="VALUE" aspect.defaultValue="1970-01-01T05:00:00.000Z" baseType="DATETIME" category="" description="" isLocalOnly="false" name="lastUpdateTime" ordinal="2"/></PropertyDefinitions><ServiceDefinitions><ServiceDefinition aspect.isAsync="false" category="" description="" isAllowOverride="false" isLocalOnly="false" isOpen="false" isPrivate="false" name="InsertDataPoint"><ResultType baseType="NOTHING" description="" name="result" ordinal="0"/><ParameterDefinitions><FieldDefinition aspect.isRequired="true" baseType="STRING" description="" name="tagName" ordinal="1"/><FieldDefinition aspect.isRequired="true" baseType="STRING" description="" name="tagQuality" ordinal="4"/><FieldDefinition aspect.isRequired="true" baseType="STRING" description="" name="tagType" ordinal="3"/><FieldDefinition aspect.isRequired="true" baseType="STRING" description="" name="tagValue" ordinal="2"/><FieldDefinition aspect.isRequired="true" baseType="STRING" description="" name="timestamp" ordinal="5"/></ParameterDefinitions></ServiceDefinition><ServiceDefinition aspect.isAsync="false" category="" description="" isAllowOverride="false" isLocalOnly="false" isOpen="false" isPrivate="false" name="ProcessTimeSinceUpdate"><ResultType baseType="NOTHING" description="" name="result" ordinal="0"/><ParameterDefinitions><FieldDefinition baseType="BOOLEAN" description="" name="hasUpdated" ordinal="1"/></ParameterDefinitions></ServiceDefinition><ServiceDefinition aspect.isAsync="false" category="" description="" isAllowOverride="false" isLocalOnly="false" isOpen="false" isPrivate="false" name="TakeInfo"><ResultType baseType="NOTHING" description="" name="result" ordinal="0"/><ParameterDefinitions><FieldDefinition aspect.isRequired="true" baseType="JSON" description="" name="Tags" ordinal="1"/></ParameterDefinitions></ServiceDefinition></ServiceDefinitions><EventDefinitions/><ServiceMappings/><ServiceImplementations><ServiceImplementation description="" handlerName="Script" name="InsertDataPoint"><ConfigurationTables><ConfigurationTable dataShapeName="" description="" isMultiRow="false" name="Script" ordinal="0"><DataShape><FieldDefinitions><FieldDefinition baseType="STRING" description="code" name="code" ordinal="0"/></FieldDefinitions></DataShape><Rows><Row><code><![CDATA[/*
+ * Inserts a datapoint to its respective thing property
+ *
+ * @author HMS Networks, MU Americas Solution Center
+ */
+// wrapper function for early returns
+function run() {
+    // Get thing and property name
+    var thingName = me.name;
+    var propName = tagName;
+
+    // Log information
+    logger.info("Inserting datapoint for property [" + tagName + "] on Thing [" + thingName + "] with value [" + tagValue + "], quality [" + tagQuality + "], type [" + tagType + "] and timestamp [" + timestamp + "].");
+
+    // Check if property exists/needs to be created
+    var needToCreateProperty = false;
+    try {
+        var propertyLogging = Things[thingName].GetPropertyLogging({
+            propertyName: tagName
+        });
+    } catch (err) {
+        needToCreateProperty = true;
+    }
+
+    // Create property if necessary
+    if (needToCreateProperty) {
+        // Get property data change type for creation
+        var propDataChangeType = "VALUE";
+        if (me.useDataChangeTypeAlways) {
+            propDataChangeType = "ALWAYS";
+        }
+        
+        Things[thingName].AddPropertyDefinition({
+            readOnly: false,
+            remote: false,
+            type: tagType,
+            logged: true,
+            name: tagName,
+            persistent: true,
+            dataChangeType: propDataChangeType
+        });
+        Things[thingName].RestartThing();
+    }
+
+    // Convert tag value to proper type
+    var tagValFinal = tagValue;
+    if (tagType === "INTEGER") {
+        tagValFinal = parseInt(tagValue);
+    }
+
+    // Update property value
+    var createITParams = {
+        infoTableName: "InfoTable",
+        dataShapeName: "NamedVTQ"
+    };
+    var properties = Resources["InfoTableFunctions"].CreateInfoTableFromDataShape(createITParams);
+    var row = new Object();
+    row.name = propName;
+    row.value = tagValFinal;
+    row.quality = tagQuality;
+    row.time = new Date(timestamp);
+    properties.AddRow(row);
+    Things[thingName].UpdatePropertyValues({
+        values: properties
+    });
+
+
+
+}
+if (tagName && tagValue && timestamp) {
+    run();
+} else {
+    logger.error(
+        'One or more parameters for InsertDataPoint were undefined or null.'
+    );
+    logger.debug(
+        'tagName: ' +
+        tagName +
+        'tagValue: ' +
+        tagValue +
+        'timestamp: ' +
+        timestamp
+    );
+}]]></code></Row></Rows></ConfigurationTable></ConfigurationTables></ServiceImplementation><ServiceImplementation description="" handlerName="Script" name="ProcessTimeSinceUpdate"><ConfigurationTables><ConfigurationTable dataShapeName="" description="" isMultiRow="false" name="Script" ordinal="0"><DataShape><FieldDefinitions><FieldDefinition baseType="STRING" description="code" name="code" ordinal="0"/></FieldDefinitions></DataShape><Rows><Row><code><![CDATA[/*
+ * Keeps track of the time since the last data update was received. If the time
+ * is long enough, then an error is sent.
+ *
+ * @author HMS Networks, MU Americas Solution Center
+ */
+const MILLISECONDS_PER_MINUTE = 60000;
+if (hasUpdated) {
+  // There was an update, so the last update time is changed to now
+  me.lastUpdateTime = Date.now();
+} else {
+  const timeSinceLastUpdateMillis = Date.now() - me.lastUpdateTime;
+  const maximumAllowedTimeSinceLastUpdateMillis =
+    MILLISECONDS_PER_MINUTE * me.updateTimeoutMinutes;
+  if (timeSinceLastUpdateMillis > maximumAllowedTimeSinceLastUpdateMillis) {
+    logger.error(
+      'A data update has not been received since ' + me.lastUpdateTime
+    );
+  }
+}
+]]></code></Row></Rows></ConfigurationTable></ConfigurationTables></ServiceImplementation><ServiceImplementation description="" handlerName="Script" name="TakeInfo"><ConfigurationTables><ConfigurationTable dataShapeName="" description="" isMultiRow="false" name="Script" ordinal="0"><DataShape><FieldDefinitions><FieldDefinition baseType="STRING" description="code" name="code" ordinal="0"/></FieldDefinitions></DataShape><Rows><Row><code><![CDATA[const EWON_DATA_QUALITY_BAD = 0;
+const EWON_DATA_QUALITY_UNKNOWN = 1;
+const EWON_DATA_QUALITY_GOOD = 3;
+const EWON_DATA_TYPE_BOOLEAN = 0;
+const EWON_DATA_TYPE_FLOAT = 1;
+const EWON_DATA_TYPE_INTEGER = 2;
+const EWON_DATA_TYPE_DWORD = 3;
+const EWON_DATA_TYPE_STRING = 4;
+
+/*
+ * Alternative method that avoids using DataMailbox to send data to Thingworx.
+ * Uses a Ewon Thingworx connector which runs on a Flexy.
+ * More information can be found in the README.md file.
+ *
+ * @author HMS Networks, MU Americas Solution Center
+ */
+// wrapper function to enable early returns
+function run() {
+    var parsedTags = JSON.parse(Tags);
+
+    // tagArray holds the datapoints array which contains all logged data
+    var tagArray = parsedTags["datapoints"];
+
+    var i;
+    for (i = 0; i < tagArray.length; i += 1) {
+        var tag = tagArray[i];
+        // Get tag data quality
+        var tagQuality = "UNKNOWN";
+        if ("quality" in tag) {
+            if (tag.quality === EWON_DATA_QUALITY_BAD) {
+                tagQuality = "BAD";
+            } else if (tag.quality === EWON_DATA_QUALITY_GOOD) {
+                tagQuality = "GOOD";
+            }
+        } else {
+            logger.warn("The connected Ewon device is not sending tag quality information. Check that the Ewon Thingworx Connector has been updated on the Ewon device!");
+        }
+
+        // Get tag data type
+        var tagType;
+        if ("type" in tag) {
+            if (tag.type === EWON_DATA_TYPE_BOOLEAN) {
+                // Ewon Boolean tag converts to Thingworx Boolean
+                tagType = "BOOLEAN";
+            } else if (tag.type === EWON_DATA_TYPE_FLOAT) {
+                // Ewon Float tag converts to Thingworx Number
+                tagType = "NUMBER";
+            } else if (tag.type === EWON_DATA_TYPE_INTEGER) {
+                // Ewon Integer tag converts to Thingworx Integer
+                tagType = "INTEGER";
+            } else if (tag.type === EWON_DATA_TYPE_DWORD) {
+                // Ewon DWORD tag converts to Thingworx Number
+                tagType = "NUMBER";
+            } else if (tag.type === EWON_DATA_TYPE_STRING) {
+                // Ewon String tag converts to Thingworx String
+                tagType = "STRING";
+            } else {
+                // Unknown tag type, default to Thingworx Number
+                logger.warn("Unknown tag type (" + tag.type + ") for tag: " + tag.name);
+                tagType = "NUMBER";
+            }
+        } else {
+            logger.warn("The connected Ewon device is not sending tag type information. Check that the Ewon Thingworx Connector has been updated on the Ewon device!");
+        }
+
+        // Add datapoint to Thing
+        me.InsertDataPoint({
+            tagName: tag.name /* STRING */ ,
+            tagValue: tag.value /* STRING */ ,
+            timestamp: tag.timestamp /* STRING */ ,
+            tagQuality: tagQuality /* STRING */ ,
+            tagType: tagType /* STRING */
+        });
+    }
+}
+run();
+
+// Registers that an update has been received
+me.ProcessTimeSinceUpdate({
+    hasUpdated: true
+});]]></code></Row></Rows></ConfigurationTable></ConfigurationTables></ServiceImplementation></ServiceImplementations><Subscriptions/></ThingShape><ImplementedShapes/><SharedConfigurationTables/><InstanceDesignTimePermissions><Create/><Read/><Update/><Delete/><Metadata/></InstanceDesignTimePermissions><InstanceRunTimePermissions/><InstanceVisibilityPermissions><Visibility/></InstanceVisibilityPermissions><ConfigurationChanges><ConfigurationChange changeAction="CREATE" changeReason="header : name : updated, description : updated&#10;" timestamp="2021-04-20T12:12:00.996Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : TakeInfo : service added&#10;" timestamp="2021-04-20T12:21:24.291Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : TakeInfo : input parameter Tags added, inputs updated, input parameter Tags updated, inputs updated&#10;" timestamp="2021-04-20T12:24:23.952Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : InsertDataPoint : service added&#10;" timestamp="2021-04-20T12:27:00.728Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : InsertDataPoint : service updated&#10;" timestamp="2021-04-20T12:31:41.921Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : TakeInfo : service updated&#10;" timestamp="2021-04-27T14:12:35.333Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : InsertDataPoint : service updated&#10;" timestamp="2021-04-30T12:24:30.110Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : TakeInfo : service updated&#10;" timestamp="2021-04-30T13:44:31.441Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : InsertDataPoint : service updated&#10;" timestamp="2021-04-30T13:45:52.063Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : InsertDataPoint : service updated&#10;" timestamp="2021-04-30T13:46:11.728Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : InsertDataPoint : service updated&#10;" timestamp="2021-04-30T13:46:57.589Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : TakeInfo : service updated&#10;ProcessTimeSinceUpdate : service added&#10;properties : lastUpdateTime : added&#10;" timestamp="2021-04-30T13:49:58.024Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : TakeInfo : service updated&#10;" timestamp="2021-05-03T13:14:17.226Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : TakeInfo : service updated&#10;" timestamp="2021-05-03T13:15:06.261Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="SetProjectName : [PTCDefaultProject]" timestamp="2021-05-03T14:02:20.980Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="SetProjectName : [EwonThingworxConnector]" timestamp="2021-05-03T14:02:20.996Z" user="Administrator"/><ConfigurationChange changeAction="FORCEEDIT" changeReason="ForceEdit" timestamp="2021-05-03T14:07:11.956Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : TakeInfo : service updated&#10;" timestamp="2021-05-03T14:07:12.003Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : TakeInfo : service updated&#10;" timestamp="2021-05-03T14:08:51.627Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : TakeInfo : service updated&#10;" timestamp="2021-05-03T14:10:43.855Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : TakeInfo : service updated&#10;" timestamp="2021-05-03T14:14:50.852Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : TakeInfo : service updated&#10;" timestamp="2021-05-03T14:15:53.888Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : TakeInfo : service updated&#10;" timestamp="2021-05-03T14:18:12.012Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : TakeInfo : service updated&#10;" timestamp="2021-05-03T15:35:26.651Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : TakeInfo : service updated&#10;" timestamp="2021-05-03T15:40:11.440Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : TakeInfo : service updated&#10;" timestamp="2021-05-03T15:40:43.822Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : TakeInfo : service updated&#10;" timestamp="2021-05-03T15:51:00.491Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : TakeInfo : service updated&#10;" timestamp="2021-05-03T15:53:35.092Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : TakeInfo : service updated&#10;" timestamp="2021-05-03T15:55:54.641Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : TakeInfo : service updated&#10;" timestamp="2021-05-03T15:57:17.364Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : TakeInfo : service updated&#10;" timestamp="2021-05-03T15:58:17.401Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : TakeInfo : service updated&#10;" timestamp="2021-05-03T15:59:18.703Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : TakeInfo : service updated&#10;" timestamp="2021-05-03T16:04:44.310Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : TakeInfo : service updated&#10;" timestamp="2021-05-03T16:05:40.357Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : TakeInfo : input parameter Tags updated, inputs updated&#10;" timestamp="2021-05-03T16:10:11.053Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : TakeInfo : service updated&#10;" timestamp="2021-05-03T16:10:56.081Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : TakeInfo : service updated&#10;" timestamp="2021-05-03T16:12:44.224Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : TakeInfo : service updated&#10;" timestamp="2021-05-03T16:16:07.720Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : TakeInfo : service updated&#10;" timestamp="2021-05-03T16:16:53.249Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : TakeInfo : service updated&#10;" timestamp="2021-05-03T16:17:45.089Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : TakeInfo : service updated&#10;" timestamp="2021-05-03T16:17:50.303Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : TakeInfo : service updated&#10;" timestamp="2021-05-03T16:18:41.991Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : TakeInfo : service updated&#10;" timestamp="2021-05-03T16:23:05.544Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : TakeInfo : service updated&#10;" timestamp="2021-05-03T16:28:34.837Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : TakeInfo : service updated&#10;" timestamp="2021-05-03T16:29:23.342Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : TakeInfo : service updated&#10;" timestamp="2021-05-03T16:29:43.415Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : TakeInfo : service updated&#10;" timestamp="2021-05-10T13:27:34.725Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : ProcessTimeSinceUpdate : service updated&#10;" timestamp="2021-05-10T17:31:32.290Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : ProcessTimeSinceUpdate : service updated&#10;" timestamp="2021-05-10T17:32:22.713Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : ProcessTimeSinceUpdate : service updated&#10;" timestamp="2021-05-10T17:32:54.698Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : TakeInfo : service updated&#10;" timestamp="2021-05-10T17:37:50.954Z" user="Administrator"/></ConfigurationChanges></ThingTemplate><ThingTemplate baseThingTemplate="GenericThing" description="The base thing template which provides common properties for all Ewon devices that use the GenericEwonDeviceTalk2M, GenericEwonDeviceDirect, and GenericEwonDeviceDirectStandalone thing templates." documentationContent="" effectiveThingPackage="ConfiguredThing" homeMashup="" inheritedValueStream="" lastModifiedDate="2021-05-11T13:46:28.549Z" name="GenericEwonDevice" projectName="EwonThingworxConnector" tags="" thingPackage="" valueStream="GenericEwonDeviceValueStream"><Owner name="Administrator" type="User"/><avatar><![CDATA[iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAIAAADYYG7QAAAGkklEQVR4Xu1WaVBTVxS+oFLHsf3R
+RcYpSB1xA3RcoVSxglMsgRAsqARZzFggLIpIUcQdgciutiCLbC4IyCqBsovsBGQzrFFAlkhkUfaE
+Jel5ecCAVeKPTvVHvjlJ7rvnu+9+95xz7w0SfGZA73Z8aogFiYJYkCiIBYmCWJAoiAWJgliQKHzG
+gqam+JNT8MWHzzzj8+fw/3vwhe/n4z+zgmYePwSMP8tZuD0XeP+C3nfnxQThMWDUNZPP+mrZ07RO
+XdOyx4xw6pqmnbu+k3f/4ODsgA8ph+i+2zVnne/14p3M522xWfmphWUDQ8PAR7hWTv9baYIlUiAh
+5cNIxRCpYN8SqmS0RX/dwZMjY2Mjo2NDo6OTk9grhrnckTEuvsrhsbGB4eHxiUno547zRrncMR4P
+DBowBJ8Yl4V5x4ReLtYYGhnFXjU6Gpac5Roaczc1p7CKCT0InyOtuBJtM5BSM07KK+vo7mllc152
+94C1dHX3DwzlVTJlCJY/HDje2sVh9/bJaVvutb4Co+6k5slqULaZOoEm7/uP5Ek2K3WspbWtpAlU
+GZLtKqIV5ao/b3wcJLmEPlyjZ4t5CVQwWV3bVdpW1p4hb4YGI1KyguLTEnKLHlfUYIImhIL8HtAl
+lEgriVSoaXxZc5FbXguhQjsOt3N6/KJT0GpNeX072AD7T7ojmX1Uj5AaVgtSguiS1xrYK5L/UCI7
+yujaAB9t0+/g9BTXNiIFIlIhrz0IXkclI8fvidaYV/lwG5tTzmyKyy58kP6Y0/cGSxkeoWNugWjT
+AWltqqVHiJVnCNUj2NrrtrlrgFt4HJBKmc2SqkZLfzarbm5VOXYeKZI2GZ+pYbV+te+YxFaD2udt
+wUlZkgpEOb3j/YMD+Bp8o1Ik4YUEC8iU171kSQXd1b8dh0DiXlpEvKSSHvB732L8weGRmbULsBqC
+kP5kfhEkS6gaIUXdadush2Q1CPbuQKpofI5+JH+z3xLyslz9qAzJRoHsAFlACrqbjE8DwYIWhNYR
+1CwvCWZKleJ6C63XUaY4Q9vMxR+t08azjHuNLt4E7x7qZZgaThZcCl5q2C57MzgoS7JBmw9A8Cvq
+WSXPmhh1rPJ6VmltY3v3ayA0tHYs3mX8tab5WgO7LaZnqJ63v1Q322xyGm0ketxNAoKq+QW0Xvuo
+iz8UAJc3MTE5udviEkxpeuUv8O6knIO25bVgvlAQYAfFGW0g/u4ehEkUpmgWmCAI/hd7TNBW/dyK
+2rm+WUCNL9egSKmZQkjcwuPdIxMha4t3myxXN4MSgT2IVYyCbkB8Bs7njfNkidaSiro+USnjE+Pf
+alkA/0Z0Ku591de/goD1+EbR4RHUz04kwAXdz8iX2G6wTJ3y58M02G6PCirohU9TiyqT8xiVjS+A
+0PW67zstC6k9RxerGLLaO93CE5ZsP7RImax32gu8UGFLdptIqRpdConNKK0GC0zIXKZBQUp6OeU1
+rE72kl3Gi1TImaVV+JSlzCbYzjA8vQTreU+Ekp6UIQUdbB9t0EFrCdO2gYhWqJ31vw8Edk/fUgih
+nOZGQwd4tPMJR3K/ADk+txRSUNHIwk4vJT1s+JpfkfyvUE+QQXn9E3DYBCdlIhkNpGzY3N4lTBf/
+Zkwqkt2Hdh5idbAFwitrniAoJXjp3fQnl4Ni3CISZo0WmeASFF3f0o7zQpKyacExBdX10M6vqqOF
+xN5KyODPHPx/F1d6RiZ6R6Vcj07ziaJDpgLjMnqEOwji4REaF5yYNTOjoKimweN2XEB8OpfHE/zr
+7vio2z6bUZ339FlbN+dpA6uT09PSyW7pesVgNhXV1KcUMOgF5cCpa3nJ7unNr2IymI0ltQ30Aizd
+TyqZNc0vshhVwE/OK4OsFVTXATO/uu5FZ5fgfXfotCBIJBTXfJuCCwGuOahZo/N+tl7BN2PormEP
+4Sg7csHPihaoZXeV5ODuFhbreCOC09dv6Oxz5LyvgZNnbGZ+aEp2YHz6IWdvAyevE94hd1JzLWkB
+5HM+DtfD9lIvxOUWOd4ID03KnLvnZ7FQhHD5gyOj/rGpEKT61nY4TDtf90JgshmV99IeJ+eVwKKj
+M/PhfINgxOUUBydmQuQgKi3sV0l5JVDgVc0tEfTsrLLq8rpmeiEDjhW4IiLpORBFwcy9PhcLCfok
++ChB2L82/HIXrgdv4VsGawh7p//ZCdszBMym29O/8zB/kml8lKD/E2JBoiAWJApiQaIgFiQKYkGi
+IBYkCmJBovAP2aGJ1DgyOQcAAAAASUVORK5CYII=]]></avatar><DesignTimePermissions><Create/><Read/><Update/><Delete/><Metadata/></DesignTimePermissions><RunTimePermissions/><VisibilityPermissions><Visibility/></VisibilityPermissions><ConfigurationTableDefinitions/><ConfigurationTables/><PropertyBindings><PropertyBinding aspect.source="" aspect.startType="null" aspect.tagAddress="" name="talk2MAccount" sourceName="talk2MAccount" sourceThingName="ConnectorHost"/><PropertyBinding aspect.source="" aspect.startType="null" aspect.tagAddress="" name="talk2MDeveloperID" sourceName="talk2MDeveloperID" sourceThingName="ConnectorHost"/><PropertyBinding aspect.source="" aspect.startType="null" aspect.tagAddress="" name="talk2MPassword" sourceName="talk2MPassword" sourceThingName="ConnectorHost"/><PropertyBinding aspect.source="" aspect.startType="null" aspect.tagAddress="" name="talk2MUsername" sourceName="talk2MUsername" sourceThingName="ConnectorHost"/></PropertyBindings><RemotePropertyBindings/><RemoteServiceBindings/><RemoteEventBindings/><AlertConfigurations><AlertDefinitions name="ewonDevicePassword"/><AlertDefinitions name="ewonDeviceUsername"/><AlertDefinitions name="talk2MAccount"/><AlertDefinitions name="talk2MDeveloperID"/><AlertDefinitions name="talk2MPassword"/><AlertDefinitions name="talk2MUsername"/></AlertConfigurations><ThingShape><PropertyDefinitions><PropertyDefinition aspect.cacheTime="0.0" aspect.dataChangeType="VALUE" aspect.defaultValue="adm" aspect.isPersistent="true" baseType="STRING" category="" description="" isLocalOnly="false" name="ewonDevicePassword" ordinal="6"/><PropertyDefinition aspect.cacheTime="0.0" aspect.dataChangeType="VALUE" aspect.defaultValue="adm" aspect.isPersistent="true" baseType="STRING" category="" description="" isLocalOnly="false" name="ewonDeviceUsername" ordinal="5"/><PropertyDefinition aspect.cacheTime="0.0" aspect.dataChangeType="VALUE" aspect.isPersistent="true" baseType="STRING" category="" description="" isLocalOnly="false" name="talk2MAccount" ordinal="2"/><PropertyDefinition aspect.cacheTime="0.0" aspect.dataChangeType="VALUE" aspect.isPersistent="true" baseType="STRING" category="" description="" isLocalOnly="false" name="talk2MDeveloperID" ordinal="7"/><PropertyDefinition aspect.cacheTime="0.0" aspect.dataChangeType="VALUE" aspect.isPersistent="true" baseType="STRING" category="" description="" isLocalOnly="false" name="talk2MPassword" ordinal="4"/><PropertyDefinition aspect.cacheTime="0.0" aspect.dataChangeType="VALUE" aspect.isPersistent="true" baseType="STRING" category="" description="" isLocalOnly="false" name="talk2MUsername" ordinal="3"/></PropertyDefinitions><ServiceDefinitions><ServiceDefinition aspect.isAsync="false" category="c2d" description="Writes the specified value to the specified boolean tag " isAllowOverride="false" isLocalOnly="false" isOpen="false" isPrivate="false" name="WriteBooleanTagGenericService"><ResultType baseType="NOTHING" description="" name="result" ordinal="0"/><ParameterDefinitions><FieldDefinition aspect.isRequired="true" baseType="STRING" description="" name="ewonName" ordinal="3"/><FieldDefinition aspect.isRequired="true" baseType="STRING" description="Name of boolean tag" name="tagName" ordinal="1"/><FieldDefinition baseType="BOOLEAN" description="Value of tag" name="tagValue" ordinal="2"/></ParameterDefinitions></ServiceDefinition><ServiceDefinition aspect.isAsync="false" category="c2d" description="Writes the specified value to the specified boolean tag " isAllowOverride="false" isLocalOnly="false" isOpen="false" isPrivate="false" name="WriteDwordTagGenericService"><ResultType baseType="NOTHING" description="" name="result" ordinal="0"/><ParameterDefinitions><FieldDefinition aspect.isRequired="true" baseType="STRING" description="" name="ewonName" ordinal="3"/><FieldDefinition aspect.isRequired="true" baseType="STRING" description="Name of boolean tag" name="tagName" ordinal="1"/><FieldDefinition aspect.isRequired="true" baseType="NUMBER" description="Value of tag" name="tagValue" ordinal="2"/></ParameterDefinitions></ServiceDefinition><ServiceDefinition aspect.isAsync="false" category="c2d" description="Writes the specified value to the specified boolean tag " isAllowOverride="false" isLocalOnly="false" isOpen="false" isPrivate="false" name="WriteFloatTagGenericService"><ResultType baseType="NOTHING" description="" name="result" ordinal="0"/><ParameterDefinitions><FieldDefinition aspect.isRequired="true" baseType="STRING" description="" name="ewonName" ordinal="3"/><FieldDefinition aspect.isRequired="true" baseType="STRING" description="Name of boolean tag" name="tagName" ordinal="1"/><FieldDefinition baseType="NUMBER" description="Value of tag" name="tagValue" ordinal="2"/></ParameterDefinitions></ServiceDefinition><ServiceDefinition aspect.isAsync="false" category="c2d" description="Writes the specified value to the specified boolean tag " isAllowOverride="false" isLocalOnly="false" isOpen="false" isPrivate="false" name="WriteIntegerTagGenericService"><ResultType baseType="NOTHING" description="" name="result" ordinal="0"/><ParameterDefinitions><FieldDefinition aspect.isRequired="true" baseType="STRING" description="" name="ewonName" ordinal="3"/><FieldDefinition aspect.isRequired="true" baseType="STRING" description="Name of boolean tag" name="tagName" ordinal="1"/><FieldDefinition baseType="INTEGER" description="Value of tag" name="tagValue" ordinal="2"/></ParameterDefinitions></ServiceDefinition><ServiceDefinition aspect.isAsync="false" category="c2d" description="Writes the specified value to the specified string tag " isAllowOverride="false" isLocalOnly="false" isOpen="false" isPrivate="false" name="WriteStringTagGenericService"><ResultType baseType="NOTHING" description="" name="result" ordinal="0"/><ParameterDefinitions><FieldDefinition aspect.isRequired="true" baseType="STRING" description="" name="ewonName" ordinal="3"/><FieldDefinition aspect.isRequired="true" baseType="STRING" description="Name of boolean tag" name="tagName" ordinal="1"/><FieldDefinition baseType="STRING" description="Value of tag" name="tagValue" ordinal="2"/></ParameterDefinitions></ServiceDefinition></ServiceDefinitions><EventDefinitions/><ServiceMappings/><ServiceImplementations><ServiceImplementation description="" handlerName="Script" name="WriteBooleanTagGenericService"><ConfigurationTables><ConfigurationTable dataShapeName="" description="" isMultiRow="false" name="Script" ordinal="0"><DataShape><FieldDefinitions><FieldDefinition baseType="STRING" description="code" name="code" ordinal="0"/></FieldDefinitions></DataShape><Rows><Row><code><![CDATA[const T2M_SUCCESS_MESSAGE = 'Success Message';
+const INDEXOF_NOT_FOUND = -1;
+
+/*
+ * Updates a particular string tag on the current Ewon device to a new value.
+ *
+ * @author HMS Networks, MU Americas Solution Center
+ */
+// wrapper function for early returns
+function run() {
+  // get correct boolean
+  var tagValueEwonBool = 0;
+  if (tagValue) {
+    tagValueEwonBool = 1;
+  }
+    
+  // url construction
+  var host = 'https://m2web.talk2m.com/t2mapi/get/' + ewonName + '/rcgi.bin/';
+  var command = 'UpdateTagForm';
+  var tagValues = '?TagName1=' + tagName + '&TagValue1=' + tagValueEwonBool;
+  var ewonCredentials =
+    '&t2mdeviceusername=' + me.ewonDeviceUsername + '&t2mdevicepassword=' + me.ewonDevicePassword;
+  var credentials =
+    '&t2maccount=' +
+    me.talk2MAccount +
+    '&t2musername=' +
+    me.talk2MUsername +
+    '&t2mpassword=' +
+    me.talk2MPassword +
+    '&t2mdeveloperid=' +
+    me.talk2MDeveloperID;
+  var completeURL = encodeURI(
+    host + command + tagValues + credentials + ewonCredentials
+  );
+  var params = {
+    url: completeURL /* STRING */,
+  };
+
+  /*
+   * Uses getText instead of getJSON because this API request sometimes returns an HTML file.
+   * Failures can be JSON or HTML. Success is always HTML. JSON is always failure.
+   */
+  var result = Resources['ContentLoaderFunctions'].GetText(params);
+  try {
+    result = JSON.parse(result);
+    // if the return message is JSON then something went wrong
+    logger.error(
+      'Error calling DataMailbox API in WriteBooleanTagGenericService. Error: ' +
+        result['message']
+    );
+    return;
+  } catch (err) {}
+  
+  // Searching for "Success Message" to confirm a successful write
+  if (result.indexOf(T2M_SUCCESS_MESSAGE) === INDEXOF_NOT_FOUND) {
+    // The change failed, and returned HTML
+    logger.error('Write failed in WriteBooleanTagGenericService: ' + result);
+    return;
+  }
+  /*
+   * Now the function reads back the new value to double check.
+   * This command returns all instantaneous tag values.
+   */
+  command = 'ParamForm?AST_Param=$dtIV$ftT';
+  completeURL = encodeURI(host + command + credentials + ewonCredentials);
+  params = {
+    url: completeURL /* STRING */,
+  };
+  // Returns a body with tag values and information in the following format:
+  /*
+    "TagId";"TagName";"Value";"AlStatus";"AlType";"Quality"
+    2;"DEMOSTOP";0;0;0;65472
+    3;"DEMOSCENARIO";2;0;0;65472
+    4;"DEMOINUSE";1;0;0;65472
+    5;"LiftStation-A01-FLOW";8770;0;0;65472
+    6;"LiftStation-A01-PWR";1;0;0;65472
+    7;"LiftStation-B01-FLOW";9160;0;0;65472
+    8;"LiftStation-B01-PWR";1;0;0;65472
+    */
+  result = Resources['ContentLoaderFunctions'].GetText(params);
+  var start = result.indexOf('"' + tagName + '"');
+  /*
+   * start takes us to the index of the tagName occurrence.
+   * The offset of 3 accounts for the two " and the one ; before the tag value.
+   * tagName.length takes the pointer to the end of the tagName.
+   * start + 3 + tagName.length() will point to the first character of value.
+   * tagValue.length() will then grab the entire tagValue.
+   */
+  const tagNameOffset = 3;
+  newValue = result.substring(
+    start + tagNameOffset + tagName.length,
+    start + tagNameOffset + tagName.length + tagValue.length
+  );
+  newValueBoolean = false;
+  if (newValue.trim() == "1") {
+    newValueBoolean = true;
+  }
+    
+  if (tagValueEwonBool == newValueBoolean) {
+    logger.debug('The value of ' + tagName + ' changed to ' + tagValue + '.');
+  } else {
+    logger.error(
+      'Failed to change the value of ' + tagName + ' to ' + tagValue + '.'
+    );
+    logger.debug('newValue: ' + tagValue + ', onWriteBack: ' + newValue);
+  }
+}
+run();
+]]></code></Row></Rows></ConfigurationTable></ConfigurationTables></ServiceImplementation><ServiceImplementation description="" handlerName="Script" name="WriteDwordTagGenericService"><ConfigurationTables><ConfigurationTable dataShapeName="" description="" isMultiRow="false" name="Script" ordinal="0"><DataShape><FieldDefinitions><FieldDefinition baseType="STRING" description="code" name="code" ordinal="0"/></FieldDefinitions></DataShape><Rows><Row><code><![CDATA[const T2M_SUCCESS_MESSAGE = 'Success Message';
+const INDEXOF_NOT_FOUND = -1;
+
+/*
+ * Updates a particular string tag on the current Ewon device to a new value.
+ *
+ * @author HMS Networks, MU Americas Solution Center
+ */
+// wrapper function for early returns
+function run() {
+  // url construction
+  var host = 'https://m2web.talk2m.com/t2mapi/get/' + ewonName + '/rcgi.bin/';
+  var command = 'UpdateTagForm';
+  var tagValues = '?TagName1=' + tagName + '&TagValue1=' + tagValue;
+  var ewonCredentials =
+    '&t2mdeviceusername=' + me.ewonDeviceUsername + '&t2mdevicepassword=' + me.ewonDevicePassword;
+  var credentials =
+    '&t2maccount=' +
+    me.talk2MAccount +
+    '&t2musername=' +
+    me.talk2MUsername +
+    '&t2mpassword=' +
+    me.talk2MPassword +
+    '&t2mdeveloperid=' +
+    me.talk2MDeveloperID;
+  var completeURL = encodeURI(
+    host + command + tagValues + credentials + ewonCredentials
+  );
+  var params = {
+    url: completeURL /* STRING */,
+  };
+
+  /*
+   * Uses getText instead of getJSON because this API request sometimes returns an HTML file.
+   * Failures can be JSON or HTML. Success is always HTML. JSON is always failure.
+   */
+  var result = Resources['ContentLoaderFunctions'].GetText(params);
+  try {
+    result = JSON.parse(result);
+    // if the return message is JSON then something went wrong
+    logger.error(
+      'Error calling DataMailbox API in WriteDwordTagGenericService. Error: ' +
+        result['message']
+    );
+    return;
+  } catch (err) {}
+  
+  // Searching for "Success Message" to confirm a successful write
+  if (result.indexOf(T2M_SUCCESS_MESSAGE) === INDEXOF_NOT_FOUND) {
+    // The change failed, and returned HTML
+    logger.error('Write failed in WriteDwordTagGenericService: ' + result);
+    return;
+  }
+  /*
+   * Now the function reads back the new value to double check.
+   * This command returns all instantaneous tag values.
+   */
+  command = 'ParamForm?AST_Param=$dtIV$ftT';
+  completeURL = encodeURI(host + command + credentials + ewonCredentials);
+  params = {
+    url: completeURL /* STRING */,
+  };
+  // Returns a body with tag values and information in the following format:
+  /*
+    "TagId";"TagName";"Value";"AlStatus";"AlType";"Quality"
+    2;"DEMOSTOP";0;0;0;65472
+    3;"DEMOSCENARIO";2;0;0;65472
+    4;"DEMOINUSE";1;0;0;65472
+    5;"LiftStation-A01-FLOW";8770;0;0;65472
+    6;"LiftStation-A01-PWR";1;0;0;65472
+    7;"LiftStation-B01-FLOW";9160;0;0;65472
+    8;"LiftStation-B01-PWR";1;0;0;65472
+    */
+  result = Resources['ContentLoaderFunctions'].GetText(params);
+  var start = result.indexOf('"' + tagName + '"');
+  /*
+   * start takes us to the index of the tagName occurrence.
+   * The offset of 3 accounts for the two " and the one ; before the tag value.
+   * tagName.length takes the pointer to the end of the tagName.
+   * start + 3 + tagName.length() will point to the first character of value.
+   * tagValue.length() will then grab the entire tagValue.
+   */
+  const tagNameOffset = 3;
+  newValue = result.substring(
+    start + tagNameOffset + tagName.length,
+    start + tagNameOffset + tagName.length + tagValue.length
+  );
+  newValueInt = parseInt(newValue);
+  if (tagValue == newValueInt) {
+    logger.debug('The value of ' + tagName + ' changed to ' + tagValue + '.');
+  } else {
+    logger.error(
+      'Failed to change the value of ' + tagName + ' to ' + tagValue + '.'
+    );
+    logger.debug('newValue: ' + tagValue + ', onWriteBack: ' + newValue);
+  }
+}
+run();
+]]></code></Row></Rows></ConfigurationTable></ConfigurationTables></ServiceImplementation><ServiceImplementation description="" handlerName="Script" name="WriteFloatTagGenericService"><ConfigurationTables><ConfigurationTable dataShapeName="" description="" isMultiRow="false" name="Script" ordinal="0"><DataShape><FieldDefinitions><FieldDefinition baseType="STRING" description="code" name="code" ordinal="0"/></FieldDefinitions></DataShape><Rows><Row><code><![CDATA[const T2M_SUCCESS_MESSAGE = 'Success Message';
+const INDEXOF_NOT_FOUND = -1;
+
+/*
+ * Updates a particular string tag on the current Ewon device to a new value.
+ *
+ * @author HMS Networks, MU Americas Solution Center
+ */
+// wrapper function for early returns
+function run() {
+  // url construction
+  var host = 'https://m2web.talk2m.com/t2mapi/get/' + ewonName + '/rcgi.bin/';
+  var command = 'UpdateTagForm';
+  var tagValues = '?TagName1=' + tagName + '&TagValue1=' + tagValue;
+  var ewonCredentials =
+    '&t2mdeviceusername=' + me.ewonDeviceUsername + '&t2mdevicepassword=' + me.ewonDevicePassword;
+  var credentials =
+    '&t2maccount=' +
+    me.talk2MAccount +
+    '&t2musername=' +
+    me.talk2MUsername +
+    '&t2mpassword=' +
+    me.talk2MPassword +
+    '&t2mdeveloperid=' +
+    me.talk2MDeveloperID;
+  var completeURL = encodeURI(
+    host + command + tagValues + credentials + ewonCredentials
+  );
+  var params = {
+    url: completeURL /* STRING */,
+  };
+
+  /*
+   * Uses getText instead of getJSON because this API request sometimes returns an HTML file.
+   * Failures can be JSON or HTML. Success is always HTML. JSON is always failure.
+   */
+  var result = Resources['ContentLoaderFunctions'].GetText(params);
+  try {
+    result = JSON.parse(result);
+    // if the return message is JSON then something went wrong
+    logger.error(
+      'Error calling DataMailbox API in WriteFloatTagGenericService. Error: ' +
+        result['message']
+    );
+    return;
+  } catch (err) {}
+  
+  // Searching for "Success Message" to confirm a successful write
+  if (result.indexOf(T2M_SUCCESS_MESSAGE) === INDEXOF_NOT_FOUND) {
+    // The change failed, and returned HTML
+    logger.error('Write failed in WriteFloatTagGenericService: ' + result);
+    return;
+  }
+  /*
+   * Now the function reads back the new value to double check.
+   * This command returns all instantaneous tag values.
+   */
+  command = 'ParamForm?AST_Param=$dtIV$ftT';
+  completeURL = encodeURI(host + command + credentials + ewonCredentials);
+  params = {
+    url: completeURL /* STRING */,
+  };
+  // Returns a body with tag values and information in the following format:
+  /*
+    "TagId";"TagName";"Value";"AlStatus";"AlType";"Quality"
+    2;"DEMOSTOP";0;0;0;65472
+    3;"DEMOSCENARIO";2;0;0;65472
+    4;"DEMOINUSE";1;0;0;65472
+    5;"LiftStation-A01-FLOW";8770;0;0;65472
+    6;"LiftStation-A01-PWR";1;0;0;65472
+    7;"LiftStation-B01-FLOW";9160;0;0;65472
+    8;"LiftStation-B01-PWR";1;0;0;65472
+    */
+  result = Resources['ContentLoaderFunctions'].GetText(params);
+  var start = result.indexOf('"' + tagName + '"');
+  /*
+   * start takes us to the index of the tagName occurrence.
+   * The offset of 3 accounts for the two " and the one ; before the tag value.
+   * tagName.length takes the pointer to the end of the tagName.
+   * start + 3 + tagName.length() will point to the first character of value.
+   * tagValue.length() will then grab the entire tagValue.
+   */
+  const tagNameOffset = 3;
+  newValue = result.substring(
+    start + tagNameOffset + tagName.length,
+    start + tagNameOffset + tagName.length + tagValue.length
+  );
+  newValueFloat = parseFloat(newValue);
+  if (tagValue == newValueFloat) {
+    logger.debug('The value of ' + tagName + ' changed to ' + tagValue + '.');
+  } else {
+    logger.error(
+      'Failed to change the value of ' + tagName + ' to ' + tagValue + '.'
+    );
+    logger.debug('newValue: ' + tagValue + ', onWriteBack: ' + newValue);
+  }
+}
+run();
+]]></code></Row></Rows></ConfigurationTable></ConfigurationTables></ServiceImplementation><ServiceImplementation description="" handlerName="Script" name="WriteIntegerTagGenericService"><ConfigurationTables><ConfigurationTable dataShapeName="" description="" isMultiRow="false" name="Script" ordinal="0"><DataShape><FieldDefinitions><FieldDefinition baseType="STRING" description="code" name="code" ordinal="0"/></FieldDefinitions></DataShape><Rows><Row><code><![CDATA[const T2M_SUCCESS_MESSAGE = 'Success Message';
+const INDEXOF_NOT_FOUND = -1;
+
+/*
+ * Updates a particular string tag on the current Ewon device to a new value.
+ *
+ * @author HMS Networks, MU Americas Solution Center
+ */
+// wrapper function for early returns
+function run() {
+  // url construction
+  var host = 'https://m2web.talk2m.com/t2mapi/get/' + ewonName + '/rcgi.bin/';
+  var command = 'UpdateTagForm';
+  var tagValues = '?TagName1=' + tagName + '&TagValue1=' + tagValue;
+  var ewonCredentials =
+    '&t2mdeviceusername=' + me.ewonDeviceUsername + '&t2mdevicepassword=' + me.ewonDevicePassword;
+  var credentials =
+    '&t2maccount=' +
+    me.talk2MAccount +
+    '&t2musername=' +
+    me.talk2MUsername +
+    '&t2mpassword=' +
+    me.talk2MPassword +
+    '&t2mdeveloperid=' +
+    me.talk2MDeveloperID;
+  var completeURL = encodeURI(
+    host + command + tagValues + credentials + ewonCredentials
+  );
+  var params = {
+    url: completeURL /* STRING */,
+  };
+
+  /*
+   * Uses getText instead of getJSON because this API request sometimes returns an HTML file.
+   * Failures can be JSON or HTML. Success is always HTML. JSON is always failure.
+   */
+  var result = Resources['ContentLoaderFunctions'].GetText(params);
+  try {
+    result = JSON.parse(result);
+    // if the return message is JSON then something went wrong
+    logger.error(
+      'Error calling DataMailbox API in WriteIntegerTagGenericService. Error: ' +
+        result['message']
+    );
+    return;
+  } catch (err) {}
+  
+  // Searching for "Success Message" to confirm a successful write
+  if (result.indexOf(T2M_SUCCESS_MESSAGE) === INDEXOF_NOT_FOUND) {
+    // The change failed, and returned HTML
+    logger.error('Write failed in WriteIntegerTagGenericService: ' + result);
+    return;
+  }
+  /*
+   * Now the function reads back the new value to double check.
+   * This command returns all instantaneous tag values.
+   */
+  command = 'ParamForm?AST_Param=$dtIV$ftT';
+  completeURL = encodeURI(host + command + credentials + ewonCredentials);
+  params = {
+    url: completeURL /* STRING */,
+  };
+  // Returns a body with tag values and information in the following format:
+  /*
+    "TagId";"TagName";"Value";"AlStatus";"AlType";"Quality"
+    2;"DEMOSTOP";0;0;0;65472
+    3;"DEMOSCENARIO";2;0;0;65472
+    4;"DEMOINUSE";1;0;0;65472
+    5;"LiftStation-A01-FLOW";8770;0;0;65472
+    6;"LiftStation-A01-PWR";1;0;0;65472
+    7;"LiftStation-B01-FLOW";9160;0;0;65472
+    8;"LiftStation-B01-PWR";1;0;0;65472
+    */
+  result = Resources['ContentLoaderFunctions'].GetText(params);
+  var start = result.indexOf('"' + tagName + '"');
+  /*
+   * start takes us to the index of the tagName occurrence.
+   * The offset of 3 accounts for the two " and the one ; before the tag value.
+   * tagName.length takes the pointer to the end of the tagName.
+   * start + 3 + tagName.length() will point to the first character of value.
+   * tagValue.length() will then grab the entire tagValue.
+   */
+  const tagNameOffset = 3;
+  newValue = result.substring(
+    start + tagNameOffset + tagName.length,
+    start + tagNameOffset + tagName.length + tagValue.length
+  );
+  newValueInt = parseInt(newValue);
+  if (tagValue == newValueInt) {
+    logger.debug('The value of ' + tagName + ' changed to ' + tagValue + '.');
+  } else {
+    logger.error(
+      'Failed to change the value of ' + tagName + ' to ' + tagValue + '.'
+    );
+    logger.debug('newValue: ' + tagValue + ', onWriteBack: ' + newValue);
+  }
+}
+run();
+]]></code></Row></Rows></ConfigurationTable></ConfigurationTables></ServiceImplementation><ServiceImplementation description="" handlerName="Script" name="WriteStringTagGenericService"><ConfigurationTables><ConfigurationTable dataShapeName="" description="" isMultiRow="false" name="Script" ordinal="0"><DataShape><FieldDefinitions><FieldDefinition baseType="STRING" description="code" name="code" ordinal="0"/></FieldDefinitions></DataShape><Rows><Row><code><![CDATA[const T2M_SUCCESS_MESSAGE = 'Success Message';
+const INDEXOF_NOT_FOUND = -1;
+
+/*
+ * Updates a particular string tag on the current Ewon device to a new value.
+ *
+ * @author HMS Networks, MU Americas Solution Center
+ */
+// wrapper function for early returns
+function run() {
+  // url construction
+  var host = 'https://m2web.talk2m.com/t2mapi/get/' + ewonName + '/rcgi.bin/';
+  var command = 'UpdateTagForm';
+  var tagValues = '?TagName1=' + tagName + '&TagValue1=' + tagValue;
+  var ewonCredentials =
+    '&t2mdeviceusername=' + me.ewonDeviceUsername + '&t2mdevicepassword=' + me.ewonDevicePassword;
+  var credentials =
+    '&t2maccount=' +
+    me.talk2MAccount +
+    '&t2musername=' +
+    me.talk2MUsername +
+    '&t2mpassword=' +
+    me.talk2MPassword +
+    '&t2mdeveloperid=' +
+    me.talk2MDeveloperID;
+  var completeURL = encodeURI(
+    host + command + tagValues + credentials + ewonCredentials
+  );
+  var params = {
+    url: completeURL /* STRING */,
+  };
+
+  /*
+   * Uses getText instead of getJSON because this API request sometimes returns an HTML file.
+   * Failures can be JSON or HTML. Success is always HTML. JSON is always failure.
+   */
+  var result = Resources['ContentLoaderFunctions'].GetText(params);
+  try {
+    result = JSON.parse(result);
+    // if the return message is JSON then something went wrong
+    logger.error(
+      'Error calling DataMailbox API in WriteStringTagGenericService. Error: ' +
+        result['message']
+    );
+    return;
+  } catch (err) {}
+  
+  // Searching for "Success Message" to confirm a successful write
+  if (result.indexOf(T2M_SUCCESS_MESSAGE) === INDEXOF_NOT_FOUND) {
+    // The change failed, and returned HTML
+    logger.error('Write failed in WriteStringTagGenericService: ' + result);
+    return;
+  }
+  /*
+   * Now the function reads back the new value to double check.
+   * This command returns all instantaneous tag values.
+   */
+  command = 'ParamForm?AST_Param=$dtIV$ftT';
+  completeURL = encodeURI(host + command + credentials + ewonCredentials);
+  params = {
+    url: completeURL /* STRING */,
+  };
+  // Returns a body with tag values and information in the following format:
+  /*
+    "TagId";"TagName";"Value";"AlStatus";"AlType";"Quality"
+    2;"DEMOSTOP";0;0;0;65472
+    3;"DEMOSCENARIO";2;0;0;65472
+    4;"DEMOINUSE";1;0;0;65472
+    5;"LiftStation-A01-FLOW";8770;0;0;65472
+    6;"LiftStation-A01-PWR";1;0;0;65472
+    7;"LiftStation-B01-FLOW";9160;0;0;65472
+    8;"LiftStation-B01-PWR";1;0;0;65472
+    */
+  result = Resources['ContentLoaderFunctions'].GetText(params);
+  var start = result.indexOf('"' + tagName + '"');
+  /*
+   * start takes us to the index of the tagName occurrence.
+   * The offset of 4 accounts for the quotes and semicolon before the tag value.
+   * tagName.length takes the pointer to the end of the tagName.
+   * start + 4 + tagName.length() will point to the first character of value.
+   * tagValue.length() will then grab the entire tagValue.
+   */
+  const tagNameOffset = 4;
+  newValue = result.substring(
+    start + tagNameOffset + tagName.length,
+    start + tagNameOffset + tagName.length + tagValue.length
+  );
+  if (tagValue == newValue) {
+    logger.debug('The value of ' + tagName + ' changed to ' + tagValue + '.');
+  } else {
+    logger.error(
+      'Failed to change the value of ' + tagName + ' to ' + tagValue + '.'
+    );
+    logger.debug('newValue: ' + tagValue + ', onWriteBack: ' + newValue);
+  }
+}
+run();
+]]></code></Row></Rows></ConfigurationTable></ConfigurationTables></ServiceImplementation></ServiceImplementations><Subscriptions/></ThingShape><ImplementedShapes/><SharedConfigurationTables/><InstanceDesignTimePermissions><Create/><Read/><Update/><Delete/><Metadata/></InstanceDesignTimePermissions><InstanceRunTimePermissions/><InstanceVisibilityPermissions><Visibility/></InstanceVisibilityPermissions><ConfigurationChanges><ConfigurationChange changeAction="CREATE" changeReason="header : name : updated, avatar : updated&#10;" timestamp="2020-10-02T19:25:08.754Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="header : description : updated&#10;" timestamp="2020-10-02T19:26:27.956Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="header : projectName : updated&#10;" timestamp="2020-10-02T19:26:59.936Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="properties : talk2MAccount : added&#10;" timestamp="2020-10-05T18:17:58.659Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="properties : talk2MUsername : added, talk2MAccount : updated, talk2MPassword : added&#10;" timestamp="2020-10-05T18:19:14.319Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="properties : ewonDeviceUsername : added, ewonDevicePassword : added&#10;" timestamp="2020-10-05T18:21:27.373Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : UpdateEwonTagValue : service added&#10;" timestamp="2020-10-05T18:29:16.198Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : UpdateEwonTagValue : input parameter tagName added, inputs updated, input parameter tagValue added, inputs updated&#10;" timestamp="2020-10-05T18:33:47.120Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="properties : talk2MDeveloperID : added&#10;" timestamp="2020-10-05T18:37:18.647Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : SendEwonOffline : service added&#10;" timestamp="2020-10-05T18:40:13.217Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : WakeEwonDevice : service added&#10;" timestamp="2020-10-05T18:41:10.938Z" user="Administrator"/><ConfigurationChange changeAction="CREATE" changeReason="" timestamp="2020-10-07T15:11:29.771Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : SendEwonOffline : service deleted&#10;UpdateEwonTagValue : service deleted&#10;WakeEwonDevice : service deleted&#10;" timestamp="2020-10-08T14:35:24.416Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="header : description : updated&#10;" timestamp="2020-10-08T14:44:22.789Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="properties : ewonDeviceUsername : updated, ewonDevicePassword : updated&#10;" timestamp="2020-10-08T14:51:43.315Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="header : description : updated&#10;" timestamp="2020-10-08T15:15:17.287Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="header : description : updated&#10;" timestamp="2020-10-08T15:17:00.119Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="SetProjectName : []" timestamp="2020-10-08T15:23:34.868Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="SetProjectName : [EwonThingworxConnector]" timestamp="2020-10-08T15:24:13.004Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="SetProjectName : []" timestamp="2020-10-08T15:25:11.736Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="SetProjectName : [EwonThingworxConnector]" timestamp="2020-10-08T15:25:11.752Z" user="Administrator"/><ConfigurationChange changeAction="CREATE" changeReason="" timestamp="2020-10-08T15:43:29.037Z" user="Administrator"/><ConfigurationChange changeAction="CREATE" changeReason="" timestamp="2020-10-08T15:52:22.830Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="properties : talk2MAccount : updated, talk2MDeveloperID : updated, talk2MPassword : updated, talk2MUsername : updated&#10;" timestamp="2020-10-12T13:55:04.910Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2020-10-15T14:40:56.102Z" user="Administrator"/><ConfigurationChange changeAction="CREATE" changeReason="" timestamp="2020-11-30T13:22:13.329Z" user="Administrator"/><ConfigurationChange changeAction="CREATE" changeReason="" timestamp="2021-04-06T13:41:54.519Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : WriteBooleanTag : service added&#10;" timestamp="2021-04-08T18:29:44.134Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : WriteStringTag : service added, input parameter tagValue updated, inputs updated, description updated&#10;" timestamp="2021-04-08T18:30:18.973Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : WriteIntegerTag : service added, input parameter tagValue updated, inputs updated&#10;" timestamp="2021-04-08T18:44:21.540Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : WriteFloatTag : service added, input parameter tagValue updated, inputs updated&#10;" timestamp="2021-04-08T18:59:33.737Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : WriteStringTag : service updated&#10;" timestamp="2021-04-13T12:54:19.243Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : WriteStringTag : service updated&#10;" timestamp="2021-04-14T14:10:56.078Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : WriteIntegerTag : service updated&#10;" timestamp="2021-04-14T14:19:44.015Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : WriteFloatTag : service updated&#10;" timestamp="2021-04-14T14:20:24.366Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : WriteFloatTag : service updated&#10;" timestamp="2021-04-27T12:36:03.256Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : WriteBooleanTag : service updated&#10;" timestamp="2021-04-27T12:41:21.055Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : WriteBooleanTagGenericService : service added&#10;WriteBooleanTag : service deleted&#10;WriteFloatTagGenericService : service added&#10;WriteFloatTag : service deleted&#10;WriteIntegerTagGenericService : service added&#10;WriteIntegerTag : service deleted&#10;WriteStringTagGenericService : service added&#10;WriteStringTag : service deleted&#10;" timestamp="2021-04-27T13:47:28.847Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : WriteBooleanTagGenericService : input parameter ewonName added, inputs updated&#10;" timestamp="2021-04-27T13:49:33.386Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : WriteFloatTagGenericService : input parameter ewonName added, inputs updated&#10;" timestamp="2021-04-27T13:49:44.151Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : WriteIntegerTagGenericService : input parameter ewonName added, inputs updated&#10;" timestamp="2021-04-27T13:49:57.836Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : WriteStringTagGenericService : input parameter ewonName added, inputs updated&#10;" timestamp="2021-04-27T13:50:09.942Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : WriteDwordTagGenericService : service added, input parameter tagValue updated, inputs updated, input parameter tagName updated, inputs updated&#10;" timestamp="2021-04-27T14:17:07.730Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : WriteIntegerTagGenericService : service updated&#10;" timestamp="2021-04-30T12:45:37.581Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : WriteIntegerTagGenericService : service updated&#10;" timestamp="2021-04-30T12:45:45.633Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : WriteBooleanTagGenericService : service updated&#10;" timestamp="2021-04-30T12:45:52.335Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : WriteDwordTagGenericService : service updated&#10;" timestamp="2021-04-30T12:46:00.877Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : WriteFloatTagGenericService : service updated&#10;" timestamp="2021-04-30T12:46:07.096Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="SetProjectName : [PTCDefaultProject]" timestamp="2021-05-03T14:02:20.982Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="SetProjectName : [EwonThingworxConnector]" timestamp="2021-05-03T14:02:20.992Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : WriteBooleanTagGenericService : service updated&#10;" timestamp="2021-05-05T14:32:34.852Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : WriteBooleanTagGenericService : service updated&#10;" timestamp="2021-05-05T14:32:52.754Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : WriteDwordTagGenericService : service updated&#10;" timestamp="2021-05-05T14:33:06.438Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : WriteFloatTagGenericService : service updated&#10;" timestamp="2021-05-05T14:33:18.944Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : WriteIntegerTagGenericService : service updated&#10;" timestamp="2021-05-05T14:33:29.190Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : WriteStringTagGenericService : service updated&#10;" timestamp="2021-05-05T16:47:35.616Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : WriteStringTagGenericService : service updated&#10;" timestamp="2021-05-05T16:50:23.563Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : WriteStringTagGenericService : service updated&#10;" timestamp="2021-05-05T16:55:35.297Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : WriteStringTagGenericService : service updated&#10;" timestamp="2021-05-05T16:56:06.861Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="header : description : updated&#10;" timestamp="2021-05-07T12:36:34.716Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : WriteBooleanTagGenericService : service updated&#10;" timestamp="2021-05-11T13:44:51.152Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : WriteBooleanTagGenericService : service updated&#10;" timestamp="2021-05-11T13:45:31.496Z" user="Administrator"/></ConfigurationChanges></ThingTemplate><ThingTemplate baseThingTemplate="GenericEwonDevice" description="The base thing template which provides properties and services for Ewon devices that have been connected to Thingworx using the Ewon Thingworx Connector Talk2M data path." documentationContent="" effectiveThingPackage="ConfiguredThing" homeMashup="" inheritedValueStream="GenericEwonDeviceValueStream" lastModifiedDate="2021-05-11T12:18:41.092Z" name="GenericEwonDeviceTalk2M" projectName="EwonThingworxConnector" tags="" thingPackage="" valueStream=""><Owner name="Administrator" type="User"/><avatar><![CDATA[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]]></avatar><DesignTimePermissions><Create/><Read/><Update/><Delete/><Metadata/></DesignTimePermissions><RunTimePermissions/><VisibilityPermissions><Visibility/></VisibilityPermissions><ConfigurationTableDefinitions/><ConfigurationTables/><PropertyBindings><PropertyBinding aspect.source="" aspect.startType="null" aspect.tagAddress="" name="talk2MAccount" sourceName="talk2MAccount" sourceThingName="ConnectorHost"/><PropertyBinding aspect.source="" aspect.tagAddress="" name="talk2MDeveloperID" sourceName="talk2MDeveloperID" sourceThingName="ConnectorHost"/><PropertyBinding aspect.source="" aspect.tagAddress="" name="talk2MPassword" sourceName="talk2MPassword" sourceThingName="ConnectorHost"/><PropertyBinding aspect.source="" aspect.startType="null" aspect.tagAddress="" name="talk2MUsername" sourceName="talk2MUsername" sourceThingName="ConnectorHost"/></PropertyBindings><RemotePropertyBindings/><RemoteServiceBindings/><RemoteEventBindings/><AlertConfigurations/><ThingShape><PropertyDefinitions/><ServiceDefinitions><ServiceDefinition aspect.isAsync="false" category="Talk2M" description="Sends the current Ewon device to offline mode using Talk2M" isAllowOverride="false" isLocalOnly="false" isOpen="false" isPrivate="false" name="SendEwonOffline"><ResultType baseType="NOTHING" description="" name="result" ordinal="0"/><ParameterDefinitions/></ServiceDefinition><ServiceDefinition aspect.isAsync="false" category="Talk2M" description="Wakes the current Ewon device via Talk2M." isAllowOverride="false" isLocalOnly="false" isOpen="false" isPrivate="false" name="WakeEwonDevice"><ResultType baseType="NOTHING" description="" name="result" ordinal="0"/><ParameterDefinitions/></ServiceDefinition><ServiceDefinition aspect.isAsync="false" category="c2d" description="" isAllowOverride="false" isLocalOnly="false" isOpen="false" isPrivate="false" name="WriteBooleanTag"><ResultType baseType="NOTHING" description="" name="result" ordinal="0"/><ParameterDefinitions><FieldDefinition aspect.isRequired="true" baseType="STRING" description="" name="tagName" ordinal="1"/><FieldDefinition aspect.isRequired="true" baseType="BOOLEAN" description="" name="tagValue" ordinal="2"/></ParameterDefinitions></ServiceDefinition><ServiceDefinition aspect.isAsync="false" category="c2d" description="" isAllowOverride="false" isLocalOnly="false" isOpen="false" isPrivate="false" name="WriteDwordTag"><ResultType baseType="NOTHING" description="" name="result" ordinal="0"/><ParameterDefinitions><FieldDefinition aspect.isRequired="true" baseType="STRING" description="" name="tagName" ordinal="1"/><FieldDefinition aspect.isRequired="true" baseType="NUMBER" description="" name="tagValue" ordinal="2"/></ParameterDefinitions></ServiceDefinition><ServiceDefinition aspect.isAsync="false" category="c2d" description="" isAllowOverride="false" isLocalOnly="false" isOpen="false" isPrivate="false" name="WriteFloatTag"><ResultType baseType="NOTHING" description="" name="result" ordinal="0"/><ParameterDefinitions><FieldDefinition aspect.isRequired="true" baseType="STRING" description="" name="tagName" ordinal="1"/><FieldDefinition aspect.isRequired="true" baseType="NUMBER" description="" name="tagValue" ordinal="2"/></ParameterDefinitions></ServiceDefinition><ServiceDefinition aspect.isAsync="false" category="c2d" description="" isAllowOverride="false" isLocalOnly="false" isOpen="false" isPrivate="false" name="WriteIntegerTag"><ResultType baseType="NOTHING" description="" name="result" ordinal="0"/><ParameterDefinitions><FieldDefinition aspect.isRequired="true" baseType="STRING" description="" name="tagName" ordinal="1"/><FieldDefinition aspect.isRequired="true" baseType="INTEGER" description="" name="tagValue" ordinal="2"/></ParameterDefinitions></ServiceDefinition><ServiceDefinition aspect.isAsync="false" category="c2d" description="" isAllowOverride="false" isLocalOnly="false" isOpen="false" isPrivate="false" name="WriteStringTag"><ResultType baseType="NOTHING" description="" name="result" ordinal="0"/><ParameterDefinitions><FieldDefinition aspect.isRequired="true" baseType="STRING" description="" name="tagName" ordinal="1"/><FieldDefinition aspect.isRequired="true" baseType="STRING" description="" name="tagValue" ordinal="2"/></ParameterDefinitions></ServiceDefinition></ServiceDefinitions><EventDefinitions/><ServiceMappings/><ServiceImplementations><ServiceImplementation description="" handlerName="Script" name="SendEwonOffline"><ConfigurationTables><ConfigurationTable dataShapeName="" description="" isMultiRow="false" name="Script" ordinal="0"><DataShape><FieldDefinitions><FieldDefinition baseType="STRING" description="code" name="code" ordinal="0"/></FieldDefinitions></DataShape><Rows><Row><code><![CDATA[/*
  * Sets the current Ewon device to offline mode via Talk2M.
  *
  * @author HMS Networks, MU Americas Solution Center
@@ -533,102 +1256,6 @@ function run() {
         result['message']
     );
     return;
-  }
-}
-run();
-]]></code></Row></Rows></ConfigurationTable></ConfigurationTables></ServiceImplementation><ServiceImplementation description="" handlerName="Script" name="UpdateEwonTagValue"><ConfigurationTables><ConfigurationTable dataShapeName="" description="" isMultiRow="false" name="Script" ordinal="0"><DataShape><FieldDefinitions><FieldDefinition baseType="STRING" description="code" name="code" ordinal="0"/></FieldDefinitions></DataShape><Rows><Row><code><![CDATA[const T2M_SUCCESS_MESSAGE = 'Success Message';
-const INDEXOF_NOT_FOUND = -1;
-
-/*
- * Updates a particular tag on the current Ewon device to a new value.
- *
- * @author HMS Networks, MU Americas Solution Center
- */
-// wrapper function for early returns
-function run() {
-  // url construction
-  var host = 'https://m2web.talk2m.com/t2mapi/get/' + me.name + '/rcgi.bin/';
-  var command = 'UpdateTagForm';
-  var tagValues = '?TagName1=' + tagName + '&TagValue1=' + tagValue;
-  var ewonCredentials =
-    '&t2mdeviceusername=' + me.ewonDeviceUsername + '&t2mdevicepassword=' + me.ewonDevicePassword;
-  var credentials =
-    '&t2maccount=' +
-    me.talk2MAccount +
-    '&t2musername=' +
-    me.talk2MUsername +
-    '&t2mpassword=' +
-    me.talk2MPassword +
-    '&t2mdeveloperid=' +
-    me.talk2MDeveloperID;
-  var completeURL = encodeURI(
-    host + command + tagValues + credentials + ewonCredentials
-  );
-  var params = {
-    url: completeURL /* STRING */,
-  };
-
-  /*
-   * Uses getText instead of getJSON because this API request sometimes returns an HTML file.
-   * Failures can be JSON or HTML. Success is always HTML. JSON is always failure.
-   */
-  var result = Resources['ContentLoaderFunctions'].GetText(params);
-  try {
-    result = JSON.parse(result);
-    // if the return message is JSON then something went wrong
-    logger.error(
-      'Error calling DataMailbox API in UpdateEwonTagValue. Error: ' +
-        result['message']
-    );
-    return;
-  } catch (err) {}
-  // Searching for "Success Message" to confirm a successful write
-  if (result.indexOf(T2M_SUCCESS_MESSAGE) === INDEXOF_NOT_FOUND) {
-    // The change failed, and returned HTML
-    logger.error('Write failed in UpdateEwonTagValue: ' + result);
-    return;
-  }
-  /*
-   * Now the function reads back the new value to double check.
-   * This command returns all instantaneous tag values.
-   */
-  command = 'ParamForm?AST_Param=$dtIV$ftT';
-  completeURL = encodeURI(host + command + credentials + ewonCredentials);
-  params = {
-    url: completeURL /* STRING */,
-  };
-  // Returns a body with tag values and information in the following format:
-  /*
-    "TagId";"TagName";"Value";"AlStatus";"AlType";"Quality"
-    2;"DEMOSTOP";0;0;0;65472
-    3;"DEMOSCENARIO";2;0;0;65472
-    4;"DEMOINUSE";1;0;0;65472
-    5;"LiftStation-A01-FLOW";8770;0;0;65472
-    6;"LiftStation-A01-PWR";1;0;0;65472
-    7;"LiftStation-B01-FLOW";9160;0;0;65472
-    8;"LiftStation-B01-PWR";1;0;0;65472
-    */
-  result = Resources['ContentLoaderFunctions'].GetText(params);
-  var start = result.indexOf('"' + tagName + '"');
-  /*
-   * start takes us to the index of the tagName occurrence.
-   * The offset of 3 accounts for the two " and the one ; before the tag value.
-   * tagName.length takes the pointer to the end of the tagName.
-   * start + 3 + tagName.length() will point to the first character of value.
-   * tagValue.length() will then grab the entire tagValue.
-   */
-  const tagNameOffset = 3;
-  newValue = result.substring(
-    start + tagNameOffset + tagName.length,
-    start + tagNameOffset + tagName.length + tagValue.length
-  );
-  if (tagValue == newValue) {
-    logger.debug('The value of ' + tagName + ' changed to ' + tagValue + '.');
-  } else {
-    logger.error(
-      'Failed to change the value of ' + tagName + ' to ' + tagValue + '.'
-    );
-    logger.debug('newValue: ' + tagValue + ', onWriteBack: ' + newValue);
   }
 }
 run();
@@ -684,36 +1311,57 @@ function run() {
   }
 }
 run();
-]]></code></Row></Rows></ConfigurationTable></ConfigurationTables></ServiceImplementation></ServiceImplementations><Subscriptions/></ThingShape><ImplementedShapes/><SharedConfigurationTables/><InstanceDesignTimePermissions><Create/><Read/><Update/><Delete/><Metadata/></InstanceDesignTimePermissions><InstanceRunTimePermissions/><InstanceVisibilityPermissions><Visibility/></InstanceVisibilityPermissions><ConfigurationChanges><ConfigurationChange changeAction="CREATE" changeReason="header : name : updated, description : updated&#10;" timestamp="2020-10-08T14:34:02.149Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : SendEwonOffline : service updated&#10;" timestamp="2020-10-08T14:40:53.581Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : SendEwonOffline : service updated&#10;" timestamp="2020-10-08T14:41:34.033Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : WakeEwonDevice : service updated&#10;" timestamp="2020-10-08T14:42:23.074Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="header : description : updated&#10;" timestamp="2020-10-08T15:17:58.172Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="SetProjectName : []" timestamp="2020-10-08T15:23:34.868Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="SetProjectName : [EwonThingworxConnector]" timestamp="2020-10-08T15:24:13.004Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="SetProjectName : []" timestamp="2020-10-08T15:25:11.736Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="SetProjectName : [EwonThingworxConnector]" timestamp="2020-10-08T15:25:11.752Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : SendEwonOffline : service updated&#10;" timestamp="2020-10-08T15:35:17.087Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : SendEwonOffline : service updated&#10;" timestamp="2020-10-08T15:35:24.697Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : UpdateEwonTagValue : service updated&#10;" timestamp="2020-10-08T15:35:30.672Z" user="Administrator"/><ConfigurationChange changeAction="CREATE" changeReason="" timestamp="2020-10-08T15:43:29.037Z" user="Administrator"/><ConfigurationChange changeAction="CREATE" changeReason="" timestamp="2020-10-08T15:52:22.830Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : SendEwonOffline : service updated&#10;" timestamp="2020-10-12T12:14:19.410Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : SendEwonOffline : service updated&#10;" timestamp="2020-10-12T12:14:39.382Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : UpdateEwonTagValue : service updated&#10;" timestamp="2020-10-12T12:15:34.968Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : WakeEwonDevice : service updated&#10;" timestamp="2020-10-12T12:16:01.092Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : UpdateEwonTagValue : service updated&#10;" timestamp="2020-10-13T13:04:30.450Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : UpdateEwonTagValue : service updated&#10;" timestamp="2020-10-13T13:04:39.110Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : UpdateEwonTagValue : service updated&#10;" timestamp="2020-10-13T13:05:29.292Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : UpdateEwonTagValue : service updated&#10;" timestamp="2020-10-13T13:13:36.899Z" user="Administrator"/><ConfigurationChange changeAction="CREATE" changeReason="" timestamp="2020-11-30T13:22:13.292Z" user="Administrator"/></ConfigurationChanges></ThingTemplate><ThingTemplate baseThingTemplate="GenericEwonDevice" description="The base thing template which provides properties and services for Ewon devices that have been connected to Thingworx using the Ewon Thingworx Connector direct data path." documentationContent="" effectiveThingPackage="ConfiguredThing" homeMashup="" inheritedValueStream="GenericEwonDeviceValueStream" lastModifiedDate="2020-11-30T13:22:13.329Z" name="GenericEwonDeviceDirect" projectName="EwonThingworxConnector" tags="" thingPackage="" valueStream=""><Owner name="Administrator" type="User"/><avatar><![CDATA[iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAIAAADYYG7QAAAGXUlEQVR42u1WaVBTVxS+oFLHsf3R
-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]]></avatar><DesignTimePermissions><Create/><Read/><Update/><Delete/><Metadata/></DesignTimePermissions><RunTimePermissions/><VisibilityPermissions><Visibility/></VisibilityPermissions><ConfigurationTableDefinitions/><ConfigurationTables/><PropertyBindings><PropertyBinding aspect.source="" aspect.startType="null" aspect.tagAddress="" name="talk2MAccount" sourceName="talk2MAccount" sourceThingName="ConnectorHost"/><PropertyBinding aspect.source="" aspect.tagAddress="" name="talk2MDeveloperID" sourceName="talk2MDeveloperID" sourceThingName="ConnectorHost"/><PropertyBinding aspect.source="" aspect.tagAddress="" name="talk2MPassword" sourceName="talk2MPassword" sourceThingName="ConnectorHost"/><PropertyBinding aspect.source="" aspect.tagAddress="" name="talk2MUsername" sourceName="talk2MUsername" sourceThingName="ConnectorHost"/></PropertyBindings><RemotePropertyBindings/><RemoteServiceBindings/><RemoteEventBindings/><AlertConfigurations><AlertDefinitions name="talk2MDeviceName"/></AlertConfigurations><ThingShape><PropertyDefinitions><PropertyDefinition aspect.cacheTime="0.0" aspect.dataChangeType="VALUE" aspect.isPersistent="true" baseType="STRING" category="" description="This is the name of the Ewon device as it appears in Talk2M. For Ewon devices connected using the direct data path, this additional parameter is required because the Ewon may have a different name or identification in Talk2M." isLocalOnly="false" name="talk2MDeviceName" ordinal="2"/></PropertyDefinitions><ServiceDefinitions><ServiceDefinition aspect.isAsync="false" category="Talk2M" description="Sends the current Ewon device to offline mode using Talk2M" isAllowOverride="false" isLocalOnly="false" isOpen="false" isPrivate="false" name="SendEwonOffline"><ResultType baseType="NOTHING" description="" name="result" ordinal="0"/><ParameterDefinitions/></ServiceDefinition><ServiceDefinition aspect.isAsync="false" category="Talk2M" description="This service allows you to set the value of specified tag on the current Ewon device using M2Web." isAllowOverride="false" isLocalOnly="false" isOpen="false" isPrivate="false" name="UpdateEwonTagValue"><ResultType baseType="NOTHING" description="" name="result" ordinal="0"/><ParameterDefinitions><FieldDefinition aspect.isRequired="true" baseType="STRING" description="The name of the tag which is being updated" name="tagName" ordinal="1"/><FieldDefinition aspect.isRequired="true" baseType="STRING" description="The value of the tag which is being updated" name="tagValue" ordinal="2"/></ParameterDefinitions></ServiceDefinition><ServiceDefinition aspect.isAsync="false" category="Talk2M" description="Wakes the current Ewon device via Talk2M." isAllowOverride="false" isLocalOnly="false" isOpen="false" isPrivate="false" name="WakeEwonDevice"><ResultType baseType="NOTHING" description="" name="result" ordinal="0"/><ParameterDefinitions/></ServiceDefinition></ServiceDefinitions><EventDefinitions/><ServiceMappings/><ServiceImplementations><ServiceImplementation description="" handlerName="Script" name="SendEwonOffline"><ConfigurationTables><ConfigurationTable dataShapeName="" description="" isMultiRow="false" name="Script" ordinal="0"><DataShape><FieldDefinitions><FieldDefinition baseType="STRING" description="code" name="code" ordinal="0"/></FieldDefinitions></DataShape><Rows><Row><code><![CDATA[/*
+]]></code></Row></Rows></ConfigurationTable></ConfigurationTables></ServiceImplementation><ServiceImplementation description="" handlerName="Script" name="WriteBooleanTag"><ConfigurationTables><ConfigurationTable dataShapeName="" description="" isMultiRow="false" name="Script" ordinal="0"><DataShape><FieldDefinitions><FieldDefinition baseType="STRING" description="code" name="code" ordinal="0"/></FieldDefinitions></DataShape><Rows><Row><code><![CDATA[me.WriteBooleanTagGenericService({
+	ewonName: me.name /* STRING */,
+	tagValue: tagValue /* BOOLEAN */,
+	tagName: tagName /* STRING */
+});]]></code></Row></Rows></ConfigurationTable></ConfigurationTables></ServiceImplementation><ServiceImplementation description="" handlerName="Script" name="WriteDwordTag"><ConfigurationTables><ConfigurationTable dataShapeName="" description="" isMultiRow="false" name="Script" ordinal="0"><DataShape><FieldDefinitions><FieldDefinition baseType="STRING" description="code" name="code" ordinal="0"/></FieldDefinitions></DataShape><Rows><Row><code><![CDATA[me.WriteDwordTagGenericService({
+	ewonName: me.name /* STRING */,
+	tagValue: tagValue /* NUMBER */,
+	tagName: tagName /* STRING */
+});]]></code></Row></Rows></ConfigurationTable></ConfigurationTables></ServiceImplementation><ServiceImplementation description="" handlerName="Script" name="WriteFloatTag"><ConfigurationTables><ConfigurationTable dataShapeName="" description="" isMultiRow="false" name="Script" ordinal="0"><DataShape><FieldDefinitions><FieldDefinition baseType="STRING" description="code" name="code" ordinal="0"/></FieldDefinitions></DataShape><Rows><Row><code><![CDATA[me.WriteFloatTagGenericService({
+	ewonName: me.name /* STRING */,
+	tagValue: tagValue /* NUMBER */,
+	tagName: tagName /* STRING */
+});]]></code></Row></Rows></ConfigurationTable></ConfigurationTables></ServiceImplementation><ServiceImplementation description="" handlerName="Script" name="WriteIntegerTag"><ConfigurationTables><ConfigurationTable dataShapeName="" description="" isMultiRow="false" name="Script" ordinal="0"><DataShape><FieldDefinitions><FieldDefinition baseType="STRING" description="code" name="code" ordinal="0"/></FieldDefinitions></DataShape><Rows><Row><code><![CDATA[me.WriteIntegerTagGenericService({
+	ewonName: me.name /* STRING */,
+	tagValue: tagValue /* INTEGER */,
+	tagName: tagName /* STRING */
+});]]></code></Row></Rows></ConfigurationTable></ConfigurationTables></ServiceImplementation><ServiceImplementation description="" handlerName="Script" name="WriteStringTag"><ConfigurationTables><ConfigurationTable dataShapeName="" description="" isMultiRow="false" name="Script" ordinal="0"><DataShape><FieldDefinitions><FieldDefinition baseType="STRING" description="code" name="code" ordinal="0"/></FieldDefinitions></DataShape><Rows><Row><code><![CDATA[me.WriteStringTagGenericService({
+	ewonName: me.name /* STRING */,
+	tagValue: tagValue /* STRING */,
+	tagName: tagName /* STRING */
+});]]></code></Row></Rows></ConfigurationTable></ConfigurationTables></ServiceImplementation></ServiceImplementations><Subscriptions/></ThingShape><ImplementedShapes/><SharedConfigurationTables/><InstanceDesignTimePermissions><Create/><Read/><Update/><Delete/><Metadata/></InstanceDesignTimePermissions><InstanceRunTimePermissions/><InstanceVisibilityPermissions><Visibility/></InstanceVisibilityPermissions><ConfigurationChanges><ConfigurationChange changeAction="CREATE" changeReason="header : name : updated, description : updated&#10;" timestamp="2020-10-08T14:34:02.149Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : SendEwonOffline : service updated&#10;" timestamp="2020-10-08T14:40:53.581Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : SendEwonOffline : service updated&#10;" timestamp="2020-10-08T14:41:34.033Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : WakeEwonDevice : service updated&#10;" timestamp="2020-10-08T14:42:23.074Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="header : description : updated&#10;" timestamp="2020-10-08T15:17:58.172Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="SetProjectName : []" timestamp="2020-10-08T15:23:34.868Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="SetProjectName : [EwonThingworxConnector]" timestamp="2020-10-08T15:24:13.004Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="SetProjectName : []" timestamp="2020-10-08T15:25:11.736Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="SetProjectName : [EwonThingworxConnector]" timestamp="2020-10-08T15:25:11.752Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : SendEwonOffline : service updated&#10;" timestamp="2020-10-08T15:35:17.087Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : SendEwonOffline : service updated&#10;" timestamp="2020-10-08T15:35:24.697Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : UpdateEwonTagValue : service updated&#10;" timestamp="2020-10-08T15:35:30.672Z" user="Administrator"/><ConfigurationChange changeAction="CREATE" changeReason="" timestamp="2020-10-08T15:43:29.037Z" user="Administrator"/><ConfigurationChange changeAction="CREATE" changeReason="" timestamp="2020-10-08T15:52:22.830Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : SendEwonOffline : service updated&#10;" timestamp="2020-10-12T12:14:19.410Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : SendEwonOffline : service updated&#10;" timestamp="2020-10-12T12:14:39.382Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : UpdateEwonTagValue : service updated&#10;" timestamp="2020-10-12T12:15:34.968Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : WakeEwonDevice : service updated&#10;" timestamp="2020-10-12T12:16:01.092Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : UpdateEwonTagValue : service updated&#10;" timestamp="2020-10-13T13:04:30.450Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : UpdateEwonTagValue : service updated&#10;" timestamp="2020-10-13T13:04:39.110Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : UpdateEwonTagValue : service updated&#10;" timestamp="2020-10-13T13:05:29.292Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : UpdateEwonTagValue : service updated&#10;" timestamp="2020-10-13T13:13:36.899Z" user="Administrator"/><ConfigurationChange changeAction="CREATE" changeReason="" timestamp="2020-11-30T13:22:13.292Z" user="Administrator"/><ConfigurationChange changeAction="CREATE" changeReason="" timestamp="2021-04-06T13:41:54.500Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : UpdateEwonTagValue : service deleted&#10;WriteBooleanTag : service added&#10;" timestamp="2021-04-27T14:07:27.553Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : WriteFloatTag : service added, input parameter tagValue updated, inputs updated&#10;" timestamp="2021-04-27T14:07:53.943Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : WriteFloatTag : service updated&#10;" timestamp="2021-04-27T14:08:01.330Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : WriteFloatTag : service updated&#10;WriteIntegerTag : service added, input parameter tagValue updated, inputs updated&#10;" timestamp="2021-04-27T14:09:07.447Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : WriteIntegerTag : service updated&#10;WriteStringTag : service added, input parameter tagValue updated, inputs updated&#10;" timestamp="2021-04-27T14:09:44.663Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : WriteStringTag : service updated&#10;WriteDwordTag : service added&#10;" timestamp="2021-04-27T14:18:49.848Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="properties : talk2MUsername : updated&#10;" timestamp="2021-04-27T14:36:51.323Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="SetProjectName : [PTCDefaultProject]" timestamp="2021-05-03T14:02:20.978Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="SetProjectName : [EwonThingworxConnector]" timestamp="2021-05-03T14:02:20.997Z" user="Administrator"/></ConfigurationChanges></ThingTemplate><ThingTemplate baseThingTemplate="GenericEwonDevice" description="The base thing template which provides properties and services for Ewon devices that have been connected to Thingworx using the Ewon Thingworx Connector direct data path." documentationContent="" effectiveThingPackage="ConfiguredThing" homeMashup="" inheritedValueStream="GenericEwonDeviceValueStream" lastModifiedDate="2021-05-11T12:18:41.174Z" name="GenericEwonDeviceDirect" projectName="EwonThingworxConnector" tags="" thingPackage="" valueStream=""><Owner name="Administrator" type="User"/><avatar><![CDATA[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]]></avatar><DesignTimePermissions><Create/><Read/><Update/><Delete/><Metadata/></DesignTimePermissions><RunTimePermissions/><VisibilityPermissions><Visibility/></VisibilityPermissions><ConfigurationTableDefinitions/><ConfigurationTables/><PropertyBindings><PropertyBinding aspect.source="" aspect.startType="null" aspect.tagAddress="" name="talk2MAccount" sourceName="talk2MAccount" sourceThingName="ConnectorHost"/><PropertyBinding aspect.source="" aspect.tagAddress="" name="talk2MDeveloperID" sourceName="talk2MDeveloperID" sourceThingName="ConnectorHost"/><PropertyBinding aspect.source="" aspect.tagAddress="" name="talk2MPassword" sourceName="talk2MPassword" sourceThingName="ConnectorHost"/><PropertyBinding aspect.source="" aspect.tagAddress="" name="talk2MUsername" sourceName="talk2MUsername" sourceThingName="ConnectorHost"/></PropertyBindings><RemotePropertyBindings/><RemoteServiceBindings/><RemoteEventBindings/><AlertConfigurations><AlertDefinitions name="talk2MDeviceName"/></AlertConfigurations><ThingShape><PropertyDefinitions><PropertyDefinition aspect.cacheTime="0.0" aspect.dataChangeType="VALUE" aspect.isPersistent="true" baseType="STRING" category="" description="This is the name of the Ewon device as it appears in Talk2M. For Ewon devices connected using the direct data path, this additional parameter is required because the Ewon may have a different name or identification in Talk2M." isLocalOnly="false" name="talk2MDeviceName" ordinal="2"/></PropertyDefinitions><ServiceDefinitions><ServiceDefinition aspect.isAsync="false" category="Talk2M" description="Sends the current Ewon device to offline mode using Talk2M" isAllowOverride="false" isLocalOnly="false" isOpen="false" isPrivate="false" name="SendEwonOffline"><ResultType baseType="NOTHING" description="" name="result" ordinal="0"/><ParameterDefinitions/></ServiceDefinition><ServiceDefinition aspect.isAsync="false" category="Talk2M" description="Wakes the current Ewon device via Talk2M." isAllowOverride="false" isLocalOnly="false" isOpen="false" isPrivate="false" name="WakeEwonDevice"><ResultType baseType="NOTHING" description="" name="result" ordinal="0"/><ParameterDefinitions/></ServiceDefinition><ServiceDefinition aspect.isAsync="false" category="c2d" description="" isAllowOverride="false" isLocalOnly="false" isOpen="false" isPrivate="false" name="WriteBooleanTag"><ResultType baseType="NOTHING" description="" name="result" ordinal="0"/><ParameterDefinitions><FieldDefinition aspect.isRequired="true" baseType="STRING" description="" name="tagName" ordinal="1"/><FieldDefinition aspect.isRequired="true" baseType="BOOLEAN" description="" name="tagValue" ordinal="2"/></ParameterDefinitions></ServiceDefinition><ServiceDefinition aspect.isAsync="false" category="c2d" description="" isAllowOverride="false" isLocalOnly="false" isOpen="false" isPrivate="false" name="WriteDwordTag"><ResultType baseType="NOTHING" description="" name="result" ordinal="0"/><ParameterDefinitions><FieldDefinition aspect.isRequired="true" baseType="STRING" description="" name="tagName" ordinal="1"/><FieldDefinition aspect.isRequired="true" baseType="NUMBER" description="" name="tagValue" ordinal="2"/></ParameterDefinitions></ServiceDefinition><ServiceDefinition aspect.isAsync="false" category="c2d" description="" isAllowOverride="false" isLocalOnly="false" isOpen="false" isPrivate="false" name="WriteFloatTag"><ResultType baseType="NOTHING" description="" name="result" ordinal="0"/><ParameterDefinitions><FieldDefinition aspect.isRequired="true" baseType="STRING" description="" name="tagName" ordinal="1"/><FieldDefinition aspect.isRequired="true" baseType="NUMBER" description="" name="tagValue" ordinal="2"/></ParameterDefinitions></ServiceDefinition><ServiceDefinition aspect.isAsync="false" category="c2d" description="" isAllowOverride="false" isLocalOnly="false" isOpen="false" isPrivate="false" name="WriteIntegerTag"><ResultType baseType="NOTHING" description="" name="result" ordinal="0"/><ParameterDefinitions><FieldDefinition aspect.isRequired="true" baseType="STRING" description="" name="tagName" ordinal="1"/><FieldDefinition aspect.isRequired="true" baseType="INTEGER" description="" name="tagValue" ordinal="2"/></ParameterDefinitions></ServiceDefinition><ServiceDefinition aspect.isAsync="false" category="c2d" description="" isAllowOverride="false" isLocalOnly="false" isOpen="false" isPrivate="false" name="WriteStringTag"><ResultType baseType="NOTHING" description="" name="result" ordinal="0"/><ParameterDefinitions><FieldDefinition aspect.isRequired="true" baseType="STRING" description="" name="tagName" ordinal="1"/><FieldDefinition aspect.isRequired="true" baseType="STRING" description="" name="tagValue" ordinal="2"/></ParameterDefinitions></ServiceDefinition></ServiceDefinitions><EventDefinitions/><ServiceMappings/><ServiceImplementations><ServiceImplementation description="" handlerName="Script" name="SendEwonOffline"><ConfigurationTables><ConfigurationTable dataShapeName="" description="" isMultiRow="false" name="Script" ordinal="0"><DataShape><FieldDefinitions><FieldDefinition baseType="STRING" description="code" name="code" ordinal="0"/></FieldDefinitions></DataShape><Rows><Row><code><![CDATA[/*
  * Sets the current Ewon device to offline mode via Talk2M.
  *
  * @author HMS Networks, MU Americas Solution Center
@@ -762,103 +1410,6 @@ function run() {
         result['message']
     );
     return;
-  }
-}
-run();
-]]></code></Row></Rows></ConfigurationTable></ConfigurationTables></ServiceImplementation><ServiceImplementation description="" handlerName="Script" name="UpdateEwonTagValue"><ConfigurationTables><ConfigurationTable dataShapeName="" description="" isMultiRow="false" name="Script" ordinal="0"><DataShape><FieldDefinitions><FieldDefinition baseType="STRING" description="code" name="code" ordinal="0"/></FieldDefinitions></DataShape><Rows><Row><code><![CDATA[const T2M_SUCCESS_MESSAGE = 'Success Message';
-const INDEXOF_NOT_FOUND = -1;
-
-/*
- * Updates a particular tag on the current Ewon device to a new value.
- *
- * @author HMS Networks, MU Americas Solution Center
- */
-// wrapper function for early returns
-function run() {
-  // url construction
-  var host = 'https://m2web.talk2m.com/t2mapi/get/' + me.talk2MDeviceName + '/rcgi.bin/';
-  var command = 'UpdateTagForm';
-  var tagValues = '?TagName1=' + tagName + '&TagValue1=' + tagValue;
-  var ewonCredentials =
-    '&t2mdeviceusername=' + me.ewonDeviceUsername + '&t2mdevicepassword=' + me.ewonDevicePassword;
-  var credentials =
-    '&t2maccount=' +
-    me.talk2MAccount +
-    '&t2musername=' +
-    me.talk2MUsername +
-    '&t2mpassword=' +
-    me.talk2MPassword +
-    '&t2mdeveloperid=' +
-    me.talk2MDeveloperID;
-  var completeURL = encodeURI(
-    host + command + tagValues + credentials + ewonCredentials
-  );
-  var params = {
-    url: completeURL /* STRING */,
-  };
-
-  /*
-   * Uses getText instead of getJSON because this API request sometimes returns an HTML file.
-   * Failures can be JSON or HTML. Success is always HTML. JSON is always failure.
-   */
-  var result = Resources['ContentLoaderFunctions'].GetText(params);
-  try {
-    result = JSON.parse(result);
-    // if the return message is JSON then something went wrong
-    logger.error(
-      'Error calling DataMailbox API in UpdateEwonTagValue. Error: ' +
-        result['message']
-    );
-    return;
-  } catch (err) {}
-  
-  // Searching for "Success Message" to confirm a successful write
-  if (result.indexOf(T2M_SUCCESS_MESSAGE) === INDEXOF_NOT_FOUND) {
-    // The change failed, and returned HTML
-    logger.error('Write failed in UpdateEwonTagValue: ' + result);
-    return;
-  }
-  /*
-   * Now the function reads back the new value to double check.
-   * This command returns all instantaneous tag values.
-   */
-  command = 'ParamForm?AST_Param=$dtIV$ftT';
-  completeURL = encodeURI(host + command + credentials + ewonCredentials);
-  params = {
-    url: completeURL /* STRING */,
-  };
-  // Returns a body with tag values and information in the following format:
-  /*
-    "TagId";"TagName";"Value";"AlStatus";"AlType";"Quality"
-    2;"DEMOSTOP";0;0;0;65472
-    3;"DEMOSCENARIO";2;0;0;65472
-    4;"DEMOINUSE";1;0;0;65472
-    5;"LiftStation-A01-FLOW";8770;0;0;65472
-    6;"LiftStation-A01-PWR";1;0;0;65472
-    7;"LiftStation-B01-FLOW";9160;0;0;65472
-    8;"LiftStation-B01-PWR";1;0;0;65472
-    */
-  result = Resources['ContentLoaderFunctions'].GetText(params);
-  var start = result.indexOf('"' + tagName + '"');
-  /*
-   * start takes us to the index of the tagName occurrence.
-   * The offset of 3 accounts for the two " and the one ; before the tag value.
-   * tagName.length takes the pointer to the end of the tagName.
-   * start + 3 + tagName.length() will point to the first character of value.
-   * tagValue.length() will then grab the entire tagValue.
-   */
-  const tagNameOffset = 3;
-  newValue = result.substring(
-    start + tagNameOffset + tagName.length,
-    start + tagNameOffset + tagName.length + tagValue.length
-  );
-  if (tagValue == newValue) {
-    logger.debug('The value of ' + tagName + ' changed to ' + tagValue + '.');
-  } else {
-    logger.error(
-      'Failed to change the value of ' + tagName + ' to ' + tagValue + '.'
-    );
-    logger.debug('newValue: ' + tagValue + ', onWriteBack: ' + newValue);
   }
 }
 run();
@@ -914,4 +1465,24 @@ function run() {
   }
 }
 run();
-]]></code></Row></Rows></ConfigurationTable></ConfigurationTables></ServiceImplementation></ServiceImplementations><Subscriptions/></ThingShape><ImplementedShapes/><SharedConfigurationTables/><InstanceDesignTimePermissions><Create/><Read/><Update/><Delete/><Metadata/></InstanceDesignTimePermissions><InstanceRunTimePermissions/><InstanceVisibilityPermissions><Visibility/></InstanceVisibilityPermissions><ConfigurationChanges><ConfigurationChange changeAction="CREATE" changeReason="header : name : updated, description : updated&#10;" timestamp="2020-10-08T14:34:25.882Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="properties : talk2MDeviceName : added&#10;" timestamp="2020-10-08T14:37:23.819Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : SendEwonOffline : service updated&#10;" timestamp="2020-10-08T14:38:37.523Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : SendEwonOffline : service updated&#10;" timestamp="2020-10-08T14:39:14.168Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : WakeEwonDevice : service updated&#10;" timestamp="2020-10-08T14:40:09.316Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="header : description : updated&#10;" timestamp="2020-10-08T15:17:39.144Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="SetProjectName : []" timestamp="2020-10-08T15:23:34.868Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="SetProjectName : [EwonThingworxConnector]" timestamp="2020-10-08T15:24:13.004Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="SetProjectName : []" timestamp="2020-10-08T15:25:11.736Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="SetProjectName : [EwonThingworxConnector]" timestamp="2020-10-08T15:25:11.752Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : SendEwonOffline : service updated&#10;" timestamp="2020-10-08T15:35:51.504Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : UpdateEwonTagValue : service updated&#10;" timestamp="2020-10-08T15:35:57.944Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : UpdateEwonTagValue : service updated&#10;" timestamp="2020-10-08T15:36:04.838Z" user="Administrator"/><ConfigurationChange changeAction="CREATE" changeReason="" timestamp="2020-10-08T15:49:44.602Z" user="Administrator"/><ConfigurationChange changeAction="CREATE" changeReason="" timestamp="2020-10-08T15:52:22.830Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : SendEwonOffline : service updated&#10;" timestamp="2020-10-12T12:14:42.666Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : SendEwonOffline : service updated&#10;" timestamp="2020-10-12T12:14:47.645Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : UpdateEwonTagValue : service updated&#10;" timestamp="2020-10-12T12:15:23.761Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : WakeEwonDevice : service updated&#10;" timestamp="2020-10-12T12:16:08.753Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : UpdateEwonTagValue : service updated&#10;" timestamp="2020-10-13T13:03:54.134Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : UpdateEwonTagValue : service updated&#10;" timestamp="2020-10-13T13:05:41.322Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : UpdateEwonTagValue : service updated&#10;" timestamp="2020-10-13T13:13:15.539Z" user="Administrator"/><ConfigurationChange changeAction="CREATE" changeReason="" timestamp="2020-11-30T13:22:13.329Z" user="Administrator"/></ConfigurationChanges></ThingTemplate></ThingTemplates><ExtensionPackages/><Organizations/><Menus/><ThingGroups/><Resources/><DataTags/><ThingShapes/><Subsystems/><NotificationContents/></Entities>
+]]></code></Row></Rows></ConfigurationTable></ConfigurationTables></ServiceImplementation><ServiceImplementation description="" handlerName="Script" name="WriteBooleanTag"><ConfigurationTables><ConfigurationTable dataShapeName="" description="" isMultiRow="false" name="Script" ordinal="0"><DataShape><FieldDefinitions><FieldDefinition baseType="STRING" description="code" name="code" ordinal="0"/></FieldDefinitions></DataShape><Rows><Row><code><![CDATA[me.WriteBooleanTagGenericService({
+	ewonName: me.talk2MDeviceName /* STRING */,
+	tagValue: tagValue /* BOOLEAN */,
+	tagName: tagName /* STRING */
+});]]></code></Row></Rows></ConfigurationTable></ConfigurationTables></ServiceImplementation><ServiceImplementation description="" handlerName="Script" name="WriteDwordTag"><ConfigurationTables><ConfigurationTable dataShapeName="" description="" isMultiRow="false" name="Script" ordinal="0"><DataShape><FieldDefinitions><FieldDefinition baseType="STRING" description="code" name="code" ordinal="0"/></FieldDefinitions></DataShape><Rows><Row><code><![CDATA[me.WriteDwordTagGenericService({
+	ewonName: me.talk2MDeviceName /* STRING */,
+	tagValue: tagValue /* NUMBER */,
+	tagName: tagName /* STRING */
+});]]></code></Row></Rows></ConfigurationTable></ConfigurationTables></ServiceImplementation><ServiceImplementation description="" handlerName="Script" name="WriteFloatTag"><ConfigurationTables><ConfigurationTable dataShapeName="" description="" isMultiRow="false" name="Script" ordinal="0"><DataShape><FieldDefinitions><FieldDefinition baseType="STRING" description="code" name="code" ordinal="0"/></FieldDefinitions></DataShape><Rows><Row><code><![CDATA[me.WriteFloatTagGenericService({
+	ewonName: me.talk2MDeviceName /* STRING */,
+	tagValue: tagValue /* NUMBER */,
+	tagName: tagName /* STRING */
+});]]></code></Row></Rows></ConfigurationTable></ConfigurationTables></ServiceImplementation><ServiceImplementation description="" handlerName="Script" name="WriteIntegerTag"><ConfigurationTables><ConfigurationTable dataShapeName="" description="" isMultiRow="false" name="Script" ordinal="0"><DataShape><FieldDefinitions><FieldDefinition baseType="STRING" description="code" name="code" ordinal="0"/></FieldDefinitions></DataShape><Rows><Row><code><![CDATA[me.WriteIntegerTagGenericService({
+	ewonName: me.talk2MDeviceName /* STRING */,
+	tagValue: tagValue /* INTEGER */,
+	tagName: tagName /* STRING */
+});]]></code></Row></Rows></ConfigurationTable></ConfigurationTables></ServiceImplementation><ServiceImplementation description="" handlerName="Script" name="WriteStringTag"><ConfigurationTables><ConfigurationTable dataShapeName="" description="" isMultiRow="false" name="Script" ordinal="0"><DataShape><FieldDefinitions><FieldDefinition baseType="STRING" description="code" name="code" ordinal="0"/></FieldDefinitions></DataShape><Rows><Row><code><![CDATA[me.WriteStringTagGenericService({
+	ewonName: me.talk2MDeviceName /* STRING */,
+	tagValue: tagValue /* STRING */,
+	tagName: tagName /* STRING */
+});]]></code></Row></Rows></ConfigurationTable></ConfigurationTables></ServiceImplementation></ServiceImplementations><Subscriptions/></ThingShape><ImplementedShapes/><SharedConfigurationTables/><InstanceDesignTimePermissions><Create/><Read/><Update/><Delete/><Metadata/></InstanceDesignTimePermissions><InstanceRunTimePermissions/><InstanceVisibilityPermissions><Visibility/></InstanceVisibilityPermissions><ConfigurationChanges><ConfigurationChange changeAction="CREATE" changeReason="header : name : updated, description : updated&#10;" timestamp="2020-10-08T14:34:25.882Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="properties : talk2MDeviceName : added&#10;" timestamp="2020-10-08T14:37:23.819Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : SendEwonOffline : service updated&#10;" timestamp="2020-10-08T14:38:37.523Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : SendEwonOffline : service updated&#10;" timestamp="2020-10-08T14:39:14.168Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : WakeEwonDevice : service updated&#10;" timestamp="2020-10-08T14:40:09.316Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="header : description : updated&#10;" timestamp="2020-10-08T15:17:39.144Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="SetProjectName : []" timestamp="2020-10-08T15:23:34.868Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="SetProjectName : [EwonThingworxConnector]" timestamp="2020-10-08T15:24:13.004Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="SetProjectName : []" timestamp="2020-10-08T15:25:11.736Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="SetProjectName : [EwonThingworxConnector]" timestamp="2020-10-08T15:25:11.752Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : SendEwonOffline : service updated&#10;" timestamp="2020-10-08T15:35:51.504Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : UpdateEwonTagValue : service updated&#10;" timestamp="2020-10-08T15:35:57.944Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : UpdateEwonTagValue : service updated&#10;" timestamp="2020-10-08T15:36:04.838Z" user="Administrator"/><ConfigurationChange changeAction="CREATE" changeReason="" timestamp="2020-10-08T15:49:44.602Z" user="Administrator"/><ConfigurationChange changeAction="CREATE" changeReason="" timestamp="2020-10-08T15:52:22.830Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : SendEwonOffline : service updated&#10;" timestamp="2020-10-12T12:14:42.666Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : SendEwonOffline : service updated&#10;" timestamp="2020-10-12T12:14:47.645Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : UpdateEwonTagValue : service updated&#10;" timestamp="2020-10-12T12:15:23.761Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : WakeEwonDevice : service updated&#10;" timestamp="2020-10-12T12:16:08.753Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : UpdateEwonTagValue : service updated&#10;" timestamp="2020-10-13T13:03:54.134Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : UpdateEwonTagValue : service updated&#10;" timestamp="2020-10-13T13:05:41.322Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : UpdateEwonTagValue : service updated&#10;" timestamp="2020-10-13T13:13:15.539Z" user="Administrator"/><ConfigurationChange changeAction="CREATE" changeReason="" timestamp="2020-11-30T13:22:13.329Z" user="Administrator"/><ConfigurationChange changeAction="CREATE" changeReason="" timestamp="2021-04-06T13:41:54.522Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : UpdateEwonTagValue : service deleted&#10;" timestamp="2021-04-27T13:43:08.711Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : WriteBooleanTag : service added&#10;" timestamp="2021-04-27T13:49:07.882Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : WriteBooleanTag : service updated&#10;" timestamp="2021-04-27T13:50:20.793Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : WriteBooleanTag : service updated&#10;" timestamp="2021-04-27T13:51:21.914Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : WriteBooleanTag : service updated&#10;" timestamp="2021-04-27T13:51:36.524Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : WriteBooleanTag : service updated&#10;WriteFloatTag : service added&#10;" timestamp="2021-04-27T13:52:43.844Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : WriteFloatTag : input parameter tagValue updated, inputs updated&#10;" timestamp="2021-04-27T13:54:43.840Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : WriteIntegerTag : service added&#10;" timestamp="2021-04-27T13:55:19.584Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : WriteIntegerTag : input parameter tagValue updated, inputs updated&#10;" timestamp="2021-04-27T13:55:34.478Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : WriteIntegerTag : service updated&#10;" timestamp="2021-04-27T13:55:39.734Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : WriteStringTag : service added, input parameter tagValue updated, inputs updated&#10;" timestamp="2021-04-27T13:56:24.229Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : WriteStringTag : service updated&#10;" timestamp="2021-04-27T13:56:30.011Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : WriteDwordTag : service added&#10;" timestamp="2021-04-27T14:18:14.157Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="SetProjectName : [PTCDefaultProject]" timestamp="2021-05-03T14:02:20.985Z" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="SetProjectName : [EwonThingworxConnector]" timestamp="2021-05-03T14:02:20.994Z" user="Administrator"/></ConfigurationChanges></ThingTemplate></ThingTemplates><ExtensionPackages/><Organizations/><Menus/><ThingGroups/><Resources/><DataTags/><ThingShapes/><Subsystems/><NotificationContents/></Entities>
