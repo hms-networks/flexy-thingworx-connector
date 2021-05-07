@@ -14,6 +14,7 @@ There are two components that make up the Ewon Thingworx Connector, a Thingworx 
       2. [GenericEwonDevice](#genericewondevice)
         1. [GenericEwonDeviceTalk2M](#genericewondevicetalk2m)
         2. [GenericEwonDeviceDirect](#genericewondevicedirect)
+        3. [GenericEwonDeviceDirectStandalone](#genericewondevicestandalone)
       3. [GenericEwonDeviceValueStream](#genericewondevicevaluestream)
 3. [Flexy Java Application Component](#flexy-java-application-component)
    1. [Installation](#installation)
@@ -143,27 +144,57 @@ ConnectorHost is a timer thing and triggers a check for new Talk2M data on its c
 
 5. *Talk2MSyncData*: Used by the Talk2M data path for downloading a transaction of data points from Talk2M/DataMailbox. It requests only data it has not previously recieved using the stored value of lastTransactionId.
 
+6. *AddNewDirectStandaloneDevice*: Used to create a new Thing for connecting an Ewon device using the standalone direct data path. Note: This service is for convenience, and application key permissions must still be manually configured. This service returns JSON containing the generated Thing name, data connection URL, application key name and value.
+
 #### GenericEwonDevice
 
-GenericEwonDevice is a thing template that applies to all Ewon device things created by the connector and contains common properties that are used by services in both the GenericEwonDeviceTalk2M and GenericEwonDeviceDirect thing templates.
+GenericEwonDevice is a thing template that applies to all Ewon device things created by the connector and contains common properties that are used by services in the GenericEwonDeviceTalk2M, GenericEwonDeviceDirect, and GenericEwonDeviceDirectStandalone thing templates.
 
 ##### Properties
 
-1. *ewonDevicePassword*: The password of the referenced Ewon device. The default value is 'adm' and should be changed if your Ewon password is different. The value of this property is used by the services in both the GenericEwonDeviceTalk2M and GenericEwonDeviceDirect thing templates.
+1. *ewonDevicePassword*: The password of the referenced Ewon device. The default value is 'adm' and should be changed if your Ewon password is different. The value of this property is used by the services in the GenericEwonDeviceTalk2M, GenericEwonDeviceDirect, and GenericEwonDeviceDirectStandalone thing templates.
 
-2. *ewonDeviceUsername*: The username of the referenced Ewon device. The default value is 'adm' and should be changed if your Ewon username is different. The value of this property is used by the services in both the GenericEwonDeviceTalk2M and GenericEwonDeviceDirect thing templates.
+2. *ewonDeviceUsername*: The username of the referenced Ewon device. The default value is 'adm' and should be changed if your Ewon username is different. The value of this property is used by the services in the GenericEwonDeviceTalk2M, GenericEwonDeviceDirect, and GenericEwonDeviceDirectStandalone thing templates.
+
+###### Services
+
+1. *WriteBooleanTagGenericService*: A generic service used by the GenericEwonDeviceTalk2M, GenericEwonDeviceDirect, and GenericEwonDeviceDirectStandalone for writing a value to a boolean tag on the Ewon Device.
+
+2. *WriteDwordTagGenericService*: A generic service used by the GenericEwonDeviceTalk2M, GenericEwonDeviceDirect, and GenericEwonDeviceDirectStandalone for writing a value to a DWORD tag on the Ewon Device.
+
+3. *WriteFloatTagGenericService*: A generic service used by the GenericEwonDeviceTalk2M, GenericEwonDeviceDirect, and GenericEwonDeviceDirectStandalone for writing a value to a float tag on the Ewon Device.
+
+4. *WriteIntegerTagGenericService*: A generic service used by the GenericEwonDeviceTalk2M, GenericEwonDeviceDirect, and GenericEwonDeviceDirectStandalone for writing a value to a integer tag on the Ewon Device.
+
+5. *WriteStringTagGenericService*: A generic service used by the GenericEwonDeviceTalk2M, GenericEwonDeviceDirect, and GenericEwonDeviceDirectStandalone for writing a value to a string tag on the Ewon Device.
 
 ##### GenericEwonDeviceTalk2M
+
+The GenericEwonDeviceTalk2M device template is for Ewon devices which connect to Thingworx using the Talk2M data path.
+
+The GenericEwonDeviceTalk2M device template is based on the GenericEwonDevice device template, and inherits all of it's services and properties.
 
 ###### Services
 
 1. *SendEwonOffline*: Sends the referenced Ewon device offline when using a triggered connection, such as 3G or other cellular network. More information about triggered connections can be found at https://www.ewon.biz/e-learning/library/cosy-131/remote-connection#:~:text=Triggered%20Connection%3A%20wake%20up%20%26%20put,when%20the%20user%20needs%20it.
 
-2. *UpdateEwonTagValue*: Updates the specified tag with the specified tag value on the referenced Ewon using the Talk2M M2Web API.
+2. *WakeEwonDevice*: Wakes up the referenced Ewon device when using a triggered connection, such as 3G or other cellular network. More information about triggered connections can be found at https://www.ewon.biz/e-learning/library/cosy-131/remote-connection#:~:text=Triggered%20Connection%3A%20wake%20up%20%26%20put,when%20the%20user%20needs%20it.
 
-3. *WakeEwonDevice*: Wakes up the referenced Ewon device when using a triggered connection, such as 3G or other cellular network. More information about triggered connections can be found at https://www.ewon.biz/e-learning/library/cosy-131/remote-connection#:~:text=Triggered%20Connection%3A%20wake%20up%20%26%20put,when%20the%20user%20needs%20it.
+3. *WriteBooleanTag*: Writes the value of a boolean tag on the Ewon device.
+
+4. *WriteDwordTag*: Writes the value of a DWORD tag on the Ewon device.
+
+5. *WriteFloatTag*: Writes the value of a float tag on the Ewon device.
+
+6. *WriteIntegerTag*: Writes the value of a integer tag on the Ewon device.
+
+7. *WriteStringTag*: Writes the value of a string tag on the Ewon device.
 
 ##### GenericEwonDeviceDirect
+
+The GenericEwonDeviceDirect device template is for Ewon devices which connect to Thingworx using the direct data path and ConnectorHost's TakeInfo service.
+
+The GenericEwonDeviceDirect device template is based on the GenericEwonDevice device template, and inherits all of it's services and properties.
 
 ###### Properties
 
@@ -173,9 +204,36 @@ GenericEwonDevice is a thing template that applies to all Ewon device things cre
 
 1. *SendEwonOffline*: Sends the referenced Ewon device offline when using a triggered connection, such as 3G or other cellular network. More information about triggered connections can be found at https://www.ewon.biz/e-learning/library/cosy-131/remote-connection#:~:text=Triggered%20Connection%3A%20wake%20up%20%26%20put,when%20the%20user%20needs%20it.
 
-2. *UpdateEwonTagValue*: Updates the specified tag with the specified tag value on the referenced Ewon using the Talk2M M2Web API.
+2. *WakeEwonDevice*: Wakes up the referenced Ewon device when using a triggered connection, such as 3G or other cellular network. More information about triggered connections can be found at https://www.ewon.biz/e-learning/library/cosy-131/remote-connection#:~:text=Triggered%20Connection%3A%20wake%20up%20%26%20put,when%20the%20user%20needs%20it.
 
-3. *WakeEwonDevice*: Wakes up the referenced Ewon device when using a triggered connection, such as 3G or other cellular network. More information about triggered connections can be found at https://www.ewon.biz/e-learning/library/cosy-131/remote-connection#:~:text=Triggered%20Connection%3A%20wake%20up%20%26%20put,when%20the%20user%20needs%20it.
+3. *WriteBooleanTag*: Writes the value of a boolean tag on the Ewon device.
+
+4. *WriteDwordTag*: Writes the value of a DWORD tag on the Ewon device.
+
+5. *WriteFloatTag*: Writes the value of a float tag on the Ewon device.
+
+6. *WriteIntegerTag*: Writes the value of a integer tag on the Ewon device.
+
+7. *WriteStringTag*: Writes the value of a string tag on the Ewon device.
+
+##### GenericEwonDeviceDirectStandalone
+
+The GenericEwonDeviceDirectStandalone Thing Template is for Ewon devices to connect to Thingworx using the direct data path with an independent application key and service endpoint.
+
+The GenericEwonDeviceDirectStandalone Thing Template is based on the GenericEwonDeviceDirect Thing Template, and inherits all of its services and properties.
+
+###### Properties
+
+1. *lastUpdateTime*: A date/time property that is updated to the current time when a data update is received from the Ewon device.
+
+###### Services
+
+1. *InsertDataPoint*: Used by the TakeInfo service to insert a datapoint to its respective property on Thingworx.
+
+2. *ProcessTimeSinceUpdate*: Used by the TakeInfo service to update the lastUpdateTime property which tracks when a data update was last received.
+
+3. *TakeInfo*: Used by the Ewon device to ingest telemetry messages from the Flexy Java Application component. This service is invoked by the Flexy Java Application component using the Thingworx REST API.
+
 
 #### GenericEwonDeviceValueStream
 
