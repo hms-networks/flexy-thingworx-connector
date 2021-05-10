@@ -172,7 +172,7 @@ GenericEwonDevice is a Thing template that applies to all Ewon device Things cre
 
 The GenericEwonDeviceTalk2M device template is for Ewon devices which connect to Thingworx using the Talk2M data path.
 
-The GenericEwonDeviceTalk2M device template is based on the GenericEwonDevice device template, and inherits all of it's services and properties.
+The GenericEwonDeviceTalk2M device template is based on the GenericEwonDevice device template, and inherits all of its services and properties.
 
 ###### Services
 
@@ -194,7 +194,7 @@ The GenericEwonDeviceTalk2M device template is based on the GenericEwonDevice de
 
 The GenericEwonDeviceDirect device template is for Ewon devices which connect to Thingworx using the direct data path and ConnectorHost's TakeInfo service.
 
-The GenericEwonDeviceDirect device template is based on the GenericEwonDevice device template, and inherits all of it's services and properties.
+The GenericEwonDeviceDirect device template is based on the GenericEwonDevice device template, and inherits all of its services and properties.
 
 ###### Properties
 
