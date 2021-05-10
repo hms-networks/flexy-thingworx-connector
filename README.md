@@ -60,7 +60,7 @@ Click the EwonThingworxConnector project to display its available entities.
 
 ![Image of Thingworx Browse Projects Window](thingworx-import/img/browseProjects.PNG)
 
-Open the ConnectorHost timer thing by clicking it under the list of available entities, then selecting "Edit".
+Open the ConnectorHost timer Thing by clicking it under the list of available entities, then selecting "Edit".
 
 ![Image of ConnectorHost in Available Entities of EwonThingworxConnector Project](thingworx-import/img/connectorHostThing.PNG)
 
@@ -68,7 +68,7 @@ On the General Information page, perform the following configuration modificatio
 
 1. Configure "Run As User" to be something other than Administrator.
     
-   1. The selected user must posses the permissions necessary for creating and modifying things, and creating and updating thing properties.
+   1. The selected user must posses the permissions necessary for creating and modifying Things, and creating and updating Thing properties.
 
 2. Configure "Update Rate" to the interval at which the connector should run (in milliseconds).
 
@@ -94,7 +94,7 @@ Navigate to the "Properties and Alerts" tab in ConnectorHost and populate the fo
 
 8. *useDataChangeTypeAlways*: When set to true, the DataChangeType field of newly created properties will be set to 'Always'. The default value is `false`, which will result in newly created properties using the DataChangeType of 'Value'.
 
-9. *useHyphens*: When set to true, additional organization is performed on thing properties with a prefix in the name (i.e. PREFIX-\[tagname\]).
+9. *useHyphens*: When set to true, additional organization is performed on Thing properties with a prefix in the name (i.e. PREFIX-\[tagname\]).
 
 Additional and more detailed information about the properties of ConnectorHost can be found below in Thing Information > ConnectorHost > Properties.
 
@@ -104,7 +104,7 @@ Additional and more detailed information about the properties of ConnectorHost c
 
 #### ConnectorHost
 
-ConnectorHost is a timer thing and triggers a check for new Talk2M data on its configured interval. In addition to checking Talk2M data on a set interval, ConnectorHost also provides the service required for direct data path connections.
+ConnectorHost is a timer Thing and triggers a check for new Talk2M data on its configured interval. In addition to checking Talk2M data on a set interval, ConnectorHost also provides the service required for direct data path connections.
 
 ##### Properties
 
@@ -130,11 +130,11 @@ ConnectorHost is a timer thing and triggers a check for new Talk2M data on its c
 
 11. *useDataChangeTypeAlways*: A boolean property that the Talk2M and direct data path services use when creating new Thing properties. The default value is `false`. If the value is `true`, the DataChangeType field of newly created properties will be set to 'Always'.
 
-12. *useHyphens*: A boolean property that controls the organization of Ewon devices and their tags. When tags use a hyphen prefix (i.e. PREFIX-\[tagname\]), a thing will be created for each prefix (i.e. DEVICE-PREFIX) and each of the properties will be added. The default value is `false`.
+12. *useHyphens*: A boolean property that controls the organization of Ewon devices and their tags. When tags use a hyphen prefix (i.e. PREFIX-\[tagname\]), a Thing will be created for each prefix (i.e. DEVICE-PREFIX) and each of the properties will be added. The default value is `false`.
 
 ##### Services
 
-1. *InsertDataPoint*: Used by the Talk2M and direct data paths to insert a datapoint to the respective thing and thing property.
+1. *InsertDataPoint*: Used by the Talk2M and direct data paths to insert a datapoint to the respective Thing and Thing property.
 
 2. *MainExecution*: Used by the Talk2M data path for calling the Talk2MSyncData service within the script timeout period. This service is invoked by the ConnectorHost timer on its configured interval.
 
@@ -148,13 +148,13 @@ ConnectorHost is a timer thing and triggers a check for new Talk2M data on its c
 
 #### GenericEwonDevice
 
-GenericEwonDevice is a thing template that applies to all Ewon device things created by the connector and contains common properties that are used by services in the GenericEwonDeviceTalk2M, GenericEwonDeviceDirect, and GenericEwonDeviceDirectStandalone thing templates.
+GenericEwonDevice is a Thing template that applies to all Ewon device Things created by the connector and contains common properties that are used by services in the GenericEwonDeviceTalk2M, GenericEwonDeviceDirect, and GenericEwonDeviceDirectStandalone Thing Templates.
 
 ##### Properties
 
-1. *ewonDevicePassword*: The password of the referenced Ewon device. The default value is 'adm' and should be changed if your Ewon password is different. The value of this property is used by the services in the GenericEwonDeviceTalk2M, GenericEwonDeviceDirect, and GenericEwonDeviceDirectStandalone thing templates.
+1. *ewonDevicePassword*: The password of the referenced Ewon device. The default value is 'adm' and should be changed if your Ewon password is different. The value of this property is used by the services in the GenericEwonDeviceTalk2M, GenericEwonDeviceDirect, and GenericEwonDeviceDirectStandalone Thing Templates.
 
-2. *ewonDeviceUsername*: The username of the referenced Ewon device. The default value is 'adm' and should be changed if your Ewon username is different. The value of this property is used by the services in the GenericEwonDeviceTalk2M, GenericEwonDeviceDirect, and GenericEwonDeviceDirectStandalone thing templates.
+2. *ewonDeviceUsername*: The username of the referenced Ewon device. The default value is 'adm' and should be changed if your Ewon username is different. The value of this property is used by the services in the GenericEwonDeviceTalk2M, GenericEwonDeviceDirect, and GenericEwonDeviceDirectStandalone Thing Templates.
 
 ###### Services
 
@@ -198,7 +198,7 @@ The GenericEwonDeviceDirect device template is based on the GenericEwonDevice de
 
 ###### Properties
 
-1. *talk2MDeviceName*: A string property that the GenericEwonDeviceDirect services use to identify the referenced Ewon on Talk2M. Devices connected using the direct data path may have a different name in Talk2M than what appears in Thingworx, thus it must be explicitly set for direct data path things.
+1. *talk2MDeviceName*: A string property that the GenericEwonDeviceDirect services use to identify the referenced Ewon on Talk2M. Devices connected using the direct data path may have a different name in Talk2M than what appears in Thingworx, thus it must be explicitly set for direct data path Things.
 
 ###### Services
 
@@ -237,18 +237,18 @@ The GenericEwonDeviceDirectStandalone Thing Template is based on the GenericEwon
 
 #### GenericEwonDeviceValueStream
 
-GenericEwonDeviceValueStream is a generic value stream thing that is used for storing the values of its respective logged thing properties.
+GenericEwonDeviceValueStream is a generic value stream Thing that is used for storing the values of its respective logged Thing properties.
 
 ### Common Errors
 
 #### Error Executing Event Handler 'runConnector' for event Type.Thing:Entity.ConnectorHost:Event.Timer
 
-This error is most commonly caused by invalid permissions for the ConnectorHost thing.
+This error is most commonly caused by invalid permissions for the ConnectorHost Thing.
 To test, go to "ConnectorHost">"General Information" and change the value of "Run As User" to Administrator.
 
 If the error resolves, there was an issue with the previous "Run As User" permission configuration.
 
-#### Upon attempting to delete/input data into a thing: "error: Thing X does not Exist"
+#### Upon attempting to delete/input data into a Thing: "error: Thing X does not Exist"
 
 This is an issue with Thingworx not being properly synced with the database provider.
 Restarting Tomcat should fix the issue. For information on how to do this visit https://stackoverflow.com/questions/12622534/tomcat-restart-webapp-from-command-line
