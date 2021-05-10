@@ -8,8 +8,9 @@ There are two components that make up the Ewon Thingworx Connector, a Thingworx 
 
 1. [Data Paths](#data-paths)
 2. [Thingworx Project Component](#thingworx-project-component)
-   1. [Project Installation](#project-installation)
-   2. [Thing Information](#thing-information)
+   1. [Required Thingworx Version](#required-thingworx-version)
+   2. [Project Installation](#project-installation)
+   3. [Thing Information](#thing-information)
       1. [ConnectorHost](#connectorhost)
       2. [GenericEwonDevice](#genericewondevice)
         1. [GenericEwonDeviceTalk2M](#genericewondevicetalk2m)
@@ -37,6 +38,10 @@ Both data paths require the installation of the Thingworx Project Component, but
 ## Thingworx Project Component
 
 The Thingworx project component must be installed and configured for both data paths.
+
+### Required Thingworx Version
+
+The Flexy Thingworx Connector currently supports Thingworx 9.1-b10877 or later.
 
 ### Project Installation
 
