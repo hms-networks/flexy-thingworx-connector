@@ -157,9 +157,9 @@ GenericEwonDevice is a Thing template that applies to all Ewon device Things cre
 
 ##### Properties
 
-1. *ewonDevicePassword*: The password of the referenced Ewon device. The default value is 'adm' and should be changed if your Ewon password is different. The value of this property is used by the services in the GenericEwonDeviceTalk2M, GenericEwonDeviceDirect, and GenericEwonDeviceDirectStandalone Thing Templates.
+1. *ewonDevicePassword*: The password of the referenced Ewon device. The default value is 'adm' and should be changed if the Ewon password is different. The value of this property is used by the services in the GenericEwonDeviceTalk2M, GenericEwonDeviceDirect, and GenericEwonDeviceDirectStandalone Thing Templates.
 
-2. *ewonDeviceUsername*: The username of the referenced Ewon device. The default value is 'adm' and should be changed if your Ewon username is different. The value of this property is used by the services in the GenericEwonDeviceTalk2M, GenericEwonDeviceDirect, and GenericEwonDeviceDirectStandalone Thing Templates.
+2. *ewonDeviceUsername*: The username of the referenced Ewon device. The default value is 'adm' and should be changed if the Ewon username is different. The value of this property is used by the services in the GenericEwonDeviceTalk2M, GenericEwonDeviceDirect, and GenericEwonDeviceDirectStandalone Thing Templates.
 
 ###### Services
 
