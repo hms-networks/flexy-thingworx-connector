@@ -181,9 +181,9 @@ The GenericEwonDeviceTalk2M device template is based on the GenericEwonDevice de
 
 ###### Services
 
-1. *SendEwonOffline*: Sends the referenced Ewon device offline when using a triggered connection, such as 3G or other cellular network. More information about triggered connections can be found at https://www.ewon.biz/e-learning/library/cosy-131/remote-connection#:~:text=Triggered%20Connection%3A%20wake%20up%20%26%20put,when%20the%20user%20needs%20it.
+1. *SendEwonOffline*: Sends the referenced Ewon device offline when using a triggered connection, such as a cellular network. More information about triggered connections can be found at https://www.ewon.biz/e-learning/library/cosy-131/remote-connection#:~:text=Triggered%20Connection%3A%20wake%20up%20%26%20put,when%20the%20user%20needs%20it.
 
-2. *WakeEwonDevice*: Wakes up the referenced Ewon device when using a triggered connection, such as 3G or other cellular network. More information about triggered connections can be found at https://www.ewon.biz/e-learning/library/cosy-131/remote-connection#:~:text=Triggered%20Connection%3A%20wake%20up%20%26%20put,when%20the%20user%20needs%20it.
+2. *WakeEwonDevice*: Wakes up the referenced Ewon device when using a triggered connection, such as a cellular network. More information about triggered connections can be found at https://www.ewon.biz/e-learning/library/cosy-131/remote-connection#:~:text=Triggered%20Connection%3A%20wake%20up%20%26%20put,when%20the%20user%20needs%20it.
 
 3. *WriteBooleanTag*: Writes the value of a boolean tag on the Ewon device.
 
@@ -207,9 +207,9 @@ The GenericEwonDeviceDirect device template is based on the GenericEwonDevice de
 
 ###### Services
 
-1. *SendEwonOffline*: Sends the referenced Ewon device offline when using a triggered connection, such as 3G or other cellular network. More information about triggered connections can be found at https://www.ewon.biz/e-learning/library/cosy-131/remote-connection#:~:text=Triggered%20Connection%3A%20wake%20up%20%26%20put,when%20the%20user%20needs%20it.
+1. *SendEwonOffline*: Sends the referenced Ewon device offline when using a triggered connection, such as a cellular network. More information about triggered connections can be found at https://www.ewon.biz/e-learning/library/cosy-131/remote-connection#:~:text=Triggered%20Connection%3A%20wake%20up%20%26%20put,when%20the%20user%20needs%20it.
 
-2. *WakeEwonDevice*: Wakes up the referenced Ewon device when using a triggered connection, such as 3G or other cellular network. More information about triggered connections can be found at https://www.ewon.biz/e-learning/library/cosy-131/remote-connection#:~:text=Triggered%20Connection%3A%20wake%20up%20%26%20put,when%20the%20user%20needs%20it.
+2. *WakeEwonDevice*: Wakes up the referenced Ewon device when using a triggered connection, such as a cellular network. More information about triggered connections can be found at https://www.ewon.biz/e-learning/library/cosy-131/remote-connection#:~:text=Triggered%20Connection%3A%20wake%20up%20%26%20put,when%20the%20user%20needs%20it.
 
 3. *WriteBooleanTag*: Writes the value of a boolean tag on the Ewon device.
 
