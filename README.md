@@ -170,15 +170,15 @@ GenericEwonDevice is a Thing template that applies to all Ewon device Things cre
 
 ###### Services
 
-1. *WriteBooleanTagGenericService*: A generic service used by the GenericEwonDeviceTalk2M, GenericEwonDeviceDirect, and GenericEwonDeviceDirectStandalone for writing a value to a boolean tag on the Ewon Device.
+1. *WriteBooleanTagGenericService*: A generic service used by the GenericEwonDeviceTalk2M, GenericEwonDeviceDirect, and GenericEwonDeviceDirectStandalone Thing Templates for writing a value to a boolean tag on the Ewon Device.
 
-2. *WriteDwordTagGenericService*: A generic service used by the GenericEwonDeviceTalk2M, GenericEwonDeviceDirect, and GenericEwonDeviceDirectStandalone for writing a value to a DWORD tag on the Ewon Device.
+2. *WriteDwordTagGenericService*: A generic service used by the GenericEwonDeviceTalk2M, GenericEwonDeviceDirect, and GenericEwonDeviceDirectStandalone Thing Templates for writing a value to a DWORD tag on the Ewon Device.
 
-3. *WriteFloatTagGenericService*: A generic service used by the GenericEwonDeviceTalk2M, GenericEwonDeviceDirect, and GenericEwonDeviceDirectStandalone for writing a value to a float tag on the Ewon Device.
+3. *WriteFloatTagGenericService*: A generic service used by the GenericEwonDeviceTalk2M, GenericEwonDeviceDirect, and GenericEwonDeviceDirectStandalone Thing Templates for writing a value to a float tag on the Ewon Device.
 
-4. *WriteIntegerTagGenericService*: A generic service used by the GenericEwonDeviceTalk2M, GenericEwonDeviceDirect, and GenericEwonDeviceDirectStandalone for writing a value to a integer tag on the Ewon Device.
+4. *WriteIntegerTagGenericService*: A generic service used by the GenericEwonDeviceTalk2M, GenericEwonDeviceDirect, and GenericEwonDeviceDirectStandalone Thing Templates for writing a value to a integer tag on the Ewon Device.
 
-5. *WriteStringTagGenericService*: A generic service used by the GenericEwonDeviceTalk2M, GenericEwonDeviceDirect, and GenericEwonDeviceDirectStandalone for writing a value to a string tag on the Ewon Device.
+5. *WriteStringTagGenericService*: A generic service used by the GenericEwonDeviceTalk2M, GenericEwonDeviceDirect, and GenericEwonDeviceDirectStandalone Thing Templates for writing a value to a string tag on the Ewon Device.
 
 ##### GenericEwonDeviceTalk2M
 
