@@ -180,6 +180,18 @@ GenericEwonDevice is a Thing template that applies to all Ewon device Things cre
 
 5. *WriteStringTagGenericService*: A generic service used by the GenericEwonDeviceTalk2M, GenericEwonDeviceDirect, and GenericEwonDeviceDirectStandalone Thing Templates for writing a value to a string tag on the Ewon Device.
 
+6. *ReadAllTagsLiveGenericService*: A generic service used by the GenericEwonDeviceTalk2M, GenericEwonDeviceDirect, and GenericEwonDeviceDirectStandalone Thing Templates for reading all live tag values on the Ewon Device.
+
+7. *ReadBooleanTagLiveGenericService*: A generic service used by the GenericEwonDeviceTalk2M, GenericEwonDeviceDirect, and GenericEwonDeviceDirectStandalone Thing Templates for reading a boolean tag's live value on the Ewon Device.
+
+8. *ReadDwordTagLiveGenericService*: A generic service used by the GenericEwonDeviceTalk2M, GenericEwonDeviceDirect, and GenericEwonDeviceDirectStandalone Thing Templates for reading a DWORD tag's live value on the Ewon Device.
+
+9. *ReadFloatTagLiveGenericService*: A generic service used by the GenericEwonDeviceTalk2M, GenericEwonDeviceDirect, and GenericEwonDeviceDirectStandalone Thing Templates for reading a float tag's live value on the Ewon Device.
+
+10. *ReadIntegerTagLiveGenericService*: A generic service used by the GenericEwonDeviceTalk2M, GenericEwonDeviceDirect, and GenericEwonDeviceDirectStandalone Thing Templates for reading an integer tag's live value on the Ewon Device.
+
+11. *ReadStringTagLiveGenericService*: A generic service used by the GenericEwonDeviceTalk2M, GenericEwonDeviceDirect, and GenericEwonDeviceDirectStandalone Thing Templates for reading a string tag's live value on the Ewon Device.
+
 ##### GenericEwonDeviceTalk2M
 
 The GenericEwonDeviceTalk2M device template is for Ewon devices which connect to Thingworx using the Talk2M data path.
@@ -201,6 +213,18 @@ The GenericEwonDeviceTalk2M device template is based on the GenericEwonDevice de
 6. *WriteIntegerTag*: Writes the value of a integer tag on the Ewon device.
 
 7. *WriteStringTag*: Writes the value of a string tag on the Ewon device.
+
+8. *ReadAllTagsLive*: Reads the live values of all tags on the Ewon device.
+
+9. *ReadBooleanTagLive*: Reads the live value of a boolean tag on the Ewon device.
+
+10. *ReadDwordTagLive*: Reads the live value of a DWORD tag on the Ewon device.
+
+11. *ReadFloatTagLive*: Reads the live value of a float tag on the Ewon device.
+
+12. *ReadIntegerTagLive*: Reads the live value of an integer tag on the Ewon device.
+
+13. *ReadStringTagLive*: Reads the live value of a string tag on the Ewon device.
 
 ##### GenericEwonDeviceDirect
 
@@ -228,6 +252,18 @@ The GenericEwonDeviceDirect device template is based on the GenericEwonDevice de
 
 7. *WriteStringTag*: Writes the value of a string tag on the Ewon device.
 
+8. *ReadAllTagsLive*: Reads the live values of all tags on the Ewon device.
+
+9. *ReadBooleanTagLive*: Reads the live value of a boolean tag on the Ewon device.
+
+10. *ReadDwordTagLive*: Reads the live value of a DWORD tag on the Ewon device.
+
+11. *ReadFloatTagLive*: Reads the live value of a float tag on the Ewon device.
+
+12. *ReadIntegerTagLive*: Reads the live value of an integer tag on the Ewon device.
+
+13. *ReadStringTagLive*: Reads the live value of a string tag on the Ewon device.
+
 ##### GenericEwonDeviceDirectStandalone
 
 The GenericEwonDeviceDirectStandalone Thing Template is for Ewon devices to connect to Thingworx using the direct data path with an independent application key and service endpoint.
@@ -250,6 +286,10 @@ The GenericEwonDeviceDirectStandalone Thing Template is based on the GenericEwon
 #### GenericEwonDeviceValueStream
 
 GenericEwonDeviceValueStream is a generic value stream Thing that is used for storing the values of its respective logged Thing properties.
+
+#### M2Web-Live-Data 
+
+M2Web-Live-Data is a Thingworx Data Shape used by the GenericEwonDevice Thing Template for reading and parsing live tag data returned from the M2Web API.
 
 ### Common Errors
 
