@@ -11,6 +11,7 @@ import com.hms_networks.americas.sc.json.JSONException;
 import com.hms_networks.americas.sc.logging.Logger;
 import com.hms_networks.americas.sc.taginfo.TagInfoManager;
 import com.hms_networks.americas.sc.thingworx.config.TWConnectorConfig;
+import com.hms_networks.americas.sc.thingworx.data.TWApiManager;
 import com.hms_networks.americas.sc.thingworx.utils.StringUtils;
 import com.hms_networks.americas.sc.thingworx.utils.TWTimeOffsetCalculator;
 import java.io.IOException;

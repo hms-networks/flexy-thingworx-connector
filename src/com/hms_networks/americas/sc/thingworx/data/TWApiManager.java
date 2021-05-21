@@ -1,10 +1,12 @@
-package com.hms_networks.americas.sc.thingworx;
+package com.hms_networks.americas.sc.thingworx.data;
 
 import com.ewon.ewonitf.EWException;
 import com.ewon.ewonitf.ScheduledActionManager;
 import com.hms_networks.americas.sc.datapoint.DataPoint;
 import com.hms_networks.americas.sc.fileutils.FileAccessManager;
 import com.hms_networks.americas.sc.logging.Logger;
+import com.hms_networks.americas.sc.thingworx.TWConnectorConsts;
+import com.hms_networks.americas.sc.thingworx.TWConnectorMain;
 import com.hms_networks.americas.sc.thingworx.utils.TWTimeOffsetCalculator;
 import java.io.File;
 import java.io.IOException;
