@@ -8,6 +8,9 @@ import com.hms_networks.americas.sc.thingworx.TWConnectorConsts;
 import com.hms_networks.americas.sc.thingworx.TWConnectorMain;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 /**
  * Class for managing HTTP API calls to the Thingworx API.
@@ -36,6 +39,19 @@ public class TWApiManager {
    */
   private static final String CONNECTION_ERROR_STRING_RESPONSE = "ConnectionError";
 
+  /** The interval at which pending data payloads are sent to Thingworx. */
+  private static final long DATA_SEND_THREAD_INTERVAL_MILLIS = 5000;
+
+  /** Boolean indicating if the data send thread should run. */
+  private static boolean runDataThread = true;
+
+  /** Sets the run data thread flag to false to indicate that the tread should stop running. */
+  public static void setDataThreadStopFlag() {
+    synchronized (TWApiManager.class) {
+      runDataThread = false;
+    }
+  }
+
   /**
    * Gets the name of the Ewon Flexy as it appears/should appear in Thingworx.
    *
@@ -44,6 +60,64 @@ public class TWApiManager {
    */
   public static String getApiDeviceName() {
     return "FLEXY-" + TWConnectorConsts.EWON_SERIAL_NUMBER;
+  }
+
+  /** Starts the thread which sends pending data payloads to Thingworx. */
+  public static void startDataSendThread() {
+    // Build runnable to send pending payloads to Thingworx
+    Runnable dataSendThreadRunnable =
+        new Runnable() {
+          public void run() {
+            // Loop until stopped
+            boolean stayInLoop = true;
+            while (stayInLoop) {
+              // Copy pending payloads from data manager
+              List pendingPayloads = new ArrayList(TWDataManager.getPayloadsToSend());
+
+              // Iterate through each pending payload and send
+              Iterator pendingPayloadsIterator = pendingPayloads.iterator();
+              while (pendingPayloadsIterator.hasNext()) {
+                TWDataPayload dataPayload = (TWDataPayload) pendingPayloadsIterator.next();
+
+                // Send to Thingworx
+                boolean isSuccessful = sendJsonToThingworx(dataPayload.getPayloadString());
+
+                // If successful, remove from pending payloads
+                if (isSuccessful) {
+                  Logger.LOG_DEBUG(
+                      "Successfully sent a payload to Thingworx with "
+                          + dataPayload.getDataPointCount()
+                          + " data points.");
+                  TWDataManager.removedPendingPayload(dataPayload);
+                } else {
+                  Logger.LOG_SERIOUS(
+                      "A payload containing "
+                          + dataPayload.getDataPointCount()
+                          + " data points failed to send to Thingworx.");
+                }
+              }
+
+              // Update keepRunning
+              synchronized (TWApiManager.class) {
+                stayInLoop = runDataThread;
+              }
+
+              // Delay until next interval
+              try {
+                Thread.sleep(DATA_SEND_THREAD_INTERVAL_MILLIS);
+              } catch (Exception e) {
+                Logger.LOG_WARN(
+                    "An error occurred while sleeping the data send thread until its next run"
+                        + " interval!");
+                Logger.LOG_EXCEPTION(e);
+              }
+            }
+          }
+        };
+
+    // Create new thread object and run
+    Thread dataSendThread = new Thread(dataSendThreadRunnable);
+    dataSendThread.start();
   }
 
   /**
