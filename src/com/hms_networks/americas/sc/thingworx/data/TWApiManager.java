@@ -69,7 +69,7 @@ public class TWApiManager {
   }
 
   /**
-   * Sends the specified JSON string to the Thingworx Flexy TakeInfo endpoint as an HTTP POST
+   * Sends the specified JSON string to the configured Thingworx Full URL endpoint as an HTTP POST
    * request
    *
    * @param json JSON body
