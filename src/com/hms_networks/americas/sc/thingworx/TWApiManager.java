@@ -22,6 +22,24 @@ import java.util.Iterator;
 public class TWApiManager {
 
   /**
+   * String constant returned by the {@link #httpPost(String, String, String)} method to indicate an
+   * Ewon error occurred.
+   */
+  private static final String EWON_ERROR_STRING_RESPONSE = "EwonError";
+
+  /**
+   * String constant returned by the {@link #httpPost(String, String, String)} method to indicate an
+   * authentication error occurred.
+   */
+  private static final String AUTH_ERROR_STRING_RESPONSE = "AuthError";
+
+  /**
+   * String constant returned by the {@link #httpPost(String, String, String)} method to indicate a
+   * connection error occurred.
+   */
+  private static final String CONNECTION_ERROR_STRING_RESPONSE = "ConnectionError";
+
+  /**
    * Array list of data points that are waiting to be sent to Thingworx.
    *
    * @since 1.1
@@ -55,7 +73,7 @@ public class TWApiManager {
    * @param json JSON body
    * @since 1.1
    */
-  private static synchronized void sendJsonToThingworx(String json) {
+  private static synchronized boolean sendJsonToThingworx(String json) {
     // Send to Thingworx
     // Build full POST request URL
     String addInfoEndpointFullUrl = "";
@@ -73,15 +91,24 @@ public class TWApiManager {
     }
 
     String response = null;
+    boolean isSuccessful = true;
     try {
       response = httpPost(addInfoEndpointFullUrl, addInfoRequestHeader, json);
+      if (response != null
+          && (response.equals(EWON_ERROR_STRING_RESPONSE)
+              || response.equals(AUTH_ERROR_STRING_RESPONSE)
+              || response.equals(CONNECTION_ERROR_STRING_RESPONSE))) {
+        isSuccessful = false;
+      }
     } catch (Exception e) {
       Logger.LOG_CRITICAL(
           "An error occurred while performing an HTTP POST to Thingworx. Data may have"
               + " been lost!");
       Logger.LOG_EXCEPTION(e);
+      isSuccessful = false;
     }
     Logger.LOG_DEBUG("Thingworx HTTP POST response: " + response);
+    return isSuccessful;
   }
 
   /**
@@ -230,16 +257,19 @@ public class TWApiManager {
           "An Ewon error was encountered while performing an HTTP POST request to "
               + url
               + "! Data loss may result.");
+      responseFileString = EWON_ERROR_STRING_RESPONSE;
     } else if (httpStatus == TWConnectorConsts.HTTPX_CODE_AUTH_ERROR) {
       Logger.LOG_SERIOUS(
           "An authentication error was encountered while performing an HTTP POST request to "
               + url
               + "! Data loss may result.");
+      responseFileString = AUTH_ERROR_STRING_RESPONSE;
     } else if (httpStatus == TWConnectorConsts.HTTPX_CODE_CONNECTION_ERROR) {
       Logger.LOG_SERIOUS(
           "A connection error was encountered while performing an HTTP POST request to "
               + url
               + "! Data loss may result.");
+      responseFileString = CONNECTION_ERROR_STRING_RESPONSE;
     } else {
       Logger.LOG_SERIOUS(
           "An unknown error ("
