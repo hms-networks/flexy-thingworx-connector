@@ -75,7 +75,7 @@ public class TWApiManager {
    * @param json JSON body
    * @since 1.1
    */
-  private static synchronized boolean sendJsonToThingworx(String json) {
+  private static boolean sendJsonToThingworx(String json) {
     // Send to Thingworx
     // Build full POST request URL
     String addInfoEndpointFullUrl = "";
