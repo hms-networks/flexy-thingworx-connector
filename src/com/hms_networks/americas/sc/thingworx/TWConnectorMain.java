@@ -5,13 +5,13 @@ import com.ewon.ewonitf.SysControlBlock;
 import com.ewon.ewonitf.TagControl;
 import com.hms_networks.americas.sc.config.exceptions.ConfigFileException;
 import com.hms_networks.americas.sc.config.exceptions.ConfigFileWriteException;
-import com.hms_networks.americas.sc.datapoint.DataPoint;
 import com.hms_networks.americas.sc.historicaldata.HistoricalDataQueueManager;
 import com.hms_networks.americas.sc.json.JSONException;
 import com.hms_networks.americas.sc.logging.Logger;
 import com.hms_networks.americas.sc.taginfo.TagInfoManager;
 import com.hms_networks.americas.sc.thingworx.config.TWConnectorConfig;
 import com.hms_networks.americas.sc.thingworx.data.TWApiManager;
+import com.hms_networks.americas.sc.thingworx.data.TWDataManager;
 import com.hms_networks.americas.sc.thingworx.utils.StringUtils;
 import com.hms_networks.americas.sc.thingworx.utils.TWTimeOffsetCalculator;
 import java.io.IOException;
@@ -89,11 +89,8 @@ public class TWConnectorMain {
         Logger.LOG_DEBUG(
             "Read " + datapontsReadFromQueue.size() + " data points from the historical log.");
 
-        // Send data points to Thingworx
-        for (int x = 0; x < datapontsReadFromQueue.size(); x++) {
-          TWApiManager.addDataPointToPending((DataPoint) datapontsReadFromQueue.get(x));
-        }
-        TWApiManager.sendPendingToThingworx();
+        // Send data to Thingworx
+        TWDataManager.addDataPointsToPending(datapontsReadFromQueue);
 
         // Check if queue is behind
         try {
@@ -264,6 +261,9 @@ public class TWConnectorMain {
       Logger.LOG_EXCEPTION(e);
     }
 
+    // Start data send thread
+    TWApiManager.startDataSendThread();
+
     // Create tag control object for monitoring application control tag
     TagControl connectorControlTag = null;
     try {
@@ -344,6 +344,9 @@ public class TWConnectorMain {
                 == TWConnectorConsts.CONNECTOR_CONTROL_TAG_RUN_VALUE);
       }
     }
+
+    // Cleanup data send thread
+    TWApiManager.setDataThreadStopFlag();
 
     // Show shutdown message
     Logger.LOG_CRITICAL(
