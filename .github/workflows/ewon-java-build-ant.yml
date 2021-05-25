@@ -59,7 +59,7 @@ jobs:
     - name: Parse Ant Build File for Project Name (Ubuntu)
       run: |
         export PROJECTNAME=$(sed -n 's/<property name=\"ProjectName\"\ value=\"\(.*\)\"\/>/\1/p' build.xml | tr -d '[:space:]')
-        echo "::set-env name=PROJECT_NAME::$PROJECTNAME"
+        echo "PROJECT_NAME=$PROJECTNAME" >> $GITHUB_ENV
         
     - name: Get Current Time for Artifact Identification (Ubuntu)
       id: time
