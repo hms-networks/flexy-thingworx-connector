@@ -113,7 +113,8 @@ public class TWTimeOffsetCalculator {
   }
 
   /**
-   * Parses and returns the generated local time offset file from {@link #generateLocalTimeFile()}.
+   * Parses and returns the generated local time offset file from {@link
+   * #generateLocalTimeFile(String, String)}.
    *
    * @return local time offset
    * @since 1.0
