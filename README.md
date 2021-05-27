@@ -351,6 +351,30 @@ Optional parameter to override the default data poll size (in minutes) of each d
 #### Queue Data Poll Interval
 Optional parameter to override the default data poll interval (in milliseconds) to poll the historical data queue.  If no value is specified in the configuration file, the value will be read from QUEUE_DATA_POLL_INTERVAL_MILLIS_DEFAULT from "src/com/hms_networks/americas/sc/thingworx/TWConnectorConsts.java".
 
+### Telemetry
+
+#### Data Source
+The telemetry data that is sent to Thingworx is gathered from the internal Ewon Flexy historical logs. These logs act as a first-in, first-out (FIFO) buffer, meaning that Thingworx will receive the oldest data points from the logs first. The historical logs are stored in nonvolatile memory and prevent against data point loss from connectivity issues or power loss. The historical log can store up to 900,000 data points, depending on the memory configuration, before data points are dropped.
+
+![Data Source Flow Chart](https://github.com/hms-networks/flexy-thingworx-connector/blob/main/images/DataSource.PNG?raw=true)
+
+##### Tag Eligibility
+Each tag that should be sent to Thingworx must have historical logging enabled. The historical logging interval configured for a tag sets the interval it will be recorded and sent to Thingworx. For information on the Ewon’s historical logging functionality, and how to set it up, please visit [https://www.ewon.biz/technicalsupport/pages/data-services/data-logging](https://www.ewon.biz/technicalsupport/pages/data-services/data-logging).
+
+In addition to historical logging being enabled, the Ewon Thingworx Connector application uses tag groups to determine which tags are to be sent to Thingworx. There are four tag groups, A, B, C, and D. Any tag assigned to one of the four tag groups will be sent to Thingworx, but tags that have not been assigned a tag group will be ignored.
+
+##### Tag Data Types
+The Ewon Thingworx connector supports the following Ewon tag data types:
+
+- Integer
+- Boolean
+- Floating Point
+- DWORD
+- String
+
+###### String Tag History
+The string data type requires an additional EBD (export block descriptor) call, which requires additional processing power. It is recommended that the string data type be disabled if string tags will not be used. It can be enabled or disabled as described in the [Queue Enable String History](#queue-enable-string-history) section of the Flexy Java Application Component's [Configuration](#configuration) section.
+
 ### Development Environment
 The Flexy Java application component was developed using a standard Ewon Java development environment. Documentation and additional information about the Ewon Java development environment is available in the Ewon Java Toolkit User Guide \(J2SE\) at [https://developer.ewon.biz/content/java-0#dev-documents](https://developer.ewon.biz/content/java-0#dev-documents).
 
