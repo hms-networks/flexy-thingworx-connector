@@ -487,6 +487,9 @@ javadoc -private -splitindex -use -author -version -d docs -classpath @sources.t
 del sources.txt
 ```
 
+#### Releases
+To release a compiled version of the Ewon Thingworx Connector, two files must be supplied to the end-user, the compiled Ewon Thingworx Connector jar, and a jvmrun file. The files should be installed to the /usr directory of the Ewon Flexy. On the first run of the application, a default application configuration will be written to the Ewon’s filesystem. This can be modified to include the desired configuration, as outlined in the [Configuration](#configuration) section.
+
 ## Support
 Support for the Ewon Thingworx Connector may be available under the terms of your quote, if applicable. New or additional support can be purchased, as needed, by contacting your HMS salesperson. If you don't know your HMS salesperson, please visit the HMS contact information page at [https://www.hms-networks.com/contact](https://www.hms-networks.com/contact).
 
