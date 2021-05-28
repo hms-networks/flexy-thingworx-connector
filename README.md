@@ -465,6 +465,10 @@ Log output can be added to the application by inserting calls to the logging cla
 ### Development Environment
 The Flexy Java application component was developed using the standard Ewon Java development environment. Documentation and additional information about the Ewon Java development environment is available in the Ewon Java Toolkit User Guide \(J2SE\) at [https://developer.ewon.biz/content/java-0#dev-documents](https://developer.ewon.biz/content/java-0#dev-documents).
 
+As described in the [Ewon Java Toolkit User Guide \(J2SE\)](https://developer.ewon.biz/system/files_force/AUG-072-0-EN-%28JAVA%20J2SE%20Toolkit%20for%20eWON%20Flexy%29.pdf), the primary IDE for development of Ewon Java applications is [Eclipse](https://www.eclipse.org/).
+
+Alternative IDEs can be used but may not be fully compatible with the Ewon Java Toolkit and thus are not guaranteed nor officially supported by HMS. Partial or complete IDE configurations for Visual Studio Code (*.vscode*) and IntelliJ IDEA (*.idea*) are included in the development repository. *Note: These configurations are not present in releases.*
+
 #### Source Code
 Source code and an Eclipse project for the Flexy Java app are made available in the [hms-networks/flexy-thingworx-connector](https://github.com/hms-networks/flexy-thingworx-connector) repository on GitHub. It is also included in the /source-flexy-java-app/ folder of Flexy Thingworx Connector release \(.zip\) files.
 
