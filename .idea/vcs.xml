@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GithubSharedProjectSettings">
+    <option name="branchProtectionPatterns">
+      <list>
+        <option value="master" />
+        <option value="main" />
+        <option value="release\/.*" />
+      </list>
+    </option>
+  </component>
+  <component name="VcsDirectoryMappings">
+    <mapping directory="" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/lib/sc-config-file-lib" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/lib/sc-datapoint-lib" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/lib/sc-file-util-lib" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/lib/sc-historical-data-queue-lib" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/lib/sc-json-lib" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/lib/sc-logger-lib" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/lib/sc-mqtt-lib" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/lib/sc-string-lib" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/lib/sc-tag-info-lib" vcs="Git" />
+  </component>
+</project>
