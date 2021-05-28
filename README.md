@@ -375,13 +375,9 @@ The Ewon Thingworx connector supports the following Ewon tag data types:
 ###### String Tag History
 The string data type requires an additional EBD (export block descriptor) call, which requires additional processing power. It is recommended that the string data type be disabled if string tags will not be used. It can be enabled or disabled as described in the [Queue Enable String History](#queue-enable-string-history) section of the Flexy Java Application Component's [Configuration](#configuration) section.
 
-### Development Environment
-The Flexy Java application component was developed using a standard Ewon Java development environment. Documentation and additional information about the Ewon Java development environment is available in the Ewon Java Toolkit User Guide \(J2SE\) at [https://developer.ewon.biz/content/java-0#dev-documents](https://developer.ewon.biz/content/java-0#dev-documents).
+### Runtime
 
-#### Source Code
-Source code and an Eclipse project for the Flexy Java app are made available in the [hms-networks/flexy-thingworx-connector](https://github.com/hms-networks/flexy-thingworx-connector) repository on GitHub. It is also included in the /source-flexy-java-app/ folder of Flexy Thingworx Connector release \(.zip\) files.
-
-### FTP User Setup
+#### FTP User Setup
 The FTP user account is required when the Flexy's local time is not set to UTC. The connector is able to run without an FTP user account if the local time is set to UTC. To create a FTP user account, follow the below steps:
 1. Navigate to the Ewon Flexy's users page via Setup -> Users
 2. Click "Add" to bring up the create new user window
@@ -392,6 +388,12 @@ The FTP user account is required when the Flexy's local time is not set to UTC. 
 7. Set "User Directory Allowed" to "/usr/(Default)"
 8. Set the "Global user rights" to enable "FTP server access"
 9. Click "Add User"
+
+### Development Environment
+The Flexy Java application component was developed using a standard Ewon Java development environment. Documentation and additional information about the Ewon Java development environment is available in the Ewon Java Toolkit User Guide \(J2SE\) at [https://developer.ewon.biz/content/java-0#dev-documents](https://developer.ewon.biz/content/java-0#dev-documents).
+
+#### Source Code
+Source code and an Eclipse project for the Flexy Java app are made available in the [hms-networks/flexy-thingworx-connector](https://github.com/hms-networks/flexy-thingworx-connector) repository on GitHub. It is also included in the /source-flexy-java-app/ folder of Flexy Thingworx Connector release \(.zip\) files.
 
 ##### Cloning
 
