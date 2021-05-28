@@ -315,7 +315,7 @@ The Flexy Java application component must be installed for the direct data path 
 Additional documentation for the Flexy Java application is available in the Ewon Thingworx Connector Reference Guide, available for each release at [https://github.com/hms-networks/flexy-thingworx-connector/releases](https://github.com/hms-networks/flexy-thingworx-connector/releases).
 
 ### Installation
-Using FTP, transfer the Flexy Java application \(.jar\) and jvmrun files to the /usr/ directory of the Ewon. Then, reboot the Ewon.
+Using FTP, transfer the Flexy Java application \(.jar\) and jvmrun files to the /usr/ directory of the Ewon. Then, reboot the Ewon. On application startup, a configuration file will automatically be created with default values.
 
 Those files are located in the /built-flexy-java-app/ directory of the release zip, found at [https://github.com/hms-networks/flexy-thingworx-connector/releases/latest](https://github.com/hms-networks/flexy-thingworx-connector/releases/latest). When building from source code, the jvmrun file is located in /scripts/, and the Flexy Java application \(.jar\) is located in /build/.
 
