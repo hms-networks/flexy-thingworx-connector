@@ -375,6 +375,10 @@ The Ewon Thingworx connector supports the following Ewon tag data types:
 ###### String Tag History
 The string data type requires an additional EBD (export block descriptor) call, which requires additional processing power. It is recommended that the string data type be disabled if string tags will not be used. It can be enabled or disabled as described in the [Queue Enable String History](#queue-enable-string-history) section of the Flexy Java Application Component's [Configuration](#configuration) section.
 
+Additionally, the default configuration of the Ewon Flexy is to exclude string tags from the historical log. String tag historization can be enabled on the Ewon under *Setup > System > Storage > Memory Settings*.
+
+Note: *This setting should be configured prior to installing the application, as a complete format of the Ewon is necessary to apply this setting.*
+
 ### Runtime
 
 #### FTP User Setup
