@@ -490,6 +490,12 @@ del sources.txt
 #### Releases
 To release a compiled version of the Ewon Thingworx Connector, two files must be supplied to the end-user, the compiled Ewon Thingworx Connector jar, and a jvmrun file. The files should be installed to the /usr directory of the Ewon Flexy. On the first run of the application, a default application configuration will be written to the Ewon’s filesystem. This can be modified to include the desired configuration, as outlined in the [Configuration](#configuration) section.
 
+##### Automatic Startup (jvmrun)
+
+On startup, the Ewon Flexy will look for the presence of a jvmrun file. If present, the Ewon Flexy will automatically launch the application referenced in the jvmrun script with the configured settings.
+
+The jvmrun script, included in the /scripts folder, configures the connector application to run with a 25 MB heap. If the heap size is reduced in the jvmrun script, the application may become unstable and could crash if unable to allocate memory.
+
 ## Support
 Support for the Ewon Thingworx Connector may be available under the terms of your quote, if applicable. New or additional support can be purchased, as needed, by contacting your HMS salesperson. If you don't know your HMS salesperson, please visit the HMS contact information page at [https://www.hms-networks.com/contact](https://www.hms-networks.com/contact).
 
