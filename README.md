@@ -447,6 +447,22 @@ The Flexy Thingworx Connector uses libraries that are stored as Git submodules. 
 > git submodule update --init
 ```
 
+###### Adding Libraries to Build Path
+
+Each library included in the /libs folder needs to be added to the Java Build Path in Eclipse. To add a library to an Eclipse project, right click the project in the “Package Explorer” and select “Properties.”
+
+![Eclipse Project Right-Click Menu](https://github.com/hms-networks/flexy-thingworx-connector/blob/main/images/EclipseRightClickMenu.PNG?raw=true)
+
+In the "Java Build Path" menu, select the "Source" tab.
+
+![Eclipse Java Build Path Source Tab](https://github.com/hms-networks/flexy-thingworx-connector/blob/main/images/EclipseJavaBuildPathMenu.PNG?raw=true)
+
+Click the "Add Folder..." option and select each library's *src* folder.
+
+![Eclipse Source Folder Selection Dialog](https://github.com/hms-networks/flexy-thingworx-connector/blob/main/images/EclipseSourceFolderSelectionDialog.PNG?raw=true)
+
+Click "OK" to apply the source folder selections, then click "Apply and Close" in the project properties window to apply the changes.
+
 ##### Existing Thread.sleep() Invocations
 In many locations throughout the application, calls are made to Thread.sleep(). These calls are necessary to signal to the JVM and the Ewon Flexy that other processes can be serviced. Reducing or removing these calls to Thread.sleep() may cause stability issues with the Flexy. This behavior may manifest as a device reboot.
 
