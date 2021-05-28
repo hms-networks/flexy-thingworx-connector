@@ -51,7 +51,7 @@ The Thingworx project component must be installed and configured for both data p
 
 The Flexy Thingworx Connector currently supports Thingworx 9.1-b10877 or later.
 
-### Project Installation
+### Thingworx Project Installation
 
 To install the connector components for Thingworx, navigate to the lower left-hand corner of the screen, click the "Import/Export" button, then click "Import".
 
@@ -119,7 +119,7 @@ Additional and more detailed information about the properties of ConnectorHost c
 
 ConnectorHost is a timer Thing and triggers a check for new Talk2M data on its configured interval. In addition to checking Talk2M data on a set interval, ConnectorHost also provides the service required for direct data path connections.
 
-##### Properties
+##### ConnectorHost Properties
 
 1. *disableTalk2M*: A boolean property that controls the download and processing of data from the Ewon Talk2M cloud. The default value is `true`, thus this property must be changed to `false` for Talk2M functionality to work.
 
@@ -145,7 +145,7 @@ ConnectorHost is a timer Thing and triggers a check for new Talk2M data on its c
 
 12. *useHyphens*: A boolean property that controls the organization of Ewon devices and their tags. When tags use a hyphen prefix (i.e. PREFIX-\[tagname\]), a Thing will be created for each prefix (i.e. DEVICE-PREFIX) and each of the properties will be added. The default value is `false`.
 
-##### Services
+##### ConnectorHost Services
 
 1. *InsertDataPoint*: Used by the Talk2M and direct data paths to insert a datapoint to the respective Thing and Thing property.
 
@@ -163,13 +163,13 @@ ConnectorHost is a timer Thing and triggers a check for new Talk2M data on its c
 
 GenericEwonDevice is a Thing template that applies to all Ewon device Things created by the connector and contains common properties that are used by services in the GenericEwonDeviceTalk2M, GenericEwonDeviceDirect, and GenericEwonDeviceDirectStandalone Thing Templates.
 
-##### Properties
+##### GenericEwonDevice Properties
 
 1. *ewonDevicePassword*: The password of the referenced Ewon device. The default value is 'adm' and should be changed if the Ewon password is different. The value of this property is used by the services in the GenericEwonDeviceTalk2M, GenericEwonDeviceDirect, and GenericEwonDeviceDirectStandalone Thing Templates.
 
 2. *ewonDeviceUsername*: The username of the referenced Ewon device. The default value is 'adm' and should be changed if the Ewon username is different. The value of this property is used by the services in the GenericEwonDeviceTalk2M, GenericEwonDeviceDirect, and GenericEwonDeviceDirectStandalone Thing Templates.
 
-###### Services
+###### GenericEwonDevice Services
 
 1. *WriteBooleanTagGenericService*: A generic service used by the GenericEwonDeviceTalk2M, GenericEwonDeviceDirect, and GenericEwonDeviceDirectStandalone Thing Templates for writing a value to a boolean tag on the Ewon Device.
 
@@ -199,7 +199,7 @@ The GenericEwonDeviceTalk2M device template is for Ewon devices which connect to
 
 The GenericEwonDeviceTalk2M device template is based on the GenericEwonDevice device template, and inherits all of its services and properties.
 
-###### Services
+###### GenericEwonDeviceTalk2M Services
 
 1. *SendEwonOffline*: Sends the referenced Ewon device offline when using a triggered connection, such as a cellular network. More information about triggered connections can be found at https://www.ewon.biz/e-learning/library/cosy-131/remote-connection#:~:text=Triggered%20Connection%3A%20wake%20up%20%26%20put,when%20the%20user%20needs%20it.
 
@@ -233,11 +233,11 @@ The GenericEwonDeviceDirect device template is for Ewon devices which connect to
 
 The GenericEwonDeviceDirect device template is based on the GenericEwonDevice device template, and inherits all of its services and properties.
 
-###### Properties
+###### GenericEwonDeviceDirect Properties
 
 1. *talk2MDeviceName*: A string property that the GenericEwonDeviceDirect services use to identify the referenced Ewon on Talk2M. Devices connected using the direct data path may have a different name in Talk2M than what appears in Thingworx, thus it must be explicitly set for direct data path Things.
 
-###### Services
+###### GenericEwonDeviceDirect Services
 
 1. *SendEwonOffline*: Sends the referenced Ewon device offline when using a triggered connection, such as a cellular network. More information about triggered connections can be found at https://www.ewon.biz/e-learning/library/cosy-131/remote-connection#:~:text=Triggered%20Connection%3A%20wake%20up%20%26%20put,when%20the%20user%20needs%20it.
 
@@ -271,11 +271,11 @@ The GenericEwonDeviceDirectStandalone Thing Template is for Ewon devices to conn
 
 The GenericEwonDeviceDirectStandalone Thing Template is based on the GenericEwonDeviceDirect Thing Template, and inherits all of its services and properties.
 
-###### Properties
+###### GenericEwonDeviceDirectStandalone Properties
 
 1. *lastUpdateTime*: A date/time property that is updated to the current time when a data update is received from the Ewon device.
 
-###### Services
+###### GenericEwonDeviceDirectStandalone Services
 
 1. *InsertDataPoint*: Used by the TakeInfo service to insert a datapoint to its respective property on Thingworx.
 
@@ -312,9 +312,7 @@ Restarting Tomcat should fix the issue. For information on how to do this visit 
 ## Flexy Java Application Component
 The Flexy Java application component must be installed for the direct data path configuration.
 
-Additional documentation for the Flexy Java application is available in the Ewon Thingworx Connector Reference Guide, available for each release at [https://github.com/hms-networks/flexy-thingworx-connector/releases](https://github.com/hms-networks/flexy-thingworx-connector/releases).
-
-### Installation
+### Application Component Installation
 Using FTP, transfer the Flexy Java application \(.jar\) and jvmrun files to the /usr/ directory of the Ewon. Then, reboot the Ewon. On application startup, a configuration file will automatically be created with default values.
 - When installing from a zipped release, the Flexy Java application \(.jar\) and jvmrun files are located in the /built-flexy-java-app/ directory. 
 - For developers using the [Development Environment](#development-environment), when building and installing from the source code, the jvmrun file is located in /scripts/, and the Flexy Java application \(.jar\) is located in /build/ after compilation is run.
