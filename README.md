@@ -439,6 +439,8 @@ Using SSH:
 
 ##### Libraries (Git Submodules)
 
+###### Downloading Libraries
+
 The Flexy Thingworx Connector uses libraries that are stored as Git submodules. After cloning the project repository, using the Git client of your choice, perform an initial Git submodule update.
 
 ```console
