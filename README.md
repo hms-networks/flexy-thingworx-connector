@@ -486,3 +486,15 @@ dir  /s /B *.java > sources.txt
 javadoc -private -splitindex -use -author -version -d docs -classpath @sources.txt
 del sources.txt
 ```
+
+## Support
+Support for the Ewon Thingworx Connector may be available under the terms of your quote, if applicable. New or additional support can be purchased, as needed, by contacting your HMS salesperson. If you don't know your HMS salesperson, please visit the HMS contact information page at [https://www.hms-networks.com/contact](https://www.hms-networks.com/contact).
+
+### Reporting Bugs and Issues
+If you encounter a bug or issue in the Ewon Thingworx Connector, please open an issue on the GitHub repository issues page, found at [https://github.com/hms-networks/flexy-thingworx-connector/issues](https://github.com/hms-networks/flexy-thingworx-connector/issues).
+
+### Flexy Support
+Support and additional information about the Ewon Flexy can be found on the Ewon support homepage at [https://ewon.biz/technical-support/support-home](https://ewon.biz/technical-support/support-home).
+
+### Development Environment Support
+Support and additional information about the Ewon development environment can be found on the Ewon Java programming homepage at [https://developer.ewon.biz/content/java-0](https://developer.ewon.biz/content/java-0).
