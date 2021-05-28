@@ -389,6 +389,9 @@ The FTP user account is required when the Flexy's local time is not set to UTC. 
 8. Set the "Global user rights" to enable "FTP server access"
 9. Click "Add User"
 
+#### Application Control Tag
+The “ThingworxControl” tag allows for a user to shut down the application while the Flexy is running. This tag must be created, by a user, as a Boolean “MEM” tag on the Ewon with the name “ThingworxControl”. The application will cyclically poll the “ThingworxControl” tag value in TWConnectorMain.java and shut down the application when the value is set to one. This reduces the CPU load of the Flexy and allows for maintenance to be completed on the unit. The application can only be stopped in the telemetry portion of the application and shut down during initialization is not permitted. The name of this tag can be modified by changing the value of CONNECTOR_CONTROL_TAG_NAME in "src/com/hms_networks/americas/sc/thingworx/TWConnectorConsts.java".
+
 ### Development Environment
 The Flexy Java application component was developed using the standard Ewon Java development environment. Documentation and additional information about the Ewon Java development environment is available in the Ewon Java Toolkit User Guide \(J2SE\) at [https://developer.ewon.biz/content/java-0#dev-documents](https://developer.ewon.biz/content/java-0#dev-documents).
 
