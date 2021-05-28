@@ -1,0 +1,73 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "compile",
+            "type": "shell",
+            "command": "ant \"compile\" -noinput -buildfile build.xml",
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            }
+        },
+        {
+            "label": "build jar",
+            "type": "shell",
+            "command": "ant \"buildjar\" -noinput -buildfile build.xml",
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            }
+        },
+        {
+            "label": "compile and build",
+            "type": "shell",
+            "dependsOn": [
+                "compile",
+                "build jar"
+            ],
+            "group": "build"
+        },
+        {
+            "label": "deploy_run",
+            "type": "shell",
+            "dependsOn": [
+                "compile"
+            ],
+            "group": "build",
+            "command": "ant \"startdeploy\"  -lib ./deploy -noinput -buildfile build.xml",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            }
+        },
+        {
+            "label": "deploy_stop",
+            "type": "shell",
+            "group": "build",
+            "command": "ant \"stop\"  -lib ./deploy -noinput -buildfile build.xml",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            }
+        }
+    ]
+}
