@@ -356,6 +356,10 @@ Optional parameter to override the default data poll interval (in milliseconds) 
 #### Data Source
 The telemetry data that is sent to Thingworx is gathered from the internal Ewon Flexy historical logs. These logs act as a first-in, first-out (FIFO) buffer, meaning that Thingworx will receive the oldest data points from the logs first. The historical logs are stored in nonvolatile memory and prevent against data point loss from connectivity issues or power loss. The historical log can store up to 900,000 data points, depending on the memory configuration, before data points are dropped.
 
+The default configuration of the Ewon Flexy is to allocate 6 MB of memory to the historical log and 29 MB to the /usr directory on the file system. Increasing the size of the historical log will result in a proportional decrease of the size of the /usr directory. This setting can be configured on the Ewon under Setup > System > Storage > Memory Settings.
+
+Note: *This setting should be configured prior to installing the application, as a complete format of the Ewon is necessary to apply this setting.*
+
 ![Data Source Flow Chart](https://github.com/hms-networks/flexy-thingworx-connector/blob/main/images/DataSource.PNG?raw=true)
 
 ##### Tag Eligibility
