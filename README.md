@@ -169,7 +169,7 @@ GenericEwonDevice is a Thing template that applies to all Ewon device Things cre
 
 2. *ewonDeviceUsername*: The username of the referenced Ewon device. The default value is 'adm' and should be changed if the Ewon username is different. The value of this property is used by the services in the GenericEwonDeviceTalk2M, GenericEwonDeviceDirect, and GenericEwonDeviceDirectStandalone Thing Templates.
 
-###### GenericEwonDevice Services
+##### GenericEwonDevice Services
 
 1. *WriteBooleanTagGenericService*: A generic service used by the GenericEwonDeviceTalk2M, GenericEwonDeviceDirect, and GenericEwonDeviceDirectStandalone Thing Templates for writing a value to a boolean tag on the Ewon Device.
 
@@ -323,7 +323,7 @@ A Thingworx application key is required to authenticate requests made by the Ewo
 At startup of the Flexy Java application component, it checks for a configuration file in the /usr/ directory of the Ewon. If one is not present, the application will automatically create one with default values.
 
 After the Flexy Java application component has been installed and started, the configuration should be modified to contain the proper values for AppKey and Thingworx Base URL for your Thingworx instance.
-### Thingworx Base URL 
+#### Thingworx Base URL 
 This parameter in the config file should be changed to the base URL for the target Thingworx REST API. Users should pay close attention to the scheme designated in the URL. Specifying the scheme "https" will ensure all traffic to the server is encrypted over TLS. For example, setting the ThingworxBaseUrl parameter to "https://example.com:8443" will create a connection to host "example.com" on port 8443 using TLS/SSL. It's possible to only specify the IP address of the Thingworx instance. This configuration will assume "http" scheme and communication will not be encrypted. 
 
 After the Flexy Java application component has been installed and started, the configuration should be modified to contain the proper values for AppKey and Thingworx Full URL for your Thingworx instance.
