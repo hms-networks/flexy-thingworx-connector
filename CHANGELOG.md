@@ -3,11 +3,13 @@
 ## Version 1.2.1
 ### Bug Fixes
 - Fixed a bug which prevented the jvmrun file from being executed
+
 ## Version 1.2
 ## Other
 - Changed config file parameter "ThingworxIP" to ThingworxBaseUrl"
 - Added example config file
 - Added note to README about specifying scheme in URL and how this can enable the use of TLS
+
 ## Version 1.1.1
 ### Features
 - N/A
