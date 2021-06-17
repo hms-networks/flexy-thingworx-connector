@@ -1,5 +1,22 @@
 # Flexy Thingworx Connector Changelog
 
+## Version 2.0
+### Features
+- Added option to specify full Thingworx URL
+  - Allows for individual device endpoints and app keys for stronger security
+- Added services to read live/realtime Ewon tag values using M2Web
+- Added additional configuration file options
+  - FTP username/password
+  - String tag historization
+  - Historical log polling
+- Improved error detection on connection failure
+### Bug Fixes
+- Fixed a bug that caused devices to be assigned the incorrect project in Thingworx
+- Fixed a bug that prevented string tags from working with direct data path devices
+- Fixed a bug that prevented certain data types from being written via Thingworx M2Web services
+### Other
+- Combined user documentation to repository markdown file(s)
+
 ## Version 1.2.1
 ### Bug Fixes
 - Fixed a bug which prevented the jvmrun file from being executed
