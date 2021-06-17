@@ -35,12 +35,6 @@ public class TWConnectorMain {
   private static boolean isMemoryCurrentlyLow;
 
   /**
-   * Boolean flag tracking if the device mode warning has been shown in device modes that disable
-   * sending data.
-   */
-  private static boolean isModeMessageShown;
-
-  /**
    * Gets the connector configuration object.
    *
    * @return connector configuration
