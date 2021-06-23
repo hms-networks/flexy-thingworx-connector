@@ -40,7 +40,8 @@ public class TWApiManager {
   private static final String CONNECTION_ERROR_STRING_RESPONSE = "ConnectionError";
 
   /** The interval at which pending data payloads are sent to Thingworx. */
-  private static final long DATA_SEND_THREAD_INTERVAL_MILLIS = 5000;
+  private static long dataSendThreadIntervalMillis =
+      TWConnectorConsts.CONNECTOR_CONFIG_DEFAULT_PAYLOAD_SEND_INTERVAL_MILLIS;
 
   /** Boolean indicating if the data send thread should run. */
   private static boolean runDataThread = true;
@@ -64,6 +65,19 @@ public class TWApiManager {
 
   /** Starts the thread which sends pending data payloads to Thingworx. */
   public static void startDataSendThread() {
+    // Get data payload send interval (millis) from config file
+    try {
+      dataSendThreadIntervalMillis =
+          TWConnectorMain.getConnectorConfig().getDataPayloadSendIntervalMillis();
+    } catch (Exception e) {
+      Logger.LOG_SERIOUS(
+          "An error occurred while reading the data payload send interval (in milliseconds) from"
+              + " the configuration file! Using default value of "
+              + dataSendThreadIntervalMillis
+              + ".");
+      Logger.LOG_EXCEPTION(e);
+    }
+
     // Build runnable to send pending payloads to Thingworx
     Runnable dataSendThreadRunnable =
         new Runnable() {
@@ -104,7 +118,7 @@ public class TWApiManager {
 
               // Delay until next interval
               try {
-                Thread.sleep(DATA_SEND_THREAD_INTERVAL_MILLIS);
+                Thread.sleep(dataSendThreadIntervalMillis);
               } catch (Exception e) {
                 Logger.LOG_WARN(
                     "An error occurred while sleeping the data send thread until its next run"

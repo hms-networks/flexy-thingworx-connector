@@ -89,6 +89,11 @@ public class TWConnectorConsts {
   public static final String CONNECTOR_CONFIG_FTP_USERNAME_KEY = "FtpUsername";
   /** Password for accessing Ewon Flexy via FTP. */
   public static final String CONNECTOR_CONFIG_FTP_PASSWORD_KEY = "FtpPassword";
+  /** The configuration file JSON key for the maximum number of data points in a data payload. */
+  public static final String CONNECTOR_CONFIG_PAYLOAD_MAX_DATA_POINTS_KEY = "PayloadMaxDataPoints";
+  /** The configuration file JSON key for the send interval (in milliseconds) of data payloads. */
+  public static final String CONNECTOR_CONFIG_PAYLOAD_SEND_INTERVAL_MILLIS_KEY =
+      "PayloadSendIntervalMillis";
 
   // Config Defaults
   /** The default value for the Thingworx URL. This is a helpful hint for customers. */
@@ -98,6 +103,10 @@ public class TWConnectorConsts {
   public static final String CONNECTOR_CONFIG_DEFAULT_APP_KEY = "Set-This-Value";
   /** The default value for the log level in the configuration file. */
   public static final int CONNECTOR_CONFIG_DEFAULT_LOG_LEVEL = 1;
+  /** The default value for the maximum number of data points in a payload. */
+  public static final int CONNECTOR_CONFIG_DEFAULT_PAYLOAD_MAX_DATA_POINTS = 50;
+  /** The default value for the send interval (in milliseconds) of data payloads. */
+  public static final long CONNECTOR_CONFIG_DEFAULT_PAYLOAD_SEND_INTERVAL_MILLIS = 5000;
 
   // RequestHTTPX Response Codes
   /** Ewon RequestHTTPX response code for no error. */

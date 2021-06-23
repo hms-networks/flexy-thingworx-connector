@@ -6,5 +6,7 @@
    "FtpPassword": "Set-This-Value",
    "QueueEnableStringHistory": false,
    "QueueDataPollSizeMins": 1,
-   "QueueDataPollIntervalMillis": 3000
+   "QueueDataPollIntervalMillis": 3000,
+   "PayloadMaxDataPoints": 50,
+   "PayloadSendIntervalMillis": 5000
 }

@@ -15,6 +15,12 @@ import com.hms_networks.americas.sc.thingworx.TWConnectorConsts;
 public class TWConnectorConfig extends ConfigFile {
 
   /**
+   * Boolean flag used to indicate if the default max data points per payload value message has been
+   * shown.
+   */
+  private boolean maxDataPointsPayloadDefaultMessageShown = false;
+
+  /**
    * Get the configured connector log level from the configuration.
    *
    * @return connector log level
@@ -171,6 +177,60 @@ public class TWConnectorConfig extends ConfigFile {
               + "to include a Thingworx app key with all run time permissions enabled.");
     }
     return twAppKey;
+  }
+
+  /**
+   * Get the number of maximum data points in a payload from the configuration.
+   *
+   * @return maximum data points in a payload
+   * @throws JSONException if unable to parse maximum payload data points field from the
+   *     configuration file
+   */
+  public int getPayloadMaxDataPoints() throws JSONException {
+    int payloadMaxDataPoints;
+    if (configurationObject.has(TWConnectorConsts.CONNECTOR_CONFIG_PAYLOAD_MAX_DATA_POINTS_KEY)) {
+      payloadMaxDataPoints =
+          configurationObject.getInt(
+              TWConnectorConsts.CONNECTOR_CONFIG_PAYLOAD_MAX_DATA_POINTS_KEY);
+    } else {
+      payloadMaxDataPoints = TWConnectorConsts.CONNECTOR_CONFIG_DEFAULT_PAYLOAD_MAX_DATA_POINTS;
+      if (!maxDataPointsPayloadDefaultMessageShown) {
+        Logger.LOG_WARN(
+            "The maximum data points in a payload setting was not configured. Using default value"
+                + " of "
+                + payloadMaxDataPoints
+                + ".");
+        maxDataPointsPayloadDefaultMessageShown = true;
+      }
+    }
+
+    return payloadMaxDataPoints;
+  }
+
+  /**
+   * Get the interval at which completed data payloads are sent to Thingworx (in milliseconds).
+   *
+   * @return completed data payload send interval (in milliseconds)
+   * @throws JSONException if unable to parse completed data payload send interval (in milliseconds)
+   *     field from the configuration file
+   */
+  public long getDataPayloadSendIntervalMillis() throws JSONException {
+    long dataPayloadSendIntervalMillis;
+    if (configurationObject.has(TWConnectorConsts.CONNECTOR_CONFIG_PAYLOAD_MAX_DATA_POINTS_KEY)) {
+      dataPayloadSendIntervalMillis =
+          configurationObject.getLong(
+              TWConnectorConsts.CONNECTOR_CONFIG_PAYLOAD_SEND_INTERVAL_MILLIS_KEY);
+    } else {
+      dataPayloadSendIntervalMillis =
+          TWConnectorConsts.CONNECTOR_CONFIG_DEFAULT_PAYLOAD_SEND_INTERVAL_MILLIS;
+      Logger.LOG_WARN(
+          "The data payload send interval (in milliseconds) was not configured. Using default"
+              + " value of "
+              + dataPayloadSendIntervalMillis
+              + ".");
+    }
+
+    return dataPayloadSendIntervalMillis;
   }
 
   /**
