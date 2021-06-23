@@ -34,3 +34,7 @@
 	path = lib/sc-tag-info-lib
 	url = https://github.com/hms-networks/sc-flexy-tag-info-lib.git
 	branch = release/1.1
+[submodule "lib/sc-system-lib"]
+	path = lib/sc-system-lib
+	url = https://github.com/hms-networks/sc-flexy-system-lib.git
+	branch = release/1.0
