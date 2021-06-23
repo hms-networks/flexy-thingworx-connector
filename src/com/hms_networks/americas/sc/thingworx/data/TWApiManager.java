@@ -1,13 +1,9 @@
 package com.hms_networks.americas.sc.thingworx.data;
 
-import com.ewon.ewonitf.EWException;
-import com.ewon.ewonitf.ScheduledActionManager;
-import com.hms_networks.americas.sc.fileutils.FileAccessManager;
 import com.hms_networks.americas.sc.logging.Logger;
 import com.hms_networks.americas.sc.thingworx.TWConnectorConsts;
 import com.hms_networks.americas.sc.thingworx.TWConnectorMain;
-import java.io.File;
-import java.io.IOException;
+import com.hms_networks.americas.sc.thingworx.utils.HttpUtils;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -20,24 +16,6 @@ import java.util.List;
  * @author HMS Networks, MU Americas Solution Center
  */
 public class TWApiManager {
-
-  /**
-   * String constant returned by the {@link #httpPost(String, String, String)} method to indicate an
-   * Ewon error occurred.
-   */
-  private static final String EWON_ERROR_STRING_RESPONSE = "EwonError";
-
-  /**
-   * String constant returned by the {@link #httpPost(String, String, String)} method to indicate an
-   * authentication error occurred.
-   */
-  private static final String AUTH_ERROR_STRING_RESPONSE = "AuthError";
-
-  /**
-   * String constant returned by the {@link #httpPost(String, String, String)} method to indicate a
-   * connection error occurred.
-   */
-  private static final String CONNECTION_ERROR_STRING_RESPONSE = "ConnectionError";
 
   /** The interval at which pending data payloads are sent to Thingworx. */
   private static long dataSendThreadIntervalMillis =
@@ -161,11 +139,11 @@ public class TWApiManager {
     String response = null;
     boolean isSuccessful = true;
     try {
-      response = httpPost(addInfoEndpointFullUrl, addInfoRequestHeader, json);
+      response = HttpUtils.httpPost(addInfoEndpointFullUrl, addInfoRequestHeader, json);
       if (response != null
-          && (response.equals(EWON_ERROR_STRING_RESPONSE)
-              || response.equals(AUTH_ERROR_STRING_RESPONSE)
-              || response.equals(CONNECTION_ERROR_STRING_RESPONSE))) {
+          && (response.equals(HttpUtils.EWON_ERROR_STRING_RESPONSE)
+              || response.equals(HttpUtils.AUTH_ERROR_STRING_RESPONSE)
+              || response.equals(HttpUtils.CONNECTION_ERROR_STRING_RESPONSE))) {
         isSuccessful = false;
       }
     } catch (Exception e) {
@@ -177,66 +155,5 @@ public class TWApiManager {
     }
     Logger.LOG_DEBUG("Thingworx HTTP POST response: " + response);
     return isSuccessful;
-  }
-
-  /**
-   * Performs an HTTP POST requests to the specified URL using the specified request header and
-   * body.
-   *
-   * @param url URL to make request
-   * @param header request header
-   * @param body request body
-   * @throws EWException if unable to make POST request
-   * @since 1.1
-   */
-  public static String httpPost(String url, String header, String body)
-      throws EWException, IOException {
-    // Create file for storing response
-    final File responseFile = new File("/usr/http/response.post");
-    responseFile.getParentFile().mkdirs();
-    responseFile.delete();
-
-    // Perform POST request to specified URL
-    int httpStatus =
-        ScheduledActionManager.RequestHttpX(
-            url,
-            TWConnectorConsts.HTTP_POST_STRING,
-            header,
-            body,
-            "",
-            responseFile.getAbsolutePath());
-
-    // Read response contents and return
-    String responseFileString = "";
-    if (httpStatus == TWConnectorConsts.HTTPX_CODE_NO_ERROR) {
-      responseFileString = FileAccessManager.readFileToString(responseFile.getAbsolutePath());
-    } else if (httpStatus == TWConnectorConsts.HTTPX_CODE_EWON_ERROR) {
-      Logger.LOG_SERIOUS(
-          "An Ewon error was encountered while performing an HTTP POST request to "
-              + url
-              + "! Data loss may result.");
-      responseFileString = EWON_ERROR_STRING_RESPONSE;
-    } else if (httpStatus == TWConnectorConsts.HTTPX_CODE_AUTH_ERROR) {
-      Logger.LOG_SERIOUS(
-          "An authentication error was encountered while performing an HTTP POST request to "
-              + url
-              + "! Data loss may result.");
-      responseFileString = AUTH_ERROR_STRING_RESPONSE;
-    } else if (httpStatus == TWConnectorConsts.HTTPX_CODE_CONNECTION_ERROR) {
-      Logger.LOG_SERIOUS(
-          "A connection error was encountered while performing an HTTP POST request to "
-              + url
-              + "! Data loss may result.");
-      responseFileString = CONNECTION_ERROR_STRING_RESPONSE;
-    } else {
-      Logger.LOG_SERIOUS(
-          "An unknown error ("
-              + httpStatus
-              + ") was encountered while performing an HTTP POST request to "
-              + url
-              + "! Data loss may result.");
-      responseFileString = String.valueOf(httpStatus);
-    }
-    return responseFileString;
   }
 }
