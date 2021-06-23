@@ -44,6 +44,7 @@ There are two components that make up the Ewon Thingworx Connector, a Thingworx 
       8. [Queue Data Poll Interval](#queue-data-poll-interval)
       9. [Payload Maximum Data Points](#payload-maximum-data-points)
       10. [Payload Send Interval (Millis)](#payload-send-interval-millis)
+      11. [Thingworx Tag Update URL](#thingworx-tag-update-url)
    3. [Telemetry](#telemetry)
       1. [Data Source](#data-source)
          1. [Tag Eligibility](#tag-eligibility)
@@ -52,7 +53,11 @@ There are two components that make up the Ewon Thingworx Connector, a Thingworx 
    4. [Runtime](#runtime)
       1. [FTP User Setup](#ftp-user-setup)
       2. [Application Control Tag](#application-control-tag)
-      3. [Log Output](#log-output)
+      3. [Tag Updates from Thingworx](#tag-updates-from-thingworx) 
+         1. [Request Trigger and Result Tags](#request-trigger-and-result-tags)
+         2. [Custom Service Request Format](#custom-service-request-format)
+         3. [Custom Service Response Format](#custom-service-response-format)
+      4. [Log Output](#log-output)
          1. [Configured Logging Level](#configured-logging-level)
          2. [Logging Performance](#logging-performance)
          3. [Adding Log Output](#adding-log-output)
@@ -398,6 +403,9 @@ Optional parameter to control the maximum number of data points which can be add
 #### Payload Send Interval (Millis)
 Optional parameter to control the interval at which data payloads are sent to Thingworx. The application will wait (at minimum) for this interval before sending each payload to allow for additional data points to be added. This value does not affect the intervals at which tag data is recorded or processed, only the interval at which processed data is sent to Thingworx. If no value is specified in the configuration file, the value will be read from CONNECTOR_CONFIG_DEFAULT_PAYLOAD_SEND_INTERVAL_MILLIS in "src/com/hms_networks/americas/sc/thingworx/TWConnectorConsts.java".
 
+#### Thingworx Tag Update URL
+Optional parameter which is used to set the URL for the custom tag update functionality service described in the [Tag Updates from Thingworx](#tag-updates-from-thingworx) section.
+
 ### Telemetry
 
 #### Data Source
@@ -446,6 +454,109 @@ The FTP user account is required when the Flexy's local time is not set to UTC. 
 
 #### Application Control Tag
 The “ThingworxControl” tag allows for a user to shut down the application while the Flexy is running. This tag must be created, by a user, as a Boolean “MEM” tag on the Ewon with the name “ThingworxControl”. The application will cyclically poll the “ThingworxControl” tag value in TWConnectorMain.java and shut down the application when the value is set to one. This reduces the CPU load of the Flexy and allows for maintenance to be completed on the unit. The application can only be stopped in the telemetry portion of the application and shut down during initialization is not permitted. The name of this tag can be modified by changing the value of CONNECTOR_CONTROL_TAG_NAME in "src/com/hms_networks/americas/sc/thingworx/TWConnectorConsts.java".
+
+#### Tag Updates from Thingworx
+The connector can optionally be configured to request tag updates from a custom Thingworx service when triggered using the proper tags and configuration.
+
+To enable this functionality, a set of trigger tags on the Ewon must be configured. The custom Thingworx tag update service URL must be properly set in the connector configuration file, as described in the [Thingworx Tag Update URL](#thingworx-tag-update-url) section.
+
+The custom Thingworx tag update service must adhere to the outlined [Request Format](#request-format) and [Response Format](#response-format) defined below.
+
+##### Request Trigger and Result Tags
+
+1. _RemoteTagUpdateTriggerEnum_
+   - This tag is an integer enumeration which can be used by the tag update service to return different results depending on its value.
+
+     | Enumeration Value | Meaning                                    | 
+     | :---------------: | :----------------------------------------: |
+     | 0                 | No Update Triggered                        |
+     | 1+                | Update Triggered (Value passed to service) |
+
+   - Setting the value of this tag to a number which is not equal to zero (0) immediately triggers the tag update request using the enumeration value and string value specified in _RemoteTagUpdateTriggerString_.
+   - The value of this tag is reset to its initial value (0) after the remote tag update request has been completed.
+
+
+2. _RemoteTagUpdateTriggerString_
+   - This tag is a string which can be used to pass additional information to the custom tag update service in many formats.
+   - The value of this tag is reset to its initial value ("") after the remote tag update request has been completed.
+
+
+3. _RemoteTagUpdateResultEnum_
+   - The value of this tag is an integer enumeration which indicates the result of the most recent remote tag update. 
+     
+     | Enumeration Value                          | Meaning                              | 
+     | :----------------------------------------: | :----------------------------------: |
+     | 0                                          | Initial Value                        |
+     | 1                                          | HTTP Request Started                 |
+     | 2                                          | Success (Normal)                     |
+     | 3                                          | Connection Failure/Error             |
+     | 4                                          | Ewon Failure/Error                   |
+     | 5                                          | Payload Verification Failure         |
+     | 6                                          | Payload Apply Failure                |
+     | 7                                          | Payload Missing Tags on Ewon Failure |
+     | 8                                          | Payload Bad/Mismatched Types Failure |
+     | -32700, -32600 to -32603, -32000 to -32099 | Service Error (JSON RPC 2.0)         |
+
+     If an error message was included with the JSON RPC error code, it will be displayed in the connector application's log.
+     For more information about JSON RPC error codes, please refer to [https://www.jsonrpc.org/specification#error_object](https://www.jsonrpc.org/specification#error_object).
+
+##### Custom Service Request Format
+
+Requests to the custom tag update service on Thingworx will be performed by the Ewon in the following format:
+
+```json
+{
+   "jsonrpc": "2.0",
+   "method": "[Value of RemoteTagUpdateTriggerEnum]",
+   "params": {
+      "stringInfo": "[Value of RemoteTagUpdateTriggerString]"
+},
+"id": "[Unique ID]"
+}
+```
+- The ID field contains a unique number value which increments by one with each request. Responses received must contain a matching ID value, or they will not be processed.
+
+##### Custom Service Response Format
+
+Responses from the custom tag update service on Thingworx are expected by the Ewon in the following format:
+
+```json
+{
+   "jsonrpc": "2.0",
+   "result": {
+      "restorePreviousValsOnFault": false,
+      "tags": [
+         {
+            "name": "[Tag Name Here]",
+            "type": "[Tag Type Here]",
+            "value": 0
+         },
+         {
+            "name": "[Tag Name Here]",
+            "type": "[Tag Type Here]",
+            "value": false
+         },
+         {
+            "name": "[Tag Name Here]",
+            "type": "[Tag Type Here]",
+            "value": "[Tag Value Here]"
+         }
+      ]
+   },
+   "id": "[Unique ID]"
+}
+```
+- The _id_ field must match the value specified in the request, or the response will not be processed by the Ewon.
+
+- The _restorePreviousValsOnFault_ field is optional, and can be used to indicate that previous tag values should be restored if there is a failure encountered while applying a payload. When set to `true`, tag values are backed up before applying changes from the tag update service to ensure that previous values can be restored to prevent partial tag updates in the event of an error. If this field is not included, the value will default to `false`.
+
+- The _type_ field of each tag object must be one of the following: `integer`, `float`, `string`, `boolean`, `dword`.
+
+Each response received by the Ewon if verified to ensure the following:
+
+1. JSON is valid
+2. Tags exist on Ewon
+3. Tag types match on Ewon
 
 #### Log Output
 

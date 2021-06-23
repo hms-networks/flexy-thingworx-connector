@@ -94,6 +94,8 @@ public class TWConnectorConsts {
   /** The configuration file JSON key for the send interval (in milliseconds) of data payloads. */
   public static final String CONNECTOR_CONFIG_PAYLOAD_SEND_INTERVAL_MILLIS_KEY =
       "PayloadSendIntervalMillis";
+  /** The configuration file JSON key for the Thingworx tag update URL. */
+  public static final String CONNECTOR_CONFIG_TW_TAG_UPDATE_URL_KEY = "ThingworxTagUpdateUrl";
 
   // Config Defaults
   /** The default value for the Thingworx URL. This is a helpful hint for customers. */

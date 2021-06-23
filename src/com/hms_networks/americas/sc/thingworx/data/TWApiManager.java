@@ -153,7 +153,7 @@ public class TWApiManager {
       Logger.LOG_EXCEPTION(e);
       isSuccessful = false;
     }
-    Logger.LOG_DEBUG("Thingworx HTTP POST response: " + response);
+    Logger.LOG_DEBUG("Thingworx HTTP POST response (send telemetry data): " + response);
     return isSuccessful;
   }
 }
