@@ -234,6 +234,27 @@ public class TWConnectorConfig extends ConfigFile {
   }
 
   /**
+   * Get the full URL of the Thingworx tag update endpoint from the configuration.
+   *
+   * @return Thingworx tag update full URL
+   * @throws JSONException if unable to get Thingworx tag update URL from configuration
+   */
+  public String getThingworxTagUpdateFullUrl() throws JSONException {
+    String thingworxTagUpdateFullUrl;
+    if (configurationObject.has(TWConnectorConsts.CONNECTOR_CONFIG_TW_TAG_UPDATE_URL_KEY)) {
+      thingworxTagUpdateFullUrl =
+          configurationObject.getString(TWConnectorConsts.CONNECTOR_CONFIG_TW_TAG_UPDATE_URL_KEY);
+    } else {
+      Logger.LOG_INFO(
+          "The Thingworx tag update URL has not been configured. This URL must be set "
+              + "before remote tag update checks can be triggered!");
+      thingworxTagUpdateFullUrl = "";
+    }
+
+    return thingworxTagUpdateFullUrl;
+  }
+
+  /**
    * Saves the configuration to the file system and catches any exceptions generated while saving.
    */
   void trySave() {

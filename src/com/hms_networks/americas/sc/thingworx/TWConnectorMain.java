@@ -12,6 +12,7 @@ import com.hms_networks.americas.sc.taginfo.TagInfoManager;
 import com.hms_networks.americas.sc.thingworx.config.TWConnectorConfig;
 import com.hms_networks.americas.sc.thingworx.data.TWApiManager;
 import com.hms_networks.americas.sc.thingworx.data.TWDataManager;
+import com.hms_networks.americas.sc.thingworx.data.TWTagUpdateManager;
 import com.hms_networks.americas.sc.thingworx.utils.StringUtils;
 import com.hms_networks.americas.sc.thingworx.utils.TWTimeOffsetCalculator;
 import java.io.IOException;
@@ -257,6 +258,9 @@ public class TWConnectorMain {
 
     // Start data send thread
     TWApiManager.startDataSendThread();
+
+    // Set up tag update request trigger tag
+    TWTagUpdateManager.setupTagUpdateTriggerTag();
 
     // Create tag control object for monitoring application control tag
     TagControl connectorControlTag = null;
