@@ -42,6 +42,8 @@ There are two components that make up the Ewon Thingworx Connector, a Thingworx 
       6. [Queue Enable String History](#queue-enable-string-history)
       7. [Queue Data Poll Size](#queue-data-poll-size)
       8. [Queue Data Poll Interval](#queue-data-poll-interval)
+      9. [Payload Maximum Data Points](#payload-maximum-data-points)
+      10. [Payload Send Interval (Millis)](#payload-send-interval-millis)
    3. [Telemetry](#telemetry)
       1. [Data Source](#data-source)
          1. [Tag Eligibility](#tag-eligibility)
@@ -389,6 +391,12 @@ Optional parameter to override the default data poll size (in minutes) of each d
 
 #### Queue Data Poll Interval
 Optional parameter to override the default data poll interval (in milliseconds) to poll the historical data queue.  If no value is specified in the configuration file, the value will be read from QUEUE_DATA_POLL_INTERVAL_MILLIS_DEFAULT from "src/com/hms_networks/americas/sc/thingworx/TWConnectorConsts.java".
+
+#### Payload Maximum Data Points
+Optional parameter to control the maximum number of data points which can be added to data payloads which are sent to Thingworx. If no value is specified in the configuration file, the value will be read from CONNECTOR_CONFIG_DEFAULT_PAYLOAD_MAX_DATA_POINTS in "src/com/hms_networks/americas/sc/thingworx/TWConnectorConsts.java".
+
+#### Payload Send Interval (Millis)
+Optional parameter to control the interval at which data payloads are sent to Thingworx. The application will wait (at minimum) for this interval before sending each payload to allow for additional data points to be added. This value does not affect the intervals at which tag data is recorded or processed, only the interval at which processed data is sent to Thingworx. If no value is specified in the configuration file, the value will be read from CONNECTOR_CONFIG_DEFAULT_PAYLOAD_SEND_INTERVAL_MILLIS in "src/com/hms_networks/americas/sc/thingworx/TWConnectorConsts.java".
 
 ### Telemetry
 

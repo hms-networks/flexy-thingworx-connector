@@ -1,7 +1,9 @@
 package com.hms_networks.americas.sc.thingworx.data;
 
 import com.hms_networks.americas.sc.datapoint.DataPoint;
+import com.hms_networks.americas.sc.logging.Logger;
 import com.hms_networks.americas.sc.thingworx.TWConnectorConsts;
+import com.hms_networks.americas.sc.thingworx.TWConnectorMain;
 import com.hms_networks.americas.sc.thingworx.utils.TWTimeOffsetCalculator;
 import java.util.ArrayList;
 import java.util.Date;
@@ -16,9 +18,6 @@ import java.util.List;
  */
 public class TWDataPayload {
 
-  /** The maximum number of data points that can be in one payload. */
-  private static final int PAYLOAD_MAX_DATA_POINTS = 50;
-
   /** List of data points in payload. */
   private final List dataPoints = new ArrayList();
 
@@ -29,8 +28,21 @@ public class TWDataPayload {
    * @return true if data point added
    */
   public synchronized boolean addDataPoint(DataPoint datapoint) {
+    // Get configured max number of data points per payload
+    int maxPayloadDataPoints = TWConnectorConsts.CONNECTOR_CONFIG_DEFAULT_PAYLOAD_MAX_DATA_POINTS;
+    try {
+      maxPayloadDataPoints = TWConnectorMain.getConnectorConfig().getPayloadMaxDataPoints();
+    } catch (Exception e) {
+      Logger.LOG_SERIOUS(
+          "An error occurred while parsing the maximum number of data points per payload from"
+              + " the configuration file! Using default value of "
+              + maxPayloadDataPoints
+              + ".");
+      Logger.LOG_EXCEPTION(e);
+    }
+
     // Check if payload reached max size
-    boolean canAddDataPoint = dataPoints.size() < PAYLOAD_MAX_DATA_POINTS;
+    boolean canAddDataPoint = dataPoints.size() < maxPayloadDataPoints;
 
     // Add to payload is within size
     if (canAddDataPoint) {
