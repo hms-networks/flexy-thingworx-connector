@@ -10,6 +10,7 @@
 	<classpathentry kind="src" path="lib/sc-mqtt-lib/src"/>
 	<classpathentry kind="src" path="lib/sc-string-lib/src"/>
 	<classpathentry kind="src" path="lib/sc-tag-info-lib/src"/>
+	<classpathentry kind="src" path="lib/sc-system-lib/src/main/java"/>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/javaetk"/>
 	<classpathentry kind="output" path="bin"/>

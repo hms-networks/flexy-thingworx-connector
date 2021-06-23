@@ -14,6 +14,7 @@
       <sourceFolder url="file://$MODULE_DIR$/lib/sc-string-lib/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/lib/sc-tag-info-lib/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lib/sc-system-lib/src/main/java" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
