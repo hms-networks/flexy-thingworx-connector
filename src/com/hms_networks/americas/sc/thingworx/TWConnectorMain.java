@@ -1,6 +1,5 @@
 package com.hms_networks.americas.sc.thingworx;
 
-import com.ewon.ewonitf.ScheduledActionManager;
 import com.ewon.ewonitf.SysControlBlock;
 import com.ewon.ewonitf.TagControl;
 import com.hms_networks.americas.sc.config.exceptions.ConfigFileException;
@@ -8,12 +7,12 @@ import com.hms_networks.americas.sc.config.exceptions.ConfigFileWriteException;
 import com.hms_networks.americas.sc.historicaldata.HistoricalDataQueueManager;
 import com.hms_networks.americas.sc.json.JSONException;
 import com.hms_networks.americas.sc.logging.Logger;
+import com.hms_networks.americas.sc.system.tags.SCTagUtils;
 import com.hms_networks.americas.sc.taginfo.TagInfoManager;
 import com.hms_networks.americas.sc.thingworx.config.TWConnectorConfig;
 import com.hms_networks.americas.sc.thingworx.data.TWApiManager;
 import com.hms_networks.americas.sc.thingworx.data.TWDataManager;
 import com.hms_networks.americas.sc.thingworx.data.TWTagUpdateManager;
-import com.hms_networks.americas.sc.thingworx.utils.StringUtils;
 import com.hms_networks.americas.sc.thingworx.utils.TWTimeOffsetCalculator;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -273,22 +272,12 @@ public class TWConnectorMain {
               + "` tag.");
       Logger.LOG_EXCEPTION(e1);
       try {
-        String ftpAddControlTagVarLstBody =
-            StringUtils.replaceAll(
-                TWConnectorConsts.VAR_LST_ADD_TAG_TEMPLATE,
-                TWConnectorConsts.VAR_LST_ADD_TAG_NAME_REPLACE,
-                TWConnectorConsts.CONNECTOR_CONTROL_TAG_NAME);
-        String ftpAddControlTagVarLstBody2 =
-            StringUtils.replaceAll(
-                ftpAddControlTagVarLstBody,
-                TWConnectorConsts.VAR_LST_ADD_TAG_TYPE_REPLACE,
-                TWConnectorConsts.VAR_LST_BOOLEAN_TAG_TYPE_VALUE);
-        String ftpUserCredentialsAndServer =
-            connectorConfig.getFtpUser() + ":" + connectorConfig.getFtpPassword() + "@127.0.0.1";
-        ScheduledActionManager.PutFtp(
-            TWConnectorConsts.VAR_LST_FILE_PATH,
-            ftpAddControlTagVarLstBody2,
-            ftpUserCredentialsAndServer);
+        SCTagUtils.createTag(
+            TWConnectorConsts.CONNECTOR_CONTROL_TAG_NAME,
+            TWConnectorConsts.CONNECTOR_CONTROL_TAG_DESCRIPTION,
+            TWConnectorConsts.CONNECTOR_CONTROL_TAG_IO_SERVER_NAME,
+            TWConnectorConsts.CONNECTOR_CONTROL_TAG_TYPE);
+        connectorControlTag = new TagControl(TWConnectorConsts.CONNECTOR_CONTROL_TAG_NAME);
       } catch (Exception e2) {
         Logger.LOG_WARN(
             "Unable to create tag `"
