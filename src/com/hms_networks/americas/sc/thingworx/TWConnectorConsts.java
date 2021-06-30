@@ -56,6 +56,13 @@ public class TWConnectorConsts {
   // Connector Control Tag
   /** The name of the tag that is used to control the connector execution. */
   public static final String CONNECTOR_CONTROL_TAG_NAME = "ThingworxControl";
+  /** The name of the IO server for the tag that is used to control the connector execution. */
+  public static final String CONNECTOR_CONTROL_TAG_IO_SERVER_NAME = "MEM";
+  /** The type of the tag that is used to control the connector execution. */
+  public static final int CONNECTOR_CONTROL_TAG_TYPE = 0;
+  /** The description of the tag that is used to control the connector execution. */
+  public static final String CONNECTOR_CONTROL_TAG_DESCRIPTION =
+      "Tag which is used to control the execution of the Thingworx connector application.";
   /** The value of the tag that permits the application to execute. */
   public static final int CONNECTOR_CONTROL_TAG_RUN_VALUE = 0;
 
