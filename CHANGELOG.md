@@ -1,5 +1,15 @@
 # Flexy Thingworx Connector Changelog
 
+## Version 2.0.1
+### Features
+- Added data payload configuration options to config file
+- Added triggered remote tag update via custom-JSON service
+  - Formatting specified in README.md
+### Bug Fixes
+- N/A
+### Other
+- Updated time offset calculation library
+
 ## Version 2.0
 ### Features
 - Added option to specify full Thingworx URL
