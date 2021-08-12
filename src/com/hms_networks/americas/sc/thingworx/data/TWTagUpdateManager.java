@@ -520,6 +520,9 @@ public class TWTagUpdateManager {
     // Create variable to store result
     int tagUpdateResult = TAG_UPDATE_RESULT_VALUE_SUCCESS;
 
+    // Log tag update request response
+    Logger.LOG_DEBUG("Tag Update Request Response Body: " + responseBody);
+
     // Get JSON object from response body
     JSONTokener jsonTokener = new JSONTokener(responseBody);
     JSONObject responseBodyJson = new JSONObject(jsonTokener);
