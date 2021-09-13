@@ -1,5 +1,13 @@
 # Flexy Thingworx Connector Changelog
 
+## Version 2.0.2
+### Features
+- N/A
+### Bug Fixes
+- Fixed a bug which could occur with concurrent HTTP requests
+### Other
+- Added exception catching to triggered remote tag update handler
+
 ## Version 2.0.1
 ### Features
 - Added data payload configuration options to config file
