@@ -193,34 +193,40 @@ public class TWTagUpdateManager {
   private static final EvtTagValueListener TAG_UPDATE_TRIGGER_TAG_VALUE_LISTENER =
       new EvtTagValueListener() {
         public void callTagChanged() {
-          // Check if trigger tag value changed
-          String changedTagName = getTagName();
-          if (changedTagName.equals(TAG_UPDATE_TRIGGER_TAG_NAME)) {
-            // Check if new value is a trigger value
-            int integerTagValue = getTagValueAsInt();
-            boolean newIsTagUpdateRequested = (integerTagValue != TAG_UPDATE_TRIGGER_VALUE_NONE);
-            if (newIsTagUpdateRequested) {
-              setTagUpdateResultTagValue(TAG_UPDATE_RESULT_VALUE_INITIAL);
-            }
-
-            // Get trigger info string
-            if (newIsTagUpdateRequested) {
-              String triggerInfoString = "";
-              try {
-                TagControl triggerInfoStringTagControl =
-                    new TagControl(TAG_UPDATE_TRIGGER_INFO_STRING_TAG_NAME);
-                triggerInfoString = triggerInfoStringTagControl.getTagValueAsString();
-              } catch (EWException e) {
-                Logger.LOG_SERIOUS(
-                    "Unable to get the value of "
-                        + TAG_UPDATE_TRIGGER_INFO_STRING_TAG_NAME
-                        + " to send with triggered tag update request.");
-                Logger.LOG_EXCEPTION(e);
+          try {
+            // Check if trigger tag value changed
+            String changedTagName = getTagName();
+            if (changedTagName.equals(TAG_UPDATE_TRIGGER_TAG_NAME)) {
+              // Check if new value is a trigger value
+              int integerTagValue = getTagValueAsInt();
+              boolean newIsTagUpdateRequested = (integerTagValue != TAG_UPDATE_TRIGGER_VALUE_NONE);
+              if (newIsTagUpdateRequested) {
+                setTagUpdateResultTagValue(TAG_UPDATE_RESULT_VALUE_INITIAL);
               }
 
-              // Send tag update request
-              sendTagUpdateRequest(String.valueOf(integerTagValue), triggerInfoString);
+              // Get trigger info string
+              if (newIsTagUpdateRequested) {
+                String triggerInfoString = "";
+                try {
+                  TagControl triggerInfoStringTagControl =
+                      new TagControl(TAG_UPDATE_TRIGGER_INFO_STRING_TAG_NAME);
+                  triggerInfoString = triggerInfoStringTagControl.getTagValueAsString();
+                } catch (EWException e) {
+                  Logger.LOG_SERIOUS(
+                      "Unable to get the value of "
+                          + TAG_UPDATE_TRIGGER_INFO_STRING_TAG_NAME
+                          + " to send with triggered tag update request.");
+                  Logger.LOG_EXCEPTION(e);
+                }
+
+                // Send tag update request
+                sendTagUpdateRequest(String.valueOf(integerTagValue), triggerInfoString);
+              }
             }
+          } catch (Exception e) {
+            Logger.LOG_SERIOUS(
+                "An exception occurred while processing a tag update trigger tag value change!");
+            Logger.LOG_EXCEPTION(e);
           }
         }
       };
