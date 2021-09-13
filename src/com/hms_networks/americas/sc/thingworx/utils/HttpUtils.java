@@ -35,6 +35,9 @@ public class HttpUtils {
    */
   public static final String CONNECTION_ERROR_STRING_RESPONSE = "ConnectionError";
 
+  /** Counter used to uniquely identify temporary files used to store HTTP responses. */
+  private static int tempResponseFileNameCounter = 0;
+
   /**
    * Performs an HTTP POST requests to the specified URL using the specified request header and
    * body.
@@ -47,7 +50,8 @@ public class HttpUtils {
   public static String httpPost(String url, String header, String body)
       throws EWException, IOException {
     // Create file for storing response
-    final File responseFile = new File("/usr/http/response.post");
+    final File responseFile =
+        new File("/usr/http/response" + tempResponseFileNameCounter++ + ".post");
     responseFile.getParentFile().mkdirs();
     responseFile.delete();
 
