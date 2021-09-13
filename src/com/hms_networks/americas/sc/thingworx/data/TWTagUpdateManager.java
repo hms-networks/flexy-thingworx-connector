@@ -736,6 +736,10 @@ public class TWTagUpdateManager {
               || response.equals(HttpUtils.CONNECTION_ERROR_STRING_RESPONSE)) {
             tagUpdateResult = TAG_UPDATE_RESULT_VALUE_CONNECTION_ERROR;
           }
+        } else {
+          Logger.LOG_SERIOUS(
+              "A null response was encountered while performing a tag update request.");
+          tagUpdateResult = TAG_UPDATE_RESULT_VALUE_EWON_ERROR;
         }
       } catch (Exception e) {
         Logger.LOG_CRITICAL(
