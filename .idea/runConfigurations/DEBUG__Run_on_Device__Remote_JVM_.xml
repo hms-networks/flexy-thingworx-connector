@@ -1,0 +1,19 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="DEBUG (Run on Device, Remote JVM)" type="Remote">
+    <module name="sc-maven-base-project" />
+    <option name="USE_SOCKET_TRANSPORT" value="true" />
+    <option name="SERVER_MODE" value="false" />
+    <option name="SHMEM_ADDRESS" />
+    <option name="HOST" value="172.20.20.6" />
+    <option name="PORT" value="2800" />
+    <option name="AUTO_RESTART" value="false" />
+    <RunnerSettings RunnerId="Debug">
+      <option name="DEBUG_PORT" value="2800" />
+      <option name="LOCAL" value="false" />
+    </RunnerSettings>
+    <method v="2">
+      <option name="RunConfigurationTask" enabled="true" run_configuration_name="DEPLOY (Run on Device, Debug)" run_configuration_type="MavenRunConfiguration" />
+      <option name="RunConfigurationTask" enabled="true" run_configuration_name="VERIFY (Verify Project)" run_configuration_type="MavenRunConfiguration" />
+    </method>
+  </configuration>
+</component>

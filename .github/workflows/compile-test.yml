@@ -1,0 +1,43 @@
+# HMS Networks Solution Center
+# Compile Test Action for Maven-based Ewon ETK Projects
+# Version: 1.0
+#
+# This action is configured to automatically run when a push
+# is made or pull request is merged to the `main` or `master`
+# branch.
+
+name: Compile Test
+
+on:
+  pull_request:
+    branches:
+      - main
+      - master
+  push:
+    branches:
+      - main
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set Up JDK
+        uses: actions/setup-java@v1
+        with:
+          java-version: 16
+
+      - name: Cache local Maven repository
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.m2/repository
+            target/buildJdk
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
+
+      - name: Compile Java Files With Maven
+        run: mvn compile -f pom.xml

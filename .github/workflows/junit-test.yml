@@ -1,0 +1,51 @@
+# HMS Networks Solution Center
+# JUnit Test Action for Maven-based Ewon ETK Projects
+# Version: 1.0
+#
+# This action is configured to automatically run when a push
+# is made or pull request is merged to the `main` or `master`
+# branch.
+
+name: JUnit Test
+
+on:
+  pull_request:
+    branches:
+      - main
+      - master
+  push:
+    branches:
+      - main
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set Up JDK
+        uses: actions/setup-java@v1
+        with:
+          java-version: 16
+
+      - name: Cache local Maven repository
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.m2/repository
+            target/buildJdk
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
+
+      - name: Run JUnit Testing With Maven
+        run: mvn test -f pom.xml
+
+      - name: Upload Test Report(s)
+        uses: actions/upload-artifact@v2
+        with:
+          name: JUNIT-TEST-REPORTING-${{ github.sha }}-${{ github.event.repository.name }}
+          path: |
+            target/surefire-reports
+            target/site
