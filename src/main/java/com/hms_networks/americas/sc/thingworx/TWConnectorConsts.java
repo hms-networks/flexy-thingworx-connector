@@ -17,7 +17,7 @@ public class TWConnectorConsts {
   public static final String CONNECTOR_NAME = "Ewon Thingworx Connector";
 
   /** Version of the connector application */
-  public static final String CONNECTOR_VERSION = "2.0.2";
+  public static final String CONNECTOR_VERSION = "3.0.0";
 
   // HTTP Configuration
   /**
