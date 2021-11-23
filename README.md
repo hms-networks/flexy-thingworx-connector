@@ -64,10 +64,7 @@ There are two components that make up the Ewon Thingworx Connector, a Thingworx 
    5. [Development Environment](#development-environment)
       1. [Source Code](#source-code)
          1. [Cloning](#cloning)
-         2. [Libraries (Git Submodules)](#libraries-git-submodules)
-            1. [Downloading Libraries](#downloading-libraries)
-            1. [Adding Libraries to Build Path](#adding-libraries-to-build-path)
-         3. [Existing Thread.sleep() Invocations](#existing-threadsleep-invocations)
+         2. [Existing Thread.sleep() Invocations](#existing-threadsleep-invocations)
       2. [Javadocs](#javadocs)
       3. [Releases](#releases)
          1. [Automatic Startup (jvmrun)](#automatic-startup-jvmrun)
@@ -357,8 +354,8 @@ The Flexy Java application component must be installed for the direct data path 
 
 ### Application Component Installation
 Using FTP, transfer the Flexy Java application \(.jar\) and jvmrun files to the /usr/ directory of the Ewon. Then, reboot the Ewon. On application startup, a configuration file will automatically be created with default values.
-- When installing from a zipped release, the Flexy Java application \(.jar\) and jvmrun files are located in the /built-flexy-java-app/ directory. 
-- For developers using the [Development Environment](#development-environment), when building and installing from the source code, the jvmrun file is located in /scripts/, and the Flexy Java application \(.jar\) is located in /build/ after compilation is run.
+- The Flexy Java application \(.jar\) is located in the /target folder.
+- The jvmrun file is located in the /scripts folder.
 
 A Thingworx application key is required to authenticate requests made by the Ewon to Thingworx, and is stored in the configuration file outlined in the [Configuration](#configuration) section. To generate an application key in Thingworx, please refer to the [Creating an Application Key](#creating-an-application-key) section.
 
@@ -389,19 +386,19 @@ The username for accessing Ewon Flexy via FTP. This user account must be configu
 The password for accessing Ewon Flexy via FTP. This user account must be configured for non-UTC time zones to be used on the Flexy. See [FTP User Setup](#ftp-user-setup) for more information.
 
 #### Queue Enable String History
-Optional parameter to override the default boolean flag indicating if string history data should be retrieved from the queue. String history requires an additional EBD call in the underlying queue library, and will take extra processing time, especially in installations with large string tag counts.  If no value is specified in the configuration file, the value will be read from QUEUE_DATA_STRING_HISTORY_ENABLED_DEFAULT from "src/com/hms_networks/americas/sc/thingworx/TWConnectorConsts.java".
+Optional parameter to override the default boolean flag indicating if string history data should be retrieved from the queue. String history requires an additional EBD call in the underlying queue library, and will take extra processing time, especially in installations with large string tag counts.  If no value is specified in the configuration file, the value will be read from QUEUE_DATA_STRING_HISTORY_ENABLED_DEFAULT from "src/main/java/com/hms_networks/americas/sc/thingworx/TWConnectorConsts.java".
 
 #### Queue Data Poll Size
-Optional parameter to override the default data poll size (in minutes) of each data queue poll. Changing this will modify the amount of data checked during each poll interval. If no value is specified in the configuration file, the value will be read from QUEUE_DATA_POLL_SIZE_MINS_DEFAULT from "src/com/hms_networks/americas/sc/thingworx/TWConnectorConsts.java".
+Optional parameter to override the default data poll size (in minutes) of each data queue poll. Changing this will modify the amount of data checked during each poll interval. If no value is specified in the configuration file, the value will be read from QUEUE_DATA_POLL_SIZE_MINS_DEFAULT from "src/main/java/com/hms_networks/americas/sc/thingworx/TWConnectorConsts.java".
 
 #### Queue Data Poll Interval
-Optional parameter to override the default data poll interval (in milliseconds) to poll the historical data queue.  If no value is specified in the configuration file, the value will be read from QUEUE_DATA_POLL_INTERVAL_MILLIS_DEFAULT from "src/com/hms_networks/americas/sc/thingworx/TWConnectorConsts.java".
+Optional parameter to override the default data poll interval (in milliseconds) to poll the historical data queue.  If no value is specified in the configuration file, the value will be read from QUEUE_DATA_POLL_INTERVAL_MILLIS_DEFAULT from "src/main/java/com/hms_networks/americas/sc/thingworx/TWConnectorConsts.java".
 
 #### Payload Maximum Data Points
-Optional parameter to control the maximum number of data points which can be added to data payloads which are sent to Thingworx. If no value is specified in the configuration file, the value will be read from CONNECTOR_CONFIG_DEFAULT_PAYLOAD_MAX_DATA_POINTS in "src/com/hms_networks/americas/sc/thingworx/TWConnectorConsts.java".
+Optional parameter to control the maximum number of data points which can be added to data payloads which are sent to Thingworx. If no value is specified in the configuration file, the value will be read from CONNECTOR_CONFIG_DEFAULT_PAYLOAD_MAX_DATA_POINTS in "src/main/java/com/hms_networks/americas/sc/thingworx/TWConnectorConsts.java".
 
 #### Payload Send Interval (Millis)
-Optional parameter to control the interval at which data payloads are sent to Thingworx. The application will wait (at minimum) for this interval before sending each payload to allow for additional data points to be added. This value does not affect the intervals at which tag data is recorded or processed, only the interval at which processed data is sent to Thingworx. If no value is specified in the configuration file, the value will be read from CONNECTOR_CONFIG_DEFAULT_PAYLOAD_SEND_INTERVAL_MILLIS in "src/com/hms_networks/americas/sc/thingworx/TWConnectorConsts.java".
+Optional parameter to control the interval at which data payloads are sent to Thingworx. The application will wait (at minimum) for this interval before sending each payload to allow for additional data points to be added. This value does not affect the intervals at which tag data is recorded or processed, only the interval at which processed data is sent to Thingworx. If no value is specified in the configuration file, the value will be read from CONNECTOR_CONFIG_DEFAULT_PAYLOAD_SEND_INTERVAL_MILLIS in "src/main/java/com/hms_networks/americas/sc/thingworx/TWConnectorConsts.java".
 
 #### Thingworx Tag Update URL
 Optional parameter which is used to set the URL for the custom tag update functionality service described in the [Tag Updates from Thingworx](#tag-updates-from-thingworx) section.
@@ -453,7 +450,7 @@ The FTP user account is required when the Flexy's local time is not set to UTC. 
 9. Click "Add User"
 
 #### Application Control Tag
-The “ThingworxControl” tag allows for a user to shut down the application while the Flexy is running. This tag must be created, by a user, as a Boolean “MEM” tag on the Ewon with the name “ThingworxControl”. The application will cyclically poll the “ThingworxControl” tag value in TWConnectorMain.java and shut down the application when the value is set to one. This reduces the CPU load of the Flexy and allows for maintenance to be completed on the unit. The application can only be stopped in the telemetry portion of the application and shut down during initialization is not permitted. The name of this tag can be modified by changing the value of CONNECTOR_CONTROL_TAG_NAME in "src/com/hms_networks/americas/sc/thingworx/TWConnectorConsts.java".
+The “ThingworxControl” tag allows for a user to shut down the application while the Flexy is running. This tag must be created, by a user, as a Boolean “MEM” tag on the Ewon with the name “ThingworxControl”. The application will cyclically poll the “ThingworxControl” tag value in TWConnectorMain.java and shut down the application when the value is set to one. This reduces the CPU load of the Flexy and allows for maintenance to be completed on the unit. The application can only be stopped in the telemetry portion of the application and shut down during initialization is not permitted. The name of this tag can be modified by changing the value of CONNECTOR_CONTROL_TAG_NAME in "src/main/java/com/hms_networks/americas/sc/thingworx/TWConnectorConsts.java".
 
 #### Tag Updates from Thingworx
 The connector can optionally be configured to request tag updates from a custom Thingworx service when triggered using the proper tags and configuration.
@@ -582,14 +579,12 @@ Negative log values utilize log files in the /usr directory to store log output.
 Log output can be added to the application by inserting calls to the logging class, Logger. Each log level has a method that will output the log to the appropriate location. For example, a call to `Logger.LOG_DEBUG(String)` will result in log output that is visible if the configured application log level is set to debug (5/-5) or trace (6/-6). A call to `Logger.LOG_CRITICAL(String)` will result in log output that is visible if the configured application log level is set to critical (1/-1) or a higher logging level. A call to `Logger.LOG_EXCEPTION(Exception)` will result in log output that is visible if the configured application log level is set to trace (6/-6).
 
 ### Development Environment
-The Flexy Java application component was developed using the standard Ewon Java development environment. Documentation and additional information about the Ewon Java development environment is available in the Ewon Java Toolkit User Guide \(J2SE\) at [https://developer.ewon.biz/content/java-0#dev-documents](https://developer.ewon.biz/content/java-0#dev-documents).
+This project is based on the [Solution Center Maven Starter Project](https://github.com/hms-networks/sc-java-maven-starter-project), and uses the Maven build system for compilation, testing, and packaging.
 
-As described in the [Ewon Java Toolkit User Guide \(J2SE\)](https://developer.ewon.biz/system/files_force/AUG-072-0-EN-%28JAVA%20J2SE%20Toolkit%20for%20eWON%20Flexy%29.pdf), the primary IDE for development of Ewon Java applications is [Eclipse](https://www.eclipse.org/).
-
-Alternative IDEs can be used but may not be fully compatible with the Ewon Java Toolkit and thus are not guaranteed nor officially supported by HMS. Partial or complete IDE configurations for Visual Studio Code (*.vscode*) and IntelliJ IDEA (*.idea*) are included in the development repository. *Note: These configurations are not present in releases.*
+Maven lifecycle information and other details about the development environment provided by the [Solution Center Maven Starter Project](https://github.com/hms-networks/sc-java-maven-starter-project) can be found in its README.md at [https://github.com/hms-networks/sc-java-maven-starter-project/blob/main/README.md](https://github.com/hms-networks/sc-java-maven-starter-project/blob/main/README.md).
 
 #### Source Code
-Source code and an Eclipse project for the Flexy Java app are made available in the [hms-networks/flexy-thingworx-connector](https://github.com/hms-networks/flexy-thingworx-connector) repository on GitHub. It is also included in the /source-flexy-java-app/ folder of Flexy Thingworx Connector release \(.zip\) files.
+Source code and IDE project files for the Flexy Java app are made available in the [hms-networks/flexy-thingworx-connector](https://github.com/hms-networks/flexy-thingworx-connector) repository on GitHub. They are also included in Flexy Thingworx Connector release \(.zip\) files.
 
 ##### Cloning
 
@@ -607,47 +602,11 @@ Using SSH:
 > git clone git@github.com:hms-networks/flexy-thingworx-connector.git --recursive
 ```
 
-##### Libraries (Git Submodules)
-
-###### Downloading Libraries
-
-The Flexy Thingworx Connector uses libraries that are stored as Git submodules. After cloning the project repository, using the Git client of your choice, perform an initial Git submodule update.
-
-```console
-> git submodule update --init
-```
-
-###### Adding Libraries to Build Path
-
-Each library included in the /libs folder needs to be added to the Java Build Path in Eclipse. To add a library to an Eclipse project, right click the project in the “Package Explorer” and select “Properties.”
-
-![Eclipse Project Right-Click Menu](https://github.com/hms-networks/flexy-thingworx-connector/blob/main/images/EclipseRightClickMenu.PNG?raw=true)
-
-In the "Java Build Path" menu, select the "Source" tab.
-
-![Eclipse Java Build Path Source Tab](https://github.com/hms-networks/flexy-thingworx-connector/blob/main/images/EclipseJavaBuildPathMenu.PNG?raw=true)
-
-Click the "Add Folder..." option and select each library's *src* folder.
-
-![Eclipse Source Folder Selection Dialog](https://github.com/hms-networks/flexy-thingworx-connector/blob/main/images/EclipseSourceFolderSelectionDialog.PNG?raw=true)
-
-Click "OK" to apply the source folder selections, then click "Apply and Close" in the project properties window to apply the changes.
-
 ##### Existing Thread.sleep() Invocations
 In many locations throughout the application, calls are made to Thread.sleep(). These calls are necessary to signal to the JVM and the Ewon Flexy that other processes can be serviced. Reducing or removing these calls to Thread.sleep() may cause stability issues with the Flexy. This behavior may manifest as a device reboot.
 
 #### Javadocs
-Developer documentation is available in Javadoc format in doc folder of release package. Javadocs can also be generated by the following bash command: 
-```bash
-javadoc -private -splitindex -use -author -version -d docs -classpath  $(find src/ -name "*.java")
-```
-
-For windows command prompt: 
-```shell
-dir  /s /B *.java > sources.txt
-javadoc -private -splitindex -use -author -version -d docs -classpath @sources.txt
-del sources.txt
-```
+Developer documentation is available in Javadoc jar format in /target folder of release packages. A generated copy can also be found in the /target/apidocs folder after compiling with Maven.
 
 #### Releases
 To release a compiled version of the Ewon Thingworx Connector, two files must be supplied to the end-user, the compiled Ewon Thingworx Connector jar, and a jvmrun file. The files should be installed to the /usr directory of the Ewon Flexy. On the first run of the application, a default application configuration will be written to the Ewon’s filesystem. This can be modified to include the desired configuration, as outlined in the [Configuration](#configuration) section.
@@ -668,4 +627,6 @@ If you encounter a bug or issue in the Ewon Thingworx Connector, please open an 
 Support and additional information about the Ewon Flexy can be found on the Ewon support homepage at [https://ewon.biz/technical-support/support-home](https://ewon.biz/technical-support/support-home).
 
 ### Development Environment Support
-Support and additional information about the Ewon development environment can be found on the Ewon Java programming homepage at [https://developer.ewon.biz/content/java-0](https://developer.ewon.biz/content/java-0).
+Detailed information about the development environment provided by the [Solution Center Maven Starter Project](https://github.com/hms-networks/sc-java-maven-starter-project) can be found in its README.md at [https://github.com/hms-networks/sc-java-maven-starter-project/blob/main/README.md](https://github.com/hms-networks/sc-java-maven-starter-project/blob/main/README.md).
+
+Additional information and support about the Ewon ETK can be found on the Ewon Java programming homepage at [https://developer.ewon.biz/content/java-0](https://developer.ewon.biz/content/java-0).
