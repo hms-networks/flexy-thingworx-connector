@@ -1,7 +1,7 @@
 package com.hms_networks.americas.sc.thingworx.data;
 
-import com.hms_networks.americas.sc.datapoint.DataPoint;
-import com.hms_networks.americas.sc.logging.Logger;
+import com.hms_networks.americas.sc.extensions.datapoint.DataPoint;
+import com.hms_networks.americas.sc.extensions.logging.Logger;
 import com.hms_networks.americas.sc.thingworx.TWConnectorConsts;
 import com.hms_networks.americas.sc.thingworx.TWConnectorMain;
 import com.hms_networks.americas.sc.thingworx.utils.TWTimeOffsetCalculator;

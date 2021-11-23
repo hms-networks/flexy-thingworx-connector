@@ -2,8 +2,8 @@ package com.hms_networks.americas.sc.thingworx.utils;
 
 import com.ewon.ewonitf.EWException;
 import com.ewon.ewonitf.ScheduledActionManager;
-import com.hms_networks.americas.sc.fileutils.FileAccessManager;
-import com.hms_networks.americas.sc.logging.Logger;
+import com.hms_networks.americas.sc.extensions.fileutils.FileAccessManager;
+import com.hms_networks.americas.sc.extensions.logging.Logger;
 import com.hms_networks.americas.sc.thingworx.TWConnectorConsts;
 
 import java.io.File;
