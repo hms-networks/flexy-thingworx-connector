@@ -1,4 +1,4 @@
-# Flexy Thingworx Connector Changelog
+# Ewon Flexy Thingworx Connector Changelog
 
 ## Version 2.0.2
 ### Features
