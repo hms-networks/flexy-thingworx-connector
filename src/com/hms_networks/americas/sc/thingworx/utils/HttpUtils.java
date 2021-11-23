@@ -96,6 +96,7 @@ public class HttpUtils {
               + "! Data loss may result.");
       responseFileString = String.valueOf(httpStatus);
     }
+    responseFile.delete();
     return responseFileString;
   }
 }
