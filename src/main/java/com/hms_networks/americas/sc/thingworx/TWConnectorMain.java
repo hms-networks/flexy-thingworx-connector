@@ -2,13 +2,13 @@ package com.hms_networks.americas.sc.thingworx;
 
 import com.ewon.ewonitf.SysControlBlock;
 import com.ewon.ewonitf.TagControl;
-import com.hms_networks.americas.sc.config.exceptions.ConfigFileException;
-import com.hms_networks.americas.sc.config.exceptions.ConfigFileWriteException;
-import com.hms_networks.americas.sc.historicaldata.HistoricalDataQueueManager;
-import com.hms_networks.americas.sc.json.JSONException;
-import com.hms_networks.americas.sc.logging.Logger;
-import com.hms_networks.americas.sc.system.tags.SCTagUtils;
-import com.hms_networks.americas.sc.taginfo.TagInfoManager;
+import com.hms_networks.americas.sc.extensions.config.exceptions.ConfigFileException;
+import com.hms_networks.americas.sc.extensions.config.exceptions.ConfigFileWriteException;
+import com.hms_networks.americas.sc.extensions.historicaldata.HistoricalDataQueueManager;
+import com.hms_networks.americas.sc.extensions.json.JSONException;
+import com.hms_networks.americas.sc.extensions.logging.Logger;
+import com.hms_networks.americas.sc.extensions.system.tags.SCTagUtils;
+import com.hms_networks.americas.sc.extensions.taginfo.TagInfoManager;
 import com.hms_networks.americas.sc.thingworx.config.TWConnectorConfig;
 import com.hms_networks.americas.sc.thingworx.data.TWApiManager;
 import com.hms_networks.americas.sc.thingworx.data.TWDataManager;
@@ -227,7 +227,7 @@ public class TWConnectorMain {
       Logger.LOG_DEBUG("Refreshing tag information list...");
       TagInfoManager.refreshTagList();
       Logger.LOG_DEBUG("Finished refreshing tag information list.");
-    } catch (IOException e) {
+    } catch (Exception e) {
       Logger.LOG_CRITICAL("Unable to populate array of tag information!");
       Logger.LOG_EXCEPTION(e);
     }

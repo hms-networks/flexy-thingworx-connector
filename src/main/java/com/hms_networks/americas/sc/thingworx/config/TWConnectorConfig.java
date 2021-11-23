@@ -1,9 +1,9 @@
 package com.hms_networks.americas.sc.thingworx.config;
 
-import com.hms_networks.americas.sc.config.ConfigFile;
-import com.hms_networks.americas.sc.json.JSONException;
-import com.hms_networks.americas.sc.json.JSONObject;
-import com.hms_networks.americas.sc.logging.Logger;
+import com.hms_networks.americas.sc.extensions.config.ConfigFile;
+import com.hms_networks.americas.sc.extensions.json.JSONException;
+import com.hms_networks.americas.sc.extensions.json.JSONObject;
+import com.hms_networks.americas.sc.extensions.logging.Logger;
 import com.hms_networks.americas.sc.thingworx.TWConnectorConsts;
 
 /**

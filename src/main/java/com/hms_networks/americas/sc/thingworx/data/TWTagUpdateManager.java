@@ -1,14 +1,14 @@
 package com.hms_networks.americas.sc.thingworx.data;
 
 import com.ewon.ewonitf.*;
-import com.hms_networks.americas.sc.json.JSONArray;
-import com.hms_networks.americas.sc.json.JSONException;
-import com.hms_networks.americas.sc.json.JSONObject;
-import com.hms_networks.americas.sc.json.JSONTokener;
-import com.hms_networks.americas.sc.logging.Logger;
-import com.hms_networks.americas.sc.taginfo.TagInfo;
-import com.hms_networks.americas.sc.taginfo.TagInfoManager;
-import com.hms_networks.americas.sc.taginfo.TagType;
+import com.hms_networks.americas.sc.extensions.json.JSONArray;
+import com.hms_networks.americas.sc.extensions.json.JSONException;
+import com.hms_networks.americas.sc.extensions.json.JSONObject;
+import com.hms_networks.americas.sc.extensions.json.JSONTokener;
+import com.hms_networks.americas.sc.extensions.logging.Logger;
+import com.hms_networks.americas.sc.extensions.taginfo.TagInfo;
+import com.hms_networks.americas.sc.extensions.taginfo.TagInfoManager;
+import com.hms_networks.americas.sc.extensions.taginfo.TagType;
 import com.hms_networks.americas.sc.thingworx.TWConnectorMain;
 import com.hms_networks.americas.sc.thingworx.utils.HttpUtils;
 

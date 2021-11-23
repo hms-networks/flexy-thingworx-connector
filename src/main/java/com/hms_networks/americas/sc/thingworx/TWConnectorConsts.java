@@ -2,7 +2,7 @@ package com.hms_networks.americas.sc.thingworx;
 
 import com.ewon.ewonitf.EWException;
 import com.ewon.ewonitf.SysControlBlock;
-import com.hms_networks.americas.sc.logging.Logger;
+import com.hms_networks.americas.sc.extensions.logging.Logger;
 import java.text.SimpleDateFormat;
 
 /**
