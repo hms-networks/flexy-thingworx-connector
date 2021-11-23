@@ -1,22 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module type="JAVA_MODULE" version="4">
+<module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_4">
-    <output url="file://$MODULE_DIR$/bin" />
-    <output-test url="file://$MODULE_DIR$/bin/test" />
+    <output url="file://$MODULE_DIR$/target/classes" />
+    <output-test url="file://$MODULE_DIR$/target/test-classes" />
     <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/lib/sc-config-file-lib/src" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/lib/sc-datapoint-lib/src" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/lib/sc-file-util-lib/src" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/lib/sc-historical-data-queue-lib/src" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/lib/sc-json-lib/src" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/lib/sc-logger-lib/src" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/lib/sc-mqtt-lib/src" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/lib/sc-string-lib/src" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/lib/sc-tag-info-lib/src" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/lib/sc-system-lib/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
+      <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" scope="TEST" name="Maven: junit:junit:3.8.1" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: com.hms_networks.americas.sc.mvnlibs:ewon-etk:1.4.4" level="project" />
+    <orderEntry type="library" name="Maven: com.hms_networks.americas.sc:extensions:1.1.2" level="project" />
   </component>
 </module>

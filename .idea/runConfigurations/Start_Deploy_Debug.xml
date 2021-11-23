@@ -1,8 +1,0 @@
-<component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Start Deploy (Debug)" type="AntRunConfiguration">
-    <antsettings antfile="file://$PROJECT_DIR$/build.xml" target="startdeploy_debug" />
-    <method v="2">
-      <option name="Make" enabled="true" />
-    </method>
-  </configuration>
-</component>

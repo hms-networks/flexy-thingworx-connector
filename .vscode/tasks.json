@@ -2,72 +2,46 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "compile",
+            "label": "INSTALL (Upload to Device)",
             "type": "shell",
-            "command": "ant \"compile\" -noinput -buildfile build.xml",
-            "group": "build",
-            "presentation": {
-                "echo": true,
-                "reveal": "always",
-                "focus": false,
-                "panel": "shared",
-                "showReuseMessage": true,
-                "clear": false
-            }
-        },
-        {
-            "label": "build jar",
-            "type": "shell",
-            "command": "ant \"buildjar\" -noinput -buildfile build.xml",
-            "group": "build",
-            "presentation": {
-                "echo": true,
-                "reveal": "always",
-                "focus": false,
-                "panel": "shared",
-                "showReuseMessage": true,
-                "clear": false
-            }
-        },
-        {
-            "label": "compile and build",
-            "type": "shell",
-            "dependsOn": [
-                "compile",
-                "build jar"
-            ],
+            "command": "mvn install -f pom.xml",
             "group": "build"
         },
         {
-            "label": "deploy_run",
+            "label": "PACKAGE (Create JAR)",
             "type": "shell",
-            "dependsOn": [
-                "compile"
-            ],
-            "group": "build",
-            "command": "ant \"startdeploy\"  -lib ./deploy -noinput -buildfile build.xml",
-            "presentation": {
-                "echo": true,
-                "reveal": "always",
-                "focus": false,
-                "panel": "shared",
-                "showReuseMessage": true,
-                "clear": false
-            }
+            "command": "mvn package -f pom.xml",
+            "group": "build"
         },
         {
-            "label": "deploy_stop",
+            "label": "DEPLOY (Run on Device, No Debug)",
             "type": "shell",
-            "group": "build",
-            "command": "ant \"stop\"  -lib ./deploy -noinput -buildfile build.xml",
-            "presentation": {
-                "echo": true,
-                "reveal": "always",
-                "focus": false,
-                "panel": "shared",
-                "showReuseMessage": true,
-                "clear": false
-            }
+            "command": "mvn deploy -f pom.xml -P noDebug",
+            "group": "build"
+        },
+        {
+            "label": "DEPLOY (Run on Device, Debug)",
+            "type": "shell",
+            "command": "mvn deploy -f pom.xml -P debug",
+            "group": "build"
+        },
+        {
+            "label": "VERIFY (Verify Project)",
+            "type": "shell",
+            "command": "mvn verify -f pom.xml",
+            "group": "build"
+        },
+        {
+            "label": "CLEAN (Remove Build Output)",
+            "type": "shell",
+            "command": "mvn clean -f pom.xml",
+            "group": "build"
+        },
+        {
+            "label": "UPDATE (Get Latest Dependencies)",
+            "type": "shell",
+            "command": "mvn clean -U -f pom.xml",
+            "group": "build"
         }
     ]
 }

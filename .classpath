@@ -1,17 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="src" path="lib/sc-config-file-lib/src"/>
-	<classpathentry kind="src" path="lib/sc-datapoint-lib/src"/>
-	<classpathentry kind="src" path="lib/sc-file-util-lib/src"/>
-	<classpathentry kind="src" path="lib/sc-historical-data-queue-lib/src"/>
-	<classpathentry kind="src" path="lib/sc-json-lib/src"/>
-	<classpathentry kind="src" path="lib/sc-logger-lib/src"/>
-	<classpathentry kind="src" path="lib/sc-mqtt-lib/src"/>
-	<classpathentry kind="src" path="lib/sc-string-lib/src"/>
-	<classpathentry kind="src" path="lib/sc-tag-info-lib/src"/>
-	<classpathentry kind="src" path="lib/sc-system-lib/src/main/java"/>
-	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/javaetk"/>
-	<classpathentry kind="output" path="bin"/>
+	<classpathentry kind="src" output="target/classes" path="src/main/java">
+		<attributes>
+			<attribute name="optional" value="true"/>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="src" output="target/test-classes" path="src/test/java">
+		<attributes>
+			<attribute name="optional" value="true"/>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="test" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/J2SE-1.4">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="output" path="target/classes"/>
 </classpath>
