@@ -1,5 +1,13 @@
 # Ewon Flexy Thingworx Connector Changelog
 
+## Version 3.0.0
+### Features
+- Update project to use Maven builder
+### Bug Fixes
+- Fixed a bug where HTTP files were using excessive storage space
+### Other
+- N/A
+
 ## Version 2.0.2
 ### Features
 - N/A
