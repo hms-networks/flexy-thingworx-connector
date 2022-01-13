@@ -8,6 +8,7 @@ import com.hms_networks.americas.sc.extensions.historicaldata.HistoricalDataQueu
 import com.hms_networks.americas.sc.extensions.json.JSONException;
 import com.hms_networks.americas.sc.extensions.logging.Logger;
 import com.hms_networks.americas.sc.extensions.system.tags.SCTagUtils;
+import com.hms_networks.americas.sc.extensions.system.time.SCTimeUtils;
 import com.hms_networks.americas.sc.extensions.taginfo.TagInfoManager;
 import com.hms_networks.americas.sc.thingworx.config.TWConnectorConfig;
 import com.hms_networks.americas.sc.thingworx.data.TWApiManager;
@@ -24,6 +25,18 @@ import java.util.ArrayList;
  * @since 1.0
  */
 public class TWConnectorMain {
+
+  /** String used to identify a number or count of days. */
+  private static final String DAYS_STRING = "days";
+
+  /** String used to identify a number or count of hours. */
+  private static final String HOURS_STRING = "hours";
+
+  /** String used to identify a number or count of minutes. */
+  private static final String MINUTES_STRING = "minutes";
+
+  /** String used to identify a number or count of seconds. */
+  private static final String SECONDS_STRING = "seconds";
 
   /** Connector configuration object */
   private static TWConnectorConfig connectorConfig;
@@ -88,14 +101,17 @@ public class TWConnectorMain {
 
         // Check if queue is behind
         try {
-          long queueBehindMillis =
-              HistoricalDataQueueManager.getCurrentTimeWithOffset()
-                  - HistoricalDataQueueManager.getCurrentTimeTrackerValue();
+          long queueBehindMillis = HistoricalDataQueueManager.getQueueTimeBehindMillis();
           if (queueBehindMillis >= TWConnectorConsts.QUEUE_DATA_POLL_BEHIND_MILLIS_WARN) {
+            String timeBehindString =
+                SCTimeUtils.getDayHourMinSecsForMillis(
+                    (int) queueBehindMillis,
+                    DAYS_STRING,
+                    HOURS_STRING,
+                    MINUTES_STRING,
+                    SECONDS_STRING);
             Logger.LOG_WARN(
-                "The historical data queue is running behind by "
-                    + queueBehindMillis
-                    + " milliseconds.");
+                "The historical data queue is running behind by " + timeBehindString + ".");
           }
         } catch (IOException e) {
           Logger.LOG_SERIOUS("Unable to detect if historical data queue is running behind.");
