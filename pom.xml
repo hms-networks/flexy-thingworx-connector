@@ -407,7 +407,7 @@
     <dependency>
       <groupId>com.hms_networks.americas.sc</groupId>
       <artifactId>extensions</artifactId>
-      <version>1.1.2</version>
+      <version>1.5.0</version>
     </dependency>
   </dependencies>
 </project>
