@@ -2,11 +2,11 @@ package com.hms_networks.americas.sc.thingworx.data;
 
 import com.hms_networks.americas.sc.extensions.datapoint.DataPoint;
 import com.hms_networks.americas.sc.extensions.logging.Logger;
+import com.hms_networks.americas.sc.extensions.system.time.LocalTimeOffsetCalculator;
+import com.hms_networks.americas.sc.extensions.system.time.SCTimeUtils;
 import com.hms_networks.americas.sc.thingworx.TWConnectorConsts;
 import com.hms_networks.americas.sc.thingworx.TWConnectorMain;
-import com.hms_networks.americas.sc.thingworx.utils.TWTimeOffsetCalculator;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -77,11 +77,19 @@ public class TWDataPayload {
       DataPoint currentDataPoint = (DataPoint) pendingDataPointsIterator.next();
 
       // Get time stamp in proper format
-      long timestampLong =
-          Long.valueOf(currentDataPoint.getTimeStamp()).longValue()
-              * TWConnectorConsts.NUM_MILLISECONDS_PER_SECOND;
-      String currentDataPointFormattedTimestamp =
-          TWConnectorConsts.THINGWORX_API_DATE_FORMAT.format(new Date(timestampLong));
+      String currentDataPointFormattedTimestamp;
+      try {
+        currentDataPointFormattedTimestamp =
+            SCTimeUtils.getIso8601FormattedTimestampForDataPoint(currentDataPoint);
+      } catch (Exception e) {
+        Logger.LOG_SERIOUS(
+            "An error occurred while formatting a data point timestamp to send to Thingworx!");
+        Logger.LOG_EXCEPTION(e);
+        long timestampLong =
+            Long.valueOf(currentDataPoint.getTimeStamp()).longValue()
+                * TWConnectorConsts.NUM_MILLISECONDS_PER_SECOND;
+        currentDataPointFormattedTimestamp = String.valueOf(timestampLong);
+      }
 
       // Append data point to data points list
       stringBuffer.append("{");
@@ -135,7 +143,7 @@ public class TWDataPayload {
     // Append Ewon time offset from UTC in milliseconds
     payloadBuffer
         .append("\"ewon-utc-offset-millis\": \"")
-        .append(TWTimeOffsetCalculator.getTimeOffsetMilliseconds())
+        .append(LocalTimeOffsetCalculator.getLocalTimeOffsetMilliseconds())
         .append("\"");
 
     // Add closing for info object

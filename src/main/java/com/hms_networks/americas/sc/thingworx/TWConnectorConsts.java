@@ -3,7 +3,6 @@ package com.hms_networks.americas.sc.thingworx;
 import com.ewon.ewonitf.EWException;
 import com.ewon.ewonitf.SysControlBlock;
 import com.hms_networks.americas.sc.extensions.logging.Logger;
-import java.text.SimpleDateFormat;
 
 /**
  * Class of constants for the Ewon Thingworx Connector.
@@ -144,11 +143,6 @@ public class TWConnectorConsts {
   // Time Constants
   /** The number of milliseconds in one second. */
   public static final int NUM_MILLISECONDS_PER_SECOND = 1000;
-
-  // Thingworx API Constants
-  /** Date format for time stamps sent to the Thingworx API. */
-  public static final SimpleDateFormat THINGWORX_API_DATE_FORMAT =
-      new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
 
   // SysControlBlock Constants
   /** SysControlBlock serial number key. */
