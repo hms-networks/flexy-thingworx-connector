@@ -14,9 +14,9 @@ import com.hms_networks.americas.sc.thingworx.config.TWConnectorConfig;
 import com.hms_networks.americas.sc.thingworx.data.TWApiManager;
 import com.hms_networks.americas.sc.thingworx.data.TWDataManager;
 import com.hms_networks.americas.sc.thingworx.data.TWTagUpdateManager;
-import com.hms_networks.americas.sc.thingworx.utils.TWTimeOffsetCalculator;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Ewon Flexy Thingworx Connector main class.
@@ -223,20 +223,27 @@ public class TWConnectorMain {
     Logger.LOG_CRITICAL(
         "Starting " + TWConnectorConsts.CONNECTOR_NAME + " " + TWConnectorConsts.CONNECTOR_VERSION);
 
-    // Calculate local time offset and configure queue
+    // Inject local time in to the JVM
     try {
-      TWTimeOffsetCalculator.calculateTimeOffsetMilliseconds(
-          connectorConfig.getFtpUser(), connectorConfig.getFtpPassword());
-    } catch (JSONException e) {
-      Logger.LOG_WARN(
-          "An error occured retrieving FTP user credentials from the configuration file.");
+      SCTimeUtils.injectJvmLocalTime();
+
+      final Date currentTime = new Date();
+      final String currentLocalTime = SCTimeUtils.getIso8601LocalTimeFormat().format(currentTime);
+      final String currentUtcTime = SCTimeUtils.getIso8601UtcTimeFormat().format(currentTime);
+      Logger.LOG_DEBUG(
+          "The local time zone is "
+              + SCTimeUtils.getTimeZoneName()
+              + " with an identifier of "
+              + SCTimeUtils.getLocalTimeZoneDesignator()
+              + ". The current local time is "
+              + currentLocalTime
+              + ", and the current UTC time is "
+              + currentUtcTime
+              + ".");
+    } catch (Exception e) {
+      Logger.LOG_CRITICAL("Unable to inject local time in to the JVM!");
       Logger.LOG_EXCEPTION(e);
     }
-    final long calculatedTimeOffsetMilliseconds =
-        TWTimeOffsetCalculator.getTimeOffsetMilliseconds();
-    HistoricalDataQueueManager.setLocalTimeOffset(calculatedTimeOffsetMilliseconds);
-    Logger.LOG_DEBUG(
-        "The local time offset is " + calculatedTimeOffsetMilliseconds + " milliseconds.");
 
     // Populate tag info list
     try {
