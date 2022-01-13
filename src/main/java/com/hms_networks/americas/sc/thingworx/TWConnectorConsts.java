@@ -89,13 +89,6 @@ public class TWConnectorConsts {
   /** The configuration file JSON key for the queue data poll interval in milliseconds. */
   public static final String CONNECTOR_CONFIG_QUEUE_DATA_POLL_INTERVAL_MILLIS_KEY =
       "QueueDataPollIntervalMillis";
-  /**
-   * Username for accessing Ewon Flexy via FTP. This user must be configured on the Ewon Flexy, and
-   * must allow FTP access.
-   */
-  public static final String CONNECTOR_CONFIG_FTP_USERNAME_KEY = "FtpUsername";
-  /** Password for accessing Ewon Flexy via FTP. */
-  public static final String CONNECTOR_CONFIG_FTP_PASSWORD_KEY = "FtpPassword";
   /** The configuration file JSON key for the maximum number of data points in a data payload. */
   public static final String CONNECTOR_CONFIG_PAYLOAD_MAX_DATA_POINTS_KEY = "PayloadMaxDataPoints";
   /** The configuration file JSON key for the send interval (in milliseconds) of data payloads. */
@@ -151,17 +144,6 @@ public class TWConnectorConsts {
   // Time Constants
   /** The number of milliseconds in one second. */
   public static final int NUM_MILLISECONDS_PER_SECOND = 1000;
-
-  // Time Offset Constants
-  /** Date format used when parsing a local time offset file. */
-  public static final String TIME_OFFSET_DATE_FORMAT = "dd/MM/yyyy HH:mm:ss";
-  /** Folder on Ewon Flexy file system for storing local time offset files. */
-  public static final String TIME_OFFSET_FOLDER = CONNECTOR_CONFIG_FOLDER + "/TimeOffset";
-  /** File name of HTML file used to generate a local time offset file. */
-  public static final String TIME_OFFSET_HTML_FILE_NAME = TIME_OFFSET_FOLDER + "/localTime.shtm";
-  /** File name of generated local time offset file. */
-  public static final String TIME_OFFSET_RESPONSE_FILE_NAME =
-      TIME_OFFSET_FOLDER + "/localTimeResponse.txt";
 
   // Thingworx API Constants
   /** Date format for time stamps sent to the Thingworx API. */
