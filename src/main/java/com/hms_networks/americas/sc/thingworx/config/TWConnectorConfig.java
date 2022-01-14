@@ -54,10 +54,10 @@ public class TWConnectorConfig extends ConfigFile {
    */
   public boolean getQueueDataStringEnabled() throws JSONException {
     boolean queueDataStringEnabled;
-    if (configurationObject.has(TWConnectorConsts.CONNECTOR_CONFIG_QUEUE_STING_HISTORY_KEY)) {
+    if (configurationObject.has(TWConnectorConsts.CONNECTOR_CONFIG_QUEUE_STRING_HISTORY_KEY)) {
       queueDataStringEnabled =
           configurationObject.getBoolean(
-              TWConnectorConsts.CONNECTOR_CONFIG_QUEUE_STING_HISTORY_KEY);
+              TWConnectorConsts.CONNECTOR_CONFIG_QUEUE_STRING_HISTORY_KEY);
     } else {
       String defaultStringEnabledStr =
           String.valueOf(TWConnectorConsts.QUEUE_DATA_STRING_HISTORY_ENABLED_DEFAULT);
