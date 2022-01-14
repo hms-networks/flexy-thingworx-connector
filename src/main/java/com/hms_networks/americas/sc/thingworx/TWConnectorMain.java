@@ -1,12 +1,12 @@
 package com.hms_networks.americas.sc.thingworx;
 
-import com.ewon.ewonitf.SysControlBlock;
 import com.ewon.ewonitf.TagControl;
 import com.hms_networks.americas.sc.extensions.config.exceptions.ConfigFileException;
 import com.hms_networks.americas.sc.extensions.config.exceptions.ConfigFileWriteException;
 import com.hms_networks.americas.sc.extensions.historicaldata.HistoricalDataQueueManager;
 import com.hms_networks.americas.sc.extensions.json.JSONException;
 import com.hms_networks.americas.sc.extensions.logging.Logger;
+import com.hms_networks.americas.sc.extensions.system.http.SCHttpUtility;
 import com.hms_networks.americas.sc.extensions.system.tags.SCTagUtils;
 import com.hms_networks.americas.sc.extensions.system.time.SCTimeUnit;
 import com.hms_networks.americas.sc.extensions.system.time.SCTimeUtils;
@@ -329,34 +329,12 @@ public class TWConnectorMain {
   }
 
   /**
-   * Sets the http timeouts. Note: This changes the eWON's global HTTP timeouts and stores these
+   * Sets the HTTP timeouts. Note: This changes the Ewon's global HTTP timeouts and stores these
    * values in NV memory.
    */
   private static void setHttpTimeouts() {
-    SysControlBlock SCB;
-
-    final String httpSendTimeoutName = "HTTPC_SDTO";
-    final String httpReadTimeoutName = "HTTPC_RDTO";
-
-    boolean needsSave = false;
     try {
-      SCB = new SysControlBlock(SysControlBlock.SYS);
-
-      if (!SCB.getItem(httpSendTimeoutName).equals(TWConnectorConsts.HTTP_TIMEOUT_SECONDS_STRING)) {
-        SCB.setItem(httpSendTimeoutName, TWConnectorConsts.HTTP_TIMEOUT_SECONDS_STRING);
-        needsSave = true;
-      }
-
-      if (!SCB.getItem(httpReadTimeoutName).equals(TWConnectorConsts.HTTP_TIMEOUT_SECONDS_STRING)) {
-        SCB.setItem(httpReadTimeoutName, TWConnectorConsts.HTTP_TIMEOUT_SECONDS_STRING);
-        needsSave = true;
-      }
-
-      // Only save the block if the value has changed, this reduces wear on the flash memory.
-      if (needsSave) {
-        SCB.saveBlock(true);
-      }
-
+      SCHttpUtility.setHttpTimeouts(TWConnectorConsts.HTTP_TIMEOUT_SECONDS_STRING);
     } catch (Exception e) {
       Logger.LOG_SERIOUS("Setting HTTP timeouts failed.");
       Logger.LOG_EXCEPTION(e);
