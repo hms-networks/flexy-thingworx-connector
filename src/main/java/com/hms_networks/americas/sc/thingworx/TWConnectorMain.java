@@ -82,22 +82,22 @@ public class TWConnectorMain {
 
       try {
         // Read data points from queue
-        ArrayList datapontsReadFromQueue;
+        ArrayList datapointsReadFromQueue;
         if (HistoricalDataQueueManager.doesTimeTrackerExist()) {
           final boolean startNewTimeTracker = false;
-          datapontsReadFromQueue =
+          datapointsReadFromQueue =
               HistoricalDataQueueManager.getFifoNextSpanDataAllGroups(startNewTimeTracker);
         } else {
           final boolean startNewTimeTracker = true;
-          datapontsReadFromQueue =
+          datapointsReadFromQueue =
               HistoricalDataQueueManager.getFifoNextSpanDataAllGroups(startNewTimeTracker);
         }
 
         Logger.LOG_DEBUG(
-            "Read " + datapontsReadFromQueue.size() + " data points from the historical log.");
+            "Read " + datapointsReadFromQueue.size() + " data points from the historical log.");
 
         // Send data to Thingworx
-        TWDataManager.addDataPointsToPending(datapontsReadFromQueue);
+        TWDataManager.addDataPointsToPending(datapointsReadFromQueue);
 
         // Check if queue is behind
         try {
