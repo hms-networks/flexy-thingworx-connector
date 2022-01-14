@@ -8,6 +8,7 @@ import com.hms_networks.americas.sc.extensions.historicaldata.HistoricalDataQueu
 import com.hms_networks.americas.sc.extensions.json.JSONException;
 import com.hms_networks.americas.sc.extensions.logging.Logger;
 import com.hms_networks.americas.sc.extensions.system.tags.SCTagUtils;
+import com.hms_networks.americas.sc.extensions.system.time.SCTimeUnit;
 import com.hms_networks.americas.sc.extensions.system.time.SCTimeUtils;
 import com.hms_networks.americas.sc.extensions.taginfo.TagInfoManager;
 import com.hms_networks.americas.sc.thingworx.config.TWConnectorConfig;
@@ -47,6 +48,27 @@ public class TWConnectorMain {
   /** Boolean flag indicating if the application is running out of memory */
   private static boolean isMemoryCurrentlyLow;
 
+  /** Count of the number of times the application has polled the queue for data. */
+  private static long connectorQueuePollCount = 0;
+
+  /**
+   * Tag control object used for updating the value of the queue diagnostic tag for the amount of
+   * time running behind in seconds.
+   */
+  private static TagControl queueDiagnosticRunningBehindSecondsTag = null;
+
+  /**
+   * Tag control object used for getting the value of the queue diagnostic tag for forcing a reset
+   * of the time tracker.
+   */
+  private static TagControl queueDiagnosticForceResetTag = null;
+
+  /**
+   * Tag control object used for updating the value of the queue diagnostic tag for the queue poll
+   * count.
+   */
+  private static TagControl queueDiagnosticPollCountTag = null;
+
   /**
    * Gets the connector configuration object.
    *
@@ -80,10 +102,31 @@ public class TWConnectorMain {
         isMemoryCurrentlyLow = false;
       }
 
+      // Increment poll count, and reset to 0 if too large
+      connectorQueuePollCount++;
+      if (connectorQueuePollCount == Long.MAX_VALUE) {
+        connectorQueuePollCount = 0;
+      }
+
       try {
+        // Check if a queue force reset has been requested
+        boolean forceReset = false;
+        if (queueDiagnosticForceResetTag != null) {
+          forceReset =
+              queueDiagnosticForceResetTag.getTagValueAsInt()
+                  == TWConnectorConsts.QUEUE_DIAGNOSTIC_TAG_FORCE_RESET_TRUE_VALUE;
+
+          if (forceReset) {
+            Logger.LOG_SERIOUS(
+                "A force reset of the queue has been requested using the tag `"
+                    + TWConnectorConsts.QUEUE_DIAGNOSTIC_TAG_FORCE_RESET_NAME
+                    + "`. A new queue time tracker will be created at the current time!");
+          }
+        }
+
         // Read data points from queue
         ArrayList datapointsReadFromQueue;
-        if (HistoricalDataQueueManager.doesTimeTrackerExist()) {
+        if (HistoricalDataQueueManager.doesTimeTrackerExist() && !forceReset) {
           final boolean startNewTimeTracker = false;
           datapointsReadFromQueue =
               HistoricalDataQueueManager.getFifoNextSpanDataAllGroups(startNewTimeTracker);
@@ -91,6 +134,12 @@ public class TWConnectorMain {
           final boolean startNewTimeTracker = true;
           datapointsReadFromQueue =
               HistoricalDataQueueManager.getFifoNextSpanDataAllGroups(startNewTimeTracker);
+        }
+
+        // Reset queue force reset tag value to false, if true
+        if (queueDiagnosticForceResetTag != null && forceReset) {
+          queueDiagnosticForceResetTag.setTagValueAsInt(
+              TWConnectorConsts.QUEUE_DIAGNOSTIC_TAG_FORCE_RESET_FALSE_VALUE);
         }
 
         Logger.LOG_DEBUG(
@@ -112,7 +161,17 @@ public class TWConnectorMain {
                     SECONDS_STRING);
             Logger.LOG_WARN(
                 "The historical data queue is running behind by " + timeBehindString + ".");
+          } else {
+            // Queue is not past running behind threshold, reset to 0 for updating debug tag
+            queueBehindMillis = 0;
           }
+
+          // Update queue debug tag
+          if (queueDiagnosticRunningBehindSecondsTag != null) {
+            queueDiagnosticRunningBehindSecondsTag.setTagValueAsLong(
+                SCTimeUnit.MILLISECONDS.toSeconds(queueBehindMillis));
+          }
+
         } catch (IOException e) {
           Logger.LOG_SERIOUS("Unable to detect if historical data queue is running behind.");
           Logger.LOG_EXCEPTION(e);
@@ -166,6 +225,107 @@ public class TWConnectorMain {
       loglevel = TWConnectorConsts.CONNECTOR_CONFIG_DEFAULT_LOG_LEVEL;
     }
     Logger.SET_LOG_LEVEL(loglevel);
+  }
+
+  /**
+   * Configures the queue diagnostic tags if the {@link
+   * TWConnectorConfig#getQueueDiagnosticTagsEnabled()} setting is enabled.
+   */
+  private static void configureQueueDiagnosticTags() {
+    if (connectorConfig.getQueueDiagnosticTagsEnabled()) {
+      // Configure queue running behind diagnostic tag
+      try {
+        queueDiagnosticRunningBehindSecondsTag =
+            new TagControl(TWConnectorConsts.QUEUE_DIAGNOSTIC_TAG_RUNNING_BEHIND_SECONDS_NAME);
+      } catch (Exception e1) {
+        Logger.LOG_INFO(
+            "Unable to create tag object to update diagnostic tag for the queue running behind"
+                + " time! Attempting to create `"
+                + TWConnectorConsts.QUEUE_DIAGNOSTIC_TAG_RUNNING_BEHIND_SECONDS_NAME
+                + "` tag.");
+        Logger.LOG_EXCEPTION(e1);
+        try {
+          SCTagUtils.createTag(
+              TWConnectorConsts.QUEUE_DIAGNOSTIC_TAG_RUNNING_BEHIND_SECONDS_NAME,
+              TWConnectorConsts.QUEUE_DIAGNOSTIC_TAG_RUNNING_BEHIND_SECONDS_DESC,
+              TWConnectorConsts.QUEUE_DIAGNOSTIC_TAG_IO_SERVER,
+              TWConnectorConsts.QUEUE_DIAGNOSTIC_TAG_RUNNING_BEHIND_SECONDS_TYPE);
+          queueDiagnosticRunningBehindSecondsTag =
+              new TagControl(TWConnectorConsts.QUEUE_DIAGNOSTIC_TAG_RUNNING_BEHIND_SECONDS_NAME);
+        } catch (Exception e2) {
+          Logger.LOG_WARN(
+              "Unable to create tag `"
+                  + TWConnectorConsts.QUEUE_DIAGNOSTIC_TAG_RUNNING_BEHIND_SECONDS_NAME
+                  + "`! To see the queue running behind time in seconds, please create a tag with"
+                  + " the name `"
+                  + TWConnectorConsts.QUEUE_DIAGNOSTIC_TAG_RUNNING_BEHIND_SECONDS_NAME
+                  + "`.");
+          Logger.LOG_EXCEPTION(e2);
+        }
+      }
+
+      // Configure queue reset tag
+      try {
+        queueDiagnosticForceResetTag =
+            new TagControl(TWConnectorConsts.QUEUE_DIAGNOSTIC_TAG_FORCE_RESET_NAME);
+      } catch (Exception e1) {
+        Logger.LOG_INFO(
+            "Unable to create tag object to check for a request to force reset the connector queue!"
+                + " Attempting to create `"
+                + TWConnectorConsts.QUEUE_DIAGNOSTIC_TAG_FORCE_RESET_NAME
+                + "` tag.");
+        Logger.LOG_EXCEPTION(e1);
+        try {
+          SCTagUtils.createTag(
+              TWConnectorConsts.QUEUE_DIAGNOSTIC_TAG_FORCE_RESET_NAME,
+              TWConnectorConsts.QUEUE_DIAGNOSTIC_TAG_FORCE_RESET_DESC,
+              TWConnectorConsts.QUEUE_DIAGNOSTIC_TAG_IO_SERVER,
+              TWConnectorConsts.QUEUE_DIAGNOSTIC_TAG_FORCE_RESET_TYPE);
+          queueDiagnosticForceResetTag =
+              new TagControl(TWConnectorConsts.QUEUE_DIAGNOSTIC_TAG_FORCE_RESET_NAME);
+        } catch (Exception e2) {
+          Logger.LOG_WARN(
+              "Unable to create tag `"
+                  + TWConnectorConsts.QUEUE_DIAGNOSTIC_TAG_FORCE_RESET_NAME
+                  + "`! To request a force reset of the connector queue, please create a tag with"
+                  + " the name `"
+                  + TWConnectorConsts.QUEUE_DIAGNOSTIC_TAG_FORCE_RESET_NAME
+                  + "`.");
+          Logger.LOG_EXCEPTION(e2);
+        }
+      }
+
+      // Configure queue poll count tag
+      try {
+        queueDiagnosticPollCountTag =
+            new TagControl(TWConnectorConsts.QUEUE_DIAGNOSTIC_TAG_POLL_COUNT_NAME);
+      } catch (Exception e1) {
+        Logger.LOG_INFO(
+            "Unable to create tag object to update diagnostic tag for the queue poll count!"
+                + " Attempting to create `"
+                + TWConnectorConsts.QUEUE_DIAGNOSTIC_TAG_POLL_COUNT_NAME
+                + "` tag.");
+        Logger.LOG_EXCEPTION(e1);
+        try {
+          SCTagUtils.createTag(
+              TWConnectorConsts.QUEUE_DIAGNOSTIC_TAG_POLL_COUNT_NAME,
+              TWConnectorConsts.QUEUE_DIAGNOSTIC_TAG_POLL_COUNT_DESC,
+              TWConnectorConsts.QUEUE_DIAGNOSTIC_TAG_IO_SERVER,
+              TWConnectorConsts.QUEUE_DIAGNOSTIC_TAG_POLL_COUNT_TYPE);
+          queueDiagnosticPollCountTag =
+              new TagControl(TWConnectorConsts.QUEUE_DIAGNOSTIC_TAG_POLL_COUNT_NAME);
+        } catch (Exception e2) {
+          Logger.LOG_WARN(
+              "Unable to create tag `"
+                  + TWConnectorConsts.QUEUE_DIAGNOSTIC_TAG_POLL_COUNT_NAME
+                  + "`! To see the queue poll count, please create a tag with"
+                  + " the name `"
+                  + TWConnectorConsts.QUEUE_DIAGNOSTIC_TAG_POLL_COUNT_NAME
+                  + "`.");
+          Logger.LOG_EXCEPTION(e2);
+        }
+      }
+    }
   }
 
   /**
@@ -277,6 +437,9 @@ public class TWConnectorMain {
       Logger.LOG_CRITICAL("Unable get queue data string enabled setting!");
       Logger.LOG_EXCEPTION(e);
     }
+
+    // Configure queue diagnostic tags (if enabled)
+    configureQueueDiagnosticTags();
 
     // Start data send thread
     TWApiManager.startDataSendThread();

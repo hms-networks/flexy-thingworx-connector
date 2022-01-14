@@ -72,6 +72,35 @@ public class TWConnectorConfig extends ConfigFile {
   }
 
   /**
+   * Get the queue diagnostic tags enabled setting from the configuration.
+   *
+   * @return queue diagnostic tags enabled setting
+   */
+  public boolean getQueueDiagnosticTagsEnabled() {
+    boolean queueDiagnosticTagsEnabled;
+    if (configurationObject.has(TWConnectorConsts.CONNECTOR_CONFIG_QUEUE_DIAGNOSTIC_TAGS_KEY)) {
+      try {
+        queueDiagnosticTagsEnabled =
+            configurationObject.getBoolean(
+                TWConnectorConsts.CONNECTOR_CONFIG_QUEUE_DIAGNOSTIC_TAGS_KEY);
+      } catch (JSONException e) {
+        queueDiagnosticTagsEnabled =
+            TWConnectorConsts.CONNECTOR_CONFIG_DEFAULT_QUEUE_DIAGNOSTIC_TAGS;
+        Logger.LOG_WARN(
+            "The queue diagnostic tags enabled setting could not be read from the configuration"
+                + " file. Using default value of "
+                + TWConnectorConsts.CONNECTOR_CONFIG_DEFAULT_QUEUE_DIAGNOSTIC_TAGS
+                + ".");
+        Logger.LOG_EXCEPTION(e);
+      }
+    } else {
+      queueDiagnosticTagsEnabled = TWConnectorConsts.CONNECTOR_CONFIG_DEFAULT_QUEUE_DIAGNOSTIC_TAGS;
+    }
+
+    return queueDiagnosticTagsEnabled;
+  }
+
+  /**
    * Get the queue data poll size in minutes from the configuration.
    *
    * @return queue data poll size in minutes
