@@ -81,7 +81,7 @@ public class TWConnectorConsts {
   /** The configuration file JSON key for the log level of the connector. */
   public static final String CONNECTOR_CONFIG_LOG_LEVEL_KEY = "LogLevel";
   /** The configuration file JSON key for the enable queue string history setting. */
-  public static final String CONNECTOR_CONFIG_QUEUE_STING_HISTORY_KEY = "QueueEnableStringHistory";
+  public static final String CONNECTOR_CONFIG_QUEUE_STRING_HISTORY_KEY = "QueueEnableStringHistory";
   /** The configuration file JSON key for the queue data poll size in minutes. */
   public static final String CONNECTOR_CONFIG_QUEUE_DATA_POLL_SIZE_MINS_KEY =
       "QueueDataPollSizeMins";
