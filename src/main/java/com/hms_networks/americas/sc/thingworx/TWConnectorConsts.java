@@ -43,6 +43,68 @@ public class TWConnectorConsts {
    * take extra processing time, especially in installations with large string tag counts.
    */
   public static final boolean QUEUE_DATA_STRING_HISTORY_ENABLED_DEFAULT = false;
+  /**
+   * The name of the diagnostic tag that is populated with the number of seconds that the queue is
+   * running behind.
+   */
+  public static final String QUEUE_DIAGNOSTIC_TAG_RUNNING_BEHIND_SECONDS_NAME =
+      "ConnectorQueueBehindSeconds";
+  /**
+   * The description of the diagnostic tag that is populated with the number of seconds that the
+   * queue is running behind.
+   */
+  public static final String QUEUE_DIAGNOSTIC_TAG_RUNNING_BEHIND_SECONDS_DESC =
+      "Diagnostic tag containing the amount of time, in seconds, that the connector data queue is"
+          + " running behind.";
+  /**
+   * The type of the diagnostic tag that is populated with the number of seconds that the queue is
+   * running behind.
+   */
+  public static final int QUEUE_DIAGNOSTIC_TAG_RUNNING_BEHIND_SECONDS_TYPE = 2;
+  /**
+   * The name of the diagnostic tag that is monitored for a request to forcibly reset the queue time
+   * tracker.
+   */
+  public static final String QUEUE_DIAGNOSTIC_TAG_FORCE_RESET_NAME = "ConnectorQueueForceReset";
+  /**
+   * The description of the diagnostic tag that is monitored for a request to forcibly reset the
+   * queue time tracker.
+   */
+  public static final String QUEUE_DIAGNOSTIC_TAG_FORCE_RESET_DESC =
+      "Diagnostic tag which can be used to request the connector to reset the queue time tracker.";
+  /**
+   * The type of the diagnostic tag that is monitored for a request to forcibly reset the queue time
+   * tracker.
+   */
+  public static final int QUEUE_DIAGNOSTIC_TAG_FORCE_RESET_TYPE = 0;
+  /**
+   * The value used to represent true for the diagnostic tag that is monitored for a request to
+   * forcibly reset the queue time tracker.
+   */
+  public static final int QUEUE_DIAGNOSTIC_TAG_FORCE_RESET_TRUE_VALUE = 1;
+  /**
+   * The value used to represent false for the diagnostic tag that is monitored for a request to
+   * forcibly reset the queue time tracker.
+   */
+  public static final int QUEUE_DIAGNOSTIC_TAG_FORCE_RESET_FALSE_VALUE = 0;
+  /**
+   * The name of the diagnostic tag that is populated with the number of times that the queue has
+   * been polled for data.
+   */
+  public static final String QUEUE_DIAGNOSTIC_TAG_POLL_COUNT_NAME = "ConnectorQueuePollCount";
+  /**
+   * The description of the diagnostic tag that is populated with the number of times that the queue
+   * has been polled for data.
+   */
+  public static final String QUEUE_DIAGNOSTIC_TAG_POLL_COUNT_DESC =
+      "Diagnostic tag containing the number of times the queue has been polled for data.";
+  /**
+   * The type of the diagnostic tag that is populated with the number of times that the queue has
+   * been polled for data.
+   */
+  public static final int QUEUE_DIAGNOSTIC_TAG_POLL_COUNT_TYPE = 2;
+  /** The IO server used for queue diagnostic tag(s). */
+  public static final String QUEUE_DIAGNOSTIC_TAG_IO_SERVER = "MEM";
 
   // Main Loop Configuration
   /**
@@ -82,6 +144,9 @@ public class TWConnectorConsts {
   public static final String CONNECTOR_CONFIG_LOG_LEVEL_KEY = "LogLevel";
   /** The configuration file JSON key for the enable queue string history setting. */
   public static final String CONNECTOR_CONFIG_QUEUE_STRING_HISTORY_KEY = "QueueEnableStringHistory";
+  /** The configuration file JSON key for the enable queue diagnostic tags setting. */
+  public static final String CONNECTOR_CONFIG_QUEUE_DIAGNOSTIC_TAGS_KEY =
+      "QueueEnableDiagnosticTags";
   /** The configuration file JSON key for the queue data poll size in minutes. */
   public static final String CONNECTOR_CONFIG_QUEUE_DATA_POLL_SIZE_MINS_KEY =
       "QueueDataPollSizeMins";
@@ -104,6 +169,8 @@ public class TWConnectorConsts {
   public static final String CONNECTOR_CONFIG_DEFAULT_APP_KEY = "Set-This-Value";
   /** The default value for the log level in the configuration file. */
   public static final int CONNECTOR_CONFIG_DEFAULT_LOG_LEVEL = 1;
+  /** The default value for the queue diagnostic tags enabled setting. */
+  public static final boolean CONNECTOR_CONFIG_DEFAULT_QUEUE_DIAGNOSTIC_TAGS = false;
   /** The default value for the maximum number of data points in a payload. */
   public static final int CONNECTOR_CONFIG_DEFAULT_PAYLOAD_MAX_DATA_POINTS = 50;
   /** The default value for the send interval (in milliseconds) of data payloads. */
