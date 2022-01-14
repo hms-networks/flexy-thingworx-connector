@@ -17,7 +17,7 @@
   <!-- PROJECT PROPERTIES -->
   <properties>
     <!-- Ewon Flexy Device Address (IP or URL) -->
-    <ewon.address>172.20.20.6</ewon.address>
+    <ewon.address>10.0.0.53</ewon.address>
     <!-- Ewon Flexy Device Username -->
     <ewon.username>adm</ewon.username>
     <!-- Ewon Flexy Device Password -->
