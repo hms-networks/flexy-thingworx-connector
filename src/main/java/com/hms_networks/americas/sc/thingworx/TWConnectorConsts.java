@@ -13,10 +13,12 @@ import com.hms_networks.americas.sc.extensions.logging.Logger;
 public class TWConnectorConsts {
   // Connector Information
   /** Name of the connector application */
-  public static final String CONNECTOR_NAME = "Ewon Thingworx Connector";
+  public static final String CONNECTOR_NAME =
+      TWConnectorConsts.class.getPackage().getImplementationTitle();
 
   /** Version of the connector application */
-  public static final String CONNECTOR_VERSION = "3.0.0";
+  public static final String CONNECTOR_VERSION =
+      TWConnectorConsts.class.getPackage().getImplementationVersion();
 
   // HTTP Configuration
   /**
