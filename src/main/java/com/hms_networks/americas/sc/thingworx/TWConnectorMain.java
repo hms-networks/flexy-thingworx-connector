@@ -1,5 +1,6 @@
 package com.hms_networks.americas.sc.thingworx;
 
+import com.ewon.ewonitf.EWException;
 import com.ewon.ewonitf.TagControl;
 import com.hms_networks.americas.sc.extensions.config.exceptions.ConfigFileException;
 import com.hms_networks.americas.sc.extensions.config.exceptions.ConfigFileWriteException;
@@ -69,6 +70,9 @@ public class TWConnectorMain {
    */
   private static TagControl queueDiagnosticPollCountTag = null;
 
+  /** Boolean used to track if the queue data rate has been doubled. */
+  private static boolean queueDoubleDataRateEnabled = false;
+
   /**
    * Gets the connector configuration object.
    *
@@ -106,6 +110,14 @@ public class TWConnectorMain {
       connectorQueuePollCount++;
       if (connectorQueuePollCount == Long.MAX_VALUE) {
         connectorQueuePollCount = 0;
+      }
+      if (queueDiagnosticPollCountTag != null) {
+        try {
+          queueDiagnosticPollCountTag.setTagValueAsLong(connectorQueuePollCount);
+        } catch (EWException e) {
+          Logger.LOG_CRITICAL("Unable to set queue diagnostic poll count tag value!");
+          Logger.LOG_EXCEPTION(e);
+        }
       }
 
       try {
@@ -164,6 +176,27 @@ public class TWConnectorMain {
           } else {
             // Queue is not past running behind threshold, reset to 0 for updating debug tag
             queueBehindMillis = 0;
+          }
+
+          // Enable queue double data rate if running behind
+          if (!queueDoubleDataRateEnabled && queueBehindMillis > 0) {
+            long doubleQueueDataPollSizeMins = connectorConfig.getQueueDataPollSizeMinutes() * 2;
+            HistoricalDataQueueManager.setQueueFifoTimeSpanMins(doubleQueueDataPollSizeMins);
+            Logger.LOG_SERIOUS(
+                "The size of data polled on each interval has been doubled to "
+                    + doubleQueueDataPollSizeMins
+                    + " minutes while the queue is running behind!");
+            queueDoubleDataRateEnabled = true;
+          }
+          // Disable queue double data rate if no longer running behind
+          else if (queueDoubleDataRateEnabled && queueBehindMillis == 0) {
+            long queueDataPollSizeMins = connectorConfig.getQueueDataPollSizeMinutes();
+            HistoricalDataQueueManager.setQueueFifoTimeSpanMins(queueDataPollSizeMins);
+            Logger.LOG_SERIOUS(
+                "The size of data polled on each interval has been restored to "
+                    + queueDataPollSizeMins
+                    + " minutes.");
+            queueDoubleDataRateEnabled = false;
           }
 
           // Update queue debug tag
