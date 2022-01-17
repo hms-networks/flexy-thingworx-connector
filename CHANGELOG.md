@@ -1,5 +1,17 @@
 # Ewon Flexy Thingworx Connector Changelog
 
+## Version 3.1.0
+### Features
+- Added support for queue diagnostic tags (force reset trigger, running behind status, and poll count/heartbeat)
+- Removed dependency on device FTP user account
+- Improved behavior when historical data queue is running behind
+  - Data poll size is doubled when queue is running behind to speed up processing
+  - Log output is displayed in more easily readable format (days, hours, minutes, and seconds)
+### Bug Fixes
+- Fixed issue which could cause data points to use the wrong time zone
+### Other
+- Clean up misspellings in code
+
 ## Version 3.0.0
 ### Features
 - Update project to use Maven builder
