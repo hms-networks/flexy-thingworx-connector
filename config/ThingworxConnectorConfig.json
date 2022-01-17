@@ -1,6 +1,7 @@
 {
    "LogLevel": 1,
    "ThingworxFullUrl": "https://setme.biz/Thingworx/Things/ConnectorHost/Services/TakeInfo",
+   "ThingworxTagUpdateUrl": "https://setme.biz/Thingworx/Things/ConnectorHost/Services/RemoteTagUpdate",
    "AppKey": "Set-This-Value",
    "FtpUsername": "Set-This-Value",
    "FtpPassword": "Set-This-Value",
