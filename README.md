@@ -37,27 +37,25 @@ There are two components that make up the Ewon Thingworx Connector, a Thingworx 
       1. [Thingworx Full URL](#thingworx-full-url)
       2. [App Key](#app-key)
       3. [Log Level](#log-level)
-      4. [FTP Username](#ftp-username)
-      5. [FTP Password](#ftp-password)
-      6. [Queue Enable String History](#queue-enable-string-history)
-      7. [Queue Data Poll Size](#queue-data-poll-size)
-      8. [Queue Data Poll Interval](#queue-data-poll-interval)
-      9. [Payload Maximum Data Points](#payload-maximum-data-points)
-      10. [Payload Send Interval (Millis)](#payload-send-interval-millis)
-      11. [Thingworx Tag Update URL](#thingworx-tag-update-url)
+      4. [Queue Diagnostic Tags Enabled](#queue-diagnostic-tags-enabled)
+      5. [Queue Enable String History](#queue-enable-string-history)
+      6. [Queue Data Poll Size](#queue-data-poll-size)
+      7. [Queue Data Poll Interval](#queue-data-poll-interval)
+      8. [Payload Maximum Data Points](#payload-maximum-data-points)
+      9. [Payload Send Interval (Millis)](#payload-send-interval-millis)
+      10. [Thingworx Tag Update URL](#thingworx-tag-update-url)
    3. [Telemetry](#telemetry)
       1. [Data Source](#data-source)
          1. [Tag Eligibility](#tag-eligibility)
          2. [Tag Data Types](#tag-data-types)
             1. [String Tag History](#string-tag-history)
    4. [Runtime](#runtime)
-      1. [FTP User Setup](#ftp-user-setup)
-      2. [Application Control Tag](#application-control-tag)
-      3. [Tag Updates from Thingworx](#tag-updates-from-thingworx) 
+      1. [Application Control Tag](#application-control-tag)
+      2. [Tag Updates from Thingworx](#tag-updates-from-thingworx) 
          1. [Request Trigger and Result Tags](#request-trigger-and-result-tags)
          2. [Custom Service Request Format](#custom-service-request-format)
          3. [Custom Service Response Format](#custom-service-response-format)
-      4. [Log Output](#log-output)
+      3. [Log Output](#log-output)
          1. [Configured Logging Level](#configured-logging-level)
          2. [Logging Performance](#logging-performance)
          3. [Adding Log Output](#adding-log-output)
@@ -379,17 +377,16 @@ This should match the app key for the Thingworx instance.
 #### Log Level
 The Thingworx connector uses the HMS Solution Center logging library for application logging to the Ewon Flexy's realtime logs. See [Configured Log Level](#configured-logging-level) for more information.
 
-#### FTP Username
-The username for accessing Ewon Flexy via FTP. This user account must be configured for non-UTC time zones to be used on the Flexy. See [FTP User Setup](#ftp-user-setup) for more information.
-
-#### FTP Password
-The password for accessing Ewon Flexy via FTP. This user account must be configured for non-UTC time zones to be used on the Flexy. See [FTP User Setup](#ftp-user-setup) for more information.
+#### Queue Diagnostic Tags Enabled
+Optional parameter to enable and monitor a set of diagnostic tags for the historical data queue. These tags are automatically created and are used to monitor the health of the historical data queue by displaying a heartbeat with the number of times the queue has been accessed, a trigger to reset the queue time tracker, and the number of seconds which the queue is running behind by.
 
 #### Queue Enable String History
 Optional parameter to override the default boolean flag indicating if string history data should be retrieved from the queue. String history requires an additional EBD call in the underlying queue library, and will take extra processing time, especially in installations with large string tag counts.  If no value is specified in the configuration file, the value will be read from QUEUE_DATA_STRING_HISTORY_ENABLED_DEFAULT from "src/main/java/com/hms_networks/americas/sc/thingworx/TWConnectorConsts.java".
 
 #### Queue Data Poll Size
 Optional parameter to override the default data poll size (in minutes) of each data queue poll. Changing this will modify the amount of data checked during each poll interval. If no value is specified in the configuration file, the value will be read from QUEUE_DATA_POLL_SIZE_MINS_DEFAULT from "src/main/java/com/hms_networks/americas/sc/thingworx/TWConnectorConsts.java".
+
+*Note: The queue data poll size is doubled when the queue is running behind to allow it to catch up faster.*
 
 #### Queue Data Poll Interval
 Optional parameter to override the default data poll interval (in milliseconds) to poll the historical data queue.  If no value is specified in the configuration file, the value will be read from QUEUE_DATA_POLL_INTERVAL_MILLIS_DEFAULT from "src/main/java/com/hms_networks/americas/sc/thingworx/TWConnectorConsts.java".
@@ -436,18 +433,6 @@ Additionally, the default configuration of the Ewon Flexy is to exclude string t
 Note: *This setting should be configured prior to installing the application, as a complete format of the Ewon is necessary to apply this setting.*
 
 ### Runtime
-
-#### FTP User Setup
-The FTP user account is required when the Flexy's local time is not set to UTC. The connector is able to run without an FTP user account if the local time is set to UTC. To create a FTP user account, follow the below steps:
-1. Navigate to the Ewon Flexy's users page via Setup -> Users
-2. Click "Add" to bring up the create new user window
-3. Fill in any desired first and last name
-4. Fill in a user login to be used in the connector config for FTP user access
-5. Fill in a user password to be used in the connector config for FTP user access
-6. Set "Tag Page Allowed" to "default"
-7. Set "User Directory Allowed" to "/usr/(Default)"
-8. Set the "Global user rights" to enable "FTP server access"
-9. Click "Add User"
 
 #### Application Control Tag
 The “ThingworxControl” tag allows for a user to shut down the application while the Flexy is running. This tag must be created, by a user, as a Boolean “MEM” tag on the Ewon with the name “ThingworxControl”. The application will cyclically poll the “ThingworxControl” tag value in TWConnectorMain.java and shut down the application when the value is set to one. This reduces the CPU load of the Flexy and allows for maintenance to be completed on the unit. The application can only be stopped in the telemetry portion of the application and shut down during initialization is not permitted. The name of this tag can be modified by changing the value of CONNECTOR_CONTROL_TAG_NAME in "src/main/java/com/hms_networks/americas/sc/thingworx/TWConnectorConsts.java".
