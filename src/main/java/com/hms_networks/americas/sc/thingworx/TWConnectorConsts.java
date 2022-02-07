@@ -162,6 +162,9 @@ public class TWConnectorConsts {
       "PayloadSendIntervalMillis";
   /** The configuration file JSON key for the Thingworx tag update URL. */
   public static final String CONNECTOR_CONFIG_TW_TAG_UPDATE_URL_KEY = "ThingworxTagUpdateUrl";
+  /** The configuration file JSON key for the historical data buffer max fall behind duration. */
+  public static final String CONNECTOR_CONFIG_MAX_HIST_BUF_FALL_BEHIND_KEY =
+      "MaxHistoricalBufferFallBehindMins";
 
   // Config Defaults
   /** The default value for the Thingworx URL. This is a helpful hint for customers. */
@@ -177,6 +180,8 @@ public class TWConnectorConsts {
   public static final int CONNECTOR_CONFIG_DEFAULT_PAYLOAD_MAX_DATA_POINTS = 50;
   /** The default value for the send interval (in milliseconds) of data payloads. */
   public static final long CONNECTOR_CONFIG_DEFAULT_PAYLOAD_SEND_INTERVAL_MILLIS = 5000;
+  /** The default value for the historical data buffer max fall behind duration in minutes. */
+  public static final long CONNECTOR_CONFIG_MAX_HIST_BUF_FALL_BEHIND_MINS = 5;
 
   // RequestHTTPX Response Codes
   /** Ewon RequestHTTPX response code for no error. */
