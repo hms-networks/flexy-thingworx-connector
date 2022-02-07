@@ -178,8 +178,13 @@ public class TWConnectorMain {
             queueBehindMillis = 0;
           }
 
-          // Enable queue double data rate if running behind
-          if (!queueDoubleDataRateEnabled && queueBehindMillis > 0) {
+          // Update available memory variable
+          availableMemoryBytes = Runtime.getRuntime().freeMemory();
+
+          // Enable queue double data rate if running behind and memory is available
+          if (!queueDoubleDataRateEnabled
+              && queueBehindMillis > 0
+              && availableMemoryBytes > TWConnectorConsts.QUEUE_DATA_POLL_MIN_MEMORY_BYTES) {
             long doubleQueueDataPollSizeMins = connectorConfig.getQueueDataPollSizeMinutes() * 2;
             HistoricalDataQueueManager.setQueueFifoTimeSpanMins(doubleQueueDataPollSizeMins);
             Logger.LOG_SERIOUS(
@@ -213,6 +218,17 @@ public class TWConnectorMain {
       } catch (Exception e) {
         Logger.LOG_CRITICAL("An error occurred while reading data from the historical log.");
         Logger.LOG_EXCEPTION(e);
+        // Chances are that trying the exact same read next time will result in the same exception,
+        // so advance the start time tracking
+        try {
+          HistoricalDataQueueManager.advanceTrackingStartTime();
+          Logger.LOG_WARN(
+              "Advancing historical start time, because an exception was thrown. This will"
+                  + " result in historical data loss.");
+        } catch (Exception e1) {
+          Logger.LOG_CRITICAL("An error occurred while attempting to advance the historical log.");
+          Logger.LOG_EXCEPTION(e1);
+        }
       }
     }
   }
