@@ -293,4 +293,15 @@ public class TWConnectorConfig extends ConfigFile {
         TWConnectorConsts.CONNECTOR_CONFIG_DEFAULT_TW_URL);
     return defaultConfigObject;
   }
+
+  /**
+   * Get the max historical buffer fall behind value from the configuration.
+   *
+   * @return max historical buffer fall behind in mins.
+   * @throws JSONException if unable to get connector log level from configuration
+   */
+  public long getConnectorHistoBuffFallBehindMins() throws JSONException {
+    return configurationObject.getLong(
+        TWConnectorConsts.CONNECTOR_CONFIG_MAX_HIST_BUF_FALL_BEHIND_KEY);
+  }
 }

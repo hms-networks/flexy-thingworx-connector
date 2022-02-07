@@ -261,6 +261,26 @@ public class TWConnectorMain {
   }
 
   /**
+   * Configures the maximum duration in the historical buffer that the connector will try to sync.
+   */
+  private static void configHistoricalDataQueueMaxFallBehind() {
+    try {
+      HistoricalDataQueueManager.setQueueMaxBehindMins(
+          connectorConfig.getConnectorHistoBuffFallBehindMins());
+    } catch (JSONException e) {
+      Logger.LOG_SERIOUS(
+          "Unable to read max historical buffer fall back mins from connector configuration. Using"
+              + " default ("
+              + TWConnectorConsts.CONNECTOR_CONFIG_MAX_HIST_BUF_FALL_BEHIND_MINS
+              + ") minutes.");
+      Logger.LOG_EXCEPTION(e);
+
+      HistoricalDataQueueManager.setQueueMaxBehindMins(
+          TWConnectorConsts.CONNECTOR_CONFIG_MAX_HIST_BUF_FALL_BEHIND_MINS);
+    }
+  }
+
+  /**
    * Configures the queue diagnostic tags if the {@link
    * TWConnectorConfig#getQueueDiagnosticTagsEnabled()} setting is enabled.
    */
@@ -389,6 +409,9 @@ public class TWConnectorMain {
 
     // Configure Ewon HTTP timeouts
     setHttpTimeouts();
+
+    // Configure max historical fall behind mins value
+    configHistoricalDataQueueMaxFallBehind();
 
     // Show startup message
     Logger.LOG_CRITICAL(
