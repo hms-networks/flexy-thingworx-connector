@@ -8,5 +8,6 @@
    "QueueDataPollIntervalMillis": 3000,
    "PayloadMaxDataPoints": 50,
    "PayloadSendIntervalMillis": 5000,
-   "QueueEnableDiagnosticTags": false
+   "QueueEnableDiagnosticTags": false,
+   "MaxHistoricalBufferFallBehindMins": 20
 }
