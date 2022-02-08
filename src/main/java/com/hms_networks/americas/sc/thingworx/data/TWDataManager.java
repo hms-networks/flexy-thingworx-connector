@@ -25,6 +25,7 @@ public class TWDataManager {
   /**
    * Removes the specified payload from the list of payloads that are ready to be sent to Thingworx.
    *
+   * @param payload <code>TWDataPayload</code> to remove
    * @since 2.0
    */
   public static synchronized void removedPendingPayload(TWDataPayload payload) {
