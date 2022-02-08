@@ -11,7 +11,6 @@ import com.hms_networks.americas.sc.extensions.taginfo.TagInfoManager;
 import com.hms_networks.americas.sc.extensions.taginfo.TagType;
 import com.hms_networks.americas.sc.thingworx.TWConnectorMain;
 import com.hms_networks.americas.sc.thingworx.utils.HttpUtils;
-
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map.Entry;
