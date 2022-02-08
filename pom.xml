@@ -16,12 +16,6 @@
 
   <!-- PROJECT PROPERTIES -->
   <properties>
-    <!-- Ewon Flexy Device Address (IP or URL) -->
-    <ewon.address>10.0.0.53</ewon.address>
-    <!-- Ewon Flexy Device Username -->
-    <ewon.username>adm</ewon.username>
-    <!-- Ewon Flexy Device Password -->
-    <ewon.password>adm</ewon.password>
     <!-- Project Main Class -->
     <project.main.class>com.hms_networks.americas.sc.thingworx.TWConnectorMain</project.main.class>
     <!-- Project Memory Heap Size -->
@@ -316,6 +310,26 @@
             <goals>
               <goal>report</goal>
             </goals>
+          </execution>
+        </executions>
+      </plugin>
+      
+      <!-- Read properties from external file -->
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>properties-maven-plugin</artifactId>
+        <version>1.0.0</version>
+        <executions>
+          <execution>
+            <phase>initialize</phase>
+            <goals>
+              <goal>read-project-properties</goal>
+            </goals>
+            <configuration>
+              <files>
+                <file>${project.basedir}/flexy.properties</file>
+              </files>
+            </configuration>
           </execution>
         </executions>
       </plugin>
