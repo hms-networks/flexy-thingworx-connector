@@ -45,7 +45,9 @@ public class HttpUtils {
    * @param url URL to make request
    * @param header request header
    * @param body request body
+   * @return response
    * @throws EWException if unable to make POST request
+   * @throws java.io.IOException for IO/File related exceptions
    */
   public static String httpPost(String url, String header, String body)
       throws EWException, IOException {
