@@ -7,6 +7,7 @@ import com.hms_networks.americas.sc.extensions.config.exceptions.ConfigFileWrite
 import com.hms_networks.americas.sc.extensions.historicaldata.HistoricalDataQueueManager;
 import com.hms_networks.americas.sc.extensions.json.JSONException;
 import com.hms_networks.americas.sc.extensions.logging.Logger;
+import com.hms_networks.americas.sc.extensions.system.application.SCAppManagement;
 import com.hms_networks.americas.sc.extensions.system.http.SCHttpUtility;
 import com.hms_networks.americas.sc.extensions.system.tags.SCTagUtils;
 import com.hms_networks.americas.sc.extensions.system.time.SCTimeUnit;
@@ -417,6 +418,9 @@ public class TWConnectorMain {
    * @param args program arguments (ignored)
    */
   public static void main(String[] args) {
+    // Enable application auto restart
+    SCAppManagement.enableAppAutoRestart();
+
     // Load configuration
     loadConfiguration();
 
@@ -570,6 +574,9 @@ public class TWConnectorMain {
 
     // Cleanup data send thread
     TWApiManager.setDataThreadStopFlag();
+
+    // Disable automatic application restart
+    SCAppManagement.disableAppAutoRestart();
 
     // Show shutdown message
     Logger.LOG_CRITICAL(
