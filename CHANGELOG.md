@@ -1,5 +1,16 @@
 # Ewon Flexy Thingworx Connector Changelog
 
+## Version 3.2.0
+### Features
+- Moved to extension library 1.6
+- Added configurable max historical buffer read limit feature
+- Added memory check when double poll is enabled
+- Added historical FIFO time start advance in exception handler
+- Added next run command feature to automatically restart application
+- Added external Flexy properties file
+### Other
+- Formatting and Javadoc updates
+
 ## Version 3.1.0
 ### Features
 - Added support for queue diagnostic tags (force reset trigger, running behind status, and poll count/heartbeat)
