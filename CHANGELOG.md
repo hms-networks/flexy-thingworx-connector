@@ -1,5 +1,13 @@
 # Ewon Flexy Thingworx Connector Changelog
 
+## Version 3.2.1-pre1
+### Features
+- N/A
+### Bug Fixes
+- Added missing files to release zip files
+### Other
+- N/A
+
 ## Version 3.2.0
 ### Features
 - Moved to extension library 1.6

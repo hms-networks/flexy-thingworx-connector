@@ -1,1 +1,1 @@
--heapsize 25M -classpath /usr/flexy-thingworx-connector-3.2.0-full.jar -emain com.hms_networks.americas.sc.thingworx.TWConnectorMain
+-heapsize 25M -classpath /usr/flexy-thingworx-connector-3.2.1-pre1-full.jar -emain com.hms_networks.americas.sc.thingworx.TWConnectorMain
