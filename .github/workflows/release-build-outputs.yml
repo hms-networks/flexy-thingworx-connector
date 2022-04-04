@@ -15,7 +15,7 @@ on:
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   CHANGELOG_FILE_NAME: CHANGELOG.md
-  RELEASE_INCLUDED: CHANGELOG.md README.md LICENSE src .classpath .project pom.xml build.xml
+  RELEASE_INCLUDED: CHANGELOG.md README.md LICENSE src .classpath .project pom.xml build.xml scripts thingworx-import
   RELEASE_JAR_NAME_REGEX: '*-full.jar'
   RELEASE_JAVADOCS_NAME_REGEX: '*-javadoc.jar'
   RELEASE_BODY_FILE: RELEASE-BODY.md
