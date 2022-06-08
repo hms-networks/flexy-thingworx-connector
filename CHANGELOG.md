@@ -1,5 +1,13 @@
 # Ewon Flexy Thingworx Connector Changelog
 
+## Version 3.1.1-pre2
+### Features
+- N/A
+### Bug Fixes
+- \[TESTING\] Corrected a bug which may have caused data points to be skipped if an exception is thrown
+### Other
+- N/A
+
 ## Version 3.1.0
 ### Features
 - Added support for queue diagnostic tags (force reset trigger, running behind status, and poll count/heartbeat)

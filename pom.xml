@@ -8,7 +8,7 @@
   <!-- PROJECT NAME -->
   <name>Ewon Flexy Thingworx Connector</name>
   <!-- PROJECT VERSION -->
-  <version>3.1.0</version>
+  <version>3.1.1-pre2</version>
   <!-- PROJECT GROUP ID (PARENT PACKAGE) -->
   <groupId>com.hms_networks.americas.sc</groupId>
   <!-- PROJECT ARTIFACT ID (ROOT PACKAGE NAME) -->
