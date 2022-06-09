@@ -15,7 +15,7 @@ on:
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   CHANGELOG_FILE_NAME: CHANGELOG.md
-  RELEASE_INCLUDED: CHANGELOG.md README.md LICENSE src .classpath .project pom.xml build.xml
+  RELEASE_INCLUDED: CHANGELOG.md README.md LICENSE src .classpath .project pom.xml build.xml thingworx-import/Entities.xml scripts/jvmrun
   RELEASE_JAR_NAME_REGEX: '*-full.jar'
   RELEASE_JAVADOCS_NAME_REGEX: '*-javadoc.jar'
   RELEASE_BODY_FILE: RELEASE-BODY.md
@@ -95,6 +95,30 @@ jobs:
           asset_name: ${{ github.event.repository.name }}-${{ env.VERSION_NUMBER }}.zip
           asset_content_type: application/zip
 
+      - name: Upload Release Jvmrun to Created Release
+        if: ${{ contains(github.ref,'alpha') != true && contains(github.ref,'beta') != true && contains(github.ref,'pre') != true }}
+        id: upload-release-jvmrun
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./scripts/jvmrun
+          asset_name: jvmrun
+          asset_content_type: text/plain
+
+      - name: Upload Release Entities XML to Created Release
+        if: ${{ contains(github.ref,'alpha') != true && contains(github.ref,'beta') != true && contains(github.ref,'pre') != true }}
+        id: upload-release-entities-xml
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./thingworx-import/Entities.xml
+          asset_name: Entities.xml
+          asset_content_type: text/xml
+
       - name: Upload Pre-Release Asset to Created Pre-Release
         if: ${{ contains(github.ref,'alpha') == true || contains(github.ref,'beta') == true || contains(github.ref,'pre') == true }}
         id: upload-pre-release-asset
@@ -106,3 +130,27 @@ jobs:
           asset_path: ./release.zip
           asset_name: ${{ github.event.repository.name }}-${{ env.VERSION_NUMBER }}.zip
           asset_content_type: application/zip
+
+      - name: Upload Pre-Release Jvmrun to Created Pre-Release
+        if: ${{ contains(github.ref,'alpha') == true || contains(github.ref,'beta') == true || contains(github.ref,'pre') == true }}
+        id: upload-pre-release-jvmrun
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_pre_release.outputs.upload_url }}
+          asset_path: ./scripts/jvmrun
+          asset_name: jvmrun
+          asset_content_type: text/plain
+
+      - name: Upload Pre-Release Entities XML to Created Pre-Release
+        if: ${{ contains(github.ref,'alpha') == true || contains(github.ref,'beta') == true || contains(github.ref,'pre') == true }}
+        id: upload-pre-release-entities-xml
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_pre_release.outputs.upload_url }}
+          asset_path: ./thingworx-import/Entities.xml
+          asset_name: Entities.xml
+          asset_content_type: text/xml
