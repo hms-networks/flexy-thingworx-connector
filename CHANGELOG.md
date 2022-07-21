@@ -1,5 +1,13 @@
 # Ewon Flexy Thingworx Connector Changelog
 
+## Version 3.3.0
+### Features
+- N/A
+### Bug Fixes
+- Corrected a bug that prevented Talk2M data from syncing to Thingworx
+### Other
+- Improved performance during datapoint processing
+
 ## Version 3.2.1
 ### Features
 - N/A
