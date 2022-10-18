@@ -1,9 +1,11 @@
 package com.hms_networks.americas.sc.thingworx;
 
 import com.ewon.ewonitf.EWException;
+import com.ewon.ewonitf.RuntimeControl;
 import com.ewon.ewonitf.TagControl;
 import com.hms_networks.americas.sc.extensions.config.exceptions.ConfigFileException;
 import com.hms_networks.americas.sc.extensions.config.exceptions.ConfigFileWriteException;
+import com.hms_networks.americas.sc.extensions.fileutils.FileAccessManager;
 import com.hms_networks.americas.sc.extensions.historicaldata.CircularizedFileException;
 import com.hms_networks.americas.sc.extensions.historicaldata.EbdTimeoutException;
 import com.hms_networks.americas.sc.extensions.historicaldata.HistoricalDataQueueManager;
@@ -490,6 +492,31 @@ public class TWConnectorMain {
     Logger.LOG_CRITICAL(
         "Starting " + TWConnectorConsts.CONNECTOR_NAME + " " + TWConnectorConsts.CONNECTOR_VERSION);
 
+    // Configure app auto-restart functionality
+    final String jvmrunFilePath = "/usr/jvmrun";
+    String jvmrunCommand = null;
+    try {
+      jvmrunCommand = FileAccessManager.readFileToString(jvmrunFilePath);
+    } catch (Exception e) {
+      Logger.LOG_WARN(
+          "Unable to read the jvmrun file contents! Application auto-restart "
+              + "functionality will not be available.");
+      Logger.LOG_EXCEPTION(e);
+    }
+    if (jvmrunCommand != null) {
+      try {
+        Logger.LOG_DEBUG(
+            "Configuring application auto-restart functionality with the following command: "
+                + jvmrunCommand);
+        RuntimeControl.configureNextRunCommand(jvmrunCommand);
+        Logger.LOG_DEBUG("Application auto-restart functionality configured successfully.");
+
+      } catch (Exception e) {
+        Logger.LOG_WARN("Unable to configure application auto-restart functionality!");
+        Logger.LOG_EXCEPTION(e);
+      }
+    }
+
     // Inject local time in to the JVM
     try {
       SCTimeUtils.injectJvmLocalTime();
@@ -627,6 +654,10 @@ public class TWConnectorMain {
 
     // Cleanup data send thread
     TWApiManager.setDataThreadStopFlag();
+
+    // Disable application auto-restart functionality
+    Logger.LOG_DEBUG("Disabling application auto-restart functionality. Shutdown was requested.");
+    RuntimeControl.configureNextRunCommand(null);
 
     // Show shutdown message
     Logger.LOG_CRITICAL(
