@@ -1,10 +1,10 @@
 # Ewon Flexy Thingworx Connector Changelog
 
-## Version 3.1.1-pre2
+## Version 3.1.1-DIO
 ### Features
-- N/A
+- Added support for application automatic restart upon failure or crash
 ### Bug Fixes
-- \[TESTING\] Corrected a bug which may have caused data points to be skipped if an exception is thrown
+- Corrected a bug which may have caused data points to be skipped if an exception is thrown
 ### Other
 - N/A
 
