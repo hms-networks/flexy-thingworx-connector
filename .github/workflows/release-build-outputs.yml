@@ -83,6 +83,13 @@ jobs:
           prerelease: true
           body_path: ${{ env.RELEASE_BODY_FILE }}
 
+      - name: Get Name of Artifact
+        run: |
+          ARTIFACT_PATHNAME=$(ls target/*-full.jar | head -n 1)
+          ARTIFACT_NAME=$(basename $ARTIFACT_PATHNAME)
+          echo "ARTIFACT_NAME=${ARTIFACT_NAME}" >> $GITHUB_ENV
+          echo "ARTIFACT_PATHNAME=${ARTIFACT_PATHNAME}" >> $GITHUB_ENV
+
       - name: Upload Release Asset to Created Release
         if: ${{ contains(github.ref,'alpha') != true && contains(github.ref,'beta') != true && contains(github.ref,'pre') != true }}
         id: upload-release-asset
@@ -119,6 +126,18 @@ jobs:
           asset_name: Entities.xml
           asset_content_type: text/xml
 
+      - name: Upload Release Jar Asset to Created Release
+        if: ${{ contains(github.ref,'alpha') != true && contains(github.ref,'beta') != true && contains(github.ref,'pre') != true }}
+        id: upload-release-asset-jar
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ${{ env.ARTIFACT_PATHNAME }}
+          asset_name: ${{ env.ARTIFACT_NAME }}
+          asset_content_type: application/java-archive
+
       - name: Upload Pre-Release Asset to Created Pre-Release
         if: ${{ contains(github.ref,'alpha') == true || contains(github.ref,'beta') == true || contains(github.ref,'pre') == true }}
         id: upload-pre-release-asset
@@ -154,3 +173,15 @@ jobs:
           asset_path: ./thingworx-import/Entities.xml
           asset_name: Entities.xml
           asset_content_type: text/xml
+
+      - name: Upload Pre-Release Jar Asset to Created Pre-Release
+        if: ${{ contains(github.ref,'alpha') == true || contains(github.ref,'beta') == true || contains(github.ref,'pre') == true }}
+        id: upload-pre-release-asset-jar
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_pre_release.outputs.upload_url }}
+          asset_path: ${{ env.ARTIFACT_PATHNAME }}
+          asset_name: ${{ env.ARTIFACT_NAME }}
+          asset_content_type: application/java-archive
