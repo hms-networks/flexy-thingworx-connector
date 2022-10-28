@@ -400,6 +400,9 @@ Optional parameter to control the interval at which data payloads are sent to Th
 #### Thingworx Tag Update URL
 Optional parameter which is used to set the URL for the custom tag update functionality service described in the [Tag Updates from Thingworx](#tag-updates-from-thingworx) section.
 
+#### Max Historical Buffer Fall Behind Mins
+Optional parameter to control the maximum number of minute(s) which the historical data queue can fall behind by. If the queue falls behind by this amount, only data points which are within the maximum fall behind time will be sent to Thingworx. If no value is specified in the configuration file, the value will be read from CONNECTOR_CONFIG_DEFAULT_MAX_HIST_BUF_FALL_BEHIND_MINS from "src/main/java/com/hms_networks/americas/sc/thingworx/TWConnectorConsts.java". This functionality may be disabled by setting the value to -1.
+
 ### Telemetry
 
 #### Data Source
