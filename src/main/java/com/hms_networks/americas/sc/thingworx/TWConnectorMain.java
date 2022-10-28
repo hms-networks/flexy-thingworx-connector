@@ -371,12 +371,12 @@ public class TWConnectorMain {
       Logger.LOG_SERIOUS(
           "Unable to read max historical buffer fall back mins from connector configuration. Using"
               + " default ("
-              + TWConnectorConsts.CONNECTOR_CONFIG_MAX_HIST_BUF_FALL_BEHIND_MINS
+              + TWConnectorConsts.CONNECTOR_CONFIG_DEFAULT_MAX_HIST_BUF_FALL_BEHIND_MINS
               + ") minutes.");
       Logger.LOG_EXCEPTION(e);
 
       HistoricalDataQueueManager.setQueueMaxBehindMins(
-          TWConnectorConsts.CONNECTOR_CONFIG_MAX_HIST_BUF_FALL_BEHIND_MINS);
+          TWConnectorConsts.CONNECTOR_CONFIG_DEFAULT_MAX_HIST_BUF_FALL_BEHIND_MINS);
     }
   }
 
