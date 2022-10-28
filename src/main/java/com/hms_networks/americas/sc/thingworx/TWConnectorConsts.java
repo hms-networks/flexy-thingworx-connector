@@ -181,7 +181,7 @@ public class TWConnectorConsts {
   /** The default value for the send interval (in milliseconds) of data payloads. */
   public static final long CONNECTOR_CONFIG_DEFAULT_PAYLOAD_SEND_INTERVAL_MILLIS = 5000;
   /** The default value for the historical data buffer max fall behind duration in minutes. */
-  public static final long CONNECTOR_CONFIG_MAX_HIST_BUF_FALL_BEHIND_MINS = 5;
+  public static final long CONNECTOR_CONFIG_DEFAULT_MAX_HIST_BUF_FALL_BEHIND_MINS = 5;
 
   // RequestHTTPX Response Codes
   /** Ewon RequestHTTPX response code for no error. */
