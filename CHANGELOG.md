@@ -1,5 +1,14 @@
 # Ewon Flexy Thingworx Connector Changelog
 
+## Version 3.3.1
+### Features
+- Improved error handling for HTTP requests by switching to SCHttpUtility.java from extensions library
+### Bug Fixes
+- Corrected a bug which may have caused data points to be skipped if an exception was thrown
+### Other
+- General code cleanup
+- Updated com.hms_networks.americas.sc:extensions library to version 1.12.0
+
 ## Version 3.3.0
 ### Features
 - N/A
