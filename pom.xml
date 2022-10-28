@@ -382,18 +382,21 @@
         <activeByDefault>true</activeByDefault>
       </activation>
       <properties>
+        <!--suppress UnresolvedMavenProperty -->
         <project.build.exec.url>http://${ewon.address}/rcgi.bin/jvmCmd?cmd=start&amp;runCmd=%20-heapsize%20${project.heap.size}%20-classpath%20/usr/${project.artifactId}-${project.version}-full.jar%20-emain%20${project.main.class}</project.build.exec.url>
       </properties>
     </profile>
     <profile>
       <id>debug</id>
       <properties>
+        <!--suppress UnresolvedMavenProperty -->
         <project.build.exec.url>http://${ewon.address}/rcgi.bin/jvmCmd?cmd=start&amp;runCmd=%20-heapsize%20${project.heap.size}%20-classpath%20/usr/${project.artifactId}-${project.version}-full.jar%20-emain%20${project.main.class}%20-debugger%20-port%20${project.build.debug.port}</project.build.exec.url>
       </properties>
     </profile>
     <profile>
       <id>debugNoSuspend</id>
       <properties>
+        <!--suppress UnresolvedMavenProperty -->
         <project.build.exec.url>http://${ewon.address}/rcgi.bin/jvmCmd?cmd=start&amp;runCmd=%20-heapsize%20${project.heap.size}%20-classpath%20/usr/${project.artifactId}-${project.version}-full.jar%20-emain%20${project.main.class}%20-debugger%20-port%20${project.build.debug.port}%20-nosuspend</project.build.exec.url>
       </properties>
     </profile>
