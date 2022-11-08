@@ -33,18 +33,6 @@ import java.util.Date;
  */
 public class TWConnectorMain {
 
-  /** String used to identify a number or count of days. */
-  private static final String DAYS_STRING = "days";
-
-  /** String used to identify a number or count of hours. */
-  private static final String HOURS_STRING = "hours";
-
-  /** String used to identify a number or count of minutes. */
-  private static final String MINUTES_STRING = "minutes";
-
-  /** String used to identify a number or count of seconds. */
-  private static final String SECONDS_STRING = "seconds";
-
   /** Connector configuration object */
   private static TWConnectorConfig connectorConfig;
 
@@ -196,12 +184,7 @@ public class TWConnectorMain {
                   long queueBehindMillis = HistoricalDataQueueManager.getQueueTimeBehindMillis();
                   if (queueBehindMillis >= TWConnectorConsts.QUEUE_DATA_POLL_BEHIND_MILLIS_WARN) {
                     String timeBehindString =
-                        SCTimeUtils.getDayHourMinSecsForMillis(
-                            (int) queueBehindMillis,
-                            DAYS_STRING,
-                            HOURS_STRING,
-                            MINUTES_STRING,
-                            SECONDS_STRING);
+                        SCTimeUtils.getDayHourMinSecsForMillis(queueBehindMillis);
                     Logger.LOG_WARN(
                         "The historical data queue is running behind by " + timeBehindString + ".");
                   } else {
