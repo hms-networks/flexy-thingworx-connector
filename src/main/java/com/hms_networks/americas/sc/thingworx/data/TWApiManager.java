@@ -1,9 +1,9 @@
 package com.hms_networks.americas.sc.thingworx.data;
 
 import com.hms_networks.americas.sc.extensions.logging.Logger;
+import com.hms_networks.americas.sc.extensions.system.http.SCHttpUtility;
 import com.hms_networks.americas.sc.thingworx.TWConnectorConsts;
 import com.hms_networks.americas.sc.thingworx.TWConnectorMain;
-import com.hms_networks.americas.sc.thingworx.utils.HttpUtils;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -139,13 +139,7 @@ public class TWApiManager {
     String response = null;
     boolean isSuccessful = true;
     try {
-      response = HttpUtils.httpPost(addInfoEndpointFullUrl, addInfoRequestHeader, json);
-      if (response != null
-          && (response.equals(HttpUtils.EWON_ERROR_STRING_RESPONSE)
-              || response.equals(HttpUtils.AUTH_ERROR_STRING_RESPONSE)
-              || response.equals(HttpUtils.CONNECTION_ERROR_STRING_RESPONSE))) {
-        isSuccessful = false;
-      }
+      response = SCHttpUtility.httpPost(addInfoEndpointFullUrl, addInfoRequestHeader, json);
     } catch (Exception e) {
       Logger.LOG_CRITICAL(
           "An error occurred while performing an HTTP POST to Thingworx. Data may have"
