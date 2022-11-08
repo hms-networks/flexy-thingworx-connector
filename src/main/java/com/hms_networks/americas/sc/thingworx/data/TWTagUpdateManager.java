@@ -6,11 +6,11 @@ import com.hms_networks.americas.sc.extensions.json.JSONException;
 import com.hms_networks.americas.sc.extensions.json.JSONObject;
 import com.hms_networks.americas.sc.extensions.json.JSONTokener;
 import com.hms_networks.americas.sc.extensions.logging.Logger;
+import com.hms_networks.americas.sc.extensions.system.http.SCHttpUtility;
 import com.hms_networks.americas.sc.extensions.taginfo.TagInfo;
 import com.hms_networks.americas.sc.extensions.taginfo.TagInfoManager;
 import com.hms_networks.americas.sc.extensions.taginfo.TagType;
 import com.hms_networks.americas.sc.thingworx.TWConnectorMain;
-import com.hms_networks.americas.sc.thingworx.utils.HttpUtils;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map.Entry;
@@ -727,15 +727,8 @@ public class TWTagUpdateManager {
     if (tagUpdateResult == TAG_UPDATE_RESULT_VALUE_SUCCESS) {
       try {
         response =
-            HttpUtils.httpPost(tagUpdateRequestEndpointFullUrl, tagUpdateRequestHeader, json);
-        if (response != null) {
-          if (response.equals(HttpUtils.EWON_ERROR_STRING_RESPONSE)) {
-            tagUpdateResult = TAG_UPDATE_RESULT_VALUE_EWON_ERROR;
-          } else if (response.equals(HttpUtils.AUTH_ERROR_STRING_RESPONSE)
-              || response.equals(HttpUtils.CONNECTION_ERROR_STRING_RESPONSE)) {
-            tagUpdateResult = TAG_UPDATE_RESULT_VALUE_CONNECTION_ERROR;
-          }
-        } else {
+            SCHttpUtility.httpPost(tagUpdateRequestEndpointFullUrl, tagUpdateRequestHeader, json);
+        if (response == null) {
           Logger.LOG_SERIOUS(
               "A null response was encountered while performing a tag update request.");
           tagUpdateResult = TAG_UPDATE_RESULT_VALUE_EWON_ERROR;
