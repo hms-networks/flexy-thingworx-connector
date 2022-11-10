@@ -12,6 +12,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" scope="TEST" name="Maven: junit:junit:3.8.1" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: com.hms_networks.americas.sc.mvnlibs:ewon-etk:1.4.4" level="project" />
-    <orderEntry type="library" name="Maven: com.hms_networks.americas.sc:extensions:1.6.0" level="project" />
+    <orderEntry type="library" name="Maven: com.hms_networks.americas.sc:extensions:1.12.0" level="project" />
   </component>
 </module>
