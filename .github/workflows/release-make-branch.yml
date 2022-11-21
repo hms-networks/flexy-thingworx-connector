@@ -1,6 +1,6 @@
 # HMS Networks Solution Center
 # Make Branch Action for Maven-based Ewon ETK Project Releases
-# Version: 1.0
+# Version: 2.0
 #
 # This action is configured to automatically run when a release
 # tag is created in the following syntax: `v*`.
@@ -28,9 +28,9 @@ jobs:
           tagRevision="${tag:1}"
           branchPrefix="release/"
           branchName="$branchPrefix$tagRevision"
-          echo ::set-output name=SOURCE_TAG::"$branchName"
+          echo "SOURCE_TAG=$branchName" >> $GITHUB_ENV
 
       - name: Create Branch
-        uses: peterjgrainger/action-create-branch@v2.0.1
+        uses: peterjgrainger/action-create-branch@v2.3.0
         with:
-          branch: ${{ steps.branch_name.outputs.SOURCE_TAG }}
+          branch: ${{ env.SOURCE_TAG }}
