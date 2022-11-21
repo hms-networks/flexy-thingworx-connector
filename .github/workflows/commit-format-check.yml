@@ -1,6 +1,6 @@
 # HMS Networks Solution Center
 # Commit Format Action for Maven-based Ewon ETK Projects
-# Version: 1.0
+# Version: 2.0
 #
 # This action is configured to automatically run when a pull
 # request is made to the `main` or `master` branch.
@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check Title Line Length
-        uses: gsactions/commit-message-checker@v1
+        uses: gsactions/commit-message-checker@v2
         with:
           pattern: '^.{0,50}((\r|\n|\r\n)(.*|\r|\n|\r\n)*)?$' # matches if first line (title) less than 50 characters in length, followed by 0 or more additional lines
           flags: 'y' # y flag indicates "sticky" search that matches starting at beginning (or current location) of string.
@@ -29,7 +29,7 @@ jobs:
           checkAllCommitMessages: 'true' # optional: this checks all commits associated with a pull request
           accessToken: ${{ secrets.GITHUB_TOKEN }} # github access token is only required if checkAllCommitMessages is true
       - name: Check Title Does Not End With Period
-        uses: gsactions/commit-message-checker@v1
+        uses: gsactions/commit-message-checker@v2
         with:
           pattern: '^.*[^.\r\n]((\r|\n|\r\n)(.*|\r|\n|\r\n)*)?$' # matches if first line (title) does not end with period, followed by 0 or more additional lines
           flags: 'y' # y flag indicates "sticky" search that matches starting at beginning (or current location) of string.
@@ -39,7 +39,7 @@ jobs:
           checkAllCommitMessages: 'true' # optional: this checks all commits associated with a pull request
           accessToken: ${{ secrets.GITHUB_TOKEN }} # github access token is only required if checkAllCommitMessages is true
       - name: Check Title Begins With Capital
-        uses: gsactions/commit-message-checker@v1
+        uses: gsactions/commit-message-checker@v2
         with:
           pattern: '^[A-Z0-9].*((\r|\n|\r\n)(.*|\r|\n|\r\n)*)?$'  # matches if first line (title) begins with capital letter or number, followed by 0 or more additional lines
           flags: 'y' # y flag indicates "sticky" search that matches starting at beginning (or current location) of string.
@@ -49,7 +49,7 @@ jobs:
           checkAllCommitMessages: 'true' # optional: this checks all commits associated with a pull request
           accessToken: ${{ secrets.GITHUB_TOKEN }} # github access token is only required if checkAllCommitMessages is true
       - name: Check Body Line Length
-        uses: gsactions/commit-message-checker@v1
+        uses: gsactions/commit-message-checker@v2
         with:
           pattern: '^(.{0,72}(\r|\n|\r\n))*.{0,72}?$'  # matches if 0 or more lines are less than or equal to 72 characters in length
           flags: 'y' # y flag indicates "sticky" search that matches starting at beginning (or current location) of string.
