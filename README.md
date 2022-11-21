@@ -353,7 +353,7 @@ The Flexy Java application component must be installed for the direct data path 
 ### Application Component Installation
 Using FTP, transfer the Flexy Java application \(.jar\) and jvmrun files to the /usr/ directory of the Ewon. Then, reboot the Ewon. On application startup, a configuration file will automatically be created with default values.
 - The Flexy Java application \(.jar\) is located in the /target folder.
-- The jvmrun file is located in the /scripts folder.
+- The jvmrun file is located in the /starting-files folder.
 
 A Thingworx application key is required to authenticate requests made by the Ewon to Thingworx, and is stored in the configuration file outlined in the [Configuration](#configuration) section. To generate an application key in Thingworx, please refer to the [Creating an Application Key](#creating-an-application-key) section.
 
@@ -603,7 +603,7 @@ To release a compiled version of the Ewon Thingworx Connector, two files must be
 
 On startup, the Ewon Flexy will look for the presence of a jvmrun file. If present, the Ewon Flexy will automatically launch the application referenced in the jvmrun script with the configured settings.
 
-The jvmrun script, included in the /scripts folder, configures the connector application to run with a 25 MB heap. If the heap size is reduced in the jvmrun script, the application may become unstable and could crash if unable to allocate memory.
+The jvmrun script, included in the /starting-files folder, configures the connector application to run with a 25 MB heap. If the heap size is reduced in the jvmrun script, the application may become unstable and could crash if unable to allocate memory.
 
 ## Support
 Support for the Ewon Thingworx Connector may be available under the terms of your quote, if applicable. New or additional support can be purchased, as needed, by contacting your HMS salesperson. If you don't know your HMS salesperson, please visit the HMS contact information page at [https://www.hms-networks.com/contact](https://www.hms-networks.com/contact).
