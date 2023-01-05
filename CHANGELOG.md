@@ -1,5 +1,13 @@
 # Ewon Flexy Thingworx Connector Changelog
 
+## Version 3.3.2
+### Features
+- N/A
+### Bug Fixes
+- Corrected a bug which may have caused data points to be lost while sending payloads to Thingworx
+### Other
+- N/A
+
 ## Version 3.3.1
 ### Features
 - Improved error handling for HTTP requests by switching to SCHttpUtility.java from extensions library
