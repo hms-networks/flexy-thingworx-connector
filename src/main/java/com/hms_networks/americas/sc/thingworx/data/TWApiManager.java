@@ -71,7 +71,8 @@ public class TWApiManager {
               while (pendingPayloadsIterator.hasNext()) {
                 TWDataPayload dataPayload = (TWDataPayload) pendingPayloadsIterator.next();
 
-                // Send to Thingworx
+                // Finish Payload and Send to Thingworx
+                dataPayload.finishPayload();
                 boolean isSuccessful = sendJsonToThingworx(dataPayload.getPayloadString());
 
                 // If successful, remove from pending payloads

@@ -22,31 +22,42 @@ public class TWDataPayload {
   private final List dataPoints = new ArrayList();
 
   /**
+   * Boolean to indicate the payload has been finished. This allows for the payload string to be
+   * safely returned by {@link #getPayloadString()} without new data points being added to the
+   * underlying payload array during request processing (prior to being marked successful).
+   */
+  private boolean payloadFinished = false;
+
+  /**
    * Adds the specified data point to the list of data points in the payload.
    *
    * @param datapoint data point to add
    * @return true if data point added
    */
   public synchronized boolean addDataPoint(DataPoint datapoint) {
-    // Get configured max number of data points per payload
-    int maxPayloadDataPoints = TWConnectorConsts.CONNECTOR_CONFIG_DEFAULT_PAYLOAD_MAX_DATA_POINTS;
-    try {
-      maxPayloadDataPoints = TWConnectorMain.getConnectorConfig().getPayloadMaxDataPoints();
-    } catch (Exception e) {
-      Logger.LOG_SERIOUS(
-          "An error occurred while parsing the maximum number of data points per payload from"
-              + " the configuration file! Using default value of "
-              + maxPayloadDataPoints
-              + ".");
-      Logger.LOG_EXCEPTION(e);
-    }
+    // Only add data point if payload is not finished
+    boolean canAddDataPoint = false;
+    if (!payloadFinished) {
+      // Get configured max number of data points per payload
+      int maxPayloadDataPoints = TWConnectorConsts.CONNECTOR_CONFIG_DEFAULT_PAYLOAD_MAX_DATA_POINTS;
+      try {
+        maxPayloadDataPoints = TWConnectorMain.getConnectorConfig().getPayloadMaxDataPoints();
+      } catch (Exception e) {
+        Logger.LOG_SERIOUS(
+            "An error occurred while parsing the maximum number of data points per payload from"
+                + " the configuration file! Using default value of "
+                + maxPayloadDataPoints
+                + ".");
+        Logger.LOG_EXCEPTION(e);
+      }
 
-    // Check if payload reached max size
-    boolean canAddDataPoint = dataPoints.size() < maxPayloadDataPoints;
+      // Check if payload reached max size
+      canAddDataPoint = dataPoints.size() < maxPayloadDataPoints;
 
-    // Add to payload is within size
-    if (canAddDataPoint) {
-      dataPoints.add(datapoint);
+      // Add to payload is within size
+      if (canAddDataPoint) {
+        dataPoints.add(datapoint);
+      }
     }
 
     return canAddDataPoint;
@@ -59,6 +70,15 @@ public class TWDataPayload {
    */
   public synchronized int getDataPointCount() {
     return dataPoints.size();
+  }
+
+  /**
+   * Marks the payload as finished. This allows the payload string to be safely returned by {@link
+   * #getPayloadString()} without new data points being added to the underlying payload array during
+   * request processing (prior to being marked successful).
+   */
+  public synchronized void finishPayload() {
+    payloadFinished = true;
   }
 
   /**
