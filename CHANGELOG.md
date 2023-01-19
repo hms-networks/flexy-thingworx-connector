@@ -1,5 +1,14 @@
 # Ewon Flexy Thingworx Connector Changelog
 
+## Version 3.3.3
+### Features
+- N/A
+### Bug Fixes
+- Corrected a bug which caused the data sending thread to stop after an exception was thrown.
+- Corrected a bug which may have caused concurrent modification exceptions or errors when sending data to Thingworx.
+### Other
+- N/A
+
 ## Version 3.3.2
 ### Features
 - N/A
