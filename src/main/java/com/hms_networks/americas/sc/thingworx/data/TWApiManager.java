@@ -42,7 +42,7 @@ public class TWApiManager {
   }
 
   /** Starts the thread which sends pending data payloads to Thingworx. */
-  public static void startDataSendThread() {
+  public static synchronized void startDataSendThread() {
     // Get data payload send interval (millis) from config file
     try {
       dataSendThreadIntervalMillis =
@@ -63,36 +63,42 @@ public class TWApiManager {
             // Loop until stopped
             boolean stayInLoop = true;
             while (stayInLoop) {
-              // Copy pending payloads from data manager
-              List pendingPayloads = new ArrayList(TWDataManager.getPayloadsToSend());
+              try {
+                // Copy pending payloads from data manager
+                List pendingPayloads = new ArrayList(TWDataManager.getPayloadsToSend());
 
-              // Iterate through each pending payload and send
-              Iterator pendingPayloadsIterator = pendingPayloads.iterator();
-              while (pendingPayloadsIterator.hasNext()) {
-                TWDataPayload dataPayload = (TWDataPayload) pendingPayloadsIterator.next();
+                // Iterate through each pending payload and send
+                Iterator pendingPayloadsIterator = pendingPayloads.iterator();
+                while (pendingPayloadsIterator.hasNext()) {
+                  TWDataPayload dataPayload = (TWDataPayload) pendingPayloadsIterator.next();
 
-                // Finish Payload and Send to Thingworx
-                dataPayload.finishPayload();
-                boolean isSuccessful = sendJsonToThingworx(dataPayload.getPayloadString());
+                  // Finish Payload and Send to Thingworx
+                  dataPayload.finishPayload();
+                  boolean isSuccessful = sendJsonToThingworx(dataPayload.getPayloadString());
 
-                // If successful, remove from pending payloads
-                if (isSuccessful) {
-                  Logger.LOG_DEBUG(
-                      "Successfully sent a payload to Thingworx with "
-                          + dataPayload.getDataPointCount()
-                          + " data points.");
-                  TWDataManager.removedPendingPayload(dataPayload);
-                } else {
-                  Logger.LOG_SERIOUS(
-                      "A payload containing "
-                          + dataPayload.getDataPointCount()
-                          + " data points failed to send to Thingworx.");
+                  // If successful, remove from pending payloads
+                  if (isSuccessful) {
+                    Logger.LOG_DEBUG(
+                        "Successfully sent a payload to Thingworx with "
+                            + dataPayload.getDataPointCount()
+                            + " data points.");
+                    TWDataManager.removedPendingPayload(dataPayload);
+                  } else {
+                    Logger.LOG_SERIOUS(
+                        "A payload containing "
+                            + dataPayload.getDataPointCount()
+                            + " data points failed to send to Thingworx.");
+                  }
                 }
-              }
 
-              // Update keepRunning
-              synchronized (TWApiManager.class) {
-                stayInLoop = runDataThread;
+                // Update keepRunning
+                synchronized (TWApiManager.class) {
+                  stayInLoop = runDataThread;
+                }
+              } catch (Exception e) {
+                Logger.LOG_WARN(
+                    "An error occurred while processing payloads to send to Thingworx!");
+                Logger.LOG_EXCEPTION(e);
               }
 
               // Delay until next interval
