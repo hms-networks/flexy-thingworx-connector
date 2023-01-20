@@ -4,7 +4,6 @@ import com.hms_networks.americas.sc.extensions.logging.Logger;
 import com.hms_networks.americas.sc.extensions.system.http.SCHttpUtility;
 import com.hms_networks.americas.sc.thingworx.TWConnectorConsts;
 import com.hms_networks.americas.sc.thingworx.TWConnectorMain;
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -65,7 +64,7 @@ public class TWApiManager {
             while (stayInLoop) {
               try {
                 // Copy pending payloads from data manager
-                List pendingPayloads = new ArrayList(TWDataManager.getPayloadsToSend());
+                List pendingPayloads = TWDataManager.getPayloadsToSend();
 
                 // Iterate through each pending payload and send
                 Iterator pendingPayloadsIterator = pendingPayloads.iterator();

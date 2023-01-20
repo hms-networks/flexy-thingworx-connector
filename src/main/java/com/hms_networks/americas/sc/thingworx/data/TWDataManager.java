@@ -76,12 +76,14 @@ public class TWDataManager {
   }
 
   /**
-   * Returns a list of payloads that are ready to send to Azure. Note: payloads returned by this
-   * method are removed and cannot be retrieved again if lost.
+   * Returns a copy of the list of payloads that are ready to send to Azure. Note: the returned list
+   * is a copy of the actual pending payloads list to prevent concurrent modification exceptions and
+   * other issues related to the underlying list being modified while simultaneousl being iterated
+   * over.
    *
-   * @return list of payloads to send to Azure
+   * @return copy of the list of payloads to send to Azure
    */
   public static synchronized List getPayloadsToSend() {
-    return pendingPayloads;
+    return new ArrayList(pendingPayloads);
   }
 }
