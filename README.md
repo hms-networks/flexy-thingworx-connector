@@ -44,6 +44,7 @@ There are two components that make up the Ewon Thingworx Connector, a Thingworx 
       8. [Payload Maximum Data Points](#payload-maximum-data-points)
       9. [Payload Send Interval (Millis)](#payload-send-interval-millis)
       10. [Thingworx Tag Update URL](#thingworx-tag-update-url)
+      11. [Max Historical Buffer Fall Behind Mins](#max-historical-buffer-fall-behind-mins)
    3. [Telemetry](#telemetry)
       1. [Data Source](#data-source)
          1. [Tag Eligibility](#tag-eligibility)
