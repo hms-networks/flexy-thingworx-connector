@@ -1,5 +1,13 @@
 # Ewon Flexy Thingworx Connector Changelog
 
+## Version 3.3.4
+### Features
+- N/A
+### Bug Fixes
+- Corrected a bug which caused multiple exceptions to be thrown for a single circularized file error.
+### Other
+- N/A
+
 ## Version 3.3.3
 ### Features
 - N/A
