@@ -17,7 +17,7 @@ env:
   CHANGELOG_FILE_NAME: CHANGELOG.md
   README_FILE_NAME: README.md
   README_PDF_FILE_NAME: README.pdf
-  RELEASE_ZIP_INCLUDED: CHANGELOG.md README.md LICENSE src .classpath .project pom.xml build.xml starting-files images
+  RELEASE_ZIP_INCLUDED: CHANGELOG.md README.md LICENSE src .classpath .project pom.xml build.xml starting-files images thingworx-import
   RELEASE_JAR_NAME_REGEX: '*-full.jar'
   RELEASE_JAVADOCS_NAME_REGEX: '*-javadoc.jar'
   RELEASE_BODY_FILE: RELEASE-BODY.md
@@ -109,6 +109,7 @@ jobs:
           body_path: ${{ env.RELEASE_BODY_FILE }}
           files: |
             ./starting-files/*
+            ./thingworx-import/Entities.xml
             ${{ env.ARTIFACT_PATHNAME }}
             ${{ env.RELEASE_NAME }}.zip
             ${{ env.RELEASE_NAME }}-${{ env.README_PDF_FILE_NAME }}
