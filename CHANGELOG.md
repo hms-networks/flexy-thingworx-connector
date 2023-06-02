@@ -1,5 +1,13 @@
 # Ewon Flexy Thingworx Connector Changelog
 
+## Version 3.3.5
+### Features
+- N/A
+### Bug Fixes
+- N/A
+### Other
+- Corrected deployment script to include Thingworx Entities.xml file for import.
+
 ## Version 3.3.4
 ### Features
 - N/A
