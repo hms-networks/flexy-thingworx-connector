@@ -1,5 +1,9 @@
 # Ewon Thingworx Connector
 
+## Warning on Maintenance Status
+This project remains as a reference, but is not actively being developed or maintained. 
+If you are interested working with Flexy data in Thingworx, please see the [Ewon developer documentation](https://developer.ewon.biz/) for details on connecting Thingworx to the DataMailbox and Talk2M APIs.
+
 The Ewon Thingworx Connector package provides a connector-based solution to Thingworx for linking Ewon devices using the Talk2M cloud and/or Ewon Flexy devices using a direct data path with the Flexy Java application.
 
 There are two components that make up the Ewon Thingworx Connector, a Thingworx project and an Ewon Flexy Java application.
